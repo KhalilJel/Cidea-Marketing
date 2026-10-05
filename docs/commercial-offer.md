@@ -16,8 +16,8 @@ A practical visual foundation with direction for logo use, typography, colour an
 ### SEO — from 5 900 NOK/month
 Ongoing work around technical health, useful content, search intent and measurable visibility.
 
-### Digital Marketing — from 7 900 NOK/month
-A focused channel and content/campaign setup around a defined commercial goal.
+### Digital Marketing — from 9 900 NOK/month
+Strategy, content, campaigns and optimisation around a defined commercial goal. Ad spend is separate.
 
 ## Sales flow
 Assessment → recommendation → scoped project or monthly engagement.
