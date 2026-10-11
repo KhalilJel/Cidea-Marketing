@@ -7,12 +7,12 @@ Date reviewed: 2026-10-12. This is a directional benchmark of agency positioning
 2. COLLINS — https://www.wearecollins.com/
 3. PORTO ROCHA — https://portorocha.com/
 4. Koto — https://koto.studio/
-5. Buzzworthy Studio — https://buzzworthy-studio.com/
+5. Buzzworthy Studio — https://buzzworthystudio.com/
 6. Humaan — https://humaan.com/
-7. Higglo Digital — https://higglodigital.com/
-8. Drool Design Studio — https://drool-art.com/
-9. Reborn — https://reborn.com/
-10. Outsiders Agency — https://outsiders.agency/
+7. Higglo Digital — https://www.higglo.io/
+8. Drool Design Studio — https://www.drool.design/
+9. Reborn — https://reborn.co/
+10. Outsiders Agency — https://www.outsiders-agency.com/en
 
 Discovery sources: https://www.webcity.design/articles/best-agency-websites ; https://www.webdesignawards.io/categories/agency ; https://www.zarla.com/inspiration/digital-marketing ; https://colorlib.com/wp/branding-agency-website-examples/
 
