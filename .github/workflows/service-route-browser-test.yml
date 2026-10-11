@@ -1,0 +1,50 @@
+name: Service route browser test
+
+on:
+  push:
+    branches:
+      - fix/service-pages-runtime-error
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  service-routes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Start Vite
+        run: |
+          npm run dev -- --host 127.0.0.1 > /tmp/vite.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:5173/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/vite.log
+          exit 1
+      - name: Verify service routes render without browser errors
+        run: |
+          node --input-type=module <<'EOF'
+          import { chromium } from 'playwright';
+          const routes = ['/websites', '/branding', '/seo', '/digital-marketing'];
+          const browser = await chromium.launch({ headless: true });
+          const page = await browser.newPage();
+          const errors = [];
+          page.on('pageerror', error => errors.push(error.message));
+          for (const route of routes) {
+            errors.length = 0;
+            const response = await page.goto('http://127.0.0.1:5173' + route, { waitUntil: 'networkidle' });
+            const heading = await page.locator('main h1').first().textContent().catch(() => '');
+            if (!response || !response.ok()) throw new Error(`${route}: HTTP ${response?.status()}`);
+            if (!heading?.trim()) throw new Error(`${route}: missing main H1`);
+            if (errors.length) throw new Error(`${route}: browser errors: ${errors.join('; ')}`);
+            console.log(`PASS ${route}: ${heading.trim()}`);
+          }
+          await browser.close();
+          EOF
