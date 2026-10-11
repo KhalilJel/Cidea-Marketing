@@ -68,26 +68,26 @@ jobs:
           console.log('PASS mobile navigation opens and closes after selecting a route');
 
           await page.goto(baseUrl + '/', { waitUntil: 'networkidle' });
-          await page.getByRole('button', { name: 'EN' }).click();
+          await page.getByRole('button', { name: 'EN', exact: true }).click();
           await page.waitForFunction(() => document.title.startsWith('Cidea Marketing — Make your business'));
           if ((await page.locator('body').innerText()).includes('Nettsider')) {
             throw new Error('Norwegian homepage text remains after switching to English');
           }
           await page.reload({ waitUntil: 'networkidle' });
-          if (!await page.getByRole('button', { name: 'NO' }).isVisible()) {
+          if (!await page.getByRole('button', { name: 'NO', exact: true }).isVisible()) {
             throw new Error('English language preference did not persist after reload');
           }
           console.log('PASS language switch and persisted preference');
 
           await page.goto(baseUrl + article, { waitUntil: 'networkidle' });
-          await page.getByRole('button', { name: 'NO' }).click();
+          await page.getByRole('button', { name: 'NO', exact: true }).click();
           await page.waitForFunction(() => document.title.includes('Hva bør en god bedriftsnettside'));
           const norwegianTitle = await page.title();
           const norwegianDescription = await page.locator('meta[name="description"]').getAttribute('content');
           if (!norwegianDescription?.includes('En god bedriftsnettside')) {
             throw new Error('Norwegian article description is missing or incorrect');
           }
-          await page.getByRole('button', { name: 'EN' }).click();
+          await page.getByRole('button', { name: 'EN', exact: true }).click();
           await page.waitForFunction(() => document.title.includes('What should a good business website'));
           const englishDescription = await page.locator('meta[name="description"]').getAttribute('content');
           if (!englishDescription?.includes('A good business website')) {
