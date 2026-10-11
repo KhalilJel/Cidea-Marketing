@@ -60,7 +60,7 @@ jobs:
           // standard mobile, tablet, and desktop widths.
           for (const width of [320, 390, 768, 1440]) {
             await page.setViewportSize({ width, height: 900 });
-            for (const route of ['/', ...routes]) {
+            for (const route of ['/', ...routes, '/blog', article]) {
               await page.goto(baseUrl + route, { waitUntil: 'networkidle' });
               const dimensions = await page.evaluate(() => ({
                 viewport: document.documentElement.clientWidth,
@@ -70,7 +70,7 @@ jobs:
                 throw new Error(`Horizontal overflow at ${width}px on ${route}: ${dimensions.content}px content in ${dimensions.viewport}px viewport`);
               }
             }
-            console.log(`PASS responsive width ${width}px: homepage and service routes have no horizontal overflow`);
+            console.log(`PASS responsive width ${width}px: homepage, service pages, blog index and article have no horizontal overflow`);
           }
 
           await page.setViewportSize({ width: 1440, height: 900 });
