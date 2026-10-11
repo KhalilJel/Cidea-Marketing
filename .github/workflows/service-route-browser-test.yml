@@ -126,5 +126,27 @@ jobs:
           }
           console.log('PASS article title and description follow the selected language');
 
+          // Keyboard users should get a visible focus indicator.
+          await page.goto(baseUrl + '/', { waitUntil: 'networkidle' });
+          await page.keyboard.press('Tab');
+          const focusStyle = await page.evaluate(() => {
+            const style = getComputedStyle(document.activeElement);
+            return { outlineStyle: style.outlineStyle, outlineWidth: parseFloat(style.outlineWidth) };
+          });
+          if (focusStyle.outlineStyle === 'none' || focusStyle.outlineWidth < 2) {
+            throw new Error('Keyboard focus indicator is not visible');
+          }
+          console.log('PASS visible keyboard focus indicator');
+
+          // Respect operating-system reduced-motion preferences across the site.
+          await page.emulateMedia({ reducedMotion: 'reduce' });
+          const transitionDuration = await page.locator('.button').first().evaluate(el =>
+            getComputedStyle(el).transitionDuration.split(',')[0].trim()
+          );
+          if (parseFloat(transitionDuration) > 0.001) {
+            throw new Error(`Reduced-motion preference did not reduce transitions: ${transitionDuration}`);
+          }
+          console.log('PASS reduced-motion preference');
+
           await browser.close();
           EOF
