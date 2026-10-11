@@ -1,10 +1,6 @@
 name: Service route browser test
 
 on:
-  push:
-    branches:
-      - fix/service-pages-runtime-error
-      - design/philosophy-section-hierarchy
   pull_request:
     branches:
       - main
