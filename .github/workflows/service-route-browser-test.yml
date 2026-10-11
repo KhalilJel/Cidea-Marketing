@@ -83,6 +83,7 @@ jobs:
           }
           console.log('PASS desktop navigation visibility');
 
+          await page.setViewportSize({ width: 390, height: 844 });
           await page.goto(baseUrl + '/', { waitUntil: 'networkidle' });
           await page.getByRole('button', { name: 'Åpne meny' }).click();
           if (!await page.getByRole('navigation').getByRole('link', { name: 'Nettsider' }).isVisible()) {
