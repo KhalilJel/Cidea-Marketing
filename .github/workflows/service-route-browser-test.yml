@@ -35,12 +35,21 @@ jobs:
           import { chromium } from 'playwright';
 
           const baseUrl = 'http://127.0.0.1:5173';
-          const routes = ['/websites', '/branding', '/seo', '/digital-marketing'];
+          const routes = ['/websites', '/branding', '/seo', '/digital-marketing', '/blog/hva-bor-en-god-bedriftsnettside-inneholde', '/blog/hvorfor-vises-ikke-nettsiden-pa-google', '/blog/hvor-mye-koster-en-nettside', '/blog/hvordan-fa-flere-henvendelser-fra-nettsiden'];
           const article = '/blog/hva-bor-en-god-bedriftsnettside-inneholde';
           const browser = await chromium.launch({ headless: true });
           const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
           const errors = [];
           page.on('pageerror', error => errors.push(error.message));
+
+          const sitemapResponse = await page.request.get(baseUrl + '/sitemap.xml');
+          if (!sitemapResponse.ok()) throw new Error('sitemap.xml is not accessible');
+          const sitemapText = await sitemapResponse.text();
+          const sitemapPaths = [...sitemapText.matchAll(/<loc>https:\/\/cideamarketing\\.com([^<]*)<\/loc>/g)].map(match => match[1] || '/');
+          const expectedSitemapPaths = new Set(["/","/websites","/branding","/seo","/digital-marketing","/blog","/blog/hva-bor-en-god-bedriftsnettside-inneholde","/blog/hvorfor-vises-ikke-nettsiden-pa-google","/blog/hvor-mye-koster-en-nettside","/blog/hvordan-fa-flere-henvendelser-fra-nettsiden"]);
+          for (const path of expectedSitemapPaths) if (!sitemapPaths.includes(path)) throw new Error('Missing sitemap URL: ' + path);
+          for (const path of sitemapPaths) if (!expectedSitemapPaths.has(path)) throw new Error('Unexpected or stale sitemap URL: ' + path);
+          console.log('PASS sitemap contains exactly the published page routes');
 
           async function visit(path) {
             errors.length = 0;
