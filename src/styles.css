@@ -28,3 +28,9 @@ nav a,.actions button,footer a{min-height:44px;display:inline-flex;align-items:c
   .navCta{display:none}
   .menuToggle{padding:9px 10px;white-space:nowrap}
 }
+
+/* Clear keyboard focus without changing the resting visual design. */
+:where(a,button,[role="button"],input,textarea,select):focus-visible{
+  outline:2px solid var(--blue);
+  outline-offset:4px;
+}
