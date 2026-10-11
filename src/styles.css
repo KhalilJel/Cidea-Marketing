@@ -18,3 +18,13 @@ nav a,.actions button,footer a{min-height:44px;display:inline-flex;align-items:c
 /* Responsive navigation: keep every primary destination available on small screens. */
 .menuToggle{display:none;border:1px solid var(--line);border-radius:999px;background:transparent;padding:10px 12px;font:500 10px "DM Mono";letter-spacing:.6px;color:var(--ink);cursor:pointer}
 @media(max-width:700px){header{height:72px;padding:0 5vw;gap:12px}.menuToggle{display:inline-flex;align-items:center;justify-content:center;min-height:44px;order:3}.actions{margin-left:auto;gap:8px}.navCta{font-size:10px;padding:9px 11px}.site header nav{display:none}.site header nav.navOpen{display:flex;position:absolute;top:71px;left:0;right:0;padding:18px 6vw 24px;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 14px 22px rgba(18,22,31,.08);flex-direction:column;align-items:stretch;gap:0;z-index:30}.site header nav.navOpen a{min-height:48px;border-bottom:1px solid var(--line);font-size:13px}.site header nav.navOpen a:last-child{border-bottom:0}.logo{font-size:19px}}
+
+/* Compact mobile header: protect the logo, language switch and menu from crowding. */
+@media(max-width:420px){
+  header{gap:8px}
+  .logo{font-size:17px;letter-spacing:-.9px;white-space:nowrap}
+  .actions{gap:4px}
+  .actions button{min-width:34px;justify-content:center;min-height:44px}
+  .navCta{display:none}
+  .menuToggle{padding:9px 10px;white-space:nowrap}
+}
