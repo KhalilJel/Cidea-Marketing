@@ -24,4 +24,4 @@ Discovery sources: https://www.webcity.design/articles/best-agency-websites ; ht
 - Keep the visual system distinctive and consistent across service pages.
 
 ## Cidea decisions
-Keep the editorial ivory/near-black foundation and coral accent. Prioritise stronger service-specific proof, honest concept-project labels, concise copy and direct enquiry paths over adding decorative motion.
+Use obsidian and deep graphite, crisp white typography and electric cobalt accents. Avoid beige, ivory, sand, coral and light-brown surfaces in this direction. Prioritise stronger service-specific proof, honest concept-project labels, concise copy and direct enquiry paths over decorative motion.
