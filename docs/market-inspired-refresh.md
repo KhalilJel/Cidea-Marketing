@@ -7,8 +7,8 @@
 - Prioritise clarity, craft and conversion over decorative effects.
 
 ## Visual direction
-- Warm ivory and near-black remain the foundation.
-- Replace the generic electric-blue accent with a confident coral accent and warm blush surfaces.
+- Use obsidian and deep graphite as the foundation, with crisp white typography and electric cobalt-blue accents.
+- Do not use beige, sand, ivory, or light-brown surfaces in this visual direction.
 - Keep strong type hierarchy, spacious layouts and clear contrast.
 - Preserve existing routes, language switch and contact flow.
 
