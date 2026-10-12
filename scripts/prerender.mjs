@@ -24,8 +24,10 @@ function write(file, html) {
 }
 
 let count = 0;
+// "/seo" is written as seo.html (not seo/index.html) so Netlify serves it at
+// the clean URL with a 200 instead of redirecting to "/seo/".
 for (const url of urls()) {
-  const file = url === "/" ? "index.html" : path.join(url.slice(1), "index.html");
+  const file = url === "/" ? "index.html" : url.slice(1) + ".html";
   write(file, page(url));
   count++;
 }

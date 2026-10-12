@@ -17,10 +17,13 @@ function walk(dir) {
 const htmlFiles = walk(dist).filter((f) => f.endsWith(".html"));
 const toUrl = (file) => {
   const rel = "/" + path.relative(dist, file).split(path.sep).join("/");
-  return rel.replace(/\/index\.html$/, "") || "/";
+  return rel.replace(/\/index\.html$/, "").replace(/\.html$/, "") || "/";
 };
 const pages = new Map(htmlFiles.map((f) => [toUrl(f), fs.readFileSync(f, "utf8")]));
-const routes = [...pages.keys()].filter((u) => !u.endsWith("404.html"));
+const routes = [...pages.keys()].filter((u) => !/\/404$/.test(u));
+for (const f of htmlFiles) {
+  if (f.endsWith(path.sep + "index.html") && path.dirname(f) !== dist) fail(path.relative(dist, f), "nested index.html would make Netlify redirect to a trailing slash");
+}
 const titles = new Map();
 
 for (const url of routes) {
@@ -48,8 +51,10 @@ for (const url of routes) {
 for (const file of ["404.html", "en/404.html", "robots.txt", "sitemap.xml", "favicon.svg"]) {
   if (!fs.existsSync(path.join(dist, file))) fail("dist", `missing ${file}`);
 }
-const notFound = pages.get("/404.html");
-if (notFound && !notFound.includes('content="noindex"')) fail("/404.html", "404 page must be noindex");
+for (const url of ["/404", "/en/404"]) {
+  const page404 = pages.get(url);
+  if (page404 && !page404.includes('content="noindex"')) fail(url + ".html", "404 page must be noindex");
+}
 
 const sitemap = fs.existsSync(path.join(dist, "sitemap.xml")) ? fs.readFileSync(path.join(dist, "sitemap.xml"), "utf8") : "";
 for (const url of routes) if (!sitemap.includes(`<loc>${origin + url}</loc>`)) fail("sitemap.xml", `missing ${url}`);
