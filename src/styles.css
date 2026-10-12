@@ -34,3 +34,97 @@ nav a,.actions button,footer a{min-height:44px;display:inline-flex;align-items:c
   outline:2px solid var(--blue);
   outline-offset:4px;
 }
+
+
+/* Cidea Marketing visual direction: dark digital luxury, cobalt accent. */
+:root{
+  color-scheme:dark;
+  --bg:#0B0D12;
+  --paper:#11151D;
+  --ink:#F4F6FA;
+  --muted:#A6ADBA;
+  --line:#283142;
+  --blue:#4778FF;
+  --soft-blue:#17264A;
+  background:var(--bg);
+  color:var(--ink);
+}
+html,body,.site,body,.work,.approach,.journal,footer,.marketingService{
+  background:#0B0D12!important;
+  color:#F4F6FA;
+}
+header{
+  background:rgba(11,13,18,.94)!important;
+  border-color:#283142!important;
+}
+.logo,.logo span{color:#F4F6FA}
+nav,.actions button,.eyebrow,.project small,.capGrid span,.approachList span,
+.articleGrid span,.articleList span,.serviceGrid span,footer,.quiet,.audit small{
+  color:#A6ADBA;
+}
+nav a:hover,.textLink:hover{color:#fff}
+.navCta{border-color:#46516A;color:#F4F6FA}
+.navCta:hover{background:#4778FF;border-color:#4778FF;color:#fff}
+.hero,.section,.page,.service,.blog{background:#0B0D12!important;border-color:#283142!important}
+.heroCard,.projectB .mock,.mockHero,.pageCta{
+  background:#151A24!important;
+  color:#F4F6FA!important;
+  box-shadow:18px 22px 0 #202B42;
+}
+.heroCard strong i,.studioPoster i{color:#6F91FF}
+.heroCard small,.heroCard>div,.studioPoster span,.studioPoster small{color:#A6ADBA}
+.typeStack span{background:#4778FF;color:#fff}
+.typeStack span:nth-child(2){background:#151A24;color:#F4F6FA}
+.typeStack span:nth-child(3){background:#F4F6FA;color:#0B0D12}
+.typeStack span:nth-child(4){background:#17264A;color:#DCE5FF}
+.button.blue,.projectC .mock,.audit,.studioAudit{
+  background:#4778FF!important;
+  color:#fff!important;
+}
+.button.dark{background:#F4F6FA;color:#0B0D12}
+.textLink{border-color:#46516A;color:#F4F6FA}
+.lead,.pageLead,.serviceLead,.articleBody,.approachList p,.capGrid p,
+.articleGrid p,.articleList p,.serviceGrid p,.pageCta p,
+.studioWorkGrid p,.final>p:not(.eyebrow),.audit>div>p:not(.eyebrow){
+  color:#A6ADBA;
+}
+.workGrid .mock,.projectA .mock,.browser{background:#151A24}
+.projectA .mockHero,.projectB .mock{background:#151A24!important;color:#F4F6FA}
+.projectC .mock{background:#4778FF!important;color:#fff}
+.capabilities{background:#11151D!important}
+.capGrid,.capGrid a,.articleGrid,.articleGrid a,.articleList,.articleList a,
+.serviceGrid,.serviceGrid article,.studioWorkGrid article,.approachList,
+.approachList>div,.studioStatement,.serviceBoard,.serviceBoard article{
+  border-color:#283142!important;
+}
+.capGrid a{background:#11151D;color:#F4F6FA}
+.capGrid a:hover{background:#202B42;color:#fff}
+.capGrid p,.capGrid a:hover p,.capGrid a:hover span{color:#A6ADBA}
+.philosophy,.blog{background:#080A0F!important;color:#F4F6FA}
+.philosophy .eyebrow{color:#A6ADBA}
+.philosophyGrid>p{color:#D1D6E0}
+.philosophyGrid div p{color:#A6ADBA}
+.philosophyGrid span{color:#8AA5FF}
+.auditNotes span,.studioChecklist span{border-color:rgba(255,255,255,.35)}
+.final,.contact{background:#111A30!important;color:#F4F6FA}
+.final h2,.contact h2{color:#F4F6FA}
+.final>p:not(.eyebrow){color:#C3CAD7}
+.offerGrid article,.marketingService .offerGrid article{
+  background:#11151D!important;
+  border-color:#283142!important;
+  color:#F4F6FA;
+}
+.studioPoster{background:#151A24;color:#F4F6FA;box-shadow:18px 20px 0 #202B42}
+.studioStatement{border-color:#283142}
+.studioWorkGrid article{background:#0B0D12}
+.studioAudit{background:#4778FF!important}
+.serviceBoard{border-color:#283142}
+.articleBody{color:#C3CAD7}
+.pageCta{border:1px solid #283142}
+:where(a,button,[role="button"],input,textarea,select):focus-visible{
+  outline-color:#8AA5FF;
+}
+@media(max-width:700px){
+  .site header nav.navOpen{background:#11151D!important;border-color:#283142!important}
+  .site header nav.navOpen a{border-color:#283142!important}
+}
