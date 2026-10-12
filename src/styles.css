@@ -128,3 +128,6 @@ nav a:hover,.textLink:hover{color:#fff}
   .site header nav.navOpen{background:#11151D!important;border-color:#283142!important}
   .site header nav.navOpen a{border-color:#283142!important}
 }
+
+/* Keep service steps focused on useful content, not category labels. */
+.serviceBoard article{grid-template-columns:minmax(0,1fr) 30px;align-items:start}.serviceBoard article>div{min-width:0}.serviceBoard article h3{margin-top:0}.serviceBoard article p{max-width:760px}.serviceBoard article b{align-self:start}@media(max-width:700px){.serviceBoard article{grid-template-columns:minmax(0,1fr) 22px}.serviceBoard article b{grid-column:auto}}
