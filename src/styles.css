@@ -145,3 +145,72 @@ nav a:hover,.textLink:hover{color:#fff}
 
 /* Visual brand system: connect identity, website and demand without adding clutter. */
 .brandSystemVisual{padding:64px 7vw 76px;background:#0b0d12;color:#f4f6fa;border-bottom:1px solid #283142}.brandSystemIntro{max-width:720px;margin-bottom:30px}.brandSystemIntro .eyebrow{color:#8aa5ff}.brandSystemIntro h2{font-size:clamp(30px,4.5vw,54px);line-height:.98;letter-spacing:-2.2px;margin:0}.brandSystemFlow{display:grid;grid-template-columns:minmax(0,1fr) 32px minmax(0,1fr) 32px minmax(0,1fr);align-items:center;gap:12px}.brandTile{min-height:180px;padding:22px;border:1px solid #30394a;background:#151a24;display:flex;flex-direction:column;justify-content:space-between}.brandTile>span,.brandTile small{font:10px 'DM Mono';letter-spacing:1px;color:#a6adba}.brandTile strong{font-size:clamp(28px,4vw,48px);letter-spacing:-2px}.brandTileBlue{background:#4778ff;border-color:#4778ff}.brandTileBlue>span,.brandTileBlue small{color:#fff}.brandTileOutline{background:#101522;border-color:#4778ff}.brandTileOutline strong{color:#8aa5ff;font-size:64px}.brandSystemFlow>b{color:#8aa5ff;text-align:center;font-size:24px}@media(max-width:700px){.brandSystemFlow{grid-template-columns:1fr;gap:8px}.brandSystemFlow>b{transform:rotate(90deg);height:18px}.brandTile{min-height:140px}.brandSystemIntro h2{letter-spacing:-1.3px}}
+
+
+/* Refero-inspired direction for Cidea Marketing: dark editorial canvas, vivid iris accents and spacious typography. */
+:root{font-family:Inter,Manrope,system-ui,sans-serif;color:#fff;background:#000;--bg:#000;--paper:#000;--ink:#fff;--muted:#9a9a9a;--line:transparent;--blue:#8052ff;--soft-blue:#171022}
+body,.site{background:#000;color:#fff}
+header{background:rgba(0,0,0,.88);border-bottom:0;backdrop-filter:blur(14px);padding-inline:6vw}
+.logo{font-size:22px;font-weight:400;letter-spacing:-1.2px;color:#fff}
+.logo span{color:#9a9a9a;font-weight:200}
+nav{color:#9a9a9a;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+nav a:hover{color:#fff}
+.actions button{color:#bdbdbd}
+.navCta{background:#8052ff;border:1px solid #8052ff;border-radius:999px;padding:13px 18px;color:#fff}
+.navCta:hover{background:#6f40f5;border-color:#6f40f5;color:#fff}
+.hero{min-height:calc(100vh - 82px);padding:8vw 7vw;grid-template-columns:1.05fr .95fr;gap:3vw;border-bottom:0;position:relative}
+.heroText{max-width:780px;position:relative;z-index:2}
+.eyebrow{color:#ffb829;font-size:11px;letter-spacing:.12em}
+.hero h1{font-size:clamp(56px,7.8vw,112px);line-height:.91;letter-spacing:-.065em;font-weight:400;margin:0 0 30px;max-width:850px}
+.lead{font-size:18px;line-height:1.6;color:#bdbdbd;font-weight:300;max-width:510px}
+.heroActions{margin-top:34px;gap:28px}
+.button{border-radius:999px;padding:15px 20px;font-size:13px;font-weight:600;letter-spacing:.02em}
+.button.blue{background:#8052ff;color:#fff;border-color:#8052ff}
+.button.blue:hover{background:#6d3ff0}
+.textLink{color:#fff;text-decoration:underline;text-decoration-color:#8052ff;text-underline-offset:5px}
+.heroArt{min-height:500px;position:relative;display:grid;place-items:center;isolation:isolate}
+.heroArt:before{content:"";position:absolute;inset:0;background:
+radial-gradient(circle at 52% 45%,rgba(128,82,255,.22),transparent 38%),
+radial-gradient(circle at 62% 55%,rgba(255,184,41,.12),transparent 34%),
+radial-gradient(circle at 35% 62%,rgba(21,132,110,.15),transparent 35%);
+filter:blur(20px);z-index:-2}
+.heroArt:after{content:"";position:absolute;width:min(38vw,470px);aspect-ratio:1;border-radius:50%;background:
+radial-gradient(circle at 48% 20%,#ffb829 0 1px,transparent 2px),
+radial-gradient(circle at 58% 26%,#8052ff 0 1.5px,transparent 2.5px),
+radial-gradient(circle at 35% 29%,#15846e 0 1px,transparent 2px),
+radial-gradient(circle at 70% 35%,#8052ff 0 1.5px,transparent 2.5px),
+radial-gradient(circle at 29% 41%,#ffb829 0 1px,transparent 2px),
+radial-gradient(circle at 43% 45%,#8052ff 0 1.5px,transparent 2.5px),
+radial-gradient(circle at 62% 47%,#15846e 0 1px,transparent 2px),
+radial-gradient(circle at 51% 58%,#ffb829 0 1px,transparent 2px),
+radial-gradient(circle at 37% 66%,#8052ff 0 1.5px,transparent 2.5px),
+radial-gradient(circle at 70% 65%,#ffb829 0 1px,transparent 2px),
+radial-gradient(circle at 48% 77%,#15846e 0 1px,transparent 2px),
+radial-gradient(circle at 60% 82%,#8052ff 0 1.5px,transparent 2.5px),
+radial-gradient(ellipse at 50% 48%,transparent 0 29%,rgba(128,82,255,.16) 30%,transparent 31% 38%,rgba(21,132,110,.15) 39%,transparent 40%);
+background-size:100% 100%;box-shadow:0 0 100px rgba(128,82,255,.12);animation:cideaConstellation 14s ease-in-out infinite;z-index:-1}
+.typeStack,.heroCard{display:none}
+.brandSystemVisual{padding:90px 8vw;background:#000;color:#fff;border:0}
+.brandSystemIntro{max-width:850px;margin-bottom:48px}
+.brandSystemIntro h2,.intro h2,.statement h2{font-size:clamp(38px,5.5vw,76px);font-weight:400;line-height:.98;letter-spacing:-.055em}
+.brandSystemFlow{grid-template-columns:minmax(0,1fr) 32px minmax(0,1fr) 32px minmax(0,1fr);gap:16px}
+.brandTile{min-height:210px;background:transparent;border:0;border-top:1px solid #34313f;padding:22px 0;border-radius:0}
+.brandTile>span,.brandTile small{color:#9a9a9a}
+.brandTile strong{font-weight:400;font-size:clamp(30px,4vw,58px);letter-spacing:-.06em}
+.brandTileBlue{background:transparent;border-color:#8052ff}
+.brandTileBlue>span,.brandTileBlue small{color:#bdbdbd}
+.brandTileOutline{background:transparent;border-color:#34313f}
+.brandTileOutline strong,.brandSystemFlow>b{color:#ffb829}
+.section{padding:90px 8vw;border-top:0;border-bottom:1px solid #222}
+.capGrid{gap:30px}
+.capGrid>a{background:transparent;border:0;border-top:1px solid #34313f;border-radius:0;padding:28px 0}
+.capGrid>a span,.philosophyGrid span{color:#ffb829}
+.capGrid h3{font-size:clamp(28px,3vw,42px);font-weight:400;letter-spacing:-.04em}
+.capGrid p,.philosophyGrid p{color:#bdbdbd}
+.capGrid b{color:#fff}
+.philosophyGrid{border-top:1px solid #34313f}
+.philosophyGrid>div{border-bottom:1px solid #34313f}
+footer{background:#000;border-top:1px solid #222;padding:34px 7vw;color:#9a9a9a}
+@keyframes cideaConstellation{0%,100%{transform:translate3d(0,0,0) rotate(-4deg) scale(.98)}50%{transform:translate3d(0,-12px,0) rotate(4deg) scale(1.03)}}
+@media(max-width:760px){header{padding-inline:5vw}.hero{grid-template-columns:1fr;padding:64px 7vw 38px;gap:12px;min-height:auto}.hero h1{font-size:clamp(48px,12vw,76px);letter-spacing:-.06em}.heroArt{min-height:270px;margin-top:0}.heroArt:after{width:min(70vw,320px)}.brandSystemVisual,.section{padding:64px 7vw}.brandSystemFlow{grid-template-columns:1fr;gap:8px}.brandSystemFlow>b{transform:rotate(90deg);height:18px}.brandTile{min-height:130px;padding:18px 0}.capGrid{grid-template-columns:1fr}.heroActions{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){.heroArt:after{animation:none}}
