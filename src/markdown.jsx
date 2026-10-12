@@ -44,14 +44,19 @@ export function Markdown({ source, lang }) {
       const Tag = "h" + heading[1].length;
       return <Tag key={b}>{inline(heading[2], lang, b + "h")}</Tag>;
     }
-    if (lines.every((l) => /^[-*]\s+/.test(l))) {
-      return (
-        <ul key={b}>
-          {lines.map((l, i) => (
-            <li key={i}>{inline(l.replace(/^[-*]\s+/, ""), lang, `${b}-${i}-`)}</li>
-          ))}
-        </ul>
-      );
+    for (const [pattern, Tag] of [
+      [/^[-*]\s+/, "ul"],
+      [/^\d+\.\s+/, "ol"],
+    ]) {
+      if (lines.every((l) => pattern.test(l))) {
+        return (
+          <Tag key={b}>
+            {lines.map((l, i) => (
+              <li key={i}>{inline(l.replace(pattern, ""), lang, `${b}-${i}-`)}</li>
+            ))}
+          </Tag>
+        );
+      }
     }
     return <p key={b}>{inline(lines.join(" "), lang, b + "p")}</p>;
   });
