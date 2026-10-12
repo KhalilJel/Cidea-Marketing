@@ -1,9 +1,6 @@
 name: Service route browser test
 
 on:
-  push:
-    branches:
-      - fix/service-pages-runtime-error
   pull_request:
     branches:
       - main
@@ -32,19 +29,129 @@ jobs:
         run: |
           node --input-type=module <<'EOF'
           import { chromium } from 'playwright';
-          const routes = ['/websites', '/branding', '/seo', '/digital-marketing'];
+
+          const baseUrl = 'http://127.0.0.1:5173';
+          const routes = ['/websites', '/branding', '/seo', '/digital-marketing', '/blog/hva-bor-en-god-bedriftsnettside-inneholde', '/blog/hvorfor-vises-ikke-nettsiden-pa-google', '/blog/hvor-mye-koster-en-nettside', '/blog/hvordan-fa-flere-henvendelser-fra-nettsiden'];
+          const article = '/blog/hva-bor-en-god-bedriftsnettside-inneholde';
           const browser = await chromium.launch({ headless: true });
-          const page = await browser.newPage();
+          const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
           const errors = [];
           page.on('pageerror', error => errors.push(error.message));
-          for (const route of routes) {
+
+          const sitemapResponse = await page.request.get(baseUrl + '/sitemap.xml');
+          if (!sitemapResponse.ok()) throw new Error('sitemap.xml is not accessible');
+          const sitemapText = await sitemapResponse.text();
+          const sitemapPaths = [...sitemapText.matchAll(/<loc>https:\/\/cideamarketing[.]com([^<]*)<\/loc>/g)].map(match => match[1] || '/');
+          const expectedSitemapPaths = new Set(["/","/websites","/branding","/seo","/digital-marketing","/blog","/blog/hva-bor-en-god-bedriftsnettside-inneholde","/blog/hvorfor-vises-ikke-nettsiden-pa-google","/blog/hvor-mye-koster-en-nettside","/blog/hvordan-fa-flere-henvendelser-fra-nettsiden"]);
+          for (const path of expectedSitemapPaths) if (!sitemapPaths.includes(path)) throw new Error('Missing sitemap URL: ' + path);
+          for (const path of sitemapPaths) if (!expectedSitemapPaths.has(path)) throw new Error('Unexpected or stale sitemap URL: ' + path);
+          console.log('PASS sitemap contains exactly the published page routes');
+
+          async function visit(path) {
             errors.length = 0;
-            const response = await page.goto('http://127.0.0.1:5173' + route, { waitUntil: 'networkidle' });
+            const response = await page.goto(baseUrl + path, { waitUntil: 'networkidle' });
+            if (!response || !response.ok()) throw new Error(`${path}: HTTP ${response?.status()}`);
             const heading = await page.locator('main h1').first().textContent().catch(() => '');
-            if (!response || !response.ok()) throw new Error(`${route}: HTTP ${response?.status()}`);
-            if (!heading?.trim()) throw new Error(`${route}: missing main H1`);
-            if (errors.length) throw new Error(`${route}: browser errors: ${errors.join('; ')}`);
-            console.log(`PASS ${route}: ${heading.trim()}`);
+            if (!heading?.trim()) throw new Error(`${path}: missing main H1`);
+            if (errors.length) throw new Error(`${path}: browser errors: ${errors.join('; ')}`);
+            return heading.trim();
           }
+
+          for (const route of routes) {
+            console.log(`PASS ${route}: ${await visit(route)}`);
+          }
+
+          // Responsive layout smoke test: catch horizontal overflow at narrow phone,
+          // standard mobile, tablet, and desktop widths.
+          for (const width of [320, 390, 768, 1440]) {
+            await page.setViewportSize({ width, height: 900 });
+            for (const route of ['/', ...routes, '/blog', article]) {
+              await page.goto(baseUrl + route, { waitUntil: 'networkidle' });
+              const dimensions = await page.evaluate(() => ({
+                viewport: document.documentElement.clientWidth,
+                content: document.documentElement.scrollWidth
+              }));
+              if (dimensions.content > dimensions.viewport + 1) {
+                throw new Error(`Horizontal overflow at ${width}px on ${route}: ${dimensions.content}px content in ${dimensions.viewport}px viewport`);
+              }
+            }
+            console.log(`PASS responsive width ${width}px: homepage, service pages, blog index and article have no horizontal overflow`);
+          }
+
+          await page.setViewportSize({ width: 1440, height: 900 });
+          await page.goto(baseUrl + '/', { waitUntil: 'networkidle' });
+          if (!await page.getByRole('navigation').isVisible()) {
+            throw new Error('Desktop primary navigation is not visible');
+          }
+          if (await page.getByRole('button', { name: 'Åpne meny' }).isVisible()) {
+            throw new Error('Mobile menu toggle is visible at desktop width');
+          }
+          console.log('PASS desktop navigation visibility');
+
+          await page.setViewportSize({ width: 390, height: 844 });
+          await page.goto(baseUrl + '/', { waitUntil: 'networkidle' });
+          await page.getByRole('button', { name: 'Åpne meny' }).click();
+          if (!await page.getByRole('navigation').getByRole('link', { name: 'Nettsider' }).isVisible()) {
+            throw new Error('Mobile menu did not open or service links are not visible');
+          }
+          await page.getByRole('navigation').getByRole('link', { name: 'Nettsider' }).click();
+          if (await page.getByRole('navigation').isVisible()) {
+            throw new Error('Mobile menu remained visible after choosing a route');
+          }
+          console.log('PASS mobile navigation opens and closes after selecting a route');
+
+          await page.goto(baseUrl + '/', { waitUntil: 'networkidle' });
+          await page.getByRole('button', { name: 'EN', exact: true }).click();
+          await page.waitForFunction(() => document.title.startsWith('Cidea Marketing — Make your business'));
+          if ((await page.locator('body').innerText()).includes('Nettsider')) {
+            throw new Error('Norwegian homepage text remains after switching to English');
+          }
+          await page.reload({ waitUntil: 'networkidle' });
+          if (!await page.getByRole('button', { name: 'NO', exact: true }).isVisible()) {
+            throw new Error('English language preference did not persist after reload');
+          }
+          console.log('PASS language switch and persisted preference');
+
+          await page.goto(baseUrl + article, { waitUntil: 'networkidle' });
+          await page.getByRole('button', { name: 'NO', exact: true }).click();
+          await page.waitForFunction(() => document.title.includes('Hva bør en god bedriftsnettside'));
+          const norwegianTitle = await page.title();
+          const norwegianDescription = await page.locator('meta[name="description"]').getAttribute('content');
+          if (!norwegianDescription?.includes('En god bedriftsnettside')) {
+            throw new Error('Norwegian article description is missing or incorrect');
+          }
+          await page.getByRole('button', { name: 'EN', exact: true }).click();
+          await page.waitForFunction(() => document.title.includes('What should a good business website'));
+          const englishDescription = await page.locator('meta[name="description"]').getAttribute('content');
+          if (!englishDescription?.includes('A good business website')) {
+            throw new Error('English article description is missing or incorrect');
+          }
+          if (norwegianTitle === await page.title()) {
+            throw new Error('Article title did not change with language');
+          }
+          console.log('PASS article title and description follow the selected language');
+
+          // Keyboard users should get a visible focus indicator.
+          await page.goto(baseUrl + '/', { waitUntil: 'networkidle' });
+          await page.keyboard.press('Tab');
+          const focusStyle = await page.evaluate(() => {
+            const style = getComputedStyle(document.activeElement);
+            return { outlineStyle: style.outlineStyle, outlineWidth: parseFloat(style.outlineWidth) };
+          });
+          if (focusStyle.outlineStyle === 'none' || focusStyle.outlineWidth < 2) {
+            throw new Error('Keyboard focus indicator is not visible');
+          }
+          console.log('PASS visible keyboard focus indicator');
+
+          // Respect operating-system reduced-motion preferences across the site.
+          await page.emulateMedia({ reducedMotion: 'reduce' });
+          const transitionDuration = await page.locator('.button').first().evaluate(el =>
+            getComputedStyle(el).transitionDuration.split(',')[0].trim()
+          );
+          if (parseFloat(transitionDuration) > 0.001) {
+            throw new Error(`Reduced-motion preference did not reduce transitions: ${transitionDuration}`);
+          }
+          console.log('PASS reduced-motion preference');
+
           await browser.close();
           EOF
