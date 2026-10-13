@@ -22,7 +22,7 @@ export const services = [
       priceNote: "Strategi, struktur, design og utvikling av en fokusert bedriftsnettside.",
       deliverables: [
         "Sidestruktur bygget rundt spørsmålene kundene faktisk har",
-        "Budskap og tekst som forklarer tilbudet kort og presist",
+        "Budskap og struktur som forklarer tilbudet kort og presist",
         "Visuelt design som henger sammen med merkevaren",
         "Responsiv utvikling for mobil, nettbrett og desktop",
         "Teknisk SEO-grunnmur: metadata, struktur og ytelse",
@@ -42,7 +42,7 @@ export const services = [
       faq: [
         ["Trenger vi en helt ny nettside?", "Ikke nødvendigvis. Vi anbefaler alltid det minste tiltaket som løser problemet. Noen ganger er det nok å forbedre struktur, tekst og kontaktpunkter på siden dere allerede har."],
         ["Hva påvirker prisen?", "Antall sider, innholdsmengde, funksjonalitet og integrasjoner. Etter vurderingen får dere et konkret omfang og prisestimat før arbeidet starter."],
-        ["Hjelper dere med tekst?", "Ja. Budskap og tekst er en del av arbeidet, fordi design uten tydelig innhold sjelden fungerer."],
+        ["Hjelper dere med tekst?", "Budskap og struktur er en del av arbeidet, fordi design uten tydelig innhold sjelden fungerer. Hvor mye tekst vi skriver, avklarer vi i vurderingen."],
       ],
     },
     en: {
@@ -56,7 +56,7 @@ export const services = [
       priceNote: "Strategy, structure, design and development of a focused business website.",
       deliverables: [
         "Page structure built around the questions your customers actually ask",
-        "Messaging and copy that explain your offer clearly and concisely",
+        "Messaging and structure that explain your offer clearly and concisely",
         "Visual design that fits your brand",
         "Responsive development for mobile, tablet and desktop",
         "A technical SEO foundation: metadata, structure and performance",
@@ -76,7 +76,7 @@ export const services = [
       faq: [
         ["Do we need a completely new website?", "Not necessarily. We always recommend the smallest change that solves the problem. Sometimes improving the structure, copy and contact points of your current site is enough."],
         ["What affects the price?", "The number of pages, amount of content, functionality and integrations. After the assessment you get a concrete scope and estimate before any work starts."],
-        ["Do you help with copywriting?", "Yes. Messaging and copy are part of the work, because design without clear content rarely performs."],
+        ["Do you help with copywriting?", "Messaging and structure are part of the work, because design without clear content rarely performs. How much copy we write is agreed during the assessment."],
       ],
     },
   },
@@ -164,8 +164,7 @@ export const services = [
         "Teknisk gjennomgang: indeksering, struktur, hastighet og metadata",
         "Søkeordsanalyse basert på kommersiell intensjon",
         "Innholdsplan og forbedring av eksisterende sider",
-        "Lokal synlighet der det er relevant",
-        "Månedlig rapport om det som faktisk betyr noe",
+        "Rapportering på synlighet, trafikk og henvendelser",
       ],
       fit: [
         "Bedrifter som ikke dukker opp når kundene søker",
@@ -196,8 +195,7 @@ export const services = [
         "Technical review: indexing, structure, speed and metadata",
         "Keyword research based on commercial intent",
         "Content plan and improvements to existing pages",
-        "Local visibility where relevant",
-        "A monthly report on what actually matters",
+        "Reporting on visibility, traffic and enquiries",
       ],
       fit: [
         "Businesses that don't show up when customers search",
