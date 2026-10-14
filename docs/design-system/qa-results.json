@@ -1,0 +1,191 @@
+{
+  "base": "http://127.0.0.1:4173",
+  "date": "2026-10-14T17:06:10.591Z",
+  "results": [
+    {
+      "name": "320px: no runtime errors",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "320px: no horizontal scroll",
+      "ok": true,
+      "detail": "overflow 0px"
+    },
+    {
+      "name": "320px: no clipped text",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "320px: no text outside viewport",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "320px: headings clear of following text",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "320px: target size ≥ 24px (WCAG 2.5.8)",
+      "ok": true,
+      "detail": "0 too small"
+    },
+    {
+      "name": "320px: axe WCAG A/AA",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px: no runtime errors",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px: no horizontal scroll",
+      "ok": true,
+      "detail": "overflow 0px"
+    },
+    {
+      "name": "375px: no clipped text",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px: no text outside viewport",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px: headings clear of following text",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px: target size ≥ 24px (WCAG 2.5.8)",
+      "ok": true,
+      "detail": "0 too small"
+    },
+    {
+      "name": "375px: axe WCAG A/AA",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px: no runtime errors",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px: no horizontal scroll",
+      "ok": true,
+      "detail": "overflow 0px"
+    },
+    {
+      "name": "768px: no clipped text",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px: no text outside viewport",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px: headings clear of following text",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px: target size ≥ 24px (WCAG 2.5.8)",
+      "ok": true,
+      "detail": "0 too small"
+    },
+    {
+      "name": "768px: axe WCAG A/AA",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px: no runtime errors",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px: no horizontal scroll",
+      "ok": true,
+      "detail": "overflow 0px"
+    },
+    {
+      "name": "1440px: no clipped text",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px: no text outside viewport",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px: headings clear of following text",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px: target size ≥ 24px (WCAG 2.5.8)",
+      "ok": true,
+      "detail": "0 too small"
+    },
+    {
+      "name": "1440px: axe WCAG A/AA",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "fonts: Manrope Variable loaded",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "fonts: Inter Variable loaded",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "fonts: no third-party font requests",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "fonts: only Latin subsets fetched",
+      "ok": true,
+      "detail": "manrope-latin-wght-normal-DHIcAJRg.woff2, inter-latin-wght-normal-Dx4kXJAl.woff2"
+    },
+    {
+      "name": "fonts: fallback stack renders at 320px without overflow",
+      "ok": true,
+      "detail": "overflow 0px"
+    },
+    {
+      "name": "keyboard: first Tab focuses skip link",
+      "ok": true,
+      "detail": "ds-skip"
+    },
+    {
+      "name": "keyboard: visible focus indicator on every tab stop",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reduced motion: transitions disabled",
+      "ok": true,
+      "detail": "1e-05s / 1e-05s"
+    },
+    {
+      "name": "regression: existing homepage renders",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}
