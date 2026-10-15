@@ -1,7 +1,7 @@
 # Cidea Marketing – Status / verificerbar fremdrift
 
 **Oppdatert:** 2026-10-15
-**Nå:** FASE **2/9 PÅGÅR – runde 1 klar for visuell vurdering**. Fase 1 verifisert ferdig, 1/9 faser fullt godkjent. Konsept A, B og C (desktop + mobil) er generert i Stitch og ligger i `phase2/`. Kredittavlesninger fra bruker: 4/400 etter A, 9/400 underveis; sluttavlesning venter. Ingen retning er valgt.
+**Nå:** FASE **2/9 PÅGÅR – runde 1 klar for visuell vurdering**. Fase 1 verifisert ferdig, 1/9 faser fullt godkjent. Konsept A, B og C (desktop + mobil) er generert i Stitch og ligger i `phase2/`. Kredittavlesninger fra bruker: 4/400 etter A, 9/400 underveis, **34/400 etter alle tre**; 366 dagskreditter igjen. Ingen retning er valgt, og fase 2-godkjenning gjenstår.
 **Godkjent metode:** ChatGPT → Google Stitch → Claude Code → ChatGPT QA.
 **Kostnadsgrense:** 0 NOK i nye abonnementer/mediekreditter uten eksplisitt brukerbeslutning.
 **Eksperimentgren:** `experiment/cinematic-marketing-pilot`; [draft PR #13](https://github.com/KhalilJel/Cidea-Marketing/pull/13); ingen produksjonsendring.
