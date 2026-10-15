@@ -56,3 +56,5 @@ Claude's detailed `PHASE1-VERIFICATION.md` on the experiment branch confirms:
 - **Fase 1 is therefore still open**, no Phase 2 designs exist yet.
 
 **Standing mode preference:** Use Work for real cross-tool project execution; when it is not needed, proactively suggest switching to ordinary ChatGPT/Instant mode. After each task recommend mode for what comes next. This preference is about ChatGPT mode and does not alter the 9-phase website plan.
+
+**Oppdatering fra Claude Code 2026-10-15 16:50:** punktene over er nå løst. Brukeren har satt `STITCH_API_KEY`; `list_projects` → `get_screen` → HTML/skjermbilde → lokal rendring er verifisert; `/cidea-website` og Stitch-skillene er automatisk oppdaget. **Fase 1 er verifisert ferdig** – se `PHASE1-VERIFICATION.md` § 2 og § 4. Fase 2 er ikke startet.
