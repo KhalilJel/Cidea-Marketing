@@ -14,3 +14,13 @@ body{background:#f5f2ea;color:#12161f}.site{background:#f5f2ea}header{height:76p
 p:not(.eyebrow){font-size:max(14px,1em)}
 .quiet{color:#a9b7c6}
 nav a,.actions button,footer a{min-height:44px;display:inline-flex;align-items:center}
+
+/* Privacy: reuse the existing article page, with scoped readable headings. */
+.privacyPage h1{font-size:clamp(44px,7vw,88px);letter-spacing:-.055em;line-height:1.05;overflow-wrap:anywhere}
+.privacyPage .articleBody{color:var(--ink,#12161f);overflow-wrap:anywhere}
+.privacyPage .articleBody h2{font-size:clamp(25px,3vw,34px);line-height:1.2;letter-spacing:-.025em;margin:2em 0 .6em}
+.privacyPage .articleBody a{text-decoration:underline;text-underline-offset:.2em}
+.privacyPage a:focus-visible,.privacyFooter:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+.privacyDraft{max-width:760px;padding:1rem;border:1px solid currentColor;line-height:1.6}
+footer:has(.privacyFooter){grid-template-columns:1fr auto auto auto}
+@media(max-width:700px){footer:has(.privacyFooter){grid-template-columns:1fr}}
