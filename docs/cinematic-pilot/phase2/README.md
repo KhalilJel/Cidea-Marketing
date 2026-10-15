@@ -73,3 +73,29 @@ Ikke opprettet/kalt: `create_project` for prosjekter ut over de fire over, `dele
 - **Kreditter:** sluttforbruk runde 1 er 34 / 400 (brukerens avlesning), godt innenfor rammen på 200. Claudes anslag (~25–30) var for lavt; reelt snitt er ca. 3 kreditter per kall (34 / 11).
 - **A og B** beholdes urørt i Stitch og i repoet som dokumentasjon. De brukes ikke videre, og elementer blandes ikke inn i C (jf. CREATIVE-REVIEW).
 - **Overføres til neste steg (ikke løst ennå):** innholdsfunnene for C i tabellen over («Bespoke formgivning», «100 % fotofri profil», «Eksperiment A/B/C», «AKTIV MENY», «OSLO», samme overskrift som B), og ChatGPTs forbedringsbrief punkt 1–7 i CREATIVE-REVIEW.
+
+## Fokusert forbedringsrunde for C (2026-10-15, 20:01–20:09)
+
+**Grunnlag:** ChatGPTs forbedringsbrief i [`CREATIVE-REVIEW.md`](CREATIVE-REVIEW.md) punkt 1–5. Kredittramme for runden: maks 100 (brukerens instruks). Kun `edit_screens` i C-prosjektet `93182330119187096`; ingen nye prosjekter.
+**Før/etter:** [concept-C/for-etter-forbedring.png](concept-C/for-etter-forbedring.png) · Gjeldende: [desktop](concept-C/C-desktop-raffinert.png) · [mobil](concept-C/C-mobile-raffinert.png) · Mellomtrinn i [`concept-C/forbedring/`](concept-C/forbedring/)
+
+| # | Tid | Kall | Prompt | Resultat | Varighet |
+|---|---|---|---|---|---|
+| R1 | 20:01 | `edit_screens` desktop + mobil | [C-refine-1.md](prompts/C-refine-1.md) | Ny konkret overskrift, én skrifttype, mikrocopy fjernet. **Regresjon:** fargeflatene ble bleke pastellkort, og heltebildet ble lite med tekst over formene. Mobil fikk feil «KONSEPT» på tjenestekort og nye etiketter. | 193 s |
+| R2 | 20:05 | `edit_screens` desktop + mobil | [C-refine-2.md](prompts/C-refine-2.md) | Desktop: mettede fargeflater tilbake, stor signaturkomposisjon i hero uten tekst. Mobil: etiketter fjernet, men tjenestekortene var fortsatt hvite. | 72 s |
+| R3 | 20:07 | `edit_screens` kun mobil | [C-refine-3-mobile.md](prompts/C-refine-3-mobile.md) | Mobil har samme fargeflater og hero-komposisjon som desktop. | 96 s |
+
+**Gjeldende skjermer:** desktop `544a1d210e0a4b328424da4b932702b4`, mobil `166b0f996d994f5cbbce524afa41616a`. Tidligere versjoner ligger urørt i Stitch.
+
+**Status mot briefen (teknisk kontroll, ikke estetisk godkjenning):**
+
+| Brief-punkt | Status |
+|---|---|
+| 1 Færre, bedre grafiske objekter | Hero: OK (stor komposisjon av fargeplan). Konseptkortene har fortsatt små, enkle illustrasjoner. Liten svart «flik» på mørkt kvadrat i desktop-hero ser ut som en artefakt. |
+| 2 Konkret norsk overskrift, ulik B | OK: «Nettsteder, merkevare og markedsføring for ambisiøse bedrifter.» Copy må godkjennes av ChatGPT. **Merk:** «Nettsteder» i overskriften mot tjenestenavnet «Nettsider». |
+| 3 Fjern engelsk mikrocopy, «fotofri», «Eksperiment A/B/C» | OK |
+| 4 Færre rammer/etiketter, behold modularitet og farge | OK etter R2/R3. Små tagger som «FAGLIG ARTIKKEL» og «Visuell studie» finnes fortsatt. |
+| 5 Desktop + mobil hero og seksjonspar, før/etter | OK, se før/etter-arket |
+| Konsistens | Avsluttende CTA har ulik tekst på desktop («Klar for å løfte bedriftens digitale tilstedeværelse?») og mobil («Klar for et overbevisende digitalt uttrykk?»). Lenketekster som «Se arkitektur», «Metodikk», «Kampanjeform» trenger copy-vurdering. |
+
+**Kreditter:** 3 kall i runden. Før runden: 34/400. Etter runden: *venter på brukerens avlesning*.
