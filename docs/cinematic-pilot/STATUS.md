@@ -1,7 +1,7 @@
 # Cidea Marketing – Status / verificerbar fremdrift
 
 **Oppdatert:** 2026-10-15
-**Nå:** FASE **1/9 VERIFISERT FERDIG** 2026-10-15; **1/9** faser verifisert. Fase 2 er ikke startet og venter på klarsignal.
+**Nå:** FASE **2/9 PÅGÅR**. Fase 1 verifisert ferdig, 1/9 faser fullt godkjent. Konsept A (desktop + mobil) er generert; konsept B/C gjenstår. Kreditter 9/400 etter A, bekreftet av bruker.
 **Godkjent metode:** ChatGPT → Google Stitch → Claude Code → ChatGPT QA.
 **Kostnadsgrense:** 0 NOK i nye abonnementer/mediekreditter uten eksplisitt brukerbeslutning.
 **Eksperimentgren:** `experiment/cinematic-marketing-pilot`; [draft PR #13](https://github.com/KhalilJel/Cidea-Marketing/pull/13); ingen produksjonsendring.
@@ -23,7 +23,7 @@
 | Stitch → Claude asset/design read eller eksport-smoke-test | VERIFISERT: get_screen → HTML 55 kB + skjermbilde 1440×8697 → lokal rendring uten feil | `PHASE1-VERIFICATION.md` § 4 |
 | Claude lokal workspace på trygg eksperimentgren | VERIFISERT (ren arbeidskopi, HEAD `b17bafa`) | `PHASE1-VERIFICATION.md` § 1 |
 | Local Node/build, preview og screenshot-test | VERIFISERT: Node 24.21.0, build OK, preview+dev 200, 14/14 rute-sjekker 390/1440 | `PHASE1-VERIFICATION.md` § 5, `evidence/phase1/` |
-| Tre ferdige Stitch-designs | **IKKE LAGET** (hører til fase 2 etter verifisert fase 1) | — |
+| Tre ferdige Stitch-designs | **1 av 3 generert** (A, ikke designgodkjent); B/C gjenstår | `phase2/README.md` |
 | Betalte kjøp / live deploy | **INGEN** | — |
 
 ## Gate for å avslutte fase 1
@@ -37,7 +37,7 @@
 
 ## Neste konkrete handling
 
-Bruk `STITCH-HANDOFF.md` sitt Claude Code kickoff. Hvis Stitch krever at brukeren autentiserer i nettleseren, be om det én gang, og verifiser deretter. Først etter oppnådd Phase 1-gate starter Phase 2 med `STITCH-CREATIVE-BRIEF.md` og tre *faktiske*, forskjellige visuelle konsepter.
+Claude Code: generer B desktop/mobil og deretter C desktop/mobil med ferdige prompts i `phase2/prompts/`, behold historiske prosjektfiler uendret, logg etter hvert konsept. Maks 200/400 kreditter brukt totalt i første runde; status etter A er 9/400 (brukeravlesning). Stopp for tallavlesning dersom Stitch API ikke viser gjenværende kvote. Legg inn faktiske screenshots/lenker for alle konsepter før designvurdering. Ingen koding/merge/deploy.
 
 ## Statusregel: etter HVER arbeidsoppgave
 
