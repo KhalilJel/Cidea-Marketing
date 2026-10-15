@@ -1,42 +1,47 @@
-# Cidea Marketing — Website progress control
+# Cidea Marketing – Status / verificerbar fremdrift
 
-**Updated:** 2026-10-15 (budget-safe change)
-**Overall:** Phase **1 of 9** IN PROGRESS; **0/9 phase gates completed**.
-**Branch:** `experiment/cinematic-marketing-pilot`.
-**Draft PR:** https://github.com/KhalilJel/Cidea-Marketing/pull/13
-**Existing design-system PR #11:** untouched.
-**Production:** untouched.
-**Budget decision:** extra spending budget is treated as **0 NOK** until user says otherwise. Paid AI video/Higgsfield integration **deferred**, not a blocker. Goal and nine-phase website plan unchanged.
+**Oppdatert:** 2026-10-15
+**Nå:** FASE **1/9**, IN PROGRESS; **0/9** hele faser verifisert.
+**Godkjent metode:** ChatGPT → Google Stitch → Claude Code → ChatGPT QA.
+**Kostnadsgrense:** 0 NOK i nye abonnementer/mediekreditter uten eksplisitt brukerbeslutning.
+**Eksperimentgren:** `experiment/cinematic-marketing-pilot`; [draft PR #13](https://github.com/KhalilJel/Cidea-Marketing/pull/13); ingen produksjonsendring.
+**PR #11:** gammel design system-draft, ikke merge eller endre før gjennomgang.
 
-## Current phase gate: verified, not assumed
+## Phase 1/9 – konkrete oppgaver
 
-| Phase 1 work item | Status | Evidence |
+| Oppgave | Verifisert status | Dokumentasjon |
 | --- | --- | --- |
-| Inspect existing React/Vite site and outstanding issues | VERIFIED DONE | `INITIAL-AUDIT.md` |
-| Approve and document locked nine-phase plan | VERIFIED DONE | `MASTER-GAMEPLAN.md` |
-| Review public 10K Websites v0.2.0 source and core scripts | REVIEWED REMOTELY | source commit `b5874f88e1c3b8f3da0ecadcec0c27a5e92eb254` |
-| Commit adapted Claude Code project skill | VERIFIED DONE IN GITHUB | `.claude/skills/10k-websites/SKILL.md` |
-| Ensure local generated assets and secrets aren't committed | VERIFIED DONE IN GITHUB | `.gitignore` |
-| Prepare safe local Claude + Higgsfield runbook | VERIFIED DONE IN GITHUB | `PHASE1-SETUP.md` |
-| Existing GitHub CI Vite build | VERIFIED SUCCESS as of commit `98b4d7441a1ed81059b4f25fd05a16375891ef63` | push & PR Build workflows |
-| Browser service-route test | RUNNING at snapshot | https://github.com/KhalilJel/Cidea-Marketing/actions/runs/38719073506 |
-| Claude local checkout recognizes skill | **UNVERIFIED / REQUIRES LOCAL CLAUDE** | — |
-| Original 10K v0.2.0 skill fetched and pinned locally | **NOT DONE** | — |
-| Node/FFmpeg/FFprobe and local preview checks | **NOT DONE** | — |
-| Higgsfield CLI connected and real credit balance verified | **ON HOLD / NOT REQUIRED** for zero-video path; no authorization needed | Budget-safe amendment in `MASTER-GAMEPLAN.md` |
-| Paid media or production deployment | **NOT AUTHORIZED, NONE DONE** | — |
+| Baseline-audit av eksisterende Vite/React-kode | FERDIG (read-only audit, ikke visuell QA) | `INITIAL-AUDIT.md` |
+| Master Gameplan oppdatert til valgt metode | FERDIG I GITHUB | `MASTER-GAMEPLAN.md` |
+| Godkjent innholds-/designbrief med 3 tydelig ulike retninger | FERDIG SOM BRIEF; ingen faktiske mockups generert | `STITCH-CREATIVE-BRIEF.md` |
+| Lokal Claude Code-skill for valgt metode | OPPRETTET I GITHUB, lokal discovery IKKE verifisert | `.claude/skills/cidea-website/SKILL.md` |
+| Konflikterende eldre 10K-skill | FJERNET fra aktiv prosjektsti på eksperimentgren; eldre docs beholdt som historikk | Git commit på PR #13 |
+| Offisiell Google Labs Stitch skills repo / README inspisert | FERDIG KILDEGJENNOMGANG | https://github.com/google-labs-code/stitch-skills |
+| Handoff/konfigurasjonsveiledning | FERDIG I GITHUB | `STITCH-HANDOFF.md` |
+| Stitch workspace / MCP login | **IKKE VERIFISERT**; bruker OAuth kan trenges | — |
+| Stitch → Claude asset/design read eller eksport-smoke-test | **IKKE UTFØRT** | — |
+| Claude lokal workspace på trygg eksperimentgren | **IKKE VERIFISERT** | — |
+| Local Node/build, preview og screenshot-test | **IKKE VERIFISERT I BRUKERS MILJØ**; GitHub CI/build er tidligere bekreftet | — |
+| Tre ferdige Stitch-designs | **IKKE LAGET** (hører til fase 2 etter verifisert fase 1) | — |
+| Betalte kjøp / live deploy | **INGEN** | — |
 
-## Next concrete action
+## Gate for å avslutte fase 1
 
-Open Claude Code in the `KhalilJel/Cidea-Marketing` local working copy. Follow `PHASE1-SETUP.md`, with its updated budget-safe instructions. Confirm the git tree is safe, verify the project skill, Node/build and local browser preview. **Do not configure Higgsfield or spend anything.** Bring back read-only Phase 1 verification evidence. Do not progress to Phase 2 until all revised Phase 1 checks are demonstrated.
+[ ] Claude Code lokalt på trygg branch uten tap av lokale endringer.
+[ ] `/cidea-website` eller direkte lesning av skill bekreftet.
+[ ] Stitch innlogging + fungerende MCP eller verifiserbar eksport → Claude.
+[ ] Vite-build, lokal preview, mobil/desktop screenshot test dokumentert.
+[ ] `PHASE1-VERIFICATION.md` med ekte resultater, ingen oppdiktede tall.
+[ ] Ingen betalinger eller produksjonsendringer.
 
-## Reporting contract after EVERY task
+## Neste konkrete handling
 
-- `Fase X/9`
-- `Oppgave gjennomført`
-- `Verifisert gjort`
-- `Gjenstår i aktiv fase`
-- `Neste konkrete steg`
-- `GitHub/CI/screenshot evidence`
+Bruk `STITCH-HANDOFF.md` sitt Claude Code kickoff. Hvis Stitch krever at brukeren autentiserer i nettleseren, be om det én gang, og verifiser deretter. Først etter oppnådd Phase 1-gate starter Phase 2 med `STITCH-CREATIVE-BRIEF.md` og tre *faktiske*, forskjellige visuelle konsepter.
 
-Do not claim the local user's Claude Desktop state, subscription, OAuth, credits, live deployment or media outputs are verified unless their specific output is available and independently inspected.
+## Statusregel: etter HVER arbeidsoppgave
+
+Rapporter: Fase X/9 | Navn på oppgaven | **Verifisert utført** | Gjenstår | Neste konkrete steg | Bevis i GitHub/preview/screenshot. Ingen fullført fase uten bekreftede leveranser.
+
+## Wider project
+
+Dette gjelder bare nettsiden. Det større Cidea Marketing-prosjektet krever fortsatt 90 dagers publiseringsklart blogg- og SoMe-innhold, SoMe-flyt og Gullkornet; disse er ikke fullført ved nettsidelansering.
