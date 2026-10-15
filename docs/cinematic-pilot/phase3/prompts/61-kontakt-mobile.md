@@ -1,0 +1,1 @@
+**MOBILE version (390px) of the «Kontakt» page in this project**, same design system and content as desktop: header with «Meny», H1, sentence, the form with full-width fields and full-width button «Send henvendelse», the «Hva skjer videre?» colour field below the form, footer. No e-mail address, phone, address or response-time promise.

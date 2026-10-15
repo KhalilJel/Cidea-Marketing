@@ -42,7 +42,7 @@ Completion of website does not mean whole Cidea Marketing foundation complete. T
 **Gate:** Verifiable three designs, preview links/images, user-approved chosen concept. Do not move ahead on verbal descriptions alone.
 _Note (Claude): the two research/positioning items above are ChatGPT deliverables; Claude has not verified them and leaves them for ChatGPT to tick._
 
-### PHASE 3 — Final visual identity, content/design system & all-page mockups [NOT STARTED]
+### PHASE 3 — Final visual identity, content/design system & all-page mockups [IN PROGRESS – draft 1 ready for review 2026-10-15, see `phase3/README.md`]
 - [ ] Stitch refines chosen direction into logo/wordmark treatment, type scale, color tokens, responsive spacing, buttons, icon language, image style, reusable components.
 - [ ] Stitch designs homepage, agreed service pages, about, truthful portfolio/concepts, blog index, article and contact in desktop and mobile variants.
 - [ ] ChatGPT approves Norwegian headings/body copy, customer path and content accuracy. Avoid repetitive copy, numbered decorative labels, English microcopy, fake testimonials/projects/metrics and forbidden `gratis` copy.
