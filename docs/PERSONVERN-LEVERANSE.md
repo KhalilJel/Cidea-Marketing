@@ -20,3 +20,10 @@ Eksisterende Cidea Marketing er designmålet. Primærreferanse: Blog sin .page/.
 
 ## Verifisert driftsgrunnlag 15.10.2026
 Gullkornet PR 134, main 5977039, Railway 2260f39e-c3e3-4d73-9582-1376af857e2c SUCCESS. Autentisert produksjonskontroll: 0 innkommende meldingskopier i svarmonitorens database, ingen endringer, TTL av. Dette sier ikke at originalinnboksen er tom. Live-send er av.
+
+## Leverandørfakta kontrollert 16.10.2026
+Offentlig leverandørdokumentasjon er nå innarbeidet i utkastet: Resend lagrer i USA selv ved europeisk avsenderregion, DPA inkluderer SCC, standard e-post-/loggdata 30 dager og backup 7 dager. Airtable/Railway beskriver SCC i sine offentlige avtaler. Railway skiller planbestemt loggtilgjengelighet fra faktisk sletting. Dette er ikke inspeksjon av kundens arkiverte vedlegg eller løfte om like frister i originalinnboks/andre sikkerhetskopier.
+
+Kilder: https://resend.com/security/gdpr, https://www.airtable.com/company/dpa, https://railway.com/legal/dpa, https://docs.railway.com/observability/logs.
+
+Resends AUP-blokkering for det konkrete uoppfordrede løpet består; ingen alternativ leverandør er valgt. Kilde: https://resend.com/legal/acceptable-use. Utkastmerking/noindex beholdes. Praktisk oppfølging og resterende faktisk historikk-/backupbevaring må avstemmes før hovedpublisering.
