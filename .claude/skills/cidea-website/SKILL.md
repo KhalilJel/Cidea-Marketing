@@ -41,3 +41,7 @@ Use the detailed `MASTER-GAMEPLAN.md`. Code motion with CSS, SVG, React/JS; do n
 `Fase X/9 | Oppgave | Verifisert utført med lenke/screenshot/test | Gjenstår før fasegodkjenning | Neste steg | Blokkering`
 
 Never invent completion or treat passing CI as proof that a page looks polished. Stop all unrelated work until current phase gate passed. Do not merge PR #11 or #13 without approval.
+
+## Work vs. ordinary ChatGPT mode
+
+The user explicitly requests: Use Work only when needed for substantive external execution; **whenever Work is not necessary, always suggest switching to a normal ChatGPT/Instant conversation**. Include recommended next mode in progress updates. Never claim to control or change account UI mode automatically.
