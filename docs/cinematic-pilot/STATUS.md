@@ -1,7 +1,7 @@
 # Cidea Marketing – Status / verificerbar fremdrift
 
 **Oppdatert:** 2026-10-15
-**Nå:** FASE **2/9 PÅGÅR**. Fase 1 verifisert ferdig, 1/9 faser fullt godkjent. Konsept A (desktop + mobil) er generert; konsept B/C gjenstår. Kreditter 9/400 etter A, bekreftet av bruker.
+**Nå:** FASE **2/9 PÅGÅR – runde 1 klar for visuell vurdering**. Fase 1 verifisert ferdig, 1/9 faser fullt godkjent. Konsept A, B og C (desktop + mobil) er generert i Stitch og ligger i `phase2/`. Kredittavlesninger fra bruker: 4/400 etter A, 9/400 underveis; sluttavlesning venter. Ingen retning er valgt.
 **Godkjent metode:** ChatGPT → Google Stitch → Claude Code → ChatGPT QA.
 **Kostnadsgrense:** 0 NOK i nye abonnementer/mediekreditter uten eksplisitt brukerbeslutning.
 **Eksperimentgren:** `experiment/cinematic-marketing-pilot`; [draft PR #13](https://github.com/KhalilJel/Cidea-Marketing/pull/13); ingen produksjonsendring.
@@ -23,7 +23,7 @@
 | Stitch → Claude asset/design read eller eksport-smoke-test | VERIFISERT: get_screen → HTML 55 kB + skjermbilde 1440×8697 → lokal rendring uten feil | `PHASE1-VERIFICATION.md` § 4 |
 | Claude lokal workspace på trygg eksperimentgren | VERIFISERT (ren arbeidskopi, HEAD `b17bafa`) | `PHASE1-VERIFICATION.md` § 1 |
 | Local Node/build, preview og screenshot-test | VERIFISERT: Node 24.21.0, build OK, preview+dev 200, 14/14 rute-sjekker 390/1440 | `PHASE1-VERIFICATION.md` § 5, `evidence/phase1/` |
-| Tre ferdige Stitch-designs | **1 av 3 generert** (A, ikke designgodkjent); B/C gjenstår | `phase2/README.md` |
+| Tre ferdige Stitch-designs | **3 av 3 generert** (A, B, C v2; desktop + mobil; regelbrudd rettet der det var tydelig). **Ikke designgodkjent** | `phase2/README.md`, `phase2/oversikt-runde1.png` |
 | Betalte kjøp / live deploy | **INGEN** | — |
 
 ## Gate for å avslutte fase 1
@@ -37,7 +37,11 @@
 
 ## Neste konkrete handling
 
-Claude Code: generer B desktop/mobil og deretter C desktop/mobil med ferdige prompts i `phase2/prompts/`, behold historiske prosjektfiler uendret, logg etter hvert konsept. Maks 200/400 kreditter brukt totalt i første runde; status etter A er 9/400 (brukeravlesning). Stopp for tallavlesning dersom Stitch API ikke viser gjenværende kvote. Legg inn faktiske screenshots/lenker for alle konsepter før designvurdering. Ingen koding/merge/deploy.
+1. Bruker: les av sluttforbruket i Stitch (forventet godt under 200).
+2. ChatGPT + bruker: visuell vurdering av A, B og C ut fra `phase2/oversikt-runde1.png`, skjermbildene og Stitch-lenkene i `phase2/README.md`, med vektingen i `STITCH-CREATIVE-BRIEF.md`. Gjenstående innholdsfunn står i README-ens tabell.
+3. Bruker velger én retning, eller ber om én fokusert revisjonsrunde. Først da er fase 2-gaten nådd. Ingen koding, merge eller deploy før det.
+
+*(Tidligere instruks til Claude om å generere B/C er utført 2026-10-15 17:32–17:47.)*
 
 ## Statusregel: etter HVER arbeidsoppgave
 
