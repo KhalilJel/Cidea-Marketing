@@ -96,3 +96,9 @@ Website production always has priority until this plan is finished. Do not resta
 
 ## Initial snapshot at selection
 Phase 1/9 remains OPEN. ChatGPT/Stitch/Claude methodology SELECTED. Stitch design workspace/MCP integration not yet confirmed, no new Stitch designs generated, no new working code submitted for launch. Existing production unaffected. Next deliverable: `STITCH-CREATIVE-BRIEF.md`, developer handoff and verification of Stitch connection/preview path.
+
+## ChatGPT mode choice — user's standing preference (2026-10-15)
+
+**Use Work only when the task genuinely benefits from multi-step execution**, such as navigating external services, researching across several resources, producing/reviewing design assets, running the Cidea gameplan across GitHub and Stitch, or substantial implementation coordination. If a conversation shifts to straightforward Q&A, brainstorming, brief advice, explanations, or a simple decision that doesn't need Work, **ALWAYS proactively suggest switching from Work to normal ChatGPT/Instant mode**. Do not demand a mode switch for a task that clearly benefits from Work. The assistant cannot directly switch the user's mode; suggest the change plainly at the right moment. Respect the user's chosen mode if they continue there.
+
+This is part of the after-task update: `Recommended mode for next task: Work / normal chat`, with a one-phrase reason. Keep it unobtrusive.
