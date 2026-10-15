@@ -5,7 +5,7 @@ description: Follow the 10K Websites v0.2.0 cinematic design methodology for Cid
 
 # Cidea Marketing: 10K Websites (v0.2.0)
 
-This is the Cidea project-specific entry point for the official upstream skill at https://github.com/thatswyn/10k-websites (v0.2.0, tree `b5874f88e1c3b8f3da0ecadcec0c27a5e92eb254`, MIT license).
+This is the Cidea project-specific entry point for the official upstream skill at https://github.com/thatswyn/10k-websites (v0.2.0, commit `b5874f88e1c3b8f3da0ecadcec0c27a5e92eb254`, MIT license).
 
 **Before any work:**
 1. Read `docs/cinematic-pilot/MASTER-GAMEPLAN.md`, `docs/cinematic-pilot/INITIAL-AUDIT.md` and `docs/cinematic-pilot/VIDEO-NOTES.md`.
