@@ -1,11 +1,12 @@
 # Cidea Marketing — Website progress control
 
-**Updated:** 2026-10-15
+**Updated:** 2026-10-15 (budget-safe change)
 **Overall:** Phase **1 of 9** IN PROGRESS; **0/9 phase gates completed**.
 **Branch:** `experiment/cinematic-marketing-pilot`.
 **Draft PR:** https://github.com/KhalilJel/Cidea-Marketing/pull/13
 **Existing design-system PR #11:** untouched.
 **Production:** untouched.
+**Budget decision:** extra spending budget is treated as **0 NOK** until user says otherwise. Paid AI video/Higgsfield integration **deferred**, not a blocker. Goal and nine-phase website plan unchanged.
 
 ## Current phase gate: verified, not assumed
 
@@ -22,12 +23,12 @@
 | Claude local checkout recognizes skill | **UNVERIFIED / REQUIRES LOCAL CLAUDE** | — |
 | Original 10K v0.2.0 skill fetched and pinned locally | **NOT DONE** | — |
 | Node/FFmpeg/FFprobe and local preview checks | **NOT DONE** | — |
-| Higgsfield CLI connected and real credit balance verified | **NOT DONE / USER OAUTH NEEDED** | — |
+| Higgsfield CLI connected and real credit balance verified | **ON HOLD / NOT REQUIRED** for zero-video path; no authorization needed | Budget-safe amendment in `MASTER-GAMEPLAN.md` |
 | Paid media or production deployment | **NOT AUTHORIZED, NONE DONE** | — |
 
 ## Next concrete action
 
-Open Claude Code in the `KhalilJel/Cidea-Marketing` local working copy. Follow `PHASE1-SETUP.md`, using the exact copy/paste prompt at the end. The agent must confirm the git working tree is safe before checking out the experimental branch, then verify tools and Higgsfield OAuth. Bring back the read-only Phase 1 verification report. Do not progress to Phase 2 until all Phase 1 checks are demonstrated.
+Open Claude Code in the `KhalilJel/Cidea-Marketing` local working copy. Follow `PHASE1-SETUP.md`, with its updated budget-safe instructions. Confirm the git tree is safe, verify the project skill, Node/build and local browser preview. **Do not configure Higgsfield or spend anything.** Bring back read-only Phase 1 verification evidence. Do not progress to Phase 2 until all revised Phase 1 checks are demonstrated.
 
 ## Reporting contract after EVERY task
 
