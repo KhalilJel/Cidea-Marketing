@@ -47,14 +47,13 @@ Rapporter: Fase X/9 | Navn på oppgaven | **Verifisert utført** | Gjenstår | N
 
 Dette gjelder bare nettsiden. Det større Cidea Marketing-prosjektet krever fortsatt 90 dagers publiseringsklart blogg- og SoMe-innhold, SoMe-flyt og Gullkornet; disse er ikke fullført ved nettsidelansering.
 
-## Latest progress interpretation / mode rule
+## Latest verification and mode rule (2026-10-15)
 
-Claude's detailed `PHASE1-VERIFICATION.md` on the experiment branch confirms:
-- Local branch checkout, selective Stitch skills, Node/Vite build and preview, 14/14 two-viewport browser checks **verified**.
-- Stitch MCP is configured but **not authenticated**: `STITCH_API_KEY` not yet available; `list_projects` cannot yet be authenticated. User must create/store a key privately in their local environment and restart/authorize Claude.
-- The `/cidea-website` command has not yet been confirmed automatically discovered in a fresh Claude session.
-- **Fase 1 is therefore still open**, no Phase 2 designs exist yet.
+Claude's completed PHASE1-VERIFICATION.md confirms Phase 1 gate items passed:
+- Safe local checkout, four Stitch skills and automatic discovery of /cidea-website verified.
+- Stitch API key read from local Windows environment; authenticated MCP read tested with list_projects, list_screens, get_screen, downloaded HTML/screenshots and rendered successfully.
+- Node/Vite build and preview passed; 14/14 browser route/viewport smoke tests passed.
+- **Phase 1 fully verified. Phase 2 NOT started** pending user approval to consume Stitch's unknown free quota.
+- Existing Stitch screens are historical, NOT the three approved concept directions. Fact-check "OSLO • BERGEN" and remove unusable NO/EN switch during design/content QA.
 
-**Standing mode preference:** Use Work for real cross-tool project execution; when it is not needed, proactively suggest switching to ordinary ChatGPT/Instant mode. After each task recommend mode for what comes next. This preference is about ChatGPT mode and does not alter the 9-phase website plan.
-
-**Oppdatering fra Claude Code 2026-10-15 16:50:** punktene over er nå løst. Brukeren har satt `STITCH_API_KEY`; `list_projects` → `get_screen` → HTML/skjermbilde → lokal rendring er verifisert; `/cidea-website` og Stitch-skillene er automatisk oppdaget. **Fase 1 er verifisert ferdig** – se `PHASE1-VERIFICATION.md` § 2 og § 4. Fase 2 er ikke startet.
+**Standing mode preference:** Use Work for external multi-step execution. When Work is unnecessary, proactively suggest ordinary ChatGPT/Instant. After each task recommend the next mode. This does not alter the nine-phase plan.
