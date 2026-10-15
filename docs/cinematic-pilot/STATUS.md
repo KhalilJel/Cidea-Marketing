@@ -1,7 +1,7 @@
 # Cidea Marketing – Status / verificerbar fremdrift
 
 **Oppdatert:** 2026-10-15
-**Nå:** FASE **2/9 PÅGÅR – runde 1 klar for visuell vurdering**. Fase 1 verifisert ferdig, 1/9 faser fullt godkjent. Konsept A, B og C (desktop + mobil) er generert i Stitch og ligger i `phase2/`. Kredittavlesninger fra bruker: 4/400 etter A, 9/400 underveis, **34/400 etter alle tre**; 366 dagskreditter igjen. Ingen retning er valgt, og fase 2-godkjenning gjenstår.
+**Nå:** FASE **2/9 – gate nådd 2026-10-15: brukeren har valgt konsept C («Fremtidig håndverk» v2)**. Kreditter runde 1: 34/400. Neste er den fokuserte forbedringsrunden for C (ChatGPTs brief i `phase2/CREATIVE-REVIEW.md`) / fase 3, som **ikke er startet** og venter på klarsignal. Research- og posisjoneringspunktene i fase 2 (MASTER-GAMEPLAN) føres av ChatGPT.
 **Godkjent metode:** ChatGPT → Google Stitch → Claude Code → ChatGPT QA.
 **Kostnadsgrense:** 0 NOK i nye abonnementer/mediekreditter uten eksplisitt brukerbeslutning.
 **Eksperimentgren:** `experiment/cinematic-marketing-pilot`; [draft PR #13](https://github.com/KhalilJel/Cidea-Marketing/pull/13); ingen produksjonsendring.
@@ -23,7 +23,7 @@
 | Stitch → Claude asset/design read eller eksport-smoke-test | VERIFISERT: get_screen → HTML 55 kB + skjermbilde 1440×8697 → lokal rendring uten feil | `PHASE1-VERIFICATION.md` § 4 |
 | Claude lokal workspace på trygg eksperimentgren | VERIFISERT (ren arbeidskopi, HEAD `b17bafa`) | `PHASE1-VERIFICATION.md` § 1 |
 | Local Node/build, preview og screenshot-test | VERIFISERT: Node 24.21.0, build OK, preview+dev 200, 14/14 rute-sjekker 390/1440 | `PHASE1-VERIFICATION.md` § 5, `evidence/phase1/` |
-| Tre ferdige Stitch-designs | **3 av 3 generert** (A, B, C v2; desktop + mobil; regelbrudd rettet der det var tydelig). **Ikke designgodkjent** | `phase2/README.md`, `phase2/oversikt-runde1.png` |
+| Tre ferdige Stitch-designs | **3 av 3 generert**; **brukeren valgte C (v2)** 2026-10-15; 34/400 kreditter | `phase2/README.md` § Beslutning, `phase2/CREATIVE-REVIEW.md` |
 | Betalte kjøp / live deploy | **INGEN** | — |
 
 ## Gate for å avslutte fase 1

@@ -34,12 +34,13 @@ Completion of website does not mean whole Cidea Marketing foundation complete. T
 - [x] Verify Node, React build, local preview and screenshot/browser QA baseline; record receipts and actual tool connections in `PHASE1-VERIFICATION.md`.
 **Gate:** Stitch accessible, Claude Code & Stitch MCP/asset-export pathway demonstrably usable, clean React build and preview testable. If Stitch MCP cannot be enabled, an approved manual HTML/asset export is an acceptable fallback. No unverified checkmarks.
 
-### PHASE 2 — Research, strategy and three design concepts [NOT STARTED]
+### PHASE 2 — Research, strategy and three design concepts [GATE MET 2026-10-15 – user chose concept C]
 - [ ] Research client audience, agency peers & outstanding visual references (design patterns, not copied designs).
 - [ ] Finalize concise Norwegian positioning, audience, benefits, site goal (qualified consultations) and complete page structure.
-- [ ] Send `STITCH-CREATIVE-BRIEF.md` to Stitch and produce three **clearly differentiated** creative directions, full desktop home mockups + first mobile composition, each with typography/palette/media direction, CTA and rationale.
-- [ ] ChatGPT reviews aesthetics and commercial fit; user approves ONE direction, or gives one focused revision round.
+- [x] Send `STITCH-CREATIVE-BRIEF.md` to Stitch and produce three **clearly differentiated** creative directions, full desktop home mockups + first mobile composition, each with typography/palette/media direction, CTA and rationale.
+- [x] ChatGPT reviews aesthetics and commercial fit; user approves ONE direction, or gives one focused revision round. (ChatGPT: `phase2/CREATIVE-REVIEW.md` recommends C; user chose C, 34/400 credits.)
 **Gate:** Verifiable three designs, preview links/images, user-approved chosen concept. Do not move ahead on verbal descriptions alone.
+_Note (Claude): the two research/positioning items above are ChatGPT deliverables; Claude has not verified them and leaves them for ChatGPT to tick._
 
 ### PHASE 3 — Final visual identity, content/design system & all-page mockups [NOT STARTED]
 - [ ] Stitch refines chosen direction into logo/wordmark treatment, type scale, color tokens, responsive spacing, buttons, icon language, image style, reusable components.

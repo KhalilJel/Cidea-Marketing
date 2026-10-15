@@ -1,6 +1,6 @@
 # Fase 2/9 – tre designretninger i Google Stitch (runde 1)
 
-**Status:** tre konsepter med desktop- og mobilutkast er **klare for visuell vurdering** (ChatGPT + bruker). Ingen retning er valgt. Det er ikke skrevet noe kode. Fasegaten krever at brukeren velger én retning, eller ber om én fokusert revisjonsrunde.
+**Status:** **BRUKERVALG 2026-10-15: konsept C – «Fremtidig håndverk» (v2)** er valgt som retning. Sluttforbruk runde 1: **34 / 400** kreditter (brukerens avlesning). Ingen kode, merge eller deploy.
 **Oversikt:** [oversikt-runde1.png](oversikt-runde1.png) viser toppen av alle tre, desktop og mobil side om side.
 
 **Metode:** hver prompt = [`prompts/00-common.md`](prompts/00-common.md) (felles krav fra `STITCH-CREATIVE-BRIEF.md`) + konseptets retningstekst. Hvert konsept fikk sitt **eget nye Stitch-prosjekt**, fordi Stitch lager designsystemet per prosjekt fra første prompt. Farger og fonter er valgt av Stitch, ikke av Claude. Eksisterende Stitch-prosjekter («Cidea Marketing Agency Redesign», «API Key Finder Guide») er **ikke endret**. Alle kall gikk via Stitch MCP-API-et med brukerens nøkkel; ingen betalte tjenester.
@@ -64,3 +64,12 @@ Stitch-API-et oppgir ikke kreditter. Brukeren leser av i Stitch-kontoen.
 Ramme for runde 1: maks 200 kreditter. **Endelig brukeravlesning: 34 / 400**, dvs. 34 brukt, 366 igjen i dagens totale kvote og 166 igjen innenfor frivillig maksgrense på 200. Dette er totalt for runden, ikke en per-kall-pris. Ingen videre generering før visuell vurdering og valg.
 
 Ikke opprettet/kalt: `create_project` for prosjekter ut over de fire over, `delete_project`, `apply_design_system`, `generate_variants`.
+
+## Beslutning (2026-10-15)
+
+- **Valgt retning:** konsept **C – «Fremtidig håndverk» (v2)**. Stitch-prosjekt `93182330119187096`, desktop `f16aafa1c71f461da1372bce0cc22e0b`, mobil `7e6b5d6aefa94746a7ad3c6d5c93d1c2`, designsystem `assets/473aa8ea5d1b4f6ab8db120fc0d1e0e2`.
+- **Kilde:** brukeren i chat til Claude Code: «34/400 brukt, vi går for C».
+- **Samsvar med ChatGPT:** [`CREATIVE-REVIEW.md`](CREATIVE-REVIEW.md) anbefalte C som utgangspunkt for én fokusert forbedringsrunde, ikke som ferdig design.
+- **Kreditter:** sluttforbruk runde 1 er 34 / 400 (brukerens avlesning), godt innenfor rammen på 200. Claudes anslag (~25–30) var for lavt; reelt snitt er ca. 3 kreditter per kall (34 / 11).
+- **A og B** beholdes urørt i Stitch og i repoet som dokumentasjon. De brukes ikke videre, og elementer blandes ikke inn i C (jf. CREATIVE-REVIEW).
+- **Overføres til neste steg (ikke løst ennå):** innholdsfunnene for C i tabellen over («Bespoke formgivning», «100 % fotofri profil», «Eksperiment A/B/C», «AKTIV MENY», «OSLO», samme overskrift som B), og ChatGPTs forbedringsbrief punkt 1–7 i CREATIVE-REVIEW.
