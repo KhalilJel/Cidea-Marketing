@@ -1,133 +1,98 @@
-# Cidea Marketing — Locked Website Master Gameplan
+# Cidea Marketing — Master Gameplan (Approved production method)
 
-**Date agreed:** 2026-10-15
-**Owner:** Cidea
-**Scope:** Transform the current cideamarketing.com from its existing Vite/React design into a fully professional, creatively distinctive, cinematic, fast, conversion-ready Norwegian agency website.
-**Scope exclusions:** The separate 90-day social-media content bank, 90-day blog editorial bank, social publishing system and Gullkornet lead machine remain required for the **whole Cidea Marketing foundation**, but they are not reasons to prematurely call this website finished. Website must include a real functioning blog/publishing workflow and editorial templates before site launch.
-**Priority:** This is the 100%-focus WEBSITE plan. Complete each phase and its acceptance gate before beginning the next; no unrelated AI-tool comparisons, redesigns or other Cidea sites.
-**Technology for zero-spend build:** Claude Code + audited public `thatswyn/10k-websites` v0.2.0 creative/QA method + built-in CSS/SVG/JavaScript/React + GitHub + existing hosting. No Hostinger. Higgsfield and FFmpeg are OPTIONAL ONLY when the user explicitly approves a future video budget. No paid generation, subscriptions, new hosting or new domains.
-**Branch:** `experiment/cinematic-marketing-pilot` — draft PR #13. Draft PR #11 remains isolated until integration review.
-**Live production:** Do not merge, deploy, buy media credits, alter DNS/MX or change hosting without explicit approval.
+**Decision date:** 2026-10-15
+**Status:** PHASE 1/9 IN PROGRESS; 0/9 phases fully verified.
+**Objective:** Replace the existing weak cideamarketing.com experience with an extraordinary, original, professional, conversion-ready Norwegian digital-agency website. Distinctive art direction, real content, elegant code-based interactions, desktop/mobile quality, SEO, working contact and real blog publishing are non-negotiable.
+**Selected workflow (user-approved):** **ChatGPT (creative director and QA) → Google Stitch (visual design + graphic/content design) → Claude Code (React implementation + technical QA) → ChatGPT (visual approval and repeat)**.
+**Other infrastructure:** GitHub and EXISTING hosting. Existing React + Vite repo and routes. **0 NOK additional spend** unless separately approved. No paid AI video, no Higgsfield, no Hostinger, no domain/DNS/MX changes.
+**Experiment branch:** `experiment/cinematic-marketing-pilot`, draft PR #13. PR #11 (older design-system draft) must not be merged/changed without separate review. Production `main` stays untouched until approved launch.
+**Sources for developer workflow:** https://github.com/google-labs-code/stitch-skills (Google Labs Code community-maintained open source; project README says not an officially supported Google product); https://stitch.withgoogle.com/docs/mcp/setup/ . Skills and MCP availability/limits must be verified locally before any claim of working integration. Don't execute downloaded scripts without review.
 
-**2026-10-15 budget-safe amendment:** The user reports very limited funds and suggests shelving AI video. We proceed with a **0 NOK additional-spend design path** and preserve video as a later, separately approved upgrade. This updates execution requirements, NOT the goal of a beautiful complete website. Keep phases 1–9, all content/conversion/SEO/QA gates and the independent draft PR. If existing tools have limits/usage costs, do not trigger chargeable use without consent.
+## Role responsibilities
 
-## What finished means
+### ChatGPT: Head of creative and website production
+Own competitive/target audience research, positioning, brief and copy standards, approve user-facing creative directions with user, define design and content quality gates, maintain master status, visually QA actual renders rather than judge code alone. ChatGPT does not claim Stitch or Claude actions it hasn't verified.
 
-A visitor should feel the 'wow' of a premium cinematic site AND rapidly understand services and trust Cidea enough to request a meeting. A site is not done unless desktop/mobile look polished, movie scrubbing is smooth when applicable, accessible fallback is strong, all real pages and contact conversion work, blog infrastructure is functional, SEO and performance are measured, and final preview has been approved before live deployment. Do not fake customers, testimonials, case studies, conversion claims or data. Clearly label internal sample work as concept work, not customers.
+### Google Stitch: Visual and content studio
+Propose **THREE fundamentally different** visual worlds; typography including Norwegian glyph coverage, palette, layout, original illustrations / visual treatments, photography direction, homepage and inner-page layouts, mobile versions, CTA composition and image placements; create handoff assets and `DESIGN.md`. Draft copy can be developed in Stitch, but ChatGPT must edit and approve text, SEO and factual accuracy. AI-generated media must have appropriate commercial rights, or be replaced with clear-license assets/CSS/SVG.
 
-## The nine phases and completion gates
+### Claude Code: Engineering and integration
+Work in existing React/Vite repo, safely fetch user-approved Stitch exports/URL/project through verified MCP or approved exports, extract tokens/illustration assets, implement components and routes, add motion with CSS/SVG/JS, working contact and blog, SEO, accessibility, performance, and run build/browser screenshot tests. Compare implementation pixel-wise/visually to approved Stitch references. NEVER independently reinterpret approved art direction without raising it.
 
-### Phase 1 — Environment and production setup [IN PROGRESS]
+## Scope: Website only
+Completion of website does not mean whole Cidea Marketing foundation complete. The 90-day social post bank, 90-day full blog-content bank, social profiles/automation and Gullkornet lead generation are subsequent deliverables in the larger eight-phase Cidea business masterplan. But this website must include a complete usable blog/publishing workflow and all initial approved articles required for launch.
 
-Steps:
-- [x] Existing repo and audit documented in `docs/cinematic-pilot/INITIAL-AUDIT.md`.
-- [x] Independent branch + draft PR #13 created; no production changes.
-- [ ] Review and safely install newer 10K Websites skill; inspect instructions, scripts, licenses and applicability to React/Vite (not the older zip).
-- [ ] Verify Claude Code workspace and project skill locally; Higgsfield MCP is **deferred and NOT a blocker**. Never expose credentials in repo; no paid generation without prior approval.
-- [ ] Verify Node/build, screenshots/Playwright, preview workflow and current deployment configuration. FFmpeg only needed if/when video is approved.
-- [ ] Document verified environment results and blockers.
+## The nine execution phases: one gate at a time
 
-**Gate:** Audited project skill, safe Claude Code checkout, successful build and usable preview/test setup; no Higgsfield login or video expense required.
+### PHASE 1 — Setup and integration audit [ACTIVE]
+- [x] Existing React/Vite repository audited (see `INITIAL-AUDIT.md`).
+- [x] Branch, draft PR and GitHub CI baseline established; prior records preserved.
+- [x] User selected **ChatGPT → Stitch → Claude Code**, without paid video.
+- [ ] Check the current Google Stitch workspace/access, generation allowance and free-tier limits; do not spend.
+- [ ] Review Google Labs Stitch skills source & install **selectively** for Claude Code project (suggest `stitch::generate-design`, `stitch::design-md`/`extract-design-md`, `stitch::react-components`; names/availability must be verified). Configure Stitch MCP with official instructions / user OAuth; no credentials in repo.
+- [ ] Confirm Claude Code local checkout, working tree and the updated project handoff documents on this branch; do not overwrite uncommitted work.
+- [ ] Verify Node, React build, local preview and screenshot/browser QA baseline; record receipts and actual tool connections in `PHASE1-VERIFICATION.md`.
+**Gate:** Stitch accessible, Claude Code & Stitch MCP/asset-export pathway demonstrably usable, clean React build and preview testable. If Stitch MCP cannot be enabled, an approved manual HTML/asset export is an acceptable fallback. No unverified checkmarks.
 
-### Phase 2 — Research and three premium creative concepts [NOT STARTED]
+### PHASE 2 — Research, strategy and three design concepts [NOT STARTED]
+- [ ] Research client audience, agency peers & outstanding visual references (design patterns, not copied designs).
+- [ ] Finalize concise Norwegian positioning, audience, benefits, site goal (qualified consultations) and complete page structure.
+- [ ] Send `STITCH-CREATIVE-BRIEF.md` to Stitch and produce three **clearly differentiated** creative directions, full desktop home mockups + first mobile composition, each with typography/palette/media direction, CTA and rationale.
+- [ ] ChatGPT reviews aesthetics and commercial fit; user approves ONE direction, or gives one focused revision round.
+**Gate:** Verifiable three designs, preview links/images, user-approved chosen concept. Do not move ahead on verbal descriptions alone.
 
-- [ ] Analyze Norwegian target audience, competitor sites, Cidea services, positioning and conversion goal.
-- [ ] Inspect world-class cinematic / creative studio experiences for patterns, not copying.
-- [ ] Produce three **genuinely different** directions: visual personality, typography/palette, original CSS/SVG graphics, scroll/interactions, navigation, mobile treatment, hero/copy and CTA. Show optional future-film opportunities without depending on them.
-- [ ] Present actual visual boards/previews and strategic tradeoffs.
-- [ ] User selects and approves ONE direction.
+### PHASE 3 — Final visual identity, content/design system & all-page mockups [NOT STARTED]
+- [ ] Stitch refines chosen direction into logo/wordmark treatment, type scale, color tokens, responsive spacing, buttons, icon language, image style, reusable components.
+- [ ] Stitch designs homepage, agreed service pages, about, truthful portfolio/concepts, blog index, article and contact in desktop and mobile variants.
+- [ ] ChatGPT approves Norwegian headings/body copy, customer path and content accuracy. Avoid repetitive copy, numbered decorative labels, English microcopy, fake testimonials/projects/metrics and forbidden `gratis` copy.
+- [ ] Export validated `DESIGN.md`, layouts, styles/tokens and asset inventory with licenses.
+**Gate:** User-approved complete visual blueprint with source assets and exportable handoff; no unresolved placeholders.
 
-**Gate:** Documented and explicitly approved creative concept; no paid media generated beforehand.
+### PHASE 4 — Produce licensed media and code-based motion [NOT STARTED]
+- [ ] Create/refine key graphics via Stitch where included at zero additional cost, and produce CSS/SVG illustrations, abstract assets, photographic art direction.
+- [ ] Choose licensed images; document provenance and commercial reuse rights; avoid watermarked/unclear license outputs.
+- [ ] Define simple original scroll/hover/reveal interactions with reduced motion, keyboard handling and mobile fallbacks. No paid film required.
+- [ ] Match every visual asset to final page content and crops.
+**Gate:** All core visual assets/patterns finished, approved and rights-checked.
 
-### Phase 3 — Design system, all-page direction, storyboard [NOT STARTED]
+### PHASE 5 — Build and perfect homepage [NOT STARTED]
+- [ ] Claude takes approved Stitch design + `DESIGN.md`, implements in **existing Vite/React**, preserving routes and codebase.
+- [ ] Builds hero, navigation, social proof only when factual, services, capability showcase, blog preview and one clear CTA.
+- [ ] React/CSS/SVG motion with mobile-first quality and accessible fallback.
+- [ ] Browser renders at 320/375/768/1440; compare to Stitch screens and fix visual drift.
+**Gate:** Live test preview of homepage works, visual fidelity is documented, user approves.
 
-- [ ] Finalize brand identity treatment, logo deliverables, fonts (æøå support/licensing), palette, iconography and layout systems.
-- [ ] Design the homepage beyond the hero, including services, proof of ability, value proposition, blog and CTA.
-- [ ] Outline every required inner page and mobile layouts, with precise Norwegian text hierarchy.
-- [ ] Create a motion/interaction storyboard for CSS/SVG/React, including start/middle/end scroll states, text safe zones, keyboard/motion-accessibility and optional video insertion points.
-- [ ] List reusable existing assets, rights/licenses and a **0 NOK incremental cost** implementation plan; obtain approval before any new paid asset.
+### PHASE 6 — All inner pages and actual content [NOT STARTED]
+- [ ] Implement Nettsider, Branding, SEO, Sosiale medier / Digital markedsføring, About, relevant honest Work/Concepts, Blog index, article template, Contact.
+- [ ] Genuine complete Norwegian copy; secondary English only if actually translated end-to-end.
+- [ ] Working blog creation/update/publishing process, not static lorem ipsum; real initial articles reviewed.
+- [ ] Working contact channel to **verified Cidea Marketing inbox** rather than old SmartSvar mailto; test submissions.
+**Gate:** All agreed routes complete, no placeholders, fake examples or dead links.
 
-**Gate:** Approved brand kit, page direction, storyboard, asset list and budget.
+### PHASE 7 — Technical SEO, analytics and performance [NOT STARTED]
+- [ ] Titles/descriptions/canonical/OG/schema per route, sitemap, robots and proper crawlable text/HTML; fix current `Meta` rendering issue if confirmed.
+- [ ] Optimize assets/fonts, code splitting and loading; measure CWV/Lighthouse on real builds.
+- [ ] Accessible navigation/forms/focus, keyboard/reduced-motion, consent/privacy and privacy-conscious analytics.
+- [ ] Test actual inbound contact → response workflow and ensure service inquiries reach intended destination.
+**Gate:** Documented SEO and functional readiness, measurements and exception log.
 
-### Phase 4 — Premium visual assets and motion without paid AI video [NOT STARTED]
+### PHASE 8 — Aesthetic & functional QA loop [NOT STARTED]
+- [ ] Compare EVERY finished route desktop and mobile to chosen approved Stitch reference.
+- [ ] Audit typography, crops, spacing, repeated words, filler, inconsistent labels, scroll rhythm, animation and interactions.
+- [ ] Run automated build/browser/visual/functional/accessibility smoke checks, measure speed, manually inspect screenshots.
+- [ ] User reviews actual preview, iterative improvements until approved.
+**Gate:** User approves complete site and all critical issues closed with test receipts.
 
-- [ ] Create first-class visual assets using licensed existing material, CSS/SVG, typography and code-based motion, without external media charges.
-- [ ] Develop original hero compositions and supporting graphic elements; inspect desktop and mobile frames.
-- [ ] Implement/test polished lightweight interactions, scroll-linked transitions and reduced-motion alternatives, with accessible non-animated fallbacks.
-- [ ] Keep a documented OPTIONAL future-video insertion point. Higgsfield integration, paid video and FFmpeg checks are deferred until the user separately approves a budget; they are NOT acceptance criteria now.
-- [ ] Verify asset licensing, legibility and measured transfer size.
+### PHASE 9 — Controlled release & verify [NOT STARTED]
+- [ ] Review PR #11 design-system work for conflicts, resolve only useful pieces with user approval.
+- [ ] User explicitly approves merge and production release.
+- [ ] Deploy using current hosting, without DNS/MX changes.
+- [ ] Verify live domain, mobile and desktop, links, contact test, SEO, assets and analytics; document rollback and maintenance.
+**Gate:** Site verified live and approved by user.
 
-**Gate:** A premium, coherent, reviewed **zero-extra-cost** visual and motion asset package; video not required.
+## Progress discipline
+After **every individual completed work item**, report: **Phase X/9, current task, verified completed with proof, incomplete current gate, next concrete task, blockers/user decision**. NEVER mark phase complete without all gated deliverables. Keep change history committed to GitHub.
+Website production always has priority until this plan is finished. Do not restart research into other vendors without user explicitly reopening the decision.
 
-### Phase 5 — Premium interactive homepage implementation [NOT STARTED]
-
-- [ ] Implement as React/Vite component(s) inside existing site, not overwrite app with one-file HTML template.
-- [ ] Integrate lightweight code-driven visual motion, scroll interactions and real, crawlable headline/CTA without requiring AI video.
-- [ ] Finish all homepage sections with meaningful content and polished layout.
-- [ ] Deliberate first-class mobile, data-saving and reduced-motion experiences; no heavy assets required.
-- [ ] Inspect real desktop/mobile screenshots and interactions.
-
-**Gate:** Homepage is visually approved and fully interactive in an isolated preview.
-
-### Phase 6 — Complete all other website pages [NOT STARTED]
-
-- [ ] Services: Nettsider, Branding, SEO, Sosiale medier (and map existing digital-marketing route to approved IA).
-- [ ] About/positioning; real work/case studies or explicitly labeled examples, never fake client results.
-- [ ] Blog index, article template, initial approved editorial content, and functional publishing process/CMS decision.
-- [ ] Contact conversion page, verified branded destination (current mailto wrongly points to SmartSvar address), tested end-to-end submission/response flow.
-- [ ] Norwegian-first coherent copy; optional English experience must truly translate the supported pages or remove misleading toggle until ready.
-- [ ] Resolve visual and content issues documented in the initial audit, including generic English labels and decorative numbered UI.
-
-**Gate:** All agreed routes real, consistent, complete and navigable; no placeholders masquerading as finished services/content.
-
-### Phase 7 — SEO, technical quality and conversion [NOT STARTED]
-
-- [ ] Metadata for every route, canonical, Open Graph/social previews, accessible headings and semantic markup.
-- [ ] Fix/verify per-route `Meta` behavior, sitemap, robots and appropriate structured data.
-- [ ] Asset/image loading and caching, real Lighthouse/Core Web Vitals mobile/desktop results; no imaginary claims. Test video delivery only if video is eventually approved.
-- [ ] Contact CTA and form/mailbox/CRM integration as appropriate; no dead endpoints.
-- [ ] Add measurement/analytics with appropriate privacy considerations.
-
-**Gate:** Verified crawlability, lead intake, SEO configuration and measured performance with documented exceptions.
-
-### Phase 8 — Visual & functional QA with user [NOT STARTED]
-
-- [ ] Real screenshots at 320, 375, 768, 1440 px (and other relevant sizes).
-- [ ] Visual QA: art direction, rhythm, spacing, font hierarchy, overlap, crop, links, copy, video fallback.
-- [ ] Browser tests: keyboard, accessibility, reduced motion, mobile scroll, loading/network failures, pages and contact submission.
-- [ ] Check Lighthouse / axe / Playwright findings and fix critical issues.
-- [ ] User reviews actual preview, requests iterative improvements, grants final visual sign-off.
-
-**Gate:** Explicit user approval of complete website preview and recorded QA results.
-
-### Phase 9 — Controlled launch and post-launch verification [NOT STARTED]
-
-- [ ] Review differences and reconcile relevant PR #11 design system with cinematic branch; avoid unapproved styles or merge conflicts.
-- [ ] User explicitly approves production release; preserve rollback route.
-- [ ] Merge and deploy using existing hosting; do not change DNS/MX unnecessarily.
-- [ ] Validate cideamarketing.com HTTPS, page routes, SEO/indexability, graphics/animation fallbacks, analytics, live contact/test lead, desktop/mobile performance. Video delivery only if applicable.
-- [ ] Fix launch issues, document handover, operational ownership and routine improvement process.
-
-**Gate:** All live checks passed and user explicitly accepts launch.
-
-## Project discipline and status updates
-
-At each work session and progress reply, show:
-- **Website plan:** Current phase X/9 and the one concrete step being worked on.
-- **Verified completed:** Facts with URLs, screenshots, CI/test receipts.
-- **Remaining to pass the current gate:** Compact checklist.
-- **Blocker or explicit user decision:** Only where actually necessary.
-- Do not claim a phase complete until all gate criteria are demonstrated.
-- Never chase vendors based on curiosity. The current path is **0 NOK extra spend**, Claude Code plus built-in web technologies; Higgsfield remains optional and on hold until explicit budget approval.
-- Keep each phase's deliverables committed to GitHub, with draft previews and clearly marked experimental content.
-- Keep the wider 8-phase Cidea Marketing program separate; this is its website-specific execution plan.
-
-## Initial progress snapshot (2026-10-15)
-
-- Phase 1: IN PROGRESS. Existing React/Vite repo audited, isolated experimental branch and PR #13 opened, reference workflow documented. Claude skill **not verified installed**, Higgsfield MCP **not verified connected**, runtime/preview testing **not yet done**.
-- Phases 2–9: NOT STARTED.
-- Production website: unchanged by this plan.
-
-## First next action
-
-Verify Claude Code's current workspace, safely install/audit 10K Websites v0.2.0, verify Node/build and preview toolchain. Do **not** block on Higgsfield, credits, or FFmpeg. Start Phase 2 only after Phase 1 acceptance criteria are met.
+## Initial snapshot at selection
+Phase 1/9 remains OPEN. ChatGPT/Stitch/Claude methodology SELECTED. Stitch design workspace/MCP integration not yet confirmed, no new Stitch designs generated, no new working code submitted for launch. Existing production unaffected. Next deliverable: `STITCH-CREATIVE-BRIEF.md`, developer handoff and verification of Stitch connection/preview path.
