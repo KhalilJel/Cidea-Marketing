@@ -1,0 +1,6 @@
+/* Self-hosted variable fonts (SIL OFL 1.1, see docs/design-system/README.md).
+   Self-hosting avoids sending visitor IPs to Google Fonts. Every subset is declared with
+   a unicode-range, so browsers download only the subsets a page uses (Latin for
+   Norwegian text, including æ, ø, å). font-display: swap is set by Fontsource. */
+@import '@fontsource-variable/manrope/wght.css';
+@import '@fontsource-variable/inter/wght.css';

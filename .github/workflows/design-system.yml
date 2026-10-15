@@ -1,0 +1,40 @@
+name: Design system checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - feat/phase-2-design-system
+
+jobs:
+  design-system:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - name: Tokens CSS matches tokens.json
+        run: node scripts/build-tokens.mjs --check
+      - name: WCAG AA contrast gate
+        run: node scripts/contrast-check.mjs
+      - run: npm run build
+      - run: npm install --no-save playwright@1.56 @axe-core/playwright@4.10
+      - run: npx playwright install --with-deps chromium
+      - name: Start preview server
+        run: |
+          npx vite preview --host 127.0.0.1 --port 4173 --strictPort > /tmp/preview.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:4173/design-system.html >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/preview.log
+          exit 1
+      - name: Browser QA (viewports, axe, fonts, focus, reduced motion)
+        run: node scripts/visual-qa.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: design-system-screenshots
+          path: docs/design-system/screenshots/
