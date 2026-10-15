@@ -1,8 +1,8 @@
 # Fase 2/9 – tre designretninger i Google Stitch
 
-**Status:** PÅGÅR. Konsept A er generert (desktop + mobil). B og C er ikke startet; de venter på kredittkontroll.
+**Status:** PÅGÅR. Konsept A er generert (desktop + mobil). B og C er ikke startet; kredittkontrollen er gjennomført, og de er klare for kontrollert generering.
 **Metode:** prompt = [`prompts/00-common.md`](prompts/00-common.md) (felles krav fra `STITCH-CREATIVE-BRIEF.md`) + konseptets retningstekst. Hvert konsept har sitt **eget nye Stitch-prosjekt**, fordi designsystemet ligger på prosjektnivå. Eksisterende Stitch-prosjekter er ikke endret.
-**Kredittramme for runde 1:** maks 200 av 400 daglige kreditter. Startnivå (brukerens avlesning): 0 av 400 brukt.
+**Kredittramme for runde 1:** maks 200 av 400 daglige kreditter. Startnivå (brukerens avlesning): 0 av 400 brukt. Etter ferdigstilt konsept A viste brukerens kontroll **9 / 400**.
 
 Stitch-API-et oppgir ikke kredittforbruk, så forbruket leses av i Stitch-kontoen av brukeren etter hvert konsept.
 
@@ -12,7 +12,9 @@ Stitch-API-et oppgir ikke kredittforbruk, så forbruket leses av i Stitch-kontoe
 |---|---|---|---|---|
 | Start | – | – | – | 0 / 400 |
 | A desktop | `generate_screen_from_text` (DESKTOP) | standard | 198 s | *venter på avlesning* |
-| A mobil | `generate_screen_from_text` (MOBILE, samme designsystem) | standard | 110 s | *venter på avlesning* |
+| A mobil | `generate_screen_from_text` (MOBILE, samme designsystem) | standard | 110 s | **9 / 400** (bekreftet av brukeren etter A desktop + mobil) |
+
+**Tilgjengelig etter A:** 391 av 400 daglige kreditter; **191 av 200** igjen innenfor den frivillige grensen for første runde. Neste steg: B desktop → B mobil → be brukeren lese av teller → C desktop → C mobil hvis rammen holder. Ikke anta at alle genereringer koster like mye.
 
 ## Konsept A – «Skulpturell redaksjon»
 
