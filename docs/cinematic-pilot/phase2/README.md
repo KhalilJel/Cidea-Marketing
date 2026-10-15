@@ -59,8 +59,8 @@ Stitch-API-et oppgir ikke kreditter. Brukeren leser av i Stitch-kontoen.
 | 9 | 17:41 | C v2 desktop · `generate_screen_from_text` | OK | 204 s |
 | 10 | 17:41 | B mobil · `edit_screens` (orddeling) | OK | 72 s |
 | 11 | 17:45 | C v2 mobil · `generate_screen_from_text` | OK | 132 s |
-| – | – | *Sluttavlesning bruker: **venter*** | | |
+| – | – | *Sluttavlesning bruker: **34 / 400**, 2026-10-15* | | |
 
-Ramme for runde 1: maks 200 kreditter. Avlesningene tyder på ca. 2–3 kreditter per kall, altså anslagsvis ~25–30 totalt. Det tallet er **ikke verifisert** før sluttavlesningen er ført inn.
+Ramme for runde 1: maks 200 kreditter. **Endelig brukeravlesning: 34 / 400**, dvs. 34 brukt, 366 igjen i dagens totale kvote og 166 igjen innenfor frivillig maksgrense på 200. Dette er totalt for runden, ikke en per-kall-pris. Ingen videre generering før visuell vurdering og valg.
 
 Ikke opprettet/kalt: `create_project` for prosjekter ut over de fire over, `delete_project`, `apply_design_system`, `generate_variants`.
