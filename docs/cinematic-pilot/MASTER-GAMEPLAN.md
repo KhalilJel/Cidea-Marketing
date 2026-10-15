@@ -1,7 +1,7 @@
 # Cidea Marketing — Master Gameplan (Approved production method)
 
 **Decision date:** 2026-10-15
-**Status:** PHASE 1/9 IN PROGRESS; 0/9 phases fully verified.
+**Status:** PHASE 1/9 VERIFIED COMPLETE 2026-10-15 (see `PHASE1-VERIFICATION.md`); 1/9 phases verified. Phase 2 not started.
 **Objective:** Replace the existing weak cideamarketing.com experience with an extraordinary, original, professional, conversion-ready Norwegian digital-agency website. Distinctive art direction, real content, elegant code-based interactions, desktop/mobile quality, SEO, working contact and real blog publishing are non-negotiable.
 **Selected workflow (user-approved):** **ChatGPT (creative director and QA) → Google Stitch (visual design + graphic/content design) → Claude Code (React implementation + technical QA) → ChatGPT (visual approval and repeat)**.
 **Other infrastructure:** GitHub and EXISTING hosting. Existing React + Vite repo and routes. **0 NOK additional spend** unless separately approved. No paid AI video, no Higgsfield, no Hostinger, no domain/DNS/MX changes.
@@ -24,14 +24,14 @@ Completion of website does not mean whole Cidea Marketing foundation complete. T
 
 ## The nine execution phases: one gate at a time
 
-### PHASE 1 — Setup and integration audit [ACTIVE]
+### PHASE 1 — Setup and integration audit [VERIFIED 2026-10-15]
 - [x] Existing React/Vite repository audited (see `INITIAL-AUDIT.md`).
 - [x] Branch, draft PR and GitHub CI baseline established; prior records preserved.
 - [x] User selected **ChatGPT → Stitch → Claude Code**, without paid video.
-- [ ] Check the current Google Stitch workspace/access, generation allowance and free-tier limits; do not spend.
-- [ ] Review Google Labs Stitch skills source & install **selectively** for Claude Code project (suggest `stitch::generate-design`, `stitch::design-md`/`extract-design-md`, `stitch::react-components`; names/availability must be verified). Configure Stitch MCP with official instructions / user OAuth; no credentials in repo.
-- [ ] Confirm Claude Code local checkout, working tree and the updated project handoff documents on this branch; do not overwrite uncommitted work.
-- [ ] Verify Node, React build, local preview and screenshot/browser QA baseline; record receipts and actual tool connections in `PHASE1-VERIFICATION.md`.
+- [x] Check the current Google Stitch workspace/access; do not spend. (Access verified; free-tier limits are not exposed via the API — check them in the Stitch account.)
+- [x] Review Google Labs Stitch skills source & install **selectively** for Claude Code project (suggest `stitch::generate-design`, `stitch::design-md`/`extract-design-md`, `stitch::react-components`; names/availability must be verified). Configure Stitch MCP with official instructions / user OAuth; no credentials in repo.
+- [x] Confirm Claude Code local checkout, working tree and the updated project handoff documents on this branch; do not overwrite uncommitted work.
+- [x] Verify Node, React build, local preview and screenshot/browser QA baseline; record receipts and actual tool connections in `PHASE1-VERIFICATION.md`.
 **Gate:** Stitch accessible, Claude Code & Stitch MCP/asset-export pathway demonstrably usable, clean React build and preview testable. If Stitch MCP cannot be enabled, an approved manual HTML/asset export is an acceptable fallback. No unverified checkmarks.
 
 ### PHASE 2 — Research, strategy and three design concepts [NOT STARTED]

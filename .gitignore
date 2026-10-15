@@ -26,3 +26,6 @@ media-review/
 # Editor-local configuration
 .vscode/
 .idea/
+
+# Per-user Claude Code settings (MCP approvals etc.)
+.claude/settings.local.json

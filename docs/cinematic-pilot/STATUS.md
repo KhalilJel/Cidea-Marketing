@@ -1,7 +1,7 @@
 # Cidea Marketing – Status / verificerbar fremdrift
 
 **Oppdatert:** 2026-10-15
-**Nå:** FASE **1/9**, IN PROGRESS; **0/9** hele faser verifisert.
+**Nå:** FASE **1/9 VERIFISERT FERDIG** 2026-10-15; **1/9** faser verifisert. Fase 2 er ikke startet og venter på klarsignal.
 **Godkjent metode:** ChatGPT → Google Stitch → Claude Code → ChatGPT QA.
 **Kostnadsgrense:** 0 NOK i nye abonnementer/mediekreditter uten eksplisitt brukerbeslutning.
 **Eksperimentgren:** `experiment/cinematic-marketing-pilot`; [draft PR #13](https://github.com/KhalilJel/Cidea-Marketing/pull/13); ingen produksjonsendring.
@@ -14,13 +14,13 @@
 | Baseline-audit av eksisterende Vite/React-kode | FERDIG (read-only audit, ikke visuell QA) | `INITIAL-AUDIT.md` |
 | Master Gameplan oppdatert til valgt metode | FERDIG I GITHUB | `MASTER-GAMEPLAN.md` |
 | Godkjent innholds-/designbrief med 3 tydelig ulike retninger | FERDIG SOM BRIEF; ingen faktiske mockups generert | `STITCH-CREATIVE-BRIEF.md` |
-| Lokal Claude Code-skill for valgt metode | LEST OG FULGT av Claude Code 2026-10-15; automatisk `/cidea-website`-oppdagelse venter på brukersjekk | `PHASE1-VERIFICATION.md` § 2 |
+| Lokal Claude Code-skill for valgt metode | VERIFISERT: automatisk oppdaget sammen med 4 Stitch-skills | `PHASE1-VERIFICATION.md` § 2 |
 | Konflikterende eldre 10K-skill | FJERNET fra aktiv prosjektsti på eksperimentgren; eldre docs beholdt som historikk | Git commit på PR #13 |
 | Offisiell Google Labs Stitch skills repo / README inspisert | FERDIG KILDEGJENNOMGANG | https://github.com/google-labs-code/stitch-skills |
 | Handoff/konfigurasjonsveiledning | FERDIG I GITHUB | `STITCH-HANDOFF.md` |
 | Stitch-skills (4 stk, festet commit) | INSTALLERT prosjektlokalt etter kodegjennomgang | `PHASE1-VERIFICATION.md` § 3 |
-| Stitch workspace / MCP login | KONFIGURERT i `.mcp.json` (nøkkel via `STITCH_API_KEY`); endepunkt målt (200, 15 verktøy, 401 uten nøkkel); **venter på brukerens API-nøkkel** | `PHASE1-VERIFICATION.md` § 4 |
-| Stitch → Claude asset/design read eller eksport-smoke-test | **IKKE UTFØRT** – krever nøkkel | — |
+| Stitch workspace / MCP login | VERIFISERT: API-nøkkel satt av bruker; `list_projects` HTTP 200 (2 prosjekter) | `PHASE1-VERIFICATION.md` § 4 |
+| Stitch → Claude asset/design read eller eksport-smoke-test | VERIFISERT: get_screen → HTML 55 kB + skjermbilde 1440×8697 → lokal rendring uten feil | `PHASE1-VERIFICATION.md` § 4 |
 | Claude lokal workspace på trygg eksperimentgren | VERIFISERT (ren arbeidskopi, HEAD `b17bafa`) | `PHASE1-VERIFICATION.md` § 1 |
 | Local Node/build, preview og screenshot-test | VERIFISERT: Node 24.21.0, build OK, preview+dev 200, 14/14 rute-sjekker 390/1440 | `PHASE1-VERIFICATION.md` § 5, `evidence/phase1/` |
 | Tre ferdige Stitch-designs | **IKKE LAGET** (hører til fase 2 etter verifisert fase 1) | — |
@@ -29,10 +29,10 @@
 ## Gate for å avslutte fase 1
 
 [x] Claude Code lokalt på trygg branch uten tap av lokale endringer.
-[ ] `/cidea-website` eller direkte lesning av skill bekreftet.
-[ ] Stitch innlogging + fungerende MCP eller verifiserbar eksport → Claude.
+[x] `/cidea-website` eller direkte lesning av skill bekreftet.
+[x] Stitch innlogging + fungerende MCP eller verifiserbar eksport → Claude.
 [x] Vite-build, lokal preview, mobil/desktop screenshot test dokumentert.
-[ ] `PHASE1-VERIFICATION.md` med ekte resultater, ingen oppdiktede tall.
+[x] `PHASE1-VERIFICATION.md` med ekte resultater, ingen oppdiktede tall.
 [x] Ingen betalinger eller produksjonsendringer.
 
 ## Neste konkrete handling

@@ -1,7 +1,7 @@
 # Fase 1/9 – verifikasjon (Claude Code)
 
 **Dato:** 2026-10-15 · **Gren:** `experiment/cinematic-marketing-pilot` · **PR:** #13 (draft)
-**Status:** FASE 1 **IKKE FERDIG**. 4 av 6 gate-punkter er verifisert. Det som gjenstår krever brukerens Stitch-innlogging.
+**Status:** FASE 1 **VERIFISERT FERDIG** (oppdatert 2026-10-15 16:45). Alle 6 gate-punkter er oppfylt, se gate-sjekklisten nederst. Fase 2 er ikke startet.
 
 ## 1. Lokal Git – VERIFISERT
 
@@ -11,11 +11,11 @@
 | `C:\Users\khali\cidea-sites\Cidea-Marketing` | Ikke rørt (gren `fix/marketing-claims`) |
 | Bytte | `git switch -c experiment/cinematic-marketing-pilot --track origin/...` → HEAD `b17bafa`. Ingen reset, ingen tap. |
 
-## 2. Prosjekt-skill – DELVIS VERIFISERT
+## 2. Prosjekt-skill – VERIFISERT
 
 - `.claude/skills/cidea-website/SKILL.md` er lest og fulgt (regel null: alle fem dokumenter er lest).
 - Automatisk oppdagelse av `/cidea-website` er **ikke** bekreftet. Den kjørende økten ble startet i en annen mappe, og skills lastes ikke på nytt når en mappe legges til. Den medfølgende CLI-en (`claude.exe` 2.1.295) er ikke innlogget.
-- **Brukersjekk:** åpne en Claude Code-økt i `C:\Users\khali\Cidea-Marketing` og skriv `/cidea-website` (se § 4).
+- **Oppdagelse bekreftet:** da økten fikk `C:\Users\khali\Cidea-Marketing` som arbeidsmappe, listet Claude Code automatisk `cidea-website`, `stitch-design-md (design-md)`, `stitch-generate-design (stitch::generate-design)`, `stitch-manage-design-system (stitch::manage-design-system)` og `stitch-react-components (stitch::react-components)` som tilgjengelige skills.
 
 ## 3. Stitch-skills – INSTALLERT (prosjektlokalt, gjennomgått)
 
@@ -36,7 +36,7 @@ Installert ved å kopiere fire skill-mapper uendret til `.claude/skills/`. `npx 
 - `stitch-manage-design-system` alternativ A viser til et Python-opplastingsskript som tar `--api-key` på kommandolinjen. Skriptet er **ikke** installert. Vi bruker bare MCP-verktøyene (`create_design_system_from_design_md` osv.).
 - Ikke installert: `remotion` (video, utenfor rammen), `react-native`, `shadcn-ui`, `react-vite-dashboard`, `code-to-design`, `extract-static-html`, `upload-to-stitch`.
 
-## 4. Stitch MCP – KONFIGURERT, TILKOBLING IKKE VERIFISERT
+## 4. Stitch MCP – KONFIGURERT OG TILKOBLING VERIFISERT
 
 **Endepunkt (målt 2026-10-15 med curl):**
 - `POST https://stitch.googleapis.com/mcp` `initialize` → `200`, `protocolVersion 2025-06-18`.
@@ -50,11 +50,25 @@ Installert ved å kopiere fire skill-mapper uendret til `.claude/skills/`. `npx 
 **Konfigurasjon:** `.mcp.json` (prosjekt) med `"X-Goog-Api-Key": "${STITCH_API_KEY}"`. Nøkkelen leses fra en miljøvariabel og ligger **aldri** i repoet.
 `claude mcp list` → `stitch: https://stitch.googleapis.com/mcp (HTTP) - Pending approval`, med varsel `Missing environment variables: STITCH_API_KEY`. Dette er forventet.
 
-**Gjenstår (krever bruker):**
-1. Logg inn på https://stitch.withgoogle.com → profilmeny → Stitch settings → API key → opprett nøkkel. Stitch er gratis, og det skal ikke velges noe betalt.
-2. Legg nøkkelen i en brukervariabel på Windows, ikke i chat eller repo: Innstillinger → System → Om → Avanserte systeminnstillinger → Miljøvariabler → Ny: `STITCH_API_KEY`.
-3. Åpne en ny Claude Code-økt i `C:\Users\khali\Cidea-Marketing`, godkjenn MCP-serveren `stitch`, og kjør `/cidea-website`.
-4. Claude kjører da en ufarlig lesetest (`list_projects`, deretter `get_screen` på en eksisterende skjerm hvis det finnes en) og fører resultatet inn her.
+**Brukerens autorisasjon (2026-10-15):** brukeren opprettet en API-nøkkel i Stitch Settings og satte den som Windows-brukervariabel `STITCH_API_KEY`. Claude kontrollerte den uten å vise verdien: satt = True, lengde 53, ingen mellomrom i kantene. `claude mcp list` viser ikke lenger varselet om manglende variabel.
+
+**Tilkoblingstest – kun lesing, samme HTTP-kall og header som MCP-klienten sender:**
+
+| Kall | Resultat |
+|---|---|
+| `tools/call list_projects` | **HTTP 200**, 2 prosjekter: «API Key Finder Guide» (`12872574453863938775`), «Cidea Marketing Agency Redesign» (`337990139602228561`, laget 2026-10-14, DESKTOP, mørkt tema, Bodoni Moda / Hanken Grotesk / JetBrains Mono) |
+| `tools/call list_screens` (`337990139602228561`) | **OK**, 3 skjermer: «Cidea Marketing — Hovedside & Retninger» (`d2f5cfdd…`), «Innsikt & Merkevaresystem — Cidea» (`265e4b11…`), «Tjenester & Digital Vekst — Cidea» (`14fd5dd7…`), alle 2560 px brede |
+| `tools/call get_screen` (`d2f5cfdd…`) | **OK**. Felter: name, title, screenshot, htmlCode, width, height, deviceType. Første forsøk med ekstra argumenter ga «invalid argument»; skjemaet krever bare `name`. |
+| Nedlasting av `htmlCode.downloadUrl` | **OK**, 55 kB HTML, `lang="no"` |
+| Nedlasting av `screenshot.downloadUrl` | **OK**. Standard er bare et 85×512-miniatyrbilde; med suffikset `=w1440` fås 1440×8697 |
+| Lokal rendring i Chromium (Playwright) | **OK**, H1 «Vi bygger distinkte merkevarer og målbare vekstmotorer for virksomheter med ambisjoner.», 0 JS-feil |
+
+Dette beviser hele veien Stitch → Claude: liste → skjerm → HTML/skjermbilde → lokal rendring. De nedlastede filene ligger bare i Claudes midlertidige scratchpad og er **ikke** lagt i repoet, fordi designet ikke er godkjent.
+
+**Merknader til senere faser:**
+- Det eksisterende prosjektet «Cidea Marketing Agency Redesign» er laget før fase 2. Det er **ikke** de tre retningene briefen krever, og det er ikke godkjent. Det inneholder påstander som må kontrolleres av ChatGPT (bl.a. «OSLO • BERGEN», «målbare vekstmotorer»), og en NO/EN-velger selv om det ikke finnes noen engelsk versjon.
+- Stitch-HTML laster Google Fonts og Tailwind fra CDN. Ved implementering (fase 5) må fontene selvhostes og stilene oversettes til prosjektets CSS.
+- **Godkjenning i Claude Code:** `claude mcp list` viser `stitch … Pending approval`. Det er Claude Codes engangsgodkjenning av prosjektservere fra `.mcp.json`, og den vises som en dialog når en interaktiv økt starter i mappen. `enabledMcpjsonServers` er satt i den lokale filen `.claude/settings.local.json` (ignoreres av git). Claude har ikke redigert brukerens globale `~/.claude.json`. Tilkoblingen er bevist med identiske HTTP-kall; MCP-verktøyene vises i økten etter at godkjenningen er klikket.
 
 **Gratisgrenser:** ikke verifisert. Kvoten vises i Stitch-kontoen etter innlogging. Ingen generering er gjort i fase 1.
 
@@ -78,8 +92,8 @@ Ingen betalte tjenester, ingen video, ingen merge, ingen deploy, ingen endringer
 ## Gate-sjekkliste fase 1
 
 - [x] Claude Code lokalt på trygg gren uten tap av lokale endringer
-- [ ] `/cidea-website` oppdaget automatisk (skill lest og fulgt manuelt; brukersjekk i § 4)
+- [x] `/cidea-website` og Stitch-skillene oppdaget automatisk (§ 2)
 - [x] Stitch-skills gjennomgått og installert selektivt
-- [ ] Stitch-innlogging og fungerende MCP-lesing (konfigurert; venter på `STITCH_API_KEY`)
+- [x] Stitch-innlogging (API-nøkkel) og fungerende lesing: list_projects → get_screen → HTML/skjermbilde → rendring (§ 4)
 - [x] Vite-build, lokal preview og skjermbilder for mobil/desktop dokumentert
 - [x] Ingen betalinger eller produksjonsendringer
