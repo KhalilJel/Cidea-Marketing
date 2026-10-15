@@ -98,4 +98,4 @@ Ikke opprettet/kalt: `create_project` for prosjekter ut over de fire over, `dele
 | 5 Desktop + mobil hero og seksjonspar, før/etter | OK, se før/etter-arket |
 | Konsistens | Avsluttende CTA har ulik tekst på desktop («Klar for å løfte bedriftens digitale tilstedeværelse?») og mobil («Klar for et overbevisende digitalt uttrykk?»). Lenketekster som «Se arkitektur», «Metodikk», «Kampanjeform» trenger copy-vurdering. |
 
-**Kreditter:** 3 kall i runden. Før runden: 34/400. Etter runden: *venter på brukerens avlesning*.
+**Kreditter:** 3 kall i runden. Før: 34/400, etter: **44/400** (brukerens avlesning) – runden brukte **10 kreditter** (≈3,3 per kall), godt innenfor rammen på 100. Totalt i fase 2: 44/400.

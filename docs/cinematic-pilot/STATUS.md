@@ -1,7 +1,7 @@
 # Cidea Marketing – Status / verificerbar fremdrift
 
 **Oppdatert:** 2026-10-15
-**Nå:** FASE **2/9 – gate nådd 2026-10-15: brukeren har valgt konsept C («Fremtidig håndverk» v2)**. Kreditter runde 1: 34/400. Neste er den fokuserte forbedringsrunden for C (ChatGPTs brief i `phase2/CREATIVE-REVIEW.md`) / fase 3, som **ikke er startet** og venter på klarsignal. Research- og posisjoneringspunktene i fase 2 (MASTER-GAMEPLAN) føres av ChatGPT.
+**Nå:** FASE **2/9 – gate nådd** (brukeren valgte konsept C 2026-10-15). **Fokusert forbedringsrunde for C er utført** (3 Stitch-redigeringer, 10 kreditter; totalt 44/400). Neste: ChatGPT/bruker vurderer raffinert C (`phase2/concept-C/for-etter-forbedring.png`) og gjenstående copy-punkter i `phase2/README.md`. Fase 3 er **ikke startet**.
 **Godkjent metode:** ChatGPT → Google Stitch → Claude Code → ChatGPT QA.
 **Kostnadsgrense:** 0 NOK i nye abonnementer/mediekreditter uten eksplisitt brukerbeslutning.
 **Eksperimentgren:** `experiment/cinematic-marketing-pilot`; [draft PR #13](https://github.com/KhalilJel/Cidea-Marketing/pull/13); ingen produksjonsendring.
