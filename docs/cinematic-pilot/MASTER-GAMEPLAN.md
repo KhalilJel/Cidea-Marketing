@@ -5,9 +5,11 @@
 **Scope:** Transform the current cideamarketing.com from its existing Vite/React design into a fully professional, creatively distinctive, cinematic, fast, conversion-ready Norwegian agency website.
 **Scope exclusions:** The separate 90-day social-media content bank, 90-day blog editorial bank, social publishing system and Gullkornet lead machine remain required for the **whole Cidea Marketing foundation**, but they are not reasons to prematurely call this website finished. Website must include a real functioning blog/publishing workflow and editorial templates before site launch.
 **Priority:** This is the 100%-focus WEBSITE plan. Complete each phase and its acceptance gate before beginning the next; no unrelated AI-tool comparisons, redesigns or other Cidea sites.
-**Technology locked:** Claude Code + audited public `thatswyn/10k-websites` v0.2.0 skill + Higgsfield (MCP) + FFmpeg + GitHub + existing hosting. No Hostinger.
+**Technology for zero-spend build:** Claude Code + audited public `thatswyn/10k-websites` v0.2.0 creative/QA method + built-in CSS/SVG/JavaScript/React + GitHub + existing hosting. No Hostinger. Higgsfield and FFmpeg are OPTIONAL ONLY when the user explicitly approves a future video budget. No paid generation, subscriptions, new hosting or new domains.
 **Branch:** `experiment/cinematic-marketing-pilot` — draft PR #13. Draft PR #11 remains isolated until integration review.
 **Live production:** Do not merge, deploy, buy media credits, alter DNS/MX or change hosting without explicit approval.
+
+**2026-10-15 budget-safe amendment:** The user reports very limited funds and suggests shelving AI video. We proceed with a **0 NOK additional-spend design path** and preserve video as a later, separately approved upgrade. This updates execution requirements, NOT the goal of a beautiful complete website. Keep phases 1–9, all content/conversion/SEO/QA gates and the independent draft PR. If existing tools have limits/usage costs, do not trigger chargeable use without consent.
 
 ## What finished means
 
@@ -21,17 +23,17 @@ Steps:
 - [x] Existing repo and audit documented in `docs/cinematic-pilot/INITIAL-AUDIT.md`.
 - [x] Independent branch + draft PR #13 created; no production changes.
 - [ ] Review and safely install newer 10K Websites skill; inspect instructions, scripts, licenses and applicability to React/Vite (not the older zip).
-- [ ] Configure/verify Claude Code workspace and Higgsfield MCP access. Never expose credentials in repo; no paid generation without prior approval.
-- [ ] Verify Node/build, FFmpeg, screenshots/Playwright, preview workflow and current deployment configuration.
+- [ ] Verify Claude Code workspace and project skill locally; Higgsfield MCP is **deferred and NOT a blocker**. Never expose credentials in repo; no paid generation without prior approval.
+- [ ] Verify Node/build, screenshots/Playwright, preview workflow and current deployment configuration. FFmpeg only needed if/when video is approved.
 - [ ] Document verified environment results and blockers.
 
-**Gate:** Audited skill, verified Higgsfield connection and safe working preview environment; no production changes.
+**Gate:** Audited project skill, safe Claude Code checkout, successful build and usable preview/test setup; no Higgsfield login or video expense required.
 
-### Phase 2 — Research and three cinematic creative concepts [NOT STARTED]
+### Phase 2 — Research and three premium creative concepts [NOT STARTED]
 
 - [ ] Analyze Norwegian target audience, competitor sites, Cidea services, positioning and conversion goal.
 - [ ] Inspect world-class cinematic / creative studio experiences for patterns, not copying.
-- [ ] Produce three **genuinely different** directions: visual personality, type/colors, graphics, film subject, camera/scroll narrative, mobile alternative, navigation, hero/copy and CTA.
+- [ ] Produce three **genuinely different** directions: visual personality, typography/palette, original CSS/SVG graphics, scroll/interactions, navigation, mobile treatment, hero/copy and CTA. Show optional future-film opportunities without depending on them.
 - [ ] Present actual visual boards/previews and strategic tradeoffs.
 - [ ] User selects and approves ONE direction.
 
@@ -42,27 +44,27 @@ Steps:
 - [ ] Finalize brand identity treatment, logo deliverables, fonts (æøå support/licensing), palette, iconography and layout systems.
 - [ ] Design the homepage beyond the hero, including services, proof of ability, value proposition, blog and CTA.
 - [ ] Outline every required inner page and mobile layouts, with precise Norwegian text hierarchy.
-- [ ] Create annotated storyboard specifying first/middle/final frames and scroll beats, text safe zones and animation fallbacks.
-- [ ] Set expected media quantity and cost ceiling for user approval.
+- [ ] Create a motion/interaction storyboard for CSS/SVG/React, including start/middle/end scroll states, text safe zones, keyboard/motion-accessibility and optional video insertion points.
+- [ ] List reusable existing assets, rights/licenses and a **0 NOK incremental cost** implementation plan; obtain approval before any new paid asset.
 
 **Gate:** Approved brand kit, page direction, storyboard, asset list and budget.
 
-### Phase 4 — Higgsfield production and media finishing [NOT STARTED]
+### Phase 4 — Premium visual assets and motion without paid AI video [NOT STARTED]
 
-- [ ] Produce sample still(s), inspect, and request approval.
-- [ ] Generate one short film (Tier 1 proof of concept), only after explicit credit/cost approval.
-- [ ] Review artifacts, flicker, composition, camera motion and alignment with storyboard.
-- [ ] Extend beyond Tier 1 only if visual storytelling benefits and budget approved.
-- [ ] Optimize video with FFmpeg; check seek behavior, GOP/keyframes, responsive poster assets, licensing and file size.
+- [ ] Create first-class visual assets using licensed existing material, CSS/SVG, typography and code-based motion, without external media charges.
+- [ ] Develop original hero compositions and supporting graphic elements; inspect desktop and mobile frames.
+- [ ] Implement/test polished lightweight interactions, scroll-linked transitions and reduced-motion alternatives, with accessible non-animated fallbacks.
+- [ ] Keep a documented OPTIONAL future-video insertion point. Higgsfield integration, paid video and FFmpeg checks are deferred until the user separately approves a budget; they are NOT acceptance criteria now.
+- [ ] Verify asset licensing, legibility and measured transfer size.
 
-**Gate:** Approved, documented, optimized, legally usable media package with fallback poster.
+**Gate:** A premium, coherent, reviewed **zero-extra-cost** visual and motion asset package; video not required.
 
-### Phase 5 — Cinematic homepage implementation [NOT STARTED]
+### Phase 5 — Premium interactive homepage implementation [NOT STARTED]
 
 - [ ] Implement as React/Vite component(s) inside existing site, not overwrite app with one-file HTML template.
-- [ ] Integrate video scroll timing and written, crawlable headline/CTA.
+- [ ] Integrate lightweight code-driven visual motion, scroll interactions and real, crawlable headline/CTA without requiring AI video.
 - [ ] Finish all homepage sections with meaningful content and polished layout.
-- [ ] Deliberate still-first mobile/data-saving/reduced-motion/video-failure experience.
+- [ ] Deliberate first-class mobile, data-saving and reduced-motion experiences; no heavy assets required.
 - [ ] Inspect real desktop/mobile screenshots and interactions.
 
 **Gate:** Homepage is visually approved and fully interactive in an isolated preview.
@@ -82,7 +84,7 @@ Steps:
 
 - [ ] Metadata for every route, canonical, Open Graph/social previews, accessible headings and semantic markup.
 - [ ] Fix/verify per-route `Meta` behavior, sitemap, robots and appropriate structured data.
-- [ ] Image/video loading and caching, real Lighthouse/Core Web Vitals mobile/desktop results; no imaginary claims.
+- [ ] Asset/image loading and caching, real Lighthouse/Core Web Vitals mobile/desktop results; no imaginary claims. Test video delivery only if video is eventually approved.
 - [ ] Contact CTA and form/mailbox/CRM integration as appropriate; no dead endpoints.
 - [ ] Add measurement/analytics with appropriate privacy considerations.
 
@@ -103,7 +105,7 @@ Steps:
 - [ ] Review differences and reconcile relevant PR #11 design system with cinematic branch; avoid unapproved styles or merge conflicts.
 - [ ] User explicitly approves production release; preserve rollback route.
 - [ ] Merge and deploy using existing hosting; do not change DNS/MX unnecessarily.
-- [ ] Validate cideamarketing.com HTTPS, page routes, SEO/indexability, video delivery, analytics, live contact/test lead, desktop/mobile performance.
+- [ ] Validate cideamarketing.com HTTPS, page routes, SEO/indexability, graphics/animation fallbacks, analytics, live contact/test lead, desktop/mobile performance. Video delivery only if applicable.
 - [ ] Fix launch issues, document handover, operational ownership and routine improvement process.
 
 **Gate:** All live checks passed and user explicitly accepts launch.
@@ -116,7 +118,7 @@ At each work session and progress reply, show:
 - **Remaining to pass the current gate:** Compact checklist.
 - **Blocker or explicit user decision:** Only where actually necessary.
 - Do not claim a phase complete until all gate criteria are demonstrated.
-- Never switch vendor or scope based on curiosity. The user explicitly locked Claude Code + Higgsfield. Reopen only for proven blocker and user consent.
+- Never chase vendors based on curiosity. The current path is **0 NOK extra spend**, Claude Code plus built-in web technologies; Higgsfield remains optional and on hold until explicit budget approval.
 - Keep each phase's deliverables committed to GitHub, with draft previews and clearly marked experimental content.
 - Keep the wider 8-phase Cidea Marketing program separate; this is its website-specific execution plan.
 
@@ -128,4 +130,4 @@ At each work session and progress reply, show:
 
 ## First next action
 
-Verify Claude Code's current workspace, safely install/audit 10K Websites v0.2.0, verify Higgsfield MCP and preview toolchain. Do not start media production until phases 2 and 3 are approved.
+Verify Claude Code's current workspace, safely install/audit 10K Websites v0.2.0, verify Node/build and preview toolchain. Do **not** block on Higgsfield, credits, or FFmpeg. Start Phase 2 only after Phase 1 acceptance criteria are met.
