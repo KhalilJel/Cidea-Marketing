@@ -1,29 +1,37 @@
-# Personvern — isolert publiseringsutkast
+# Personvernsiden — publiseringsgrunnlag 16.10.2026
 
-Denne grenen er et utkast og skal ikke merges/deployes før kontrollpunktene under er ferdige. Utgangspunkt: main 9f1020d. Den andre utsjekkingen og experiment/cinematic-marketing-pilot er ikke endret.
+## Avgrensning og autorisasjon
+Eier har allerede autorisert publisering av /personvern når innholdet er verifisert. Erklæringen gjelder Gullkornets nåværende kvalifisering av virksomheter og tilhørende dialog. Den godkjenner ikke oppsøk, Resend-bruk, ny leverandør eller live-send. Den gjør heller ikke krav på å være en full cookie-/analyseerklæring for alle nettstedstjenester.
 
-## Referanselås før implementasjon
-Eksisterende Cidea Marketing er designmålet. Primærreferanse: Blog sin .page/.articleBody for lesbar artikkelbredde. Sekundærreferanse: Service sin tydelige seksjonsinndeling. Behold nettstedets papirbakgrunn, mørke tekst, eksisterende fonter, topp- og bunnfelt. Ingen nye bilder, dekorasjoner, salgsknapper eller designretning. Refero craft-details brukes for synlig tastaturfokus. Ny CSS avgrenses til personvernsiden. Dette er innsetting i eksisterende produkt, ikke et redesign.
+## Faktakontroll
+- CIDEA AS, org.nr. 927394391 og Gunnar Schjelderups vei 13A, 0485 Oslo: kontrollert i Enhetsregisterets API 16.10. Eier har bekreftet tilknytningen til Cidea Marketing og behandlingsansvaret.
+- Kontakt jelassi@cideamarketing.com: eksisterende overvåket postkasse, kontrollert i produksjon. Ingen ny adresse/DNS.
+- Avtaler: eierbekreftet, uten påstand om uavhengig inspeksjon av signerte vedlegg.
+- Frister: eier har delegert valg. 90/30-dagersreglene er intern policy, ikke lovbestemte standardfrister. Offentlig tekst sier uttrykkelig at automatisk sletting ikke er generelt aktivert.
+- Køaudit 38815220436: 530/505 teknisk klare/25 MX-avvik, ingen øvrige køfeil. Lagringssimulering 0 sletting/minimering/behovsgjennomgang/udatert.
+- Svarmonitorens database: 0 innkommende kopier i autentisert skrivebeskyttet kontroll. Original INBOX: 2 meldinger, ingen før kontrollert kalendergrense fra 90 dager; ingen hoder/innhold hentet. Andre mapper og backup inngår ikke i tellingen.
+- Railway-API: workspace.plan=HOBBY. Svarmonitorens voluminstans 19feb913-99c3-4633-823a-8fceb96a77c5: backupList=[] og backupScheduleList=[]. Ingen backuper er opprettet/endret. Dette er ikke dokumentasjon på fravær av leverandørinterne kopier, og antallet publiseres ikke som sikkerhetsinformasjon.
+- Offentlig Railway-dokumentasjon: Hobby gir 7 dagers loggtilgang. Oppgradering kan gjøre eldre logger tilgjengelige; dette beskrives ikke som faktisk sletting.
+- Resend: offentlig dokumentert USA-lagring, SCC, standard email/logg 30 dager og backup 7 dager. Europeisk avsenderregion er ikke EU-lagring.
+- Airtable/Railway: offentlige DPA-er beskriver SCC. Teksten gir kontakt for nærmere informasjon/kopi av aktuelle garantier.
 
-## Beslutninger
-- Egen /personvern-rute og bunnlenke: den eksisterende SPA-ruteren viste forsiden ved ukjent sti.
-- Ett hovednivå, underoverskrifter og smal tekstspalte: Blog og .articleBody.
-- Tydelig utkaststatus og noindex på denne ruten: innholdet er ennå ikke publiseringsklart.
-- Kontakt: eksisterende overvåket jelassi@cideamarketing.com. Ingen DNS-endringer.
-- Godkjent e-postmal 2026-10-15.6 endres ikke av denne leveransen.
+## Lagring uten oppdiktet backupfrist
+GDPR art. 14(2)(a) krever forventet lagringsperiode, eller kriterier dersom perioden ikke kan oppgis. Egenvurderingen er at erklæringen kan beskrive faktisk valgt prospektpolicy og konkrete behovskriterier for teknisk historikk, uten å finne på én felles backupfrist eller love automatisert sletting. De tidligere interne sjekkpunktene var en arbeidsliste, ikke et rettslig krav om at alle leverandørkopier skal ha samme publiserte antall dager. Opplysninger om aktive poster, historikk, innboks og eventuelle sikkerhetskopier holdes adskilt i teksten.
 
-## Før publisering
-1. Avklar faktisk leverandørhistorikk/backup og overføringsmekanismer mot de eierbekreftede avtalene. Ikke påstå at signerte vedlegg er uavhengig kontrollert.
-2. Avstem lagringsbeskrivelsen mot reell manuell/teknisk oppfølging. 90/30 dager er valgt intern policy, ikke lovbestemte standardfrister eller aktiv automatisk sletting.
-3. Avklar aktuelle informasjonskrav for de konkrete mottakerne. Ingen ekstern jurist er et arbeidskrav. En nettside alene er ikke dokumentasjon på at informasjonen er gitt.
-4. Kontroller innholdet, fjern utkastmarkering/noindex og verifiser faktisk offentlig /personvern etter publisering. Originalgodkjenningen gjelder publisering når innholdet er verifisert.
+Dette fjerner ikke driftsoppgaven: eier må håndtere behovsgjennomganger og rettighetsforespørsler, og faktisk eventuell opprydding må ha eget, konkret grunnlag og følge de avtalte begrensningene. Ingen produksjonssletting er autorisert eller utført. En offentlig nettside alene dokumenterer ikke at alle nødvendige mottakere har fått art. 14-informasjon innen fristen.
 
-## Verifisert driftsgrunnlag 15.10.2026
-Gullkornet PR 134, main 5977039, Railway 2260f39e-c3e3-4d73-9582-1376af857e2c SUCCESS. Autentisert produksjonskontroll: 0 innkommende meldingskopier i svarmonitorens database, ingen endringer, TTL av. Dette sier ikke at originalinnboksen er tom. Live-send er av.
+## Referanselås og tester
+Eksisterende Blog .page/.articleBody er primærreferanse, Service er sekundærreferanse for seksjonsinndeling. Nettstedets fonter/farger/toppfelt bevares. Ingen endring av cinematic-designgren eller dens ucommittede filer. Ny CSS er avgrenset. Desktop-/mobilkontroll, produksjonsbygging, ruter, riktig kontakt/kanonisk URL og fravær av uferdig tekst kontrolleres før merge. Ingen e-postmal endres.
 
-## Leverandørfakta kontrollert 16.10.2026
-Offentlig leverandørdokumentasjon er nå innarbeidet i utkastet: Resend lagrer i USA selv ved europeisk avsenderregion, DPA inkluderer SCC, standard e-post-/loggdata 30 dager og backup 7 dager. Airtable/Railway beskriver SCC i sine offentlige avtaler. Railway skiller planbestemt loggtilgjengelighet fra faktisk sletting. Dette er ikke inspeksjon av kundens arkiverte vedlegg eller løfte om like frister i originalinnboks/andre sikkerhetskopier.
+## Offentlige kilder
+- https://data.brreg.no/enhetsregisteret/api/enheter/927394391
+- https://lovdata.no/dokument/NL/lov/2018-06-15-38/kapiii
+- https://resend.com/security/gdpr
+- https://www.airtable.com/company/dpa
+- https://www.airtable.com/company/privacy
+- https://railway.com/legal/dpa
+- https://docs.railway.com/observability/logs
+- https://www.migadu.com/privacy/
 
-Kilder: https://resend.com/security/gdpr, https://www.airtable.com/company/dpa, https://railway.com/legal/dpa, https://docs.railway.com/observability/logs.
-
-Resends AUP-blokkering for det konkrete uoppfordrede løpet består; ingen alternativ leverandør er valgt. Kilde: https://resend.com/legal/acceptable-use. Utkastmerking/noindex beholdes. Praktisk oppfølging og resterende faktisk historikk-/backupbevaring må avstemmes før hovedpublisering.
+## Gjenstående lanseringssperrer
+Resends forbud mot det beskrevne uoppfordrede løpet gjelder fortsatt, og er håndhevet i Gullkornet PR #136. E-postmal .6 er låst. Ingen konto/kostnad/ny leverandør/DNS/secrets er autorisert. Pilot krever passende kanalgrunnlag, konkret informasjons-/mottakervurdering og særskilt uttrykkelig live-klarsignal. Personvernpublisering er ikke dette klarsignalet.
