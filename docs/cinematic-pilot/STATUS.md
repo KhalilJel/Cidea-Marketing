@@ -46,3 +46,13 @@ Rapporter: Fase X/9 | Navn på oppgaven | **Verifisert utført** | Gjenstår | N
 ## Wider project
 
 Dette gjelder bare nettsiden. Det større Cidea Marketing-prosjektet krever fortsatt 90 dagers publiseringsklart blogg- og SoMe-innhold, SoMe-flyt og Gullkornet; disse er ikke fullført ved nettsidelansering.
+
+## Latest progress interpretation / mode rule
+
+Claude's detailed `PHASE1-VERIFICATION.md` on the experiment branch confirms:
+- Local branch checkout, selective Stitch skills, Node/Vite build and preview, 14/14 two-viewport browser checks **verified**.
+- Stitch MCP is configured but **not authenticated**: `STITCH_API_KEY` not yet available; `list_projects` cannot yet be authenticated. User must create/store a key privately in their local environment and restart/authorize Claude.
+- The `/cidea-website` command has not yet been confirmed automatically discovered in a fresh Claude session.
+- **Fase 1 is therefore still open**, no Phase 2 designs exist yet.
+
+**Standing mode preference:** Use Work for real cross-tool project execution; when it is not needed, proactively suggest switching to ordinary ChatGPT/Instant mode. After each task recommend mode for what comes next. This preference is about ChatGPT mode and does not alter the 9-phase website plan.
