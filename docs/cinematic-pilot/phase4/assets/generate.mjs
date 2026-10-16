@@ -66,6 +66,15 @@ export const articles = {
     planes: [['r', 0, 0, 14, 6, C.stein], ['r', 0, 8, 14, 6, C.marine], ['n', 12, 2, 18, 10, C.dyp]] },
 };
 
+// Små tjenesteglyfer (48×48, enhet 6 px) til «Hva vi leverer», tegnet for å stå på tjenestens
+// mørke fargefelt (derfor lyse plan). Hver glyf er tjenestens hero-idé i ikonskala.
+export const glyphs = {
+  'glyf-nettsider': { bakgrunn: C.marine, idé: 'Rutenett i liten skala', planes: [['r', 0, 1, 6, 4, C.stein], ['n', 2, 3, 6, 5, '#FAFAFD']] },
+  'glyf-merkevarebygging': { bakgrunn: C.dyp, idé: 'Stempel i liten skala', planes: [['n', 0, 2, 6, 6, '#FAFAFD'], ['r', 5, 0, 3, 3, C.marine]] },
+  'glyf-seo': { bakgrunn: C.skog, idé: 'Trapp i liten skala', planes: [['r', 0, 4, 3, 4, C.stein], ['n', 2, 0, 6, 8, '#FAFAFD']] },
+  'glyf-digital-markedsforing': { bakgrunn: C.svart, idé: 'Spredning i liten skala', planes: [['r', 2, 1, 6, 2, C.dyp], ['r', 2, 5, 5, 2, C.stein], ['n', 0, 0, 3, 8, '#FAFAFD']] },
+};
+
 const svg = (w, h, body, label) =>
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-label="${label}">${body}</svg>\n`;
 const draw = (planes, k) => planes.map(([t, x, y, w, h, f], i) => (t === 'n' ? notched : rect)(x * k, y * k, w * k, h * k, f, i)).join('');
@@ -79,6 +88,10 @@ for (const [name, c] of Object.entries(compositions)) {
 for (const [slug, a] of Object.entries(articles)) {
   writeFileSync(`${out}artikkel-${slug}.svg`, svg(640, 280, draw(a.planes, 20), `Artikkelgrafikk: ${a.idé}`));
   manifest.push({ name: `artikkel-${slug}`, idé: a.idé, filer: [`artikkel-${slug}.svg`] });
+}
+for (const [name, g] of Object.entries(glyphs)) {
+  writeFileSync(`${out}${name}.svg`, svg(48, 48, draw(g.planes, 6), `Tjenesteglyf: ${g.idé}`));
+  manifest.push({ name, idé: g.idé, bakgrunn: g.bakgrunn, filer: [`${name}.svg`] });
 }
 writeFileSync(`${out}../manifest.json`, JSON.stringify(manifest, null, 2));
 console.log(`skrev ${manifest.reduce((n, m) => n + m.filer.length, 0)} SVG-er`);

@@ -116,5 +116,37 @@
     "filer": [
       "artikkel-hvordan-fa-flere-henvendelser-fra-nettsiden.svg"
     ]
+  },
+  {
+    "name": "glyf-nettsider",
+    "idé": "Rutenett i liten skala",
+    "bakgrunn": "#1E293B",
+    "filer": [
+      "glyf-nettsider.svg"
+    ]
+  },
+  {
+    "name": "glyf-merkevarebygging",
+    "idé": "Stempel i liten skala",
+    "bakgrunn": "#AD2C07",
+    "filer": [
+      "glyf-merkevarebygging.svg"
+    ]
+  },
+  {
+    "name": "glyf-seo",
+    "idé": "Trapp i liten skala",
+    "bakgrunn": "#2D4A3E",
+    "filer": [
+      "glyf-seo.svg"
+    ]
+  },
+  {
+    "name": "glyf-digital-markedsforing",
+    "idé": "Spredning i liten skala",
+    "bakgrunn": "#141619",
+    "filer": [
+      "glyf-digital-markedsforing.svg"
+    ]
   }
 ]
