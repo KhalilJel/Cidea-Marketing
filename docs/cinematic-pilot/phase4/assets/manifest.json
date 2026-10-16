@@ -1,0 +1,120 @@
+[
+  {
+    "name": "404",
+    "idé": "Forskyvning – ett plan har glidd ut av rutenettet",
+    "dominant": "dyp",
+    "filer": [
+      "404-desktop.svg",
+      "404-mobil.svg"
+    ]
+  },
+  {
+    "name": "forside",
+    "idé": "Sammenføyning – flere fagfelt låst sammen rundt én kjerne",
+    "dominant": "dyp",
+    "filer": [
+      "forside-desktop.svg",
+      "forside-mobil.svg"
+    ]
+  },
+  {
+    "name": "nettsider",
+    "idé": "Rutenett – liggende flater forskjøvet som sider og skjermer",
+    "dominant": "marine",
+    "filer": [
+      "nettsider-desktop.svg",
+      "nettsider-mobil.svg"
+    ]
+  },
+  {
+    "name": "merkevarebygging",
+    "idé": "Stempel – ett tydelig kjennetegn med et lite merke festet i hjørnet",
+    "dominant": "dyp",
+    "filer": [
+      "merkevarebygging-desktop.svg",
+      "merkevarebygging-mobil.svg"
+    ]
+  },
+  {
+    "name": "seo",
+    "idé": "Trapp – synlighet som bygges trinn for trinn",
+    "dominant": "skog",
+    "filer": [
+      "seo-desktop.svg",
+      "seo-mobil.svg"
+    ]
+  },
+  {
+    "name": "digital-markedsforing",
+    "idé": "Spredning – ett mål som fordeles ut i flere kanaler",
+    "dominant": "svart",
+    "filer": [
+      "digital-markedsforing-desktop.svg",
+      "digital-markedsforing-mobil.svg"
+    ]
+  },
+  {
+    "name": "tilnaerming",
+    "idé": "Bro – to parter forbundet over tid",
+    "dominant": "skog",
+    "filer": [
+      "tilnaerming-desktop.svg",
+      "tilnaerming-mobil.svg"
+    ]
+  },
+  {
+    "name": "konsepter",
+    "idé": "Diagram – regelen selv: plan, sammenheng og ett hakk",
+    "dominant": "marine",
+    "filer": [
+      "konsepter-desktop.svg",
+      "konsepter-mobil.svg"
+    ]
+  },
+  {
+    "name": "innsikt",
+    "idé": "Spalter – kolonner under en felles overskrift",
+    "dominant": "dyp",
+    "filer": [
+      "innsikt-desktop.svg",
+      "innsikt-mobil.svg"
+    ]
+  },
+  {
+    "name": "kontakt",
+    "idé": "Åpning – en dør inn i en større flate",
+    "dominant": "marine",
+    "filer": [
+      "kontakt-desktop.svg",
+      "kontakt-mobil.svg"
+    ]
+  },
+  {
+    "name": "artikkel-hvor-mye-koster-en-nettside",
+    "idé": "Byggeklosser i ulik størrelse – omfang avgjør prisen",
+    "filer": [
+      "artikkel-hvor-mye-koster-en-nettside.svg"
+    ]
+  },
+  {
+    "name": "artikkel-hvorfor-vises-ikke-nettsiden-pa-google",
+    "idé": "Et plan som hever seg over grunnflaten – synlighet",
+    "filer": [
+      "artikkel-hvorfor-vises-ikke-nettsiden-pa-google.svg"
+    ]
+  },
+  {
+    "name": "artikkel-hva-bor-en-god-bedriftsnettside-inneholde",
+    "idé": "Tre deler: hvem dere er, hva dere tilbyr, neste steg",
+    "filer": [
+      "artikkel-hva-bor-en-god-bedriftsnettside-inneholde.svg"
+    ]
+  },
+  {
+    "name": "artikkel-hvordan-fa-flere-henvendelser-fra-nettsiden",
+    "idé": "Flater som samles mot ett punkt – henvendelsen",
+    "filer": [
+      "artikkel-hvordan-fa-flere-henvendelser-fra-nettsiden.svg"
+    ]
+  }
+]
