@@ -106,7 +106,7 @@ Ingen fotografi. All grafikk er egne, flate fargeplan og geometriske former som 
 | H1 forside | «Nettsider og helhetlig markedsføring som utvikles over tid.» | Foreløpig godkjent av ChatGPT |
 | Primær CTA | «Snakk med oss» → `/kontakt` | Godkjent |
 | Avsluttende CTA, overskrift | «Klar for et overbevisende digitalt uttrykk?» | Godkjent |
-| Avsluttende CTA, setning | «Fortell kort om bedriften og hva du trenger hjelp med, så svarer vi deg på e-post.» | **Claudes forslag, til godkjenning** |
+| Avsluttende CTA, setning | «Fortell oss kort om bedriften og hva dere ønsker hjelp med. Vi tar kontakt på e-post.» | **ChatGPT-vedtak (review utkast 2)**. Brukes live først etter testet skjemamottak (fase 6) |
 | Tjenesteseksjon | «Dette kan vi hjelpe deg med» | ChatGPTs forslag, brukt likt på desktop og mobil |
 | Lenker | «Les om nettsider / merkevarebygging / SEO / digital markedsføring», «Se konseptet», «Les artikkelen» | Godkjent |
 | Konseptetikett | «Konsept – ikke kundeprosjekt» | Godkjent |
@@ -114,5 +114,5 @@ Ingen fotografi. All grafikk er egne, flate fargeplan og geometriske former som 
 
 **Åpne punkter:**
 1. Ordmerke/logo: tekst «CIDEA MARKETING» i Outfit med terrakotta-kvadrat. Ingen godkjent logofil finnes (eier).
-2. H1 på Tilnærming: «Et langsiktig partnerskap for digital vekst og stabilitet.» – «stabilitet» bør vurderes.
+2. H1 på Tilnærming: **«Slik jobber vi – fra første avklaring til videreutvikling.»** (ChatGPT-vedtak). Konsepter: «Hva er et konsept?» + «Konseptene viser hvordan vi utforsker visuelle løsninger. De er ikke kundeprosjekter.»
 3. Motivregelen må godkjennes visuelt av bruker.

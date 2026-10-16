@@ -19,6 +19,8 @@ export const pages = [
   { side: '404', nav: null, krumme: '', h1: 'Vi finner ikke denne siden', ingress: 'Siden kan være flyttet eller slettet. Gå til forsiden eller ta kontakt med oss.', sekundær: 'Til forsiden' },
 ];
 const navs = ['Tjenester', 'Konsepter', 'Tilnærming', 'Innsikt', 'Kontakt'];
+// Godkjent CTA (ChatGPT-review utkast 2, punkt 1; EXECUTION-BRIEF 4.5). Løftet «Vi tar kontakt» brukes live først etter testet skjemamottak (fase 6).
+const cta = `<section class="cta" id="kontakt"><div class="wrap"><h2>Klar for et overbevisende digitalt uttrykk?</h2><p>Fortell oss kort om bedriften og hva dere ønsker hjelp med. Vi tar kontakt på e-post.</p><a class="knapp lys" href="#">Snakk med oss →</a></div></section>`;
 
 for (const p of pages) {
   const html = `<!doctype html>
@@ -32,7 +34,8 @@ for (const p of pages) {
 <div class="tekst">${p.krumme ? `<p class="krumme">${p.krumme}</p>` : ''}<h1>${p.h1}</h1><p class="ingress">${p.ingress}</p>
 <div class="handling">${p.ingenCta ? '' : '<a class="knapp" href="#kontakt">Snakk med oss →</a>'}${p.sekundær ? `<a class="lenke" href="#">${p.sekundær} →</a>` : ''}</div></div>
 <div class="kunst"><div class="desktop">${svg(`${p.side}-desktop.svg`)}</div><div class="mobil">${svg(`${p.side}-mobil.svg`)}</div></div>
-</div></section></main></body></html>
+</div></section>${p.ingenCta ? '' : cta}</main>
+<footer class="bunn"><div class="wrap"><span class="ordmerke">CIDEA MARKETING</span><small>© 2026 Cidea Marketing</small></div></footer></body></html>
 `;
   writeFileSync(`${here}${p.side}.html`, html);
 }

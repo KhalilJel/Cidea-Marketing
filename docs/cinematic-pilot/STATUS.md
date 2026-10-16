@@ -1,7 +1,7 @@
 # Cidea Marketing – Status / verificerbar fremdrift
 
 **Oppdatert:** 2026-10-15
-**Nå:** FASE **4/9 AKTIV** fra 2026-10-16. **3/9 faser godkjent**: Fase 1 integrasjon, fase 2 konseptvalg C, fase 3 komplett designblueprint godkjent av bruker. Fase 4: egen SVG-grafikk, motivvariasjoner, animasjonsspesifikasjon og kontroll. `phase4/EXECUTION-BRIEF.md` er klar. **Ingen fase 4-ressurser eller prototyper er ennå verifisert ferdige.** Ingen frontend-implementering, merge, deploy eller betaling.
+**Nå:** FASE **4/9 – oppgave 4.1–4.5 utført, klar for godkjenning** (2026-10-16). 10 sidekomposisjoner av Cidea-motivet + 4 artikkelgrafikker + 4 tjenesteglyfer (egne SVG-er), forhåndsvisninger 1440/390, CSS-bevegelsesprototype (12/12 tester), QA 30/30. 0 NOK, 0 Stitch-kreditter. Fase 4 er **ikke godkjent**. Ingen React-implementering, merge eller deploy. Se `phase4/README.md`.
 **Godkjent metode:** ChatGPT → Google Stitch → Claude Code → ChatGPT QA.
 **Kostnadsgrense:** 0 NOK i nye abonnementer/mediekreditter uten eksplisitt brukerbeslutning.
 **Eksperimentgren:** `experiment/cinematic-marketing-pilot`; [draft PR #13](https://github.com/KhalilJel/Cidea-Marketing/pull/13); ingen produksjonsendring.

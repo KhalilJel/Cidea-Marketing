@@ -20,7 +20,7 @@ nav.hoved a { text-decoration: none; padding: 12px 0; }
 nav.hoved a[aria-current] { color: var(--dyp); box-shadow: inset 0 -2px var(--dyp); }
 .knapp { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 22px; background: var(--dyp); color: var(--hvit); font: 700 15px/1 "DM Sans", sans-serif; text-decoration: none; border-radius: 2px; }
 .knapp:hover { background: var(--dyp-hover); }
-.knapp:focus-visible, a:focus-visible { outline: 3px solid var(--marine); outline-offset: 3px; }
+.knapp:focus-visible, a:focus-visible, button:focus-visible { outline: 3px solid var(--marine); outline-offset: 3px; }
 .lenke { font-weight: 700; color: var(--dyp); text-decoration: none; display: inline-flex; gap: 6px; align-items: center; min-height: 48px; }
 .meny { display: none; min-height: 44px; padding: 0 14px; border: 1px solid rgba(20,22,25,.2); background: var(--hvit); font: 700 14px "DM Sans", sans-serif; }
 .hero .wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; min-height: 640px; padding-top: 48px; padding-bottom: 48px; }
@@ -43,4 +43,22 @@ nav.hoved a[aria-current] { color: var(--dyp); box-shadow: inset 0 -2px var(--dy
   .hero .kunst .desktop { display: none; }
   .hero .kunst .mobil { display: block; }
   .hero .knapp { width: 100%; justify-content: center; }
+}
+
+/* Avsluttende CTA: dyp terrakotta (hvit tekst 6,69:1), lys knapp. Bunntekst med målt dempet tone. */
+.cta { background: var(--dyp); color: var(--hvit); }
+.cta .wrap { padding-top: 88px; padding-bottom: 88px; display: grid; grid-template-columns: 1.4fr auto; gap: 16px 48px; align-items: end; }
+.cta h2 { color: var(--hvit); font-size: 48px; line-height: 1.08; font-weight: 800; grid-column: 1; }
+.cta p { margin: 0; font-size: 19px; color: var(--hvit); max-width: 36em; grid-column: 1; }
+.cta .knapp.lys { background: var(--hvit); color: var(--dyp); grid-column: 2; grid-row: 1 / span 2; }
+.cta .knapp.lys:hover { background: #F4F5F8; }
+.cta .knapp.lys:focus-visible { outline-color: var(--hvit); }
+footer.bunn .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; padding-bottom: 28px; }
+footer.bunn small { color: var(--dempet); font-size: 14px; }
+@media (max-width: 760px) {
+  .cta .wrap { grid-template-columns: 1fr; padding-top: 56px; padding-bottom: 56px; }
+  .cta h2 { font-size: 30px; }
+  .cta p { font-size: 17px; }
+  .cta .knapp.lys { grid-column: 1; grid-row: auto; width: 100%; justify-content: center; }
+  footer.bunn .wrap { flex-direction: column; gap: 8px; align-items: flex-start; }
 }
