@@ -1,7 +1,7 @@
 # Cidea Marketing – Status / verificerbar fremdrift
 
 **Oppdatert:** 2026-10-15
-**Nå:** FASE **3/9 PÅGÅR – utkast 1 klart for vurdering** (2026-10-15). Konsept C er akseptert som kreativt fundament. Leveranser i `phase3/`: DESIGN.md, SIDEPLAN.md, RETTIGHETER.md, 7 sidemaler i Stitch (11 skjermer) og oversikt. Kreditter: 44/400 før fase 3, 16 kall i fase 3, sluttavlesning venter. Fase 3 er **ikke godkjent**. Ingen kode, merge eller deploy.
+**Nå:** FASE **3/9 PÅGÅR – utkast 2 klart for endelig visuell vurdering** (2026-10-16). Konsept C beholdt. 13 sidemaler / 22 skjermer, Cidea-motivet som eget SVG, DESIGN.md v0.2, oppdatert SIDEPLAN og RETTIGHETER. 21 Stitch-kall i utkast 2 (ramme 100 kreditter); forbruk venter på brukerens avlesning. Fase 3 er **ikke godkjent**. Ingen kode, merge eller deploy.
 **Godkjent metode:** ChatGPT → Google Stitch → Claude Code → ChatGPT QA.
 **Kostnadsgrense:** 0 NOK i nye abonnementer/mediekreditter uten eksplisitt brukerbeslutning.
 **Eksperimentgren:** `experiment/cinematic-marketing-pilot`; [draft PR #13](https://github.com/KhalilJel/Cidea-Marketing/pull/13); ingen produksjonsendring.
