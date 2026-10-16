@@ -1,7 +1,7 @@
 # Fase 3, utkast 2 – fremdriftslogg
 
 **Status:** utkast 2 er **klart for endelig visuell vurdering** av ChatGPT og bruker. Fase 3 er **ikke godkjent**.
-**Ramme:** maks 100 Stitch-kreditter (brukerens instruks 2026-10-16; kvote 0/400 ved start). Claudes eget tak: 22 kall (≈4 kreditter per kall som forsiktig anslag). **Brukt: 21 kall.** Kredittforbruket er *ikke verifisert* før brukeren leser av telleren. Alle kall er kjørt **sekvensielt**, aldri flere redigeringer samtidig i samme prosjekt.
+**Ramme:** maks 100 Stitch-kreditter (brukerens instruks 2026-10-16; kvote 0/400 ved start). Claudes eget tak: 22 kall (≈4 kreditter per kall som forsiktig anslag). **Brukt: 21 kall = 56 kreditter** (brukerens avlesning 2026-10-16: **56/400**, start 0/400), ≈2,7 kreditter per kall. Innenfor rammen på 100. Alle kall er kjørt **sekvensielt**, aldri flere redigeringer samtidig i samme prosjekt.
 **Grunnlag:** [`CHATGPT-REVIEW-UTKAST1.md`](CHATGPT-REVIEW-UTKAST1.md). Felles regler i alle kall: [`prompts/u2-00-regler.md`](prompts/u2-00-regler.md). Oversikt over alle sidemaler: [`oversikt-utkast2.png`](oversikt-utkast2.png).
 
 ## Kall-logg
