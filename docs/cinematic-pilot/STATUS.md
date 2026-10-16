@@ -1,7 +1,7 @@
 # Cidea Marketing – Status / verificerbar fremdrift
 
 **Oppdatert:** 2026-10-15
-**Nå:** FASE **4/9 – oppgave 4.1–4.5 utført, klar for godkjenning** (2026-10-16). 10 sidekomposisjoner av Cidea-motivet + 4 artikkelgrafikker + 4 tjenesteglyfer (egne SVG-er), forhåndsvisninger 1440/390, CSS-bevegelsesprototype (12/12 tester), QA 30/30. 0 NOK, 0 Stitch-kreditter. Fase 4 er **ikke godkjent**. Ingen React-implementering, merge eller deploy. Se `phase4/README.md`.
+**Nå:** FASE **4/9 – LEVERT OG FAGLIG VURDERT, VENTER PÅ BRUKERGODKJENNING** (2026-10-16). 3/9 faser godkjent. 28 SVG-er, 10 unike sidekomposisjoner, visuelle previews 1440/390, CSS-prototyp, rapportert QA 30/30 og motion-tester 12/12. ChatGPT har gjennomgått faktiske oversiktsbilder og gitt en faglig anbefaling med vilkår i `phase4/CHATGPT-REVIEW.md`. Fase 4 er ikke formelt godkjent før brukeren bekrefter. Ingen React-implementering, merge, deploy eller betaling.
 **Godkjent metode:** ChatGPT → Google Stitch → Claude Code → ChatGPT QA.
 **Kostnadsgrense:** 0 NOK i nye abonnementer/mediekreditter uten eksplisitt brukerbeslutning.
 **Eksperimentgren:** `experiment/cinematic-marketing-pilot`; [draft PR #13](https://github.com/KhalilJel/Cidea-Marketing/pull/13); ingen produksjonsendring.
@@ -80,3 +80,12 @@ Claude's completed PHASE1-VERIFICATION.md confirms Phase 1 gate items passed:
 | 4.5 Visuell QA, kontrast, lisens og brukerreview | IKKE UTFØRT | `phase4/QA.md` |
 
 **Neste steg:** Claude Code leser `phase4/EXECUTION-BRIEF.md`, starter oppgave 4.1 på eksisterende eksperimentgren og rapporterer verifisert resultat etter hver deloppgave. ChatGPT kontrollerer leveransene. Ingen ny Stitch-generering nødvendig nå. Fase 4 er åpen inntil bevis finnes.
+
+
+## ChatGPT kontroll og beslutninger – 2026-10-16
+- K5: korte, nyttige mobilkort kan listes selv om seksjonen er lengre enn 900px; lange sekundærlister kan bruke «Vis flere» ved dokumentert UX-gevinst. Null horisontal overflow opprettholdes.
+- Ti side↔komposisjon-koblinger godkjent faglig. Ulike sider skal få ulike motiver, ikke samme motiv med endret farge.
+- 580ms hero-animasjon og CSS-hover/fokus/reduced-motion er godkjent som prototype og må re-testes i React.
+- K10 Stitch/Labs-spesifikke rettigheter og eierfakta er ikke verifisert; må avklares før live.
+- Fullstendig vurdering: `phase4/CHATGPT-REVIEW.md`.
+- Neste handling: eierens eksplisitte godkjenning, deretter fase 5 React-forside.
