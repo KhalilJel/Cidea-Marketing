@@ -64,3 +64,7 @@ Ikke laget i utkast 1 (gjenbruker maler, jf. SIDEPLAN): Merkevarebygging, SEO og
 **Kreditter:** før fase 3: 44/400. Selvsatt tak for runden: 60. 16 kall, anslag ~50 (≈3,3 per kall). **Sluttavlesning venter på brukeren.**
 
 **Lærdom:** kjør ikke flere `edit_screens` parallelt i samme prosjekt (feil skjermer ble redigert). Mål typografi i nettleser (computed font), ikke bare på skjermbilde.
+
+## Kvotebekreftelse for utkast 2 (2026-10-16)
+
+Brukerens direkte avlesning i Stitch: **0 / 400** brukt på den nye dagens teller. Dette er en ny dagskvote, ikke en korrigering av forbruket 44/400 etter fase 2; endelig forbruk på forrige dags fase 3-utkast 1 er fortsatt ikke avlest. **Utkast 2 kan fortsette med maksimalt 100 kreditter på dagens teller**, uten betaling. Sjekk forbruk etter hver større genereringsrunde, stopp før taket, og utfør ikke parallelle `edit_screens` på samme prosjekt. Les `CHATGPT-REVIEW-UTKAST1.md` for alle krav. Fase 3 er ikke godkjent før fullstendige visuelle leveranser er vurdert.
