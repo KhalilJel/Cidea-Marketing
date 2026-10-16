@@ -1,7 +1,7 @@
 # Cidea Marketing – Status / verificerbar fremdrift
 
 **Oppdatert:** 2026-10-15
-**Nå:** FASE **3/9 PÅGÅR – utkast 2 klart for endelig visuell vurdering** (2026-10-16). Konsept C beholdt. 13 sidemaler / 22 skjermer, Cidea-motivet som eget SVG, DESIGN.md v0.2, oppdatert SIDEPLAN og RETTIGHETER. 21 Stitch-kall i utkast 2 = **56/400** kreditter (brukerens avlesning; ramme 100). Fase 3 er **ikke godkjent**. Ingen kode, merge eller deploy.
+**Nå:** FASE **3/9 PÅGÅR – utkast 2 klart for endelig visuell vurdering** (2026-10-16). Konsept C beholdt. 13 sidemaler / 22 skjermer, Cidea-motivet som eget SVG, DESIGN.md v0.2, oppdatert SIDEPLAN og RETTIGHETER. 21 Stitch-kall i utkast 2 = **56/400** kreditter (brukerens avlesning; ramme 100). Fase 3 er **ikke godkjent av bruker**. ChatGPT har gjennomgått utkast 2, og godkjenning som blueprint anbefales betinget av visuell eieraksept og spesifiserte fase-4-forbedringer i `phase3/CHATGPT-REVIEW-UTKAST2.md`. Ingen kode, merge eller deploy.
 **Godkjent metode:** ChatGPT → Google Stitch → Claude Code → ChatGPT QA.
 **Kostnadsgrense:** 0 NOK i nye abonnementer/mediekreditter uten eksplisitt brukerbeslutning.
 **Eksperimentgren:** `experiment/cinematic-marketing-pilot`; [draft PR #13](https://github.com/KhalilJel/Cidea-Marketing/pull/13); ingen produksjonsendring.
@@ -61,3 +61,7 @@ Claude's completed PHASE1-VERIFICATION.md confirms Phase 1 gate items passed:
 - Existing Stitch screens are historical, NOT the three approved concept directions. Fact-check "OSLO • BERGEN" and remove unusable NO/EN switch during design/content QA.
 
 **Standing mode preference:** Use Work for external multi-step execution. When Work is unnecessary, proactively suggest ordinary ChatGPT/Instant. After each task recommend the next mode. This does not alter the nine-phase plan.
+
+## ChatGPT review – utkast 2 (2026-10-16)
+
+**Faglig beslutning:** Konsept C beholdes. Designsyst​​em og sidemaler er tilstrekkelig definert til å godkjennes som arbeids-blueprint **dersom bruker uttrykkelig aksepterer retningen**. Gjenstående grafiske variasjoner, fargekontrast og mobil/desktop-polering blir målbare krav til fase 4, 5 og 8; faktabekreftelser og personvern er krav før live. Se `phase3/CHATGPT-REVIEW-UTKAST2.md` for godkjent CTA, motivregel, copyendringer og avvik. **Fase 3-gate er fremdeles åpen.**
