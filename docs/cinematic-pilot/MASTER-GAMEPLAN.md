@@ -1,7 +1,7 @@
 # Cidea Marketing — Master Gameplan (Approved production method)
 
 **Decision date:** 2026-10-15
-**Status:** PHASE 1/9 VERIFIED COMPLETE 2026-10-15 (see `PHASE1-VERIFICATION.md`); 1/9 phases verified. Phase 2 not started.
+**Status:** PHASE 1, 2 and 3 VERIFIED/USER-APPROVED; **PHASE 4/9 ACTIVE** as of 2026-10-16. **3/9 phase gates completed**. Phase 4 work tracked in `phase4/EXECUTION-BRIEF.md`; no production changes.
 **Objective:** Replace the existing weak cideamarketing.com experience with an extraordinary, original, professional, conversion-ready Norwegian digital-agency website. Distinctive art direction, real content, elegant code-based interactions, desktop/mobile quality, SEO, working contact and real blog publishing are non-negotiable.
 **Selected workflow (user-approved):** **ChatGPT (creative director and QA) → Google Stitch (visual design + graphic/content design) → Claude Code (React implementation + technical QA) → ChatGPT (visual approval and repeat)**.
 **Other infrastructure:** GitHub and EXISTING hosting. Existing React + Vite repo and routes. **0 NOK additional spend** unless separately approved. No paid AI video, no Higgsfield, no Hostinger, no domain/DNS/MX changes.
@@ -42,14 +42,14 @@ Completion of website does not mean whole Cidea Marketing foundation complete. T
 **Gate:** Verifiable three designs, preview links/images, user-approved chosen concept. Do not move ahead on verbal descriptions alone.
 _Note (Claude): the two research/positioning items above are ChatGPT deliverables; Claude has not verified them and leaves them for ChatGPT to tick._
 
-### PHASE 3 — Final visual identity, content/design system & all-page mockups [IN PROGRESS – draft 1 ready for review 2026-10-15, see `phase3/README.md`]
+### PHASE 3 — Final visual identity, content/design system & all-page mockups [USER APPROVED 2026-10-16, see `phase3/README.md` and `phase3/CHATGPT-REVIEW-UTKAST2.md`]
 - [ ] Stitch refines chosen direction into logo/wordmark treatment, type scale, color tokens, responsive spacing, buttons, icon language, image style, reusable components.
 - [ ] Stitch designs homepage, agreed service pages, about, truthful portfolio/concepts, blog index, article and contact in desktop and mobile variants.
 - [ ] ChatGPT approves Norwegian headings/body copy, customer path and content accuracy. Avoid repetitive copy, numbered decorative labels, English microcopy, fake testimonials/projects/metrics and forbidden `gratis` copy.
 - [ ] Export validated `DESIGN.md`, layouts, styles/tokens and asset inventory with licenses.
 **Gate:** User-approved complete visual blueprint with source assets and exportable handoff; no unresolved placeholders.
 
-### PHASE 4 — Produce licensed media and code-based motion [NOT STARTED]
+### PHASE 4 — Produce licensed media and code-based motion [ACTIVE 2026-10-16; see `phase4/EXECUTION-BRIEF.md`]
 - [ ] Create/refine key graphics via Stitch where included at zero additional cost, and produce CSS/SVG illustrations, abstract assets, photographic art direction.
 - [ ] Choose licensed images; document provenance and commercial reuse rights; avoid watermarked/unclear license outputs.
 - [ ] Define simple original scroll/hover/reveal interactions with reduced motion, keyboard handling and mobile fallbacks. No paid film required.
@@ -95,11 +95,15 @@ _Note (Claude): the two research/positioning items above are ChatGPT deliverable
 After **every individual completed work item**, report: **Phase X/9, current task, verified completed with proof, incomplete current gate, next concrete task, blockers/user decision**. NEVER mark phase complete without all gated deliverables. Keep change history committed to GitHub.
 Website production always has priority until this plan is finished. Do not restart research into other vendors without user explicitly reopening the decision.
 
-## Initial snapshot at selection
-Phase 1/9 remains OPEN. ChatGPT/Stitch/Claude methodology SELECTED. Stitch design workspace/MCP integration not yet confirmed, no new Stitch designs generated, no new working code submitted for launch. Existing production unaffected. Next deliverable: `STITCH-CREATIVE-BRIEF.md`, developer handoff and verification of Stitch connection/preview path.
+## Historical initial snapshot (superseded)
+At selection, Stitch integration had not yet been confirmed. The verified Phase 1 integration, chosen Phase 2 concept C, approved Phase 3 blueprint, and active Phase 4 brief now supersede that initial state. Existing production remains unaffected.
 
 ## ChatGPT mode choice — user's standing preference (2026-10-15)
 
 **Use Work only when the task genuinely benefits from multi-step execution**, such as navigating external services, researching across several resources, producing/reviewing design assets, running the Cidea gameplan across GitHub and Stitch, or substantial implementation coordination. If a conversation shifts to straightforward Q&A, brainstorming, brief advice, explanations, or a simple decision that doesn't need Work, **ALWAYS proactively suggest switching from Work to normal ChatGPT/Instant mode**. Do not demand a mode switch for a task that clearly benefits from Work. The assistant cannot directly switch the user's mode; suggest the change plainly at the right moment. Respect the user's chosen mode if they continue there.
 
 This is part of the after-task update: `Recommended mode for next task: Work / normal chat`, with a one-phrase reason. Keep it unobtrusive.
+
+
+## Decision record — 2026-10-16: user approved phase 3
+User explicitly accepted **phase 3 and concept C as the design foundation**, and instructed execution of phase 4 at **0 NOK additional cost**. The full Phase 3 blueprint gate is therefore **CLOSED/APPROVED AS FOUNDATION**; aesthetic refinements, motif diversity, accessibility fixes and rights review documented in `phase3/CHATGPT-REVIEW-UTKAST2.md` carry forward as **Phase 4/5/8 acceptance criteria**, rather than reopening Phase 3. Unknown legal/contact/company facts are **launch blockers**, never permission to fabricate. Claude owns all coding. Phase 4 may produce isolated SVG/motion prototypes but must **not** build the full site prematurely. Phase 4 is not complete until actual assets, visual QA, licenses and user review are demonstrated.
