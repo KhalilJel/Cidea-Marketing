@@ -1,7 +1,7 @@
 # Fase 4 – ChatGPTs gjennomgang av ressurs- og animasjonspakken
 
 **Dato:** 2026-10-16
-**Status:** FAGLIG GODKJENT MED VILKÅR; **avventer uttrykkelig eiergodkjenning før fase 5**.
+**Status:** FAGLIG GODKJENT MED VILKÅR; **uttrykkelig eiergodkjent med vilkår 2026-10-17**.
 **Vurdert:** `phase4/README.md`, `AUDIT.md`, `ASSETS.md`, `QA.md`, `motion/TEST-RESULTATER.md` samt de faktiske GitHub-bildene `variants-overview.png` og `motion/oversikt.png`.
 
 ## Hva som faktisk er kontrollert
@@ -30,7 +30,7 @@ Dette er **godkjent som fundament, ikke endelig visuelt polert React-design**. I
 
 ## Gjenværende betingelser
 
-1. **Eiergodkjenning kreves før fase 4 markeres fullført og fase 5 åpnes.**
+1. **Oppfylt 2026-10-17:** eier har uttrykkelig godkjent fase 4 med vilkårene her og åpnet fase 5.
 2. Google Stitch/Labs-spesifikke vilkår og kommersiell bruk av det grafiske konseptet må gjennomgås av eier før publisering; generelle Google-vilkår alene er ikke endelig avklaring.
 3. Selskapets juridiske opplysninger, skjemamottak, kontaktprosess, datalagring og personverntekst skal være faktabekreftet og testet før live; aldri fyll inn antakelser.
 4. Designet må i fase 5 bli et **sammenhengende nettsted**, ikke bare ti heroer. Begrens repeterende fargeflater, små etiketter og generisk kortstruktur; løft originalitet og mobil rytme.

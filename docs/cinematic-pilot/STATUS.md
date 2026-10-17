@@ -1,7 +1,7 @@
 # Cidea Marketing – Status / verificerbar fremdrift
 
 **Oppdatert:** 2026-10-17
-**Nå:** FASE **5/9 – IMPLEMENTERT, VENTER PÅ EIERVURDERING AV FORHÅNDSVISNING**. **4/9 faseporter godkjent**. Fase 4 godkjent med vilkår (`phase4/CHATGPT-REVIEW.md`). Claude Code har implementert 5.2–5.5 på eksperimentgrenen. Fase 5 er **ikke godkjent** før eier har vurdert faktisk forhåndsvisning. Ingen merge, deploy eller nye kjøp.
+**Nå:** FASE **5/9 – IMPLEMENTERT, VISUELL REVISJON GJENSTÅR FØR EIERVURDERING**. **4/9 faseporter godkjent**. Fase 4 godkjent med vilkår (`phase4/CHATGPT-REVIEW.md`). Claude Code har implementert 5.2–5.5 på eksperimentgrenen. Fase 5 er **ikke godkjent** før eier har vurdert faktisk forhåndsvisning. Ingen merge, deploy eller nye kjøp.
 **Godkjent metode:** ChatGPT → Google Stitch → Claude Code → ChatGPT QA.
 **Kostnadsgrense:** 0 NOK i nye abonnementer/mediekreditter uten eksplisitt brukerbeslutning.
 **Eksperimentgren:** `experiment/cinematic-marketing-pilot`; [draft PR #13](https://github.com/KhalilJel/Cidea-Marketing/pull/13); ingen produksjonsendring.
@@ -21,8 +21,9 @@
 
 ## Neste konkrete oppgave
 
-1. Eier vurderer lokal forhåndsvisning av `/` og `/kontakt` (desktop og mobil) og tar stilling til avvikene i `phase5/README.md` (seksjonsrekkefølge, mobilhero, «Slik jobber vi»-flate, tekstvalg).
-2. Etter eiervurdering: eventuelle justeringer, deretter fase 6 (undersider) etter godkjenning.
+1. Claude retter nettbrettskala og seksjonsrekkefølge etter `phase5/CHATGPT-REVIEW.md`. Ingen tilgjengelig Claude Code-økt i denne Work-økten; oppdrag klargjort, ikke bekreftet startet.
+2. Eier vurderer lokal forhåndsvisning av `/` og `/kontakt` (desktop og mobil) og tar stilling til avvikene i `phase5/README.md` (seksjonsrekkefølge, mobilhero, «Slik jobber vi»-flate, tekstvalg).
+3. Etter eiervurdering: eventuelle justeringer, deretter fase 6 (undersider) etter godkjenning.
 
 ## Åpne vilkår
 
@@ -38,3 +39,6 @@ Etter hver arbeidsoppgave: fase/oppgave, verifisert utført med bevis, gjenstår
 Anbefalt neste modus: **Work**, fordi ekstern koordinering, implementering og browser-QA gjenstår. Foreslå vanlig ChatGPT når bare råd eller beslutninger gjenstår.
 
 Dette gjelder nettsiden. Den større Cidea-planens innholdsbanker, SoMe og Gullkornet er ikke dermed fullført.
+
+## Uavhengig ChatGPT-kontroll 2026-10-17
+Ren checkout a26e7f7. npm ci og npm run build bestått. Faktiske, inncheckede React-skjermbilder visuelt kontrollert ved 320/375/768/1440 mot fase 3-referansene; funn og beslutninger i phase5/CHATGPT-REVIEW.md. Nye nettlesertester ikke kjørt: Playwright-nettleserarkivet kunne ikke installeres (ugyldig/tomt ZIP-arkiv). Eksisterende 26/26 og 56/56 beholdes som Claudes testkvitteringer, ikke nye målinger. Eksisterende Netlify-preview er registrert som success i GitHub, men ble ikke åpnet: nettleserens tilgangskontroll avviste besøket. Ingen omgåelse forsøkt.

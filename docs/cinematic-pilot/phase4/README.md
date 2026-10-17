@@ -1,8 +1,8 @@
 # Fase 4/9 – visuelle ressurser, motivvariasjoner og bevegelse
 
-**Status:** oppgave 4.1–4.5 er utført og **klar for ChatGPTs og eierens godkjenning**. Fase 4 er **ikke godkjent** før det.
+**Status:** GODKJENT MED VILKÅR av eier 2026-10-17. Se `CHATGPT-REVIEW.md`; betingelsene videreføres i fase 5 og før publisering.
 **Kostnad:** 0 NOK. 0 Stitch-kreditter (ingen Stitch-kall i fase 4). Ingen video, ingen nye abonnementer, ingen ny hosting.
-**Gren:** `experiment/cinematic-marketing-pilot`, draft PR #13. Ingen merge, deploy eller endring i produksjon/DNS/MX. React-nettsiden er ikke implementert.
+**Gren:** `experiment/cinematic-marketing-pilot`, draft PR #13. Ingen merge, deploy eller endring i produksjon/DNS/MX. React-forsiden er senere implementert i fase 5; se `../phase5/README.md`.
 **Brief:** [`EXECUTION-BRIEF.md`](EXECUTION-BRIEF.md)
 
 ## Oppgaver

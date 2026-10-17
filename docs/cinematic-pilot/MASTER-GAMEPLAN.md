@@ -1,7 +1,7 @@
 # Cidea Marketing — Master Gameplan (Approved production method)
 
 **Decision date:** 2026-10-15
-**Status:** PHASES 1–4 USER-APPROVED; **PHASE 5/9 IN PROGRESS** as of 2026-10-17. **4/9 phase gates approved**. Phase 4 approved with conditions in `phase4/CHATGPT-REVIEW.md`; phase 5 audit/planning started, React implementation not yet started. No production changes.
+**Status:** PHASES 1–4 USER-APPROVED; **PHASE 5/9 IN PROGRESS** as of 2026-10-17. **4/9 phase gates approved**. Phase 4 approved with conditions in `phase4/CHATGPT-REVIEW.md`; phase 5 React implementation delivered by Claude; ChatGPT screenshot review completed 2026-10-17, two visual revisions remain before owner approval. No production changes.
 **Objective:** Replace the existing weak cideamarketing.com experience with an extraordinary, original, professional, conversion-ready Norwegian digital-agency website. Distinctive art direction, real content, elegant code-based interactions, desktop/mobile quality, SEO, working contact and real blog publishing are non-negotiable.
 **Selected workflow (user-approved):** **ChatGPT (creative director and QA) → Google Stitch (visual design + graphic/content design) → Claude Code (React implementation + technical QA) → ChatGPT (visual approval and repeat)**.
 **Other infrastructure:** GitHub and EXISTING hosting. Existing React + Vite repo and routes. **0 NOK additional spend** unless separately approved. No paid AI video, no Higgsfield, no Hostinger, no domain/DNS/MX changes.
@@ -56,7 +56,7 @@ _Note (Claude): the two research/positioning items above are ChatGPT deliverable
 - [ ] Match every visual asset to final page content and crops.
 **Gate:** CLOSED by explicit owner approval with `phase4/CHATGPT-REVIEW.md` conditions. Asset/motion package accepted as foundation. Stitch/Labs commercial-rights review remains OPEN before publication; approval does not assert legal clearance. Delivered evidence: `phase4/README.md`, `ASSETS.md`, `QA.md`, `motion/TEST-RESULTATER.md`. Historical unchecked subtasks above are superseded by this gate decision; prototype test results are Claude reports, not newly rerun tests.
 
-### PHASE 5 — Build and perfect homepage [IN PROGRESS — AUDIT/PLAN 2026-10-17]
+### PHASE 5 — Build and perfect homepage [IN PROGRESS — VISUAL REVISIONS 2026-10-17]
 - [ ] Claude takes approved Stitch design + `DESIGN.md`, implements in **existing Vite/React**, preserving routes and codebase.
 - [ ] Builds hero, navigation, social proof only when factual, services, capability showcase, blog preview and one clear CTA.
 - [ ] React/CSS/SVG motion with mobile-first quality and accessible fallback.
@@ -110,3 +110,6 @@ User explicitly accepted **phase 3 and concept C as the design foundation**, and
 
 ## Decision record — 2026-10-17: explicit phase 4 approval and phase 5 start
 Owner explicitly approved phase 4 with all conditions in `phase4/CHATGPT-REVIEW.md`, and authorized the actual React/Vite homepage on the experiment branch. Four phase gates approved; phase 5 remains unapproved. Claude Code owns ALL code changes and technical browser QA; ChatGPT owns coordination, documents and review. See `phase5/EXECUTION-BRIEF.md` for verified structure audit and ordered tasks. No merge, deploy, purchases, new Stitch usage or DNS/MX changes. Before live: resolve Stitch/Labs rights, company facts, contact recipient/process, data retention and privacy. K5 permits useful long sections but requires measured rhythm and zero horizontal overflow. Re-test 580ms motion, reduced-motion and fallbacks in the real page. Report evidence, remaining work, next task and link after every task; recommend normal ChatGPT when execution is no longer needed.
+
+## Phase 5 review — 2026-10-17, Work continuation
+Claude implementation exists at a26e7f7. ChatGPT independently ran npm ci and npm run build successfully and inspected committed screenshots at 320/375/768/1440 against phase 3 references. Browser suites remain Claude-reported (26/26 and 56/56); fresh browser rerun blocked by unavailable browser binaries. Two visual revisions remain: tablet graphic scale and concepts-before-process ordering. See phase5/CHATGPT-REVIEW.md for evidence and actionable Claude tasks. No Claude Code session is exposed in this Work environment; handoff prepared, execution NOT claimed. Phase 5 remains open.
