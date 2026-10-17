@@ -40,6 +40,8 @@ Use the detailed `MASTER-GAMEPLAN.md`. Code motion with CSS, SVG, React/JS; do n
 
 `Fase X/9 | Oppgave | Verifisert utført med lenke/screenshot/test | Gjenstår før fasegodkjenning | Neste steg | Blokkering`
 
+**Always end every task (and every reply that closes a task or reports a status change) with a summary the owner can forward to ChatGPT, placed inside one fenced ```text code block so the app shows a copy button.** Write it in Norwegian and make it self-contained: status, branch and commit SHA, what changed and why, actual test results (including what was not run), evidence paths, known deviations, preview link, what ChatGPT should assess, and next step.
+
 Never invent completion or treat passing CI as proof that a page looks polished. Stop all unrelated work until current phase gate passed. Do not merge PR #11 or #13 without approval.
 
 ## Work vs. ordinary ChatGPT mode
