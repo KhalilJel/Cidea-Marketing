@@ -21,6 +21,13 @@
 
 - **Revisjon etter ChatGPT-kontroll (Claude Code, 2026-10-17):** seksjonsrekkefølgen er nå hero → tjenester → konsept → slik jobber vi → innsikt → CTA (anker-ID-er uendret). Nettbrett 600–860 px har fått egen komposisjon: heromotiv 480×345 (før 712×511 ved 768), konseptgrafikk 400×287 (før 672×482), to tjenestekolonner og tre prosessledd fra 700 px. Ved 768 er siden 4 042 px (før 4 425). Tester: build OK, `test:forside` 28/30 bestått + 2 ikke kjørt (Firefox/WebKit finnes ikke i skymiljøet; Chromium-stedfortreder for fallback bestått), `qa.mjs` 86/86 ved 8 bredder. Bevis: `phase5/REVISJON-NETTBRETT.md`, `phase5/screens/revisjon/`.
 
+## Ny referanse fra eier (2026-10-17, ikke godkjent retning)
+
+- **Eiers beslutning:** Dentsu Creative (https://www.dentsucreative.com/) er hovedreferanse for en levende, filmatisk forside med tydelig bevegelse og gjennomarbeidede overganger. Tjenestesider, blogg og kontakt kan være vanlige og oversiktlige sider.
+- **Ikke lenger førende for neste forslag:** abstrakte geometriske figurer, ROM-mockupen og CIDEA-storyboardet. Dagens implementering (f26e9fd, nettbrettrevisjon faglig godkjent) beholdes som sammenligningsgrunnlag. Den er fortsatt ikke eiergodkjent som forside.
+- **REA-analyse (Claude Code):** REA 6.5.0 er installert lokalt og verifisert (`analyze-web-bundle` mot egen forhåndsvisning gjenkjente Vite og React riktig). **Selve analysen er blokkert:** skymiljøets nettverkspolicy avviser `www.dentsucreative.com` (403). Ingen analyse eller forslag er laget. Se `phase5/rea-dentsu/README.md`.
+- **Neste beslutning:** eier åpner nettverkstilgang til Dentsu-domenet. Deretter leverer Claude ANALYSE.md og CIDEA-FORSLAG.md, og eier og ChatGPT godkjenner konsept og storyboard før produksjon.
+
 ## Neste konkrete oppgave
 
 1. Nettbrett- og rekkefølgerevisjonen er faglig godkjent av ChatGPT etter kontroll av faktiske bilder og kodediff ved f26e9fd. Ingen ny teknisk kjøring hevdet.
