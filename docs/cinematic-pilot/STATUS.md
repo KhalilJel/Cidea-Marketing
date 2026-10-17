@@ -1,9 +1,9 @@
 # Cidea Marketing – Status / verificerbar fremdrift
 
 **Oppdatert:** 2026-10-17
-**Nå:** FASE **5/9 – IMPLEMENTERT OG REVIDERT ETTER CHATGPT-KONTROLL, VENTER PÅ NY CHATGPT-QA OG EIERVURDERING**. **4/9 faseporter godkjent**. Fase 4 godkjent med vilkår (`phase4/CHATGPT-REVIEW.md`). Claude Code har implementert 5.2–5.5 på eksperimentgrenen. Fase 5 er **ikke godkjent** før eier har vurdert faktisk forhåndsvisning. Ingen merge, deploy eller nye kjøp.
+**Nå:** FASE **5/9 – NETTBRETTREVISJON FAGLIG GODKJENT; VISUELLE RESSURSER OG EIERVURDERING GJENSTÅR**. **4/9 faseporter godkjent**. Fase 4 godkjent med vilkår (`phase4/CHATGPT-REVIEW.md`). Claude Code har implementert 5.2–5.5 på eksperimentgrenen. Fase 5 er **ikke godkjent** før eier har vurdert faktisk forhåndsvisning. Ingen merge, deploy eller nye kjøp.
 **Godkjent metode:** ChatGPT → Google Stitch → Claude Code → ChatGPT QA.
-**Kostnadsgrense:** 0 NOK i nye abonnementer/mediekreditter uten eksplisitt brukerbeslutning.
+**Kostnader:** Eier har 2026-10-17 åpnet for nødvendige betalte visuelle verktøy, inkludert Higgsfield hvis det gir ønsket kvalitet. Ingen konkret plan, pris eller kjøp er valgt eller gjennomført. Tidligere nullkostnadsregel er dermed ikke et absolutt hinder for vurdering; faktiske kjøp må ha avklart omfang og kostnad.
 **Eksperimentgren:** `experiment/cinematic-marketing-pilot`; [draft PR #13](https://github.com/KhalilJel/Cidea-Marketing/pull/13); ingen produksjonsendring.
 **PR #11:** gammel design system-draft, ikke merge eller endre før gjennomgang.
 
@@ -23,9 +23,9 @@
 
 ## Neste konkrete oppgave
 
-1. ChatGPT kontrollerer revisjonen i `phase5/REVISJON-NETTBRETT.md` (før/etter-bilder ved 320–1440, målte høyder).
-2. Eier vurderer forhåndsvisning av `/` og `/kontakt` (desktop, nettbrett og mobil).
-3. Etter eiervurdering: eventuelle justeringer, deretter fase 6 (undersider) etter godkjenning.
+1. Nettbrett- og rekkefølgerevisjonen er faglig godkjent av ChatGPT etter kontroll av faktiske bilder og kodediff ved f26e9fd. Ingen ny teknisk kjøring hevdet.
+2. Avgrenset visuell prøve for sterkere hero- og støttemateriale; eier mener eksisterende geometriske figurer virker generiske/AI-pregede. Ikke videreproduser samme motivfamilie som endelig løsning før dette er avklart. Bevar fungerende kode og etablerte layoutforbedringer mens prøven vurderes.
+3. Eier vurderer faktisk revidert forside. Fase 5 forblir åpen; fase 6 starter først etter godkjenning.
 
 ## Åpne vilkår
 
@@ -33,7 +33,7 @@
 - Bekreft juridiske opplysninger, skjemamottak, kontaktprosess, datalagring og personverntekst før live. Ikke bruk den gamle SmartSvar-adressen som antatt Cidea-mottaker.
 - Mål mobil scroll-rytme, null horisontal overflow, visuell sammenheng og lesbarhet i faktisk React-side.
 - Verifiser 580 ms inngang én gang, transform/opacity, reduced-motion, fokus/hover og umiddelbart synlig fallback. Ingen skjult SEO-tekst eller scrolljacking.
-- Ingen merge, deploy, DNS/MX-endring, nye betalte verktøy eller endring av PR #11.
+- Ingen merge, produksjonsdeploy, DNS/MX-endring eller endring av PR #11. Ingen nye kjøp er gjennomført; se oppdatert kostnadsbeslutning øverst.
 
 ## Rapportregel
 
@@ -44,3 +44,6 @@ Dette gjelder nettsiden. Den større Cidea-planens innholdsbanker, SoMe og Gullk
 
 ## Uavhengig ChatGPT-kontroll 2026-10-17
 Ren checkout a26e7f7. npm ci og npm run build bestått. Faktiske, inncheckede React-skjermbilder visuelt kontrollert ved 320/375/768/1440 mot fase 3-referansene; funn og beslutninger i phase5/CHATGPT-REVIEW.md. Nye nettlesertester ikke kjørt: Playwright-nettleserarkivet kunne ikke installeres (ugyldig/tomt ZIP-arkiv). Eksisterende 26/26 og 56/56 beholdes som Claudes testkvitteringer, ikke nye målinger. Eksisterende Netlify-preview er registrert som success i GitHub, men ble ikke åpnet: nettleserens tilgangskontroll avviste besøket. Ingen omgåelse forsøkt.
+
+## ChatGPT-kontroll av revisjonen — 2026-10-17
+Kontrollert f26e9fd; nyere HEAD db68179 endrer bare prosjekt-skillens rapportregel. Kodediff bekrefter seksjonsrekkefølge og nettbrettregler. Faktiske fullsidebilder ved 600/768/860/375/1440 kontrollert. Begge P2-punkter lukkes faglig: nettbrettgrafikk er bedre dimensjonert, venstrejustering fungerer, to tjenestekolonner ved 600 er lesbare, lys–grå–lys fungerer og +29 px ved 600 aksepteres. Dette godkjenner ikke endelig grafikk eller fase 5. GitHub viser Build og Service route browser test success på f26e9fd. Claudes 28 bestått + 2 ikke kjørt og 86/86 er dokumenterte testkvitteringer, ikke nye ChatGPT-kjøringer. Safari/Firefox, ekte enhet og skjermleser er fortsatt ikke testet i denne runden. Eier formidler oppdrag mellom ChatGPT og Claude; mangel på direkte Claude-integrasjon er ikke en arbeidsflytblokkering.
