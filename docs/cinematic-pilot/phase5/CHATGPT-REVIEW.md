@@ -1,7 +1,7 @@
 # Fase 5 – ChatGPTs visuelle kontroll og neste Claude-oppdrag
 
 Dato: 2026-10-17. Kontrollert kilde: a26e7f7ecb917f4edef08fd5146032c8830ed6af.
-Status: IMPLEMENTERT, MEN IKKE GODKJENT. Fase 4 er eiergodkjent med vilkår. Ingen overgang til fase 6.
+Status: IMPLEMENTERT, MEN IKKE GODKJENT. **Oppfølging:** begge P2-punktene er utført av Claude Code 2026-10-17. Se [`REVISJON-NETTBRETT.md`](REVISJON-NETTBRETT.md). Fase 4 er eiergodkjent med vilkår. Ingen overgang til fase 6.
 
 ## Faktisk kontrollert
 
@@ -24,6 +24,6 @@ Behold lys prosessflate med fargede toppkanter: den gir en nødvendig pause mell
 
 Les dette dokumentet, MASTER-GAMEPLAN, STATUS og eksisterende fase 5 README. Sjekk git status og hent grenen trygt uten å miste lokalt arbeid. Utfør de to P2-rettelsene, kjør build, test:forside og tests/qa.mjs. Kontroller 580 ms, reduced-motion, fallback, tastaturmeny og gamle ruter. Ta faktiske nye bilder. Dokumenter før/etter og oppdater STATUS og PR #13. Push bare til experiment/cinematic-marketing-pilot. Ingen merge, manuell deploy, DNS/MX, betalte verktøy eller nye designretninger. Fase 5 krever ny ChatGPT-kontroll og uttrykkelig eiervurdering.
 
-Delegeringsstatus: oppdraget er klargjort i GitHub. Denne Work-økten eksponerer ingen Claude Code-binær, connector eller aktiv Claude-fane. Det er ikke bekreftet mottatt eller startet i Claude. Bruk eksisterende Claude Code-økt; ikke opprett nye betalte API-kall.
+Delegeringsstatus: mottatt og utført i en Claude Code-økt 2026-10-17. Resultat i `REVISJON-NETTBRETT.md`.
 
 Åpne før publisering: faktisk kontaktflyt, selskapsopplysninger, personvern og dokumenterte rettigheter. `/kontakt` er fortsatt en ærlig midlertidig side, ikke en fungerende innsending. Dette er ikke en ferdig kundehenvendelsesflyt.

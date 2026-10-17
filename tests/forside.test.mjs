@@ -10,7 +10,7 @@ const here = fileURLToPath(new URL('.', import.meta.url));
 mkdirSync(`${here}bilder`, { recursive: true });
 const server = await serve(4180);
 const base = 'http://127.0.0.1:4180';
-const res = []; let fail = 0;
+const res = []; let fail = 0; let ikkeKjort = 0;
 const check = (id, navn, ok, mål) => { res.push(`| ${id} | ${navn} | ${ok ? 'OK' : '**FEIL**'} | ${mål} |`); if (!ok) fail++; console.log(ok ? 'OK  ' : 'FEIL', id, navn, '–', mål); };
 const b = await chromium.launch();
 
@@ -67,7 +67,10 @@ for (const [sti, bredde] of [['/', 1440], ['/', 390], ['/kontakt', 390]]) {
 // F: andre motorer (faktisk Firefox og WebKit). Uten view()-støtte skal artiklene være synlige
 // uten scrolling (fallback); med støtte (WebKit 26) skal de bli synlige når de scrolles inn.
 for (const t of [firefox, webkit]) {
-  const bb = await t.launch(); const p = await bb.newPage({ viewport: { width: 1440, height: 900 } });
+  const bb = await t.launch().catch(e => null);
+  // Mangler motoren i miljøet, registreres testen som ikke kjørt – aldri som bestått.
+  if (!bb) { res.push(`| F ${t.name()} | Fallback i ekte ${t.name()} | IKKE KJØRT | nettleseren er ikke installert i dette miljøet |`); ikkeKjort++; console.log('IKKE KJØRT F', t.name()); continue; }
+  const p = await bb.newPage({ viewport: { width: 1440, height: 900 } });
   await p.goto(base + '/', { waitUntil: 'load' }); await p.waitForTimeout(800);
   const les = () => p.evaluate(() => ({ stotte: CSS.supports('animation-timeline: view()'), op: [...document.querySelectorAll('.cm-artikler li')].map(l => Number(getComputedStyle(l).opacity).toFixed(2)).join('/'), motiv: [...document.querySelectorAll('.cm-kun-desktop > svg')].map(s => getComputedStyle(s).opacity).join('/') }));
   const r = await les();
@@ -77,6 +80,15 @@ for (const t of [firefox, webkit]) {
   const ok = r.motiv.split('/').every(o => o === '1') && (r.stotte ? synlig(r2.op) : synlig(r.op) && synlig(r2.op));
   check(`F ${t.name()}`, r.stotte ? 'Med view()-støtte: artikler synlige i visning' : 'Uten view()-støtte: artikler synlige uten scrolling', ok, `animation-timeline støttet: ${r.stotte}; artikler før scroll ${r.op}, i visning ${r2.op}; heroplan ${r.motiv}`);
   await bb.close();
+}
+// F-stedfortreder i Chromium: fjerner scroll-animasjonen slik en motor uten view() gjør, og sjekker at
+// ingen annen regel skjuler artiklene. Erstatter ikke testen i ekte Firefox/WebKit.
+{
+  const p = await b.newPage({ viewport: { width: 1440, height: 900 } }); await p.goto(base + '/', { waitUntil: 'load' });
+  await p.addStyleTag({ content: '.cm .cm-artikler li { animation: none !important; }' });
+  const op = await p.evaluate(() => [...document.querySelectorAll('.cm-artikler li')].map(l => Number(getComputedStyle(l).opacity).toFixed(2)).join('/'));
+  check('F0', 'Stedfortreder (Chromium uten view()-animasjon): artikler synlige uten scrolling', op.split('/').every(o => Number(o) > 0.95), `artikler før scroll ${op}`);
+  await p.close();
 }
 // P: ytelse mobil, 4× CPU-struping
 {
@@ -92,13 +104,13 @@ for (const t of [firefox, webkit]) {
   await c.close();
 }
 // O: overflow ved fem bredder
-for (const w of [320, 375, 390, 768, 1440]) {
+for (const w of [320, 375, 390, 600, 768, 860, 1024, 1440]) {
   const p = await b.newPage({ viewport: { width: w, height: 900 } }); await p.goto(base + '/', { waitUntil: 'networkidle' });
   const o = await p.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   check(`O ${w}`, 'Ingen horisontal overflow', o <= 0, `${o} px`); await p.close();
 }
 
 await b.close(); server.close();
-writeFileSync(`${here}RESULTAT.md`, `# Testresultat – fase 5 (faktisk side)\n\nKjørt ${new Date().toISOString()} mot \`dist/\` servert med Netlify-regelen (\`tests/serve-dist.mjs\`). Chromium (Playwright), Firefox 142 og WebKit 26 for fallback.\n\n| ID | Test | Resultat | Måling |\n|---|---|---|---|\n${res.join('\n')}\n\n**${res.length - fail} av ${res.length} bestått.**\n`);
-console.log(`${res.length - fail}/${res.length} OK`);
+writeFileSync(`${here}RESULTAT.md`, `# Testresultat – fase 5 (faktisk side)\n\nKjørt ${new Date().toISOString()} mot \`dist/\` servert med Netlify-regelen (\`tests/serve-dist.mjs\`). Chromium (Playwright); Firefox og WebKit for fallback der de er installert.\n\n| ID | Test | Resultat | Måling |\n|---|---|---|---|\n${res.join('\n')}\n\n**${res.length - fail - ikkeKjort} av ${res.length} bestått${ikkeKjort ? `, ${ikkeKjort} ikke kjørt` : ''}.**\n`);
+console.log(`${res.length - fail - ikkeKjort}/${res.length} OK${ikkeKjort ? `, ${ikkeKjort} ikke kjørt` : ''}`);
 process.exit(fail ? 1 : 0);

@@ -1,7 +1,7 @@
 # Cidea Marketing – Status / verificerbar fremdrift
 
 **Oppdatert:** 2026-10-17
-**Nå:** FASE **5/9 – IMPLEMENTERT, VISUELL REVISJON GJENSTÅR FØR EIERVURDERING**. **4/9 faseporter godkjent**. Fase 4 godkjent med vilkår (`phase4/CHATGPT-REVIEW.md`). Claude Code har implementert 5.2–5.5 på eksperimentgrenen. Fase 5 er **ikke godkjent** før eier har vurdert faktisk forhåndsvisning. Ingen merge, deploy eller nye kjøp.
+**Nå:** FASE **5/9 – IMPLEMENTERT OG REVIDERT ETTER CHATGPT-KONTROLL, VENTER PÅ NY CHATGPT-QA OG EIERVURDERING**. **4/9 faseporter godkjent**. Fase 4 godkjent med vilkår (`phase4/CHATGPT-REVIEW.md`). Claude Code har implementert 5.2–5.5 på eksperimentgrenen. Fase 5 er **ikke godkjent** før eier har vurdert faktisk forhåndsvisning. Ingen merge, deploy eller nye kjøp.
 **Godkjent metode:** ChatGPT → Google Stitch → Claude Code → ChatGPT QA.
 **Kostnadsgrense:** 0 NOK i nye abonnementer/mediekreditter uten eksplisitt brukerbeslutning.
 **Eksperimentgren:** `experiment/cinematic-marketing-pilot`; [draft PR #13](https://github.com/KhalilJel/Cidea-Marketing/pull/13); ingen produksjonsendring.
@@ -19,10 +19,12 @@
 - Fase 5.5: lokal forhåndsvisning (`npm run build && node tests/serve-dist.mjs` → http://127.0.0.1:4174). Bevis: `phase5/README.md`, `tests/RESULTAT.md`, `tests/QA-RESULTAT.md`, `phase5/screens/qa/`.
 - **`main` hentet inn i eksperimentgrenen (92b866e, eiergodkjent, ikke merge til `main`):** konflikten i `src/main.jsx` er løst ved å beholde fase 5-ruteren. `/personvern` (Gullkornet-personvern, #14) er flyttet inn i `src/legacy/LegacyApp.jsx`, og «Personvern» er lagt i den nye bunnteksten. Låsefil og Node 24 / `npm ci` er hentet fra `main`. Tester etterpå: forside **26/26** (inkl. `/personvern` 200 uten feil), QA **56/56**. PR #13 er igjen uten konflikt.
 
+- **Revisjon etter ChatGPT-kontroll (Claude Code, 2026-10-17):** seksjonsrekkefølgen er nå hero → tjenester → konsept → slik jobber vi → innsikt → CTA (anker-ID-er uendret). Nettbrett 600–860 px har fått egen komposisjon: heromotiv 480×345 (før 712×511 ved 768), konseptgrafikk 400×287 (før 672×482), to tjenestekolonner og tre prosessledd fra 700 px. Ved 768 er siden 4 042 px (før 4 425). Tester: build OK, `test:forside` 28/30 bestått + 2 ikke kjørt (Firefox/WebKit finnes ikke i skymiljøet; Chromium-stedfortreder for fallback bestått), `qa.mjs` 86/86 ved 8 bredder. Bevis: `phase5/REVISJON-NETTBRETT.md`, `phase5/screens/revisjon/`.
+
 ## Neste konkrete oppgave
 
-1. Claude retter nettbrettskala og seksjonsrekkefølge etter `phase5/CHATGPT-REVIEW.md`. Ingen tilgjengelig Claude Code-økt i denne Work-økten; oppdrag klargjort, ikke bekreftet startet.
-2. Eier vurderer lokal forhåndsvisning av `/` og `/kontakt` (desktop og mobil) og tar stilling til avvikene i `phase5/README.md` (seksjonsrekkefølge, mobilhero, «Slik jobber vi»-flate, tekstvalg).
+1. ChatGPT kontrollerer revisjonen i `phase5/REVISJON-NETTBRETT.md` (før/etter-bilder ved 320–1440, målte høyder).
+2. Eier vurderer forhåndsvisning av `/` og `/kontakt` (desktop, nettbrett og mobil).
 3. Etter eiervurdering: eventuelle justeringer, deretter fase 6 (undersider) etter godkjenning.
 
 ## Åpne vilkår

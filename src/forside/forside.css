@@ -189,6 +189,35 @@
   .cm-cta .cm-knapp { grid-column: 1; grid-row: auto; width: 100%; justify-content: center; }
 }
 
+/* ---------- Nettbrett (600–860): egen komposisjon, ikke en oppblåst mobilside ----------
+   Mobilmotivet (390×280) begrenses til 480×345 og konseptgrafikken til 400 px, med samme
+   proporsjoner og synlig hakk. Bredden brukes til to tjenestekolonner og tre prosessledd. */
+@media (min-width: 600px) and (max-width: 860px) {
+  .cm { --gutter: 32px; }
+  .cm-hero-rad { gap: 36px; padding-top: 40px; padding-bottom: 56px; }
+  .cm-hero h1 { font-size: 46px; line-height: 1.06; max-width: 13em; }
+  .cm-ingress { font-size: 18px; max-width: 32em; }
+  .cm-handling .cm-knapp { width: auto; }
+  .cm-hero-kunst { max-width: 480px; justify-self: start; }
+
+  .cm-seksjon { padding: 64px 0; }
+  .cm-tjenester { grid-template-columns: repeat(2, 1fr); }
+  .cm-tjenester a { display: flex; padding: 24px 24px 22px; }
+  .cm-markor { width: 44px; height: 44px; }
+  .cm-tjenester h3 { font-size: 20px; margin: 20px 0 8px; }
+  .cm-tjenester p { margin-bottom: 18px; }
+
+  .cm-konsept { gap: 28px; }
+  .cm-konsept-kunst { max-width: 440px; }
+
+  .cm-cta .cm-knapp { width: auto; justify-self: start; }
+}
+/* Tre prosessledd side om side først når hvert ledd har plass til titlene på én linje. */
+@media (min-width: 700px) and (max-width: 860px) {
+  .cm-steg { grid-template-columns: repeat(3, 1fr); }
+  .cm-steg li + li { border-left: 2px solid var(--modul); }
+}
+
 /* ---------- Redusert bevegelse: sluttbildet umiddelbart ---------- */
 @media (prefers-reduced-motion: reduce) {
   .cm *, .cm *::before, .cm *::after { animation: none !important; transition: none !important; }

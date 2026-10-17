@@ -68,16 +68,6 @@ export default function Forside() {
         </div>
       </section>
 
-      <section id="slik-jobber-vi" className="cm-seksjon cm-lys" aria-labelledby="steg-tittel">
-        <div className="cm-wrap">
-          <h2 id="steg-tittel">Slik jobber vi</h2>
-          <p className="cm-under">Vi avklarer behov, designer og utvikler nettsiden, og kan videreutvikle løsningen etter lansering.</p>
-          <ol className="cm-steg">
-            {steg.map(s => <li key={s.tittel} className={`cm-steg-${s.farge}`}><h3>{s.tittel}</h3><p>{s.tekst}</p></li>)}
-          </ol>
-        </div>
-      </section>
-
       <section id="konsept" className="cm-seksjon" aria-labelledby="konsept-tittel">
         <div className="cm-wrap cm-konsept">
           <div>
@@ -90,7 +80,17 @@ export default function Forside() {
         </div>
       </section>
 
-      <section className="cm-seksjon cm-lys" aria-labelledby="innsikt-tittel">
+      <section id="slik-jobber-vi" className="cm-seksjon cm-lys" aria-labelledby="steg-tittel">
+        <div className="cm-wrap">
+          <h2 id="steg-tittel">Slik jobber vi</h2>
+          <p className="cm-under">Vi avklarer behov, designer og utvikler nettsiden, og kan videreutvikle løsningen etter lansering.</p>
+          <ol className="cm-steg">
+            {steg.map(s => <li key={s.tittel} className={`cm-steg-${s.farge}`}><h3>{s.tittel}</h3><p>{s.tekst}</p></li>)}
+          </ol>
+        </div>
+      </section>
+
+      <section className="cm-seksjon" aria-labelledby="innsikt-tittel">
         <div className="cm-wrap">
           <h2 id="innsikt-tittel">Innsikt</h2>
           <p className="cm-under">Artikler om nettsider, synlighet og merkevare.</p>

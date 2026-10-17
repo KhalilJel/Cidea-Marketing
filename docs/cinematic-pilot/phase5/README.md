@@ -126,3 +126,7 @@ Begrensning: tidsmålingen i headless Chromium med CPU-struping er en indikator,
 Eier godkjente å hente `main` inn i eksperimentgrenen (ikke merge til `main`). `main` hadde fått `/personvern` (#14) i den gamle `src/main.jsx`, som fase 5 hadde flyttet. Løsning: fase 5-ruteren beholdes. Personvernruten og bunntekstlenken er lagt inn i `src/legacy/LegacyApp.jsx`, og `src/Privacy.jsx` er uendret. Den nye bunnteksten har fått «Personvern». Endringen i `styles.css` fulgte flyttingen automatisk. Låsefil og CI på Node 24 med `npm ci` kommer fra `main`. Etter synkroniseringen: `tests/forside.test.mjs` 26/26 (ny rutetest for `/personvern`), `tests/qa.mjs` 56/56 (16 lenkemål, inkl. `/personvern`). Fullsidebildene i `screens/qa/` er tatt på nytt med ny bunntekst.
 
 Testserveren bruker nå port 4180, slik at den ikke kolliderer med forhåndsvisningen på 4174.
+
+## Revisjon etter ChatGPTs visuelle kontroll (2026-10-17)
+
+Begge P2-punktene i [`CHATGPT-REVIEW.md`](CHATGPT-REVIEW.md) er utført: konseptet står nå foran «Slik jobber vi» (avviket i tabellen over er løst), og nettbrett 600–860 px har fått egen komposisjon. Målinger før og etter, skjermbilder ved 320/375/390/600/768/860/1024/1440 og testresultater: [`REVISJON-NETTBRETT.md`](REVISJON-NETTBRETT.md).

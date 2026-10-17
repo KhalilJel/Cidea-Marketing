@@ -17,7 +17,7 @@ const rows = []; const notes = []; let fail = 0;
 const row = (side, w, navn, ok, mål) => { rows.push(`| ${side} | ${w} | ${navn} | ${ok ? 'OK' : '**FEIL**'} | ${mål} |`); if (!ok) fail++; console.log(ok ? 'OK  ' : 'FEIL', side, w, navn, '–', mål); };
 const b = await chromium.launch();
 
-for (const side of ['/', '/kontakt']) for (const w of [320, 375, 390, 768, 1440]) {
+for (const side of ['/', '/kontakt']) for (const w of [320, 375, 390, 600, 768, 860, 1024, 1440]) {
   const c = await b.newContext({ viewport: { width: w, height: w < 768 ? 844 : 900 }, deviceScaleFactor: w < 768 ? 2 : 1, reducedMotion: 'reduce' });
   const p = await c.newPage(); await p.goto(base + side, { waitUntil: 'networkidle' }); await p.evaluate(() => document.fonts.ready);
   const navn = side === '/' ? 'forside' : 'kontakt';
