@@ -8,14 +8,14 @@ import { serve } from './serve-dist.mjs';
 
 const here = fileURLToPath(new URL('.', import.meta.url));
 mkdirSync(`${here}bilder`, { recursive: true });
-const server = await serve(4174);
-const base = 'http://127.0.0.1:4174';
+const server = await serve(4180);
+const base = 'http://127.0.0.1:4180';
 const res = []; let fail = 0;
 const check = (id, navn, ok, mål) => { res.push(`| ${id} | ${navn} | ${ok ? 'OK' : '**FEIL**'} | ${mål} |`); if (!ok) fail++; console.log(ok ? 'OK  ' : 'FEIL', id, navn, '–', mål); };
 const b = await chromium.launch();
 
 // R: ruter, H1, nettleserfeil og hydreringsadvarsler
-for (const [sti, h1Forvent] of [['/', 'Nettsider og helhetlig markedsføring som utvikles over tid.'], ['/kontakt', 'Ta kontakt for en uforpliktende fagprat.'], ['/websites'], ['/branding'], ['/seo'], ['/digital-marketing'], ['/blog'], ['/blog/hvor-mye-koster-en-nettside']]) {
+for (const [sti, h1Forvent] of [['/', 'Nettsider og helhetlig markedsføring som utvikles over tid.'], ['/kontakt', 'Ta kontakt for en uforpliktende fagprat.'], ['/websites'], ['/branding'], ['/seo'], ['/digital-marketing'], ['/blog'], ['/blog/hvor-mye-koster-en-nettside'], ['/personvern']]) {
   const p = await b.newPage({ viewport: { width: 1440, height: 900 } }); const feil = [];
   p.on('pageerror', e => feil.push(e.message)); p.on('console', m => (m.type() === 'error' || /hydrat|did not match/i.test(m.text())) && feil.push(m.text()));
   const r = await p.goto(base + sti, { waitUntil: 'networkidle' });

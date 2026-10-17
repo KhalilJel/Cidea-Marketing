@@ -60,7 +60,7 @@ function Bunn() {
     <footer className="cm-bunn">
       <div className="cm-wrap cm-bunn-rad">
         <a className="cm-ordmerke" href="/">CIDEA MARKETING</a>
-        <nav aria-label="Bunnmeny"><ul>{meny.map(m => <li key={m.href}><a href={m.href}>{m.tekst}</a></li>)}</ul></nav>
+        <nav aria-label="Bunnmeny"><ul>{meny.map(m => <li key={m.href}><a href={m.href}>{m.tekst}</a></li>)}<li><a href="/personvern">Personvern</a></li></ul></nav>
         <p className="cm-copy">© 2026 Cidea Marketing</p>
       </div>
     </footer>

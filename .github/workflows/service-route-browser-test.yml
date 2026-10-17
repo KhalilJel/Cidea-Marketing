@@ -15,8 +15,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - run: npm install
+          node-version: 24
+      - run: npm ci
       - run: npm install --no-save playwright
       - run: npx playwright install --with-deps chromium
       - name: Start Vite
@@ -32,7 +32,7 @@ jobs:
         run: |
           node --input-type=module <<'EOF'
           import { chromium } from 'playwright';
-          const routes = ['/websites', '/branding', '/seo', '/digital-marketing'];
+          const routes = ['/websites', '/branding', '/seo', '/digital-marketing', '/personvern'];
           const browser = await chromium.launch({ headless: true });
           const page = await browser.newPage();
           const errors = [];
@@ -45,6 +45,18 @@ jobs:
             if (!heading?.trim()) throw new Error(`${route}: missing main H1`);
             if (errors.length) throw new Error(`${route}: browser errors: ${errors.join('; ')}`);
             console.log(`PASS ${route}: ${heading.trim()}`);
+          }
+          for (const width of [390, 1440]) {
+            await page.setViewportSize({ width, height: 900 });
+            await page.goto('http://127.0.0.1:5173/personvern', { waitUntil: 'networkidle' });
+            if (await page.locator('main h1').textContent() !== 'Personvern') throw new Error('Privacy route fell back to home');
+            if (await page.title() !== 'Personvern | Cidea Marketing') throw new Error('Missing privacy title');
+            if (await page.locator('link[rel="canonical"]').getAttribute('href') !== 'https://cideamarketing.com/personvern') throw new Error('Wrong privacy canonical URL');
+            if (await page.locator('main').innerText().then(text => /under ferdigstilling|Utkast|ikke publiseringsklart/.test(text))) throw new Error('Unfinished privacy copy');
+            if (await page.locator('footer a[href="/personvern"]').count() !== 1) throw new Error('Missing footer link');
+            if (!await page.locator('main a[href="mailto:jelassi@cideamarketing.com"]').count()) throw new Error('Missing monitored contact');
+            if (await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth)) throw new Error('Horizontal overflow at ' + width);
+            console.log('PASS privacy page at ' + width);
           }
           await browser.close();
           EOF

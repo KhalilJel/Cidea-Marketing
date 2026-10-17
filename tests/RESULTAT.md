@@ -1,6 +1,6 @@
 # Testresultat – fase 5 (faktisk side)
 
-Kjørt 2026-10-17T10:59:45.227Z mot `dist/` servert med Netlify-regelen (`tests/serve-dist.mjs`). Chromium (Playwright), Firefox 142 og WebKit 26 for fallback.
+Kjørt 2026-10-17T11:28:16.840Z mot `dist/` servert med Netlify-regelen (`tests/serve-dist.mjs`). Chromium (Playwright), Firefox 142 og WebKit 26 for fallback.
 
 | ID | Test | Resultat | Måling |
 |---|---|---|---|
@@ -12,9 +12,10 @@ Kjørt 2026-10-17T10:59:45.227Z mot `dist/` servert med Netlify-regelen (`tests/
 | R /digital-marketing | Rute rendres uten feil | OK | HTTP 200, H1 «Digital markedsføring som henger sammen», gammel side, feil: ingen |
 | R /blog | Rute rendres uten feil | OK | HTTP 200, H1 «Innsikt for bedrifter som vil bli tydeli», gammel side, feil: ingen |
 | R /blog/hvor-mye-koster-en-nettside | Rute rendres uten feil | OK | HTTP 200, H1 «Hvor mye koster en nettside?», gammel side, feil: ingen |
-| N / 1440 | Uten JavaScript: innhold og navigasjon synlig | OK | 6 overskrifter (Nettsider og helhetlig markedsføring som utvikles over tid. · Dette ka …), 6 synlige menylenker, menyknapp none, 2477 tegn tekst |
-| N / 390 | Uten JavaScript: innhold og navigasjon synlig | OK | 6 overskrifter (Nettsider og helhetlig markedsføring som utvikles over tid. · Dette ka …), 6 synlige menylenker, menyknapp none, 2477 tegn tekst |
-| N /kontakt 390 | Uten JavaScript: innhold og navigasjon synlig | OK | 2 overskrifter (Ta kontakt for en uforpliktende fagprat. · Kontaktskjemaet er ikke åpn …), 6 synlige menylenker, menyknapp none, 473 tegn tekst |
+| R /personvern | Rute rendres uten feil | OK | HTTP 200, H1 «Personvern», gammel side, feil: ingen |
+| N / 1440 | Uten JavaScript: innhold og navigasjon synlig | OK | 6 overskrifter (Nettsider og helhetlig markedsføring som utvikles over tid. · Dette ka …), 6 synlige menylenker, menyknapp none, 2488 tegn tekst |
+| N / 390 | Uten JavaScript: innhold og navigasjon synlig | OK | 6 overskrifter (Nettsider og helhetlig markedsføring som utvikles over tid. · Dette ka …), 6 synlige menylenker, menyknapp none, 2488 tegn tekst |
+| N /kontakt 390 | Uten JavaScript: innhold og navigasjon synlig | OK | 2 overskrifter (Ta kontakt for en uforpliktende fagprat. · Kontaktskjemaet er ikke åpn …), 6 synlige menylenker, menyknapp none, 484 tegn tekst |
 | M1 | Inngang ≤ 600 ms, én gang | OK | 4 animasjoner (desktop- og mobilmotiv), siste ferdig etter 580 ms; ingen iterasjoner |
 | M2 | Kun transform/opacity | OK | opacity, transform |
 | M3 | Hover og tastaturfokus gir samme markørbevegelse | OK | hover matrix(1, 0, 0, 1, 5, -5), fokus matrix(1, 0, 0, 1, 5, -5), fokusring solid 3px |
@@ -23,11 +24,11 @@ Kjørt 2026-10-17T10:59:45.227Z mot `dist/` servert med Netlify-regelen (`tests/
 | F firefox | Uten view()-støtte: artikler synlige uten scrolling | OK | animation-timeline støttet: false; artikler før scroll 1.00/1.00/1.00, i visning 1.00/1.00/1.00; heroplan 1/1/1/1 |
 | F webkit | Med view()-støtte: artikler synlige i visning | OK | animation-timeline støttet: true; artikler før scroll 0.00/0.00/0.00, i visning 1.00/1.00/1.00; heroplan 1/1/1/1 |
 | P1 | Ingen layout per bilde under inngangen (4× struping, mobil) | OK | kumulativ LayoutCount hvert 100. ms: 0 0 0 0 0 0 0 0 0 |
-| P2 | Jevne bilder (4× struping) | OK | 61 bilder, p95 16.7 ms, median 16.7 ms |
+| P2 | Jevne bilder (4× struping) | OK | 61 bilder, p95 16.8 ms, median 16.7 ms |
 | O 320 | Ingen horisontal overflow | OK | 0 px |
 | O 375 | Ingen horisontal overflow | OK | 0 px |
 | O 390 | Ingen horisontal overflow | OK | 0 px |
 | O 768 | Ingen horisontal overflow | OK | 0 px |
 | O 1440 | Ingen horisontal overflow | OK | 0 px |
 
-**25 av 25 bestått.**
+**26 av 26 bestått.**
