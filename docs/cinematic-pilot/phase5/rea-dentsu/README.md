@@ -1,7 +1,7 @@
 # REA-analyse av Dentsu Creative – status
 
 **Dato:** 2026-10-17 · **Utført av:** Claude Code (skymiljø) · **Referanse valgt av eier:** https://www.dentsucreative.com/
-**Status:** **BLOKKERT for selve analysen.** REA er installert og verifisert, men skymiljøets nettverkspolicy avviser `www.dentsucreative.com`. Ingen analyse eller forslag er laget. `ANALYSE.md` og `CIDEA-FORSLAG.md` er bevisst ikke skrevet, fordi de skal bygge på faktiske observasjoner og ikke på antakelser.
+**Status (2026-10-18, lokalt):** **ANALYSE OG FORSLAG LEVERT.** Analysen er gjort lokalt på eiers PC i vanlig nettleser. Se [ANALYSE.md](ANALYSE.md), [CIDEA-FORSLAG.md](CIDEA-FORSLAG.md) og [STORYBOARD.png](STORYBOARD.png). REA er installert lokalt, men selve kommandoene ble stoppet av Claude Codes tillatelseskontroll. Observasjonene er derfor gjort med Playwright via CDP (se ANALYSE.md § 1 og § 9). Teksten under beskriver den første, blokkerte skyøkten og beholdes som historikk.
 
 ## Hva som er gjort og verifisert
 

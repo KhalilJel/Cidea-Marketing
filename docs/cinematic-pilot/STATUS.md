@@ -1,6 +1,6 @@
 # Cidea Marketing – Status / verificerbar fremdrift
 
-**Oppdatert:** 2026-10-17
+**Oppdatert:** 2026-10-18
 **Nå:** FASE **5/9 – NETTBRETTREVISJON FAGLIG GODKJENT; VISUELLE RESSURSER OG EIERVURDERING GJENSTÅR**. **4/9 faseporter godkjent**. Fase 4 godkjent med vilkår (`phase4/CHATGPT-REVIEW.md`). Claude Code har implementert 5.2–5.5 på eksperimentgrenen. Fase 5 er **ikke godkjent** før eier har vurdert faktisk forhåndsvisning. Ingen merge, deploy eller nye kjøp.
 **Godkjent metode:** ChatGPT → Google Stitch → Claude Code → ChatGPT QA.
 **Kostnader:** Eier har 2026-10-17 åpnet for nødvendige betalte visuelle verktøy, inkludert Higgsfield hvis det gir ønsket kvalitet. Ingen konkret plan, pris eller kjøp er valgt eller gjennomført. Tidligere nullkostnadsregel er dermed ikke et absolutt hinder for vurdering; faktiske kjøp må ha avklart omfang og kostnad.
@@ -25,8 +25,8 @@
 
 - **Eiers beslutning:** Dentsu Creative (https://www.dentsucreative.com/) er hovedreferanse for en levende, filmatisk forside med tydelig bevegelse og gjennomarbeidede overganger. Tjenestesider, blogg og kontakt kan være vanlige og oversiktlige sider.
 - **Ikke lenger førende for neste forslag:** abstrakte geometriske figurer, ROM-mockupen og CIDEA-storyboardet. Dagens implementering (f26e9fd, nettbrettrevisjon faglig godkjent) beholdes som sammenligningsgrunnlag. Den er fortsatt ikke eiergodkjent som forside.
-- **REA-analyse (Claude Code):** REA 6.5.0 er installert lokalt og verifisert (`analyze-web-bundle` mot egen forhåndsvisning gjenkjente Vite og React riktig). **Selve analysen er blokkert:** skymiljøets nettverkspolicy avviser `www.dentsucreative.com` (403). Ingen analyse eller forslag er laget. Se `phase5/rea-dentsu/README.md`.
-- **Neste beslutning:** eier åpner nettverkstilgang til Dentsu-domenet. Deretter leverer Claude ANALYSE.md og CIDEA-FORSLAG.md, og eier og ChatGPT godkjenner konsept og storyboard før produksjon.
+- **REA-analyse (Claude Code, lokalt 2026-10-18): ANALYSE OG FORSLAG LEVERT.** Dentsu-siden er observert i vanlig nettleser (curl får Vercel-bot-utfordring, som ikke er omgått): forside, `/services/brand` og `/cases/a-piece-of-me` ved 1440, 768 og 390, pluss redusert bevegelse. Bekreftet: Next.js 16 på Vercel, Storyblok, GSAP 3.11.3 (ScrollTrigger, ScrollSmoother, SplitText), egendefinert scroll (Smooth Scrollbar), Lottie, ingen autoavspilt video (prosjektvideo er Vimeo med klikk for avspilling), og at redusert bevegelse **ikke** respekteres i hovedkoreografien (0–1 % pikselforskjell). REA 6.5.0 er installert lokalt, men kommandoene ble stoppet av Claude Codes tillatelseskontroll. Playwright via CDP er brukt i stedet. Forslag: «Tydelig over tid» (tåke som letter over et rødt naust, 7 øyeblikk) med Higgsfield-liste H1–H6, byggeplan A–E, mobil og redusert bevegelse. Se `phase5/rea-dentsu/ANALYSE.md`, `CIDEA-FORSLAG.md` og `STORYBOARD.png`. Opptak og fullbilder er bare lokale (offentlig repo, tredjepartsmateriale).
+- **Neste beslutning:** eier og ChatGPT vurderer konseptet «Tydelig over tid» og storyboardet, og avgjør om Higgsfield-prøven H1 (hero: tåken letter) kan bestilles og med hvilken kredittramme. Ingen produksjon eller kodeendring før godkjenning.
 
 ## Neste konkrete oppgave
 

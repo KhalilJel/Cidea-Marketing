@@ -32,3 +32,6 @@ media-review/
 
 # SSR-mellomtrinn for forhåndsrendring (scripts/prerender.mjs)
 dist-ssr/
+
+# Dentsu-opptak og fullbilder: kun lokalt (tredjepartsmateriale, offentlig repo)
+docs/cinematic-pilot/phase5/rea-dentsu/bevis/lokalt/
