@@ -17,12 +17,12 @@
 - Fase 5.3 (79e0f42): `/` og `/kontakt` forhåndsrendres (ekte innhold uten JS), fallback `spa.html` i `netlify.toml`. `tests/forside.test.mjs` **25/25**: 580 ms inngang, kun transform/opacity, redusert bevegelse, hover = fokus, `view()` med fallback testet i ekte Firefox 142 og WebKit 26, mobilytelse under 4× struping, 0 overflow.
 - Fase 5.4 (6e3eddb): `tests/qa.mjs` **56/56** automatiske kontroller ved 320/375/390/768/1440 (kontrast ≥ 6,13:1, overskrifter, målområder, lenkemål, fokus, mobilmeny, språk/æøå). Rettet: ordmerke-målområde og mobil artikkelrytme. Ikke en WCAG-samsvarserklæring; skjermleser og ekte telefon er ikke testet.
 - Fase 5.5: lokal forhåndsvisning (`npm run build && node tests/serve-dist.mjs` → http://127.0.0.1:4174). Bevis: `phase5/README.md`, `tests/RESULTAT.md`, `tests/QA-RESULTAT.md`, `phase5/screens/qa/`.
-- **Blokkering for PR #13:** konflikt med `main` i `src/main.jsx`. `main` har fått `/personvern` (Gullkornet-personvern, #14) i den gamle `main.jsx`, som fase 5 har flyttet til `src/legacy/LegacyApp.jsx`. PR-CI kjører derfor ikke for de nye commitene. Push-bygg på grenen har feilet siden før fase 5 (`npm install` uten låsefil, `edgesOut`-feil). `main` har låsefil. Ikke løst – krever beslutning om å hente `main` inn i grenen.
+- **`main` hentet inn i eksperimentgrenen (92b866e, eiergodkjent, ikke merge til `main`):** konflikten i `src/main.jsx` er løst ved å beholde fase 5-ruteren. `/personvern` (Gullkornet-personvern, #14) er flyttet inn i `src/legacy/LegacyApp.jsx`, og «Personvern» er lagt i den nye bunnteksten. Låsefil og Node 24 / `npm ci` er hentet fra `main`. Tester etterpå: forside **26/26** (inkl. `/personvern` 200 uten feil), QA **56/56**. PR #13 er igjen uten konflikt.
 
 ## Neste konkrete oppgave
 
 1. Eier vurderer lokal forhåndsvisning av `/` og `/kontakt` (desktop og mobil) og tar stilling til avvikene i `phase5/README.md` (seksjonsrekkefølge, mobilhero, «Slik jobber vi»-flate, tekstvalg).
-2. Beslutning: hent `main` inn i eksperimentgrenen (ikke merge til `main`). Claude flytter da `/personvern`-ruten inn i `src/legacy/LegacyApp.jsx`, legger «Personvern» i den nye bunnteksten og tar med låsefilen, slik at CI blir grønn.
+2. Etter eiervurdering: eventuelle justeringer, deretter fase 6 (undersider) etter godkjenning.
 
 ## Åpne vilkår
 

@@ -120,3 +120,9 @@ Begrensning: tidsmålingen i headless Chromium med CPU-struping er en indikator,
 | «Slik jobber vi» | Én lys boks (bilde) / tre fargeplan (DESIGN.md § 6) | Tre steg på lys flate med farget toppkant | Bevisst færre store fargefelt (fase 4-review pkt. 4: «begrens repeterende fargeflater»). **Avvik fra DESIGN.md – til godkjenning** |
 | Tjenestekort | Fargede kort med ikonknapp | Fargede kort med fase 4-markører og tekstlenke | Etter fase 4-assets |
 | Høyde 390 px | ≈ 4 380 px | 4 740 px | +8 %, hovedsakelig fordi teksten i tjenestekort og artikler står i full lengde |
+
+## Synkronisering med `main` (92b866e)
+
+Eier godkjente å hente `main` inn i eksperimentgrenen (ikke merge til `main`). `main` hadde fått `/personvern` (#14) i den gamle `src/main.jsx`, som fase 5 hadde flyttet. Løsning: fase 5-ruteren beholdes. Personvernruten og bunntekstlenken er lagt inn i `src/legacy/LegacyApp.jsx`, og `src/Privacy.jsx` er uendret. Den nye bunnteksten har fått «Personvern». Endringen i `styles.css` fulgte flyttingen automatisk. Låsefil og CI på Node 24 med `npm ci` kommer fra `main`. Etter synkroniseringen: `tests/forside.test.mjs` 26/26 (ny rutetest for `/personvern`), `tests/qa.mjs` 56/56 (16 lenkemål, inkl. `/personvern`). Fullsidebildene i `screens/qa/` er tatt på nytt med ny bunntekst.
+
+Testserveren bruker nå port 4180, slik at den ikke kolliderer med forhåndsvisningen på 4174.
