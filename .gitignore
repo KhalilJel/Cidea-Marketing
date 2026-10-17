@@ -29,3 +29,6 @@ media-review/
 
 # Per-user Claude Code settings (MCP approvals etc.)
 .claude/settings.local.json
+
+# SSR-mellomtrinn for forhåndsrendring (scripts/prerender.mjs)
+dist-ssr/

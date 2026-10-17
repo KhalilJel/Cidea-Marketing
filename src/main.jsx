@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { createRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import Forside from "./forside/Forside.jsx";
 import Kontakt from "./kontakt/Kontakt.jsx";
 
@@ -8,6 +8,13 @@ import Kontakt from "./kontakt/Kontakt.jsx";
 const LegacyApp = lazy(() => import("./legacy/LegacyApp.jsx"));
 
 const sti = location.pathname.replace(/\/$/, "") || "/";
-const side = sti === "/" ? <Forside /> : sti === "/kontakt" ? <Kontakt /> : <Suspense fallback={null}><LegacyApp /></Suspense>;
+const rot = document.getElementById("root");
+const nySide = sti === "/" ? <Forside /> : sti === "/kontakt" ? <Kontakt /> : null;
 
-createRoot(document.getElementById("root")).render(side);
+// Forhåndsrendret HTML (scripts/prerender.mjs) hydreres; ellers vanlig klientrendring.
+if (nySide && rot.dataset.forhandsrendret === sti) {
+  hydrateRoot(rot, nySide);
+} else {
+  rot.textContent = "";
+  createRoot(rot).render(nySide || <Suspense fallback={null}><LegacyApp /></Suspense>);
+}

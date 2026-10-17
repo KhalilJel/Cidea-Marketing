@@ -56,5 +56,35 @@ Alle funn er kontrollert mot koden (`src/main.jsx` ved `09e9cba`):
 
 - Konseptkortet har ingen lenke, fordi konsept-detaljsiden ikke er bygget (fase 6). Det står ingen død lenke.
 - Ukjente stier viser fortsatt den gamle forsiden (gammel kode). Egen 404-side kommer i fase 6.
-- `index.html` har fortsatt gammel statisk `<title>` og beskrivelse («Bli funnet. Forstått. Valgt.»). `useMeta` setter riktig tittel etter lasting; statisk metadata og forhåndsrendring vurderes i 5.3 og fase 7.
+- ~~Statisk `<title>` i `index.html` er gammel~~ → løst i 5.3: `/` og `/kontakt` forhåndsrendres med riktig tittel, beskrivelse, og:-data og kanonisk adresse. Gamle sider får fortsatt gammel statisk tittel fra `spa.html` til fase 7.
 - CTA-løftet «Vi tar kontakt på e-post» er ikke støttet av en ekte kontaktflyt ennå (fase 6). Det skal ikke publiseres før det er testet.
+
+## 5.3 Bevegelse, redusert bevegelse og fallback
+
+**No-JS i Vite-SPA – faktisk løst, ikke antatt.** Før 5.3 var forsiden en tom `<div id="root">` uten JavaScript. Nå forhåndsrendres `/` og `/kontakt` ved bygg:
+
+| Fil | Rolle |
+|---|---|
+| `src/entry-server.jsx` | `renderToString` av forsiden og kontaktsiden + sidetittel/beskrivelse |
+| `scripts/prerender.mjs` | Skriver `dist/index.html` og `dist/kontakt/index.html` med ekte HTML og metadata, og `dist/spa.html` (tomt skall) for alle andre stier |
+| `package.json` | `build` = klientbygg → SSR-bygg → forhåndsrendring (`dist-ssr/` slettes etterpå, står i `.gitignore`) |
+| `netlify.toml` | Fallback endret fra `/index.html` til `/spa.html`, slik at gamle sider ikke får forsidens HTML. Eksisterende filer serveres først (Netlify-standard) |
+| `src/main.jsx` | Hydrerer forhåndsrendret HTML (`data-forhandsrendret`), ellers vanlig klientrendring |
+| `tests/serve-dist.mjs` | Lokal server med samme regel som Netlify (fil → mappe/index.html → `spa.html`), brukt i testene i stedet for `vite preview` |
+
+Uten JS vises hele forsiden (alle seksjoner, lenker, motiv i sluttposisjon). Mobilmenyen vises som statisk lenkeliste og menyknappen er skjult (`html:not(.js)`): [uten JS 390](../../../tests/bilder/uten-js-forside-390.png) · [uten JS 1440](../../../tests/bilder/uten-js-forside-1440.png) · [kontakt uten JS 390](../../../tests/bilder/uten-js-kontakt-390.png).
+
+**Testresultat:** `npm run build && npm run test:forside` → **25 av 25 bestått** ([tests/RESULTAT.md](../../../tests/RESULTAT.md)). Utdrag:
+
+| Krav i brief 5.3 | Målt på faktisk side |
+|---|---|
+| 580 ms inngang, én gang, kun transform/opacity | Siste animasjon ferdig etter 580 ms, 1 iterasjon, egenskaper kun `opacity`, `transform` |
+| Redusert bevegelse viser sluttbildet umiddelbart | 0 animasjoner etter 30 ms, alle plan og kort opasitet 1, overgang 0 s |
+| Hover og fokus gir samme affordance | Markør `translate(5px,-5px)` ved både hover og tastaturfokus, fokusring 3 px ([bilde](../../../tests/bilder/fokus-tjeneste.png)) |
+| Ingen scroll-kapring, view-timeline med synlig fallback | Ingen scroll-hendelser i koden. Chromium og WebKit 26 (har `view()`): kortene blir synlige i visning (0 → 1,00). **Firefox 142 (mangler `view()`): kortene er synlige fra start (1,00)** – faktisk fallback testet i ekte motor |
+| No-JS | Forhåndsrendret innhold: 6 overskrifter, 6 synlige menylenker, ca. 2 500 tegn tekst på `/` uten JS |
+| Hydrering | Ingen konsollfeil eller hydreringsadvarsler på 8 ruter |
+| Mobil ytelse (390 px, 4× CPU-struping) | 0 layout under inngangen, p95 bildetid 16,8 ms (61 bilder) |
+| Overflow | 0 px ved 320 / 375 / 390 / 768 / 1440 |
+
+Begrensning: tidsmålingen i headless Chromium med CPU-struping er en indikator, ikke måling på en ekte telefon.
