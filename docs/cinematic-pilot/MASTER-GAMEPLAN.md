@@ -1,7 +1,7 @@
 # Cidea Marketing — Master Gameplan (Approved production method)
 
 **Decision date:** 2026-10-15
-**Status:** PHASE 1, 2 and 3 VERIFIED/USER-APPROVED; **PHASE 4/9 ACTIVE** as of 2026-10-16. **3/9 phase gates completed**. Phase 4 work tracked in `phase4/EXECUTION-BRIEF.md`; no production changes.
+**Status:** PHASES 1–4 USER-APPROVED; **PHASE 5/9 IN PROGRESS** as of 2026-10-17. **4/9 phase gates approved**. Phase 4 approved with conditions in `phase4/CHATGPT-REVIEW.md`; phase 5 audit/planning started, React implementation not yet started. No production changes.
 **Objective:** Replace the existing weak cideamarketing.com experience with an extraordinary, original, professional, conversion-ready Norwegian digital-agency website. Distinctive art direction, real content, elegant code-based interactions, desktop/mobile quality, SEO, working contact and real blog publishing are non-negotiable.
 **Selected workflow (user-approved):** **ChatGPT (creative director and QA) → Google Stitch (visual design + graphic/content design) → Claude Code (React implementation + technical QA) → ChatGPT (visual approval and repeat)**.
 **Other infrastructure:** GitHub and EXISTING hosting. Existing React + Vite repo and routes. **0 NOK additional spend** unless separately approved. No paid AI video, no Higgsfield, no Hostinger, no domain/DNS/MX changes.
@@ -49,14 +49,14 @@ _Note (Claude): the two research/positioning items above are ChatGPT deliverable
 - [ ] Export validated `DESIGN.md`, layouts, styles/tokens and asset inventory with licenses.
 **Gate:** User-approved complete visual blueprint with source assets and exportable handoff; no unresolved placeholders.
 
-### PHASE 4 — Produce licensed media and code-based motion [ACTIVE 2026-10-16; see `phase4/EXECUTION-BRIEF.md`]
+### PHASE 4 — Produce licensed media and code-based motion [USER APPROVED WITH CONDITIONS 2026-10-17]
 - [ ] Create/refine key graphics via Stitch where included at zero additional cost, and produce CSS/SVG illustrations, abstract assets, photographic art direction.
 - [ ] Choose licensed images; document provenance and commercial reuse rights; avoid watermarked/unclear license outputs.
 - [ ] Define simple original scroll/hover/reveal interactions with reduced motion, keyboard handling and mobile fallbacks. No paid film required.
 - [ ] Match every visual asset to final page content and crops.
-**Gate:** All core visual assets/patterns finished, approved and rights-checked.
+**Gate:** CLOSED by explicit owner approval with `phase4/CHATGPT-REVIEW.md` conditions. Asset/motion package accepted as foundation. Stitch/Labs commercial-rights review remains OPEN before publication; approval does not assert legal clearance. Delivered evidence: `phase4/README.md`, `ASSETS.md`, `QA.md`, `motion/TEST-RESULTATER.md`. Historical unchecked subtasks above are superseded by this gate decision; prototype test results are Claude reports, not newly rerun tests.
 
-### PHASE 5 — Build and perfect homepage [NOT STARTED]
+### PHASE 5 — Build and perfect homepage [IN PROGRESS — AUDIT/PLAN 2026-10-17]
 - [ ] Claude takes approved Stitch design + `DESIGN.md`, implements in **existing Vite/React**, preserving routes and codebase.
 - [ ] Builds hero, navigation, social proof only when factual, services, capability showcase, blog preview and one clear CTA.
 - [ ] React/CSS/SVG motion with mobile-first quality and accessible fallback.
@@ -107,3 +107,6 @@ This is part of the after-task update: `Recommended mode for next task: Work / n
 
 ## Decision record — 2026-10-16: user approved phase 3
 User explicitly accepted **phase 3 and concept C as the design foundation**, and instructed execution of phase 4 at **0 NOK additional cost**. The full Phase 3 blueprint gate is therefore **CLOSED/APPROVED AS FOUNDATION**; aesthetic refinements, motif diversity, accessibility fixes and rights review documented in `phase3/CHATGPT-REVIEW-UTKAST2.md` carry forward as **Phase 4/5/8 acceptance criteria**, rather than reopening Phase 3. Unknown legal/contact/company facts are **launch blockers**, never permission to fabricate. Claude owns all coding. Phase 4 may produce isolated SVG/motion prototypes but must **not** build the full site prematurely. Phase 4 is not complete until actual assets, visual QA, licenses and user review are demonstrated.
+
+## Decision record — 2026-10-17: explicit phase 4 approval and phase 5 start
+Owner explicitly approved phase 4 with all conditions in `phase4/CHATGPT-REVIEW.md`, and authorized the actual React/Vite homepage on the experiment branch. Four phase gates approved; phase 5 remains unapproved. Claude Code owns ALL code changes and technical browser QA; ChatGPT owns coordination, documents and review. See `phase5/EXECUTION-BRIEF.md` for verified structure audit and ordered tasks. No merge, deploy, purchases, new Stitch usage or DNS/MX changes. Before live: resolve Stitch/Labs rights, company facts, contact recipient/process, data retention and privacy. K5 permits useful long sections but requires measured rhythm and zero horizontal overflow. Re-test 580ms motion, reduced-motion and fallbacks in the real page. Report evidence, remaining work, next task and link after every task; recommend normal ChatGPT when execution is no longer needed.
