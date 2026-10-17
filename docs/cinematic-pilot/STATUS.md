@@ -1,7 +1,7 @@
 # Cidea Marketing – Status / verificerbar fremdrift
 
 **Oppdatert:** 2026-10-17
-**Nå:** FASE **5/9 – PÅGÅR (AUDIT OG PLAN)**. **4/9 faseporter godkjent**. Eier har uttrykkelig godkjent fase 4 med vilkårene i `phase4/CHATGPT-REVIEW.md`. React-implementering er ennå ikke startet eller delegert til en kjørende Claude Code-økt. Ingen merge, deploy eller nye kjøp.
+**Nå:** FASE **5/9 – IMPLEMENTERT, VENTER PÅ EIERVURDERING AV FORHÅNDSVISNING**. **4/9 faseporter godkjent**. Fase 4 godkjent med vilkår (`phase4/CHATGPT-REVIEW.md`). Claude Code har implementert 5.2–5.5 på eksperimentgrenen. Fase 5 er **ikke godkjent** før eier har vurdert faktisk forhåndsvisning. Ingen merge, deploy eller nye kjøp.
 **Godkjent metode:** ChatGPT → Google Stitch → Claude Code → ChatGPT QA.
 **Kostnadsgrense:** 0 NOK i nye abonnementer/mediekreditter uten eksplisitt brukerbeslutning.
 **Eksperimentgren:** `experiment/cinematic-marketing-pilot`; [draft PR #13](https://github.com/KhalilJel/Cidea-Marketing/pull/13); ingen produksjonsendring.
@@ -12,12 +12,17 @@
 - Fase 1–3: tidligere godkjent; konsept C og fase 3 DESIGN.md er låst grunnlag.
 - Fase 4: GODKJENT MED VILKÅR av eier. Ressurser og prototyper er levert; tidligere 30/30 og 12/12 er Claudes rapporterte tester, ikke nye React-tester.
 - Fase 5.1: filstruktur auditert på branch HEAD 8e1c45f; konkret plan i `phase5/EXECUTION-BRIEF.md`. Ingen runtime-test utført i denne auditoppgaven.
-- Fase 5.2–5.5: IKKE UTFØRT. Implementering, faktisk visuell QA, motion, tilgjengelighet og testing gjenstår.
-- Claude Code er ikke funnet på PATH i denne Work-økten. Eksisterende desktop-installasjon/tilgang undersøkes; ingen påstand om delegert eller kjørende oppgave før det er bekreftet.
+- Fase 5.1: auditfunn bekreftet av Claude Code mot koden, pluss ett ekstra funn (globale elementselektorer i gammel CSS) – `phase5/README.md` § 5.1.
+- Fase 5.2 (ce2840e): ny React-forside og ærlig `/kontakt`, tilgjengelig mobilmeny; gamle sider isolert med egen lat lastet CSS.
+- Fase 5.3 (79e0f42): `/` og `/kontakt` forhåndsrendres (ekte innhold uten JS), fallback `spa.html` i `netlify.toml`. `tests/forside.test.mjs` **25/25**: 580 ms inngang, kun transform/opacity, redusert bevegelse, hover = fokus, `view()` med fallback testet i ekte Firefox 142 og WebKit 26, mobilytelse under 4× struping, 0 overflow.
+- Fase 5.4 (6e3eddb): `tests/qa.mjs` **56/56** automatiske kontroller ved 320/375/390/768/1440 (kontrast ≥ 6,13:1, overskrifter, målområder, lenkemål, fokus, mobilmeny, språk/æøå). Rettet: ordmerke-målområde og mobil artikkelrytme. Ikke en WCAG-samsvarserklæring; skjermleser og ekte telefon er ikke testet.
+- Fase 5.5: lokal forhåndsvisning (`npm run build && node tests/serve-dist.mjs` → http://127.0.0.1:4174). Bevis: `phase5/README.md`, `tests/RESULTAT.md`, `tests/QA-RESULTAT.md`, `phase5/screens/qa/`.
+- **Blokkering for PR #13:** konflikt med `main` i `src/main.jsx`. `main` har fått `/personvern` (Gullkornet-personvern, #14) i den gamle `main.jsx`, som fase 5 har flyttet til `src/legacy/LegacyApp.jsx`. PR-CI kjører derfor ikke for de nye commitene. Push-bygg på grenen har feilet siden før fase 5 (`npm install` uten låsefil, `edgesOut`-feil). `main` har låsefil. Ikke løst – krever beslutning om å hente `main` inn i grenen.
 
 ## Neste konkrete oppgave
 
-Overlever `phase5/EXECUTION-BRIEF.md` til autentisert Claude Code på eksperimentgrenen. Claude bekrefter ren arbeidskopi og leser grunnlaget før implementering. Ingen kjøp eller forbruksbasert API-bruk er autorisert. Ikke erstatt Claude med Codex for koding.
+1. Eier vurderer lokal forhåndsvisning av `/` og `/kontakt` (desktop og mobil) og tar stilling til avvikene i `phase5/README.md` (seksjonsrekkefølge, mobilhero, «Slik jobber vi»-flate, tekstvalg).
+2. Beslutning: hent `main` inn i eksperimentgrenen (ikke merge til `main`). Claude flytter da `/personvern`-ruten inn i `src/legacy/LegacyApp.jsx`, legger «Personvern» i den nye bunnteksten og tar med låsefilen, slik at CI blir grønn.
 
 ## Åpne vilkår
 
