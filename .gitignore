@@ -1,0 +1,37 @@
+# Local development and build output
+node_modules/
+dist/
+.vite/
+coverage/
+playwright-report/
+test-results/
+
+# Local, reviewed upstream reference checkout (not part of deployed application)
+.cidea-tools/
+
+# Local media generation intermediates; publish only approved optimized assets
+media-raw/
+media-review/
+*.raw.mp4
+*-raw.mp4
+
+# Secrets, local accounts and environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.DS_Store
+
+# Editor-local configuration
+.vscode/
+.idea/
+
+# Per-user Claude Code settings (MCP approvals etc.)
+.claude/settings.local.json
+
+# SSR-mellomtrinn for forhåndsrendring (scripts/prerender.mjs)
+dist-ssr/
+
+# Dentsu-opptak og fullbilder: kun lokalt (tredjepartsmateriale, offentlig repo)
+docs/cinematic-pilot/phase5/rea-dentsu/bevis/lokalt/

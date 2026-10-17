@@ -1,4 +1,6 @@
+# Forhåndsrendrede sider (/ og /kontakt) ligger som egne filer i dist og serveres direkte.
+# Alle andre stier (eksisterende tjeneste- og bloggsider) får det tomme SPA-skallet.
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/spa.html"
   status = 200

@@ -1,0 +1,62 @@
+/* Fase 4.4 – bevegelse for Cidea-motivet. Kun transform og opacity (kompositor), ingen JS.
+   Grunnregel: uten animasjon (redusert bevegelse, gammel nettleser) vises sluttbildet direkte. */
+:root { --ease: cubic-bezier(.2, .7, .1, 1); }
+
+/* ---------- Bevegelse 1: inngang ---------- */
+/* Planene glir inn fra hver sin kant og låser seg; hakkplanet kommer sist og «klikker» på plass.
+   Varighet 360 ms, forsinkelser 0/60/120 ms, hakkplan 220 ms → siste ferdig etter 580 ms. */
+@keyframes plan-inn { from { opacity: 0; transform: translate(var(--dx, 0), var(--dy, 0)); } }
+@keyframes hakk-inn { 0% { opacity: 0; transform: translate(14px, 14px); } 70% { opacity: 1; transform: translate(-3px, -3px); } 100% { transform: none; } }
+.motiv { position: relative; width: 100%; }
+.motiv > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+.inngang .motiv > svg { animation: plan-inn 360ms var(--ease) both; }
+.inngang .motiv > [data-i="1"] { --dx: -28px; --dy: 18px; animation-delay: 60ms; }
+.inngang .motiv > [data-i="2"] { --dx: 28px; --dy: -18px; animation-delay: 120ms; }
+.inngang .motiv > [data-i="3"] { --dx: 0; --dy: 22px; animation-delay: 0ms; }
+.inngang .motiv > [data-i="0"] { --dx: 0; --dy: -22px; }
+.inngang .motiv > [data-hakk] { animation-name: hakk-inn; animation-duration: 360ms; animation-delay: 220ms; }
+
+/* ---------- Bevegelse 2: motivmarkører ---------- */
+.tjenester { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; padding: 0; margin: 0; }
+.tjenester li { list-style: none; background: var(--felt); }
+.tjenester a { display: block; color: #fff; text-decoration: none; padding: 32px 28px 30px; min-height: 240px; position: relative; }
+.tjenester h3 { color: #fff; font-size: 22px; margin: 26px 0 40px; }
+.tjenester span { font-weight: 700; font-size: 15px; }
+.tjenester .markor { width: 48px; height: 48px; display: block; overflow: visible; }
+.tjenester .markor > * { transition: transform 200ms var(--ease); transform-box: fill-box; }
+.tjenester .markor > [data-hakk] { transition-duration: 260ms; }
+/* Samme respons på hover og på tastaturfokus – aldri bare hover. */
+.tjenester a:hover .markor > [data-hakk], .tjenester a:focus-visible .markor > [data-hakk] { transform: translate(5px, -5px); }
+.tjenester a:hover .markor > :not([data-hakk]), .tjenester a:focus-visible .markor > :not([data-hakk]) { transform: translate(-2px, 2px); }
+.tjenester a:focus-visible { outline: 3px solid #FFFFFF; outline-offset: -7px; }
+.tjenester a:hover span, .tjenester a:focus-visible span { text-decoration: underline; text-underline-offset: 4px; }
+
+/* ---------- Bevegelse 3: rolig visning ved scrolling ---------- */
+.avslor { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding: 0; margin: 0; }
+.avslor li { list-style: none; border-top: 2px solid var(--svart); padding-top: 18px; }
+.avslor a { text-decoration: none; display: block; }
+.avslor svg { width: 100%; height: auto; display: block; }
+.avslor h3 { font-size: 20px; line-height: 1.25; margin: 16px 0 10px; }
+.avslor span { color: var(--dyp); font-weight: 700; }
+.avslor a:focus-visible { outline: 3px solid var(--marine); outline-offset: 4px; }
+/* Bare der nettleseren støtter scroll-drevne animasjoner. Ellers: synlig som vanlig. */
+@supports (animation-timeline: view()) {
+  @keyframes vis { from { opacity: 0; transform: translateY(24px); } }
+  .avslor li { animation: vis linear both; animation-timeline: view(); animation-range: entry 0% entry 60%; }
+}
+
+@media (max-width: 760px) {
+  .tjenester, .avslor { grid-template-columns: 1fr; }
+  .tjenester a { min-height: 0; padding: 22px 20px; display: grid; grid-template-columns: 40px 1fr; gap: 4px 16px; }
+  .tjenester .markor { width: 40px; height: 40px; grid-row: span 2; }
+  .tjenester h3 { margin: 0; font-size: 19px; }
+  .avslor li { display: grid; grid-template-columns: 104px 1fr; gap: 4px 16px; }
+  .avslor a { display: contents; }
+  .avslor svg { grid-row: span 2; }
+  .avslor h3 { margin: 0; font-size: 18px; }
+}
+
+/* ---------- Redusert bevegelse: sluttbildet umiddelbart ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

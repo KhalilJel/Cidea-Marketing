@@ -1,0 +1,1 @@
+Targeted fix on this screen only, change nothing else: remove every numbering label such as «Fase 1», «Fase 2», «Fase 3» (and any «01/02/03»). The three steps in «Slik jobber vi» keep only their titles «Avklare behov», «Utforme», «Ta i bruk» and their sentences, shown as connected colour planes without numbers.

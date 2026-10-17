@@ -1,0 +1,64 @@
+/* Fase 4 forhåndsvisning – tokens fra ../../phase3/DESIGN.md. Ikke produksjonskode. */
+@import url("../fonts/fonts.css");
+:root {
+  --dyp: #AD2C07; --dyp-hover: #8A1D00; --terrakotta: #D84A26; --marine: #1E293B; --skog: #2D4A3E;
+  --svart: #141619; --lys: #FAFAFD; --modul: #F4F5F8; --stein: #E4E6EC; --dempet: #4A4E54; --hvit: #FFFFFF;
+  --gutter: 48px;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--lys); color: var(--svart); font: 400 16px/1.625 "DM Sans", system-ui, sans-serif; }
+h1, h2, h3 { font-family: "Outfit", system-ui, sans-serif; margin: 0; letter-spacing: -0.025em; color: var(--svart); text-wrap: balance; }
+a { color: inherit; }
+.wrap { max-width: 1440px; margin: 0 auto; padding: 0 var(--gutter); }
+header.top { border-bottom: 1px solid rgba(20,22,25,.1); }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+.ordmerke { font: 700 18px/1 "Outfit", sans-serif; letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.ordmerke::before { content: ""; width: 14px; height: 14px; background: var(--dyp); }
+nav.hoved { display: flex; gap: 32px; font-size: 15px; }
+nav.hoved a { text-decoration: none; padding: 12px 0; }
+nav.hoved a[aria-current] { color: var(--dyp); box-shadow: inset 0 -2px var(--dyp); }
+.knapp { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 22px; background: var(--dyp); color: var(--hvit); font: 700 15px/1 "DM Sans", sans-serif; text-decoration: none; border-radius: 2px; }
+.knapp:hover { background: var(--dyp-hover); }
+.knapp:focus-visible, a:focus-visible, button:focus-visible { outline: 3px solid var(--marine); outline-offset: 3px; }
+.lenke { font-weight: 700; color: var(--dyp); text-decoration: none; display: inline-flex; gap: 6px; align-items: center; min-height: 48px; }
+.meny { display: none; min-height: 44px; padding: 0 14px; border: 1px solid rgba(20,22,25,.2); background: var(--hvit); font: 700 14px "DM Sans", sans-serif; }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; min-height: 640px; padding-top: 48px; padding-bottom: 48px; }
+.hero .krumme { font-size: 14px; color: var(--dempet); margin-bottom: 18px; }
+.hero h1 { font-size: 64px; line-height: 1.05; font-weight: 800; }
+.hero p.ingress { font-size: 19px; line-height: 1.58; color: var(--dempet); max-width: 34em; margin: 24px 0 32px; }
+.hero .handling { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.hero .kunst svg { display: block; width: 100%; height: auto; max-height: 640px; }
+.hero .kunst .mobil { display: none; }
+@media (max-width: 760px) {
+  :root { --gutter: 20px; }
+  nav.hoved, header.top .knapp { display: none; }
+  .meny { display: inline-flex; align-items: center; }
+  header.top .wrap { height: 64px; }
+  .hero .wrap { grid-template-columns: 1fr; gap: 28px; min-height: 0; padding-top: 28px; padding-bottom: 40px; }
+  .hero h1 { font-size: 38px; line-height: 1.1; }
+  .hero p.ingress { font-size: 17px; margin: 18px 0 24px; }
+  .hero .kunst { order: 2; }
+  .hero .tekst { order: 1; }
+  .hero .kunst .desktop { display: none; }
+  .hero .kunst .mobil { display: block; }
+  .hero .knapp { width: 100%; justify-content: center; }
+}
+
+/* Avsluttende CTA: dyp terrakotta (hvit tekst 6,69:1), lys knapp. Bunntekst med målt dempet tone. */
+.cta { background: var(--dyp); color: var(--hvit); }
+.cta .wrap { padding-top: 88px; padding-bottom: 88px; display: grid; grid-template-columns: 1.4fr auto; gap: 16px 48px; align-items: end; }
+.cta h2 { color: var(--hvit); font-size: 48px; line-height: 1.08; font-weight: 800; grid-column: 1; }
+.cta p { margin: 0; font-size: 19px; color: var(--hvit); max-width: 36em; grid-column: 1; }
+.cta .knapp.lys { background: var(--hvit); color: var(--dyp); grid-column: 2; grid-row: 1 / span 2; }
+.cta .knapp.lys:hover { background: #F4F5F8; }
+.cta .knapp.lys:focus-visible { outline-color: var(--hvit); }
+footer.bunn .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; padding-bottom: 28px; }
+footer.bunn small { color: var(--dempet); font-size: 14px; }
+@media (max-width: 760px) {
+  .cta .wrap { grid-template-columns: 1fr; padding-top: 56px; padding-bottom: 56px; }
+  .cta h2 { font-size: 30px; }
+  .cta p { font-size: 17px; }
+  .cta .knapp.lys { grid-column: 1; grid-row: auto; width: 100%; justify-content: center; }
+  footer.bunn .wrap { flex-direction: column; gap: 8px; align-items: flex-start; }
+}

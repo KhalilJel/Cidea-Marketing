@@ -1,0 +1,4 @@
+Targeted pass on this MOBILE screen only, to match the refined desktop homepage of this project. Keep the headline, copy, single typeface, menu and footer exactly as they are.
+1. The four service cards are still white. Make them solid saturated colour fields like on desktop, in the same order: Nettsider on deep navy/slate, Merkevarebygging on terracotta, SEO on forest green, Digital markedsføring og sosiale medier on near-black – with white/light text and icons at WCAG AA contrast, and the inner link buttons adapted to sit on the colour.
+2. Make the hero visual a stronger composition of the same interlocking colour planes as the desktop hero (terracotta, navy, forest green, light grey), using the full content width and a taller format; no labels or text inside it.
+Norwegian Bokmål only; no word split across lines; tap targets at least 44px.

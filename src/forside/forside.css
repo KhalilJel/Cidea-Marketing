@@ -1,0 +1,224 @@
+/* Ny forside og nye sider (fase 5). Alle regler er avgrenset under .cm så de ikke påvirker
+   gamle sider, og gamle globale regler lastes ikke på disse sidene (se src/main.jsx).
+   Tokens: docs/cinematic-pilot/phase3/DESIGN.md. Bevegelse: phase4/motion (godkjent spesifikasjon). */
+@font-face { font-family: "Outfit"; font-style: normal; font-display: swap; font-weight: 100 900; src: url("../assets/fonts/outfit-latin-wght-normal.woff2") format("woff2-variations"); }
+@font-face { font-family: "DM Sans"; font-style: normal; font-display: swap; font-weight: 100 1000; src: url("../assets/fonts/dm-sans-latin-wght-normal.woff2") format("woff2-variations"); }
+
+.cm {
+  --dyp: #AD2C07; --dyp-hover: #8A1D00; --terrakotta: #D84A26; --marine: #1E293B; --skog: #2D4A3E; --svart: #141619;
+  --lys: #FAFAFD; --modul: #F4F5F8; --stein: #E4E6EC; --dempet: #4A4E54; --hvit: #FFFFFF;
+  --gutter: 48px; --ease: cubic-bezier(.2, .7, .1, 1);
+  min-height: 100vh; background: var(--lys); color: var(--svart);
+  font: 400 16px/1.625 "DM Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased;
+}
+.cm *, .cm *::before, .cm *::after { box-sizing: border-box; }
+.cm h1, .cm h2, .cm h3 { font-family: "Outfit", system-ui, sans-serif; margin: 0; letter-spacing: -0.025em; color: inherit; text-wrap: balance; }
+.cm p { margin: 0; }
+.cm ul, .cm ol { list-style: none; margin: 0; padding: 0; }
+.cm a { color: inherit; }
+.cm :focus-visible { outline: 3px solid var(--marine); outline-offset: 3px; }
+.cm-wrap { max-width: 1440px; margin: 0 auto; padding: 0 var(--gutter); }
+
+.cm-hopp { position: absolute; left: 16px; top: -80px; z-index: 50; background: var(--svart); color: var(--hvit) !important; padding: 12px 16px; font-weight: 700; text-decoration: none; }
+.cm-hopp:focus-visible { top: 12px; outline-color: var(--hvit); }
+
+/* Knapper og lenker – hvit tekst kun på dyp terrakotta (6,69:1) */
+.cm-knapp { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 22px; background: var(--dyp); color: var(--hvit) !important; font: 700 15px/1 "DM Sans", sans-serif; text-decoration: none; border-radius: 2px; transition: background-color 160ms var(--ease); }
+.cm-knapp:hover { background: var(--dyp-hover); }
+.cm-knapp-lys { background: var(--hvit); color: var(--dyp) !important; }
+.cm-knapp-lys:hover { background: var(--modul); }
+.cm-lenke { display: inline-flex; align-items: center; gap: 6px; min-height: 48px; color: var(--dyp) !important; font-weight: 700; text-decoration: none; }
+.cm-lenke:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* ---------- Toppmeny ---------- */
+.cm-topp { border-bottom: 1px solid rgba(20, 22, 25, .1); background: var(--lys); position: relative; z-index: 20; }
+.cm-topp-rad { display: flex; align-items: center; gap: 32px; height: 76px; }
+.cm-ordmerke { display: inline-flex; align-items: center; gap: 10px; font: 700 18px/1 "Outfit", sans-serif; letter-spacing: -0.01em; text-decoration: none; margin-right: auto; min-height: 44px; }
+.cm-ordmerke::before { content: ""; width: 14px; height: 14px; background: var(--dyp); }
+.cm-menyknapp { display: none; }
+.cm-meny { display: flex; align-items: center; gap: 32px; }
+.cm-meny ul { display: flex; gap: 28px; }
+.cm-meny ul a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; font-size: 15px; }
+.cm-meny ul a:hover { color: var(--dyp); }
+.cm-meny ul a[aria-current="page"] { color: var(--dyp); box-shadow: inset 0 -2px var(--dyp); }
+
+/* ---------- Hero ---------- */
+.cm-hero-rad { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; padding-top: 56px; padding-bottom: 72px; }
+.cm-hero h1 { font-size: clamp(44px, 4.6vw, 66px); line-height: 1.05; font-weight: 800; }
+.cm-ingress { font-size: 19px; line-height: 1.58; color: var(--dempet); max-width: 34em; margin: 24px 0 32px !important; }
+.cm-handling { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.cm-hero-kunst { max-width: 560px; justify-self: end; width: 100%; }
+.cm-kun-mobil { display: none; }
+
+/* Lagdelt motiv */
+.cm-motiv { position: relative; width: 100%; }
+.cm-motiv > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+
+/* ---------- Seksjoner ---------- */
+.cm-seksjon { padding: 96px 0; }
+.cm-lys { background: var(--modul); }
+.cm-seksjon h2 { font-size: clamp(32px, 3.2vw, 44px); line-height: 1.1; font-weight: 700; }
+.cm-under { color: var(--dempet); font-size: 18px; margin: 12px 0 40px !important; max-width: 40em; }
+
+/* Tjenester: fire fargefelt, glyf + tittel + én setning + lenke */
+.cm-tjenester { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+.cm-tjenester li { background: var(--felt); }
+.cm-felt-marine { --felt: var(--marine); } .cm-felt-dyp { --felt: var(--dyp); } .cm-felt-skog { --felt: var(--skog); } .cm-felt-svart { --felt: var(--svart); }
+.cm-tjenester a { display: flex; flex-direction: column; height: 100%; padding: 32px 28px 30px; color: var(--hvit); text-decoration: none; }
+.cm-tjenester h3 { font-size: 22px; line-height: 1.2; margin: 26px 0 12px; }
+.cm-tjenester p { font-size: 15.5px; line-height: 1.55; color: rgba(255, 255, 255, .92); margin-bottom: 28px; }
+.cm-felt-lenke { margin-top: auto; font-weight: 700; font-size: 15px; }
+.cm-tjenester a:focus-visible { outline: 3px solid var(--hvit); outline-offset: -7px; }
+.cm-tjenester a:hover .cm-felt-lenke, .cm-tjenester a:focus-visible .cm-felt-lenke { text-decoration: underline; text-underline-offset: 4px; }
+.cm-markor { width: 48px; height: 48px; display: block; overflow: visible; }
+.cm-markor g { transition: transform 200ms var(--ease); transform-box: fill-box; }
+.cm-markor g[data-hakk] { transition-duration: 260ms; }
+/* Samme respons på hover og tastaturfokus – aldri bare hover (fase 4, T6). */
+.cm-tjenester a:hover .cm-markor g[data-hakk], .cm-tjenester a:focus-visible .cm-markor g[data-hakk] { transform: translate(5px, -5px); }
+.cm-tjenester a:hover .cm-markor g:not([data-hakk]), .cm-tjenester a:focus-visible .cm-markor g:not([data-hakk]) { transform: translate(-2px, 2px); }
+
+/* Slik jobber vi: tre sammenhengende ledd – lys flate med farget topplinje (ikke enda tre store fargefelt) */
+.cm-steg { display: grid; grid-template-columns: repeat(3, 1fr); }
+.cm-steg li { background: var(--hvit); padding: 28px 28px 32px; border-top: 6px solid var(--strek); }
+.cm-steg li + li { border-left: 2px solid var(--modul); }
+.cm-steg-marine { --strek: var(--marine); } .cm-steg-dyp { --strek: var(--dyp); } .cm-steg-skog { --strek: var(--skog); }
+.cm-steg h3 { font-size: 22px; margin-bottom: 8px; }
+.cm-steg p { color: var(--dempet); }
+
+/* Ett ekte konsept */
+.cm-konsept { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.cm-merke { display: inline-block; margin: 28px 0 14px !important; background: var(--svart); color: var(--hvit); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 6px 10px; }
+.cm-konsept h3 { font-size: 30px; line-height: 1.15; margin-bottom: 12px; }
+.cm-konsept p:not(.cm-merke) { color: var(--dempet); font-size: 18px; max-width: 32em; }
+.cm-konsept-kunst { background: var(--hvit); padding: 40px; }
+.cm-konsept-kunst svg { width: 100%; height: auto; display: block; }
+
+/* Innsikt: kort uten rammer, kun topplinje, egen grafikk per artikkel */
+.cm-artikler { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.cm-artikler li { border-top: 2px solid var(--svart); padding-top: 20px; }
+.cm-artikler a { display: block; text-decoration: none; }
+.cm-artikkel-kunst { width: 100%; height: auto; display: block; }
+.cm-tema { display: block; margin: 18px 0 8px; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--dyp); }
+.cm-artikler h3 { font-size: 22px; line-height: 1.25; margin-bottom: 10px; }
+.cm-artikler p { color: var(--dempet); font-size: 15.5px; margin-bottom: 14px; }
+.cm-les { color: var(--dyp); font-weight: 700; }
+.cm-artikler a:hover h3, .cm-artikler a:focus-visible h3 { text-decoration: underline; text-underline-offset: 4px; }
+
+/* Avsluttende CTA */
+.cm-cta { background: var(--dyp); color: var(--hvit); }
+.cm-cta-rad { display: grid; grid-template-columns: 1.4fr auto; gap: 16px 48px; align-items: end; padding-top: 88px; padding-bottom: 88px; }
+.cm-cta h2 { font-size: clamp(30px, 3.4vw, 48px); line-height: 1.08; font-weight: 800; }
+.cm-cta p { font-size: 19px; max-width: 36em; grid-column: 1; }
+.cm-cta .cm-knapp { grid-column: 2; grid-row: 1 / span 2; }
+.cm-cta :focus-visible { outline-color: var(--hvit); }
+
+/* Kontakt-status (midlertidig, ærlig) */
+.cm-status { border-left: 6px solid var(--marine); background: var(--modul); padding: 20px 24px; max-width: 36em; }
+.cm-status h2 { font-size: 20px; margin-bottom: 6px; }
+.cm-status p { color: var(--dempet); }
+
+/* Bunntekst */
+.cm-bunn { border-top: 1px solid rgba(20, 22, 25, .1); }
+.cm-bunn-rad { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; padding-top: 32px; padding-bottom: 32px; }
+.cm-bunn ul { display: flex; gap: 24px; flex-wrap: wrap; }
+.cm-bunn ul a { display: inline-flex; min-height: 44px; align-items: center; text-decoration: none; font-size: 15px; }
+.cm-copy { color: var(--dempet); font-size: 14px; width: 100%; }
+
+/* ---------- Bevegelse (fase 4-spesifikasjon) ---------- */
+@keyframes cm-plan-inn { from { opacity: 0; transform: translate(var(--dx, 0), var(--dy, 0)); } }
+@keyframes cm-hakk-inn { 0% { opacity: 0; transform: translate(14px, 14px); } 70% { opacity: 1; transform: translate(-3px, -3px); } 100% { transform: none; } }
+.cm-inngang .cm-motiv > svg { animation: cm-plan-inn 360ms var(--ease) both; }
+.cm-inngang .cm-motiv > [data-i="1"] { --dx: -28px; --dy: 18px; animation-delay: 60ms; }
+.cm-inngang .cm-motiv > [data-i="2"] { --dx: 28px; --dy: -18px; animation-delay: 120ms; }
+.cm-inngang .cm-motiv > [data-i="3"] { --dx: 0; --dy: 22px; animation-delay: 0ms; }
+.cm-inngang .cm-motiv > [data-i="0"] { --dx: 0; --dy: -22px; }
+.cm-inngang .cm-motiv > [data-hakk] { animation-name: cm-hakk-inn; animation-delay: 220ms; }
+@supports (animation-timeline: view()) {
+  @keyframes cm-vis { from { opacity: 0; transform: translateY(24px); } }
+  .cm-artikler li { animation: cm-vis linear both; animation-timeline: view(); animation-range: entry 0% entry 60%; }
+}
+
+/* ---------- Mobil ---------- */
+@media (max-width: 860px) {
+  .cm { --gutter: 20px; }
+  .cm-topp-rad { height: 64px; gap: 16px; }
+  .cm-menyknapp { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1px solid rgba(20, 22, 25, .25); background: var(--hvit); color: var(--svart); font: 700 15px "DM Sans", sans-serif; border-radius: 2px; cursor: pointer; }
+  .cm-meny { position: absolute; left: 0; right: 0; top: 64px; flex-direction: column; align-items: stretch; gap: 16px; padding: 12px 20px 24px; background: var(--lys); border-bottom: 1px solid rgba(20, 22, 25, .1); }
+  .cm-meny ul { flex-direction: column; gap: 0; }
+  .cm-meny ul a { width: 100%; min-height: 52px; font-size: 18px; border-bottom: 1px solid rgba(20, 22, 25, .08); }
+  .cm-meny ul a[aria-current="page"] { box-shadow: none; }
+  .cm-meny-cta { justify-content: center; }
+  /* Med JS: menyen er lukket til knappen åpner den. Uten JS: lenkene vises (fallback). */
+  .js .cm-meny[data-apen="0"] { display: none; }
+  html:not(.js) .cm-menyknapp { display: none; }
+  html:not(.js) .cm-meny { position: static; padding: 0 0 12px; border: 0; }
+  html:not(.js) .cm-topp-rad { height: auto; flex-wrap: wrap; padding-top: 14px; }
+
+  .cm-hero-rad { grid-template-columns: 1fr; gap: 28px; padding-top: 28px; padding-bottom: 44px; }
+  .cm-hero h1 { font-size: 38px; line-height: 1.1; }
+  .cm-ingress { font-size: 17px; margin: 18px 0 24px !important; }
+  .cm-handling .cm-knapp { width: 100%; justify-content: center; }
+  .cm-hero-kunst { justify-self: stretch; max-width: none; }
+  .cm-kun-desktop { display: none; }
+  .cm-kun-mobil { display: block; }
+
+  .cm-seksjon { padding: 48px 0; }
+  .cm-under { font-size: 16px; margin: 10px 0 24px !important; }
+  .cm-tjenester { grid-template-columns: 1fr; }
+  .cm-tjenester a { display: grid; grid-template-columns: 40px 1fr; gap: 4px 16px; padding: 20px; }
+  .cm-markor { width: 40px; height: 40px; grid-row: span 3; }
+  .cm-tjenester h3 { font-size: 19px; margin: 0; }
+  .cm-tjenester p { font-size: 15px; margin: 0 0 6px; }
+  .cm-steg { grid-template-columns: 1fr; }
+  .cm-steg li + li { border-left: 0; border-top-width: 6px; }
+  .cm-steg li { padding: 20px; }
+  .cm-steg h3 { font-size: 19px; }
+  .cm-konsept { grid-template-columns: 1fr; gap: 24px; }
+  .cm-konsept h3 { font-size: 24px; }
+  .cm-konsept-kunst { padding: 20px; }
+  .cm-artikler { grid-template-columns: 1fr; gap: 28px; }
+  /* Mobil rytme (5.4): liten grafikk ved tema og tittel, utdrag og lenke i full bredde. */
+  .cm-artikler a { display: grid; grid-template-columns: 72px 1fr; gap: 6px 16px; align-items: start; }
+  .cm-artikkel-kunst { grid-row: span 2; }
+  .cm-artikler p, .cm-les { grid-column: 1 / -1; }
+  .cm-tema { margin: 0; }
+  .cm-artikler h3 { font-size: 19px; margin: 0; }
+  .cm-artikler p { font-size: 15px; margin: 0; }
+  .cm-cta-rad { grid-template-columns: 1fr; padding-top: 56px; padding-bottom: 56px; }
+  .cm-cta p { font-size: 17px; }
+  .cm-cta .cm-knapp { grid-column: 1; grid-row: auto; width: 100%; justify-content: center; }
+}
+
+/* ---------- Nettbrett (600–860): egen komposisjon, ikke en oppblåst mobilside ----------
+   Mobilmotivet (390×280) begrenses til 480×345 og konseptgrafikken til 400 px, med samme
+   proporsjoner og synlig hakk. Bredden brukes til to tjenestekolonner og tre prosessledd. */
+@media (min-width: 600px) and (max-width: 860px) {
+  .cm { --gutter: 32px; }
+  .cm-hero-rad { gap: 36px; padding-top: 40px; padding-bottom: 56px; }
+  .cm-hero h1 { font-size: 46px; line-height: 1.06; max-width: 13em; }
+  .cm-ingress { font-size: 18px; max-width: 32em; }
+  .cm-handling .cm-knapp { width: auto; }
+  .cm-hero-kunst { max-width: 480px; justify-self: start; }
+
+  .cm-seksjon { padding: 64px 0; }
+  .cm-tjenester { grid-template-columns: repeat(2, 1fr); }
+  .cm-tjenester a { display: flex; padding: 24px 24px 22px; }
+  .cm-markor { width: 44px; height: 44px; }
+  .cm-tjenester h3 { font-size: 20px; margin: 20px 0 8px; }
+  .cm-tjenester p { margin-bottom: 18px; }
+
+  .cm-konsept { gap: 28px; }
+  .cm-konsept-kunst { max-width: 440px; }
+
+  .cm-cta .cm-knapp { width: auto; justify-self: start; }
+}
+/* Tre prosessledd side om side først når hvert ledd har plass til titlene på én linje. */
+@media (min-width: 700px) and (max-width: 860px) {
+  .cm-steg { grid-template-columns: repeat(3, 1fr); }
+  .cm-steg li + li { border-left: 2px solid var(--modul); }
+}
+
+/* ---------- Redusert bevegelse: sluttbildet umiddelbart ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .cm *, .cm *::before, .cm *::after { animation: none !important; transition: none !important; }
+}
