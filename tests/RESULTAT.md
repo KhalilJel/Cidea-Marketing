@@ -1,6 +1,6 @@
 # Testresultat – fase 5 (faktisk side)
 
-Kjørt 2026-10-17T10:55:07.474Z mot `dist/` servert med Netlify-regelen (`tests/serve-dist.mjs`). Chromium (Playwright), Firefox 142 og WebKit 26 for fallback.
+Kjørt 2026-10-17T10:59:45.227Z mot `dist/` servert med Netlify-regelen (`tests/serve-dist.mjs`). Chromium (Playwright), Firefox 142 og WebKit 26 for fallback.
 
 | ID | Test | Resultat | Måling |
 |---|---|---|---|
@@ -23,7 +23,7 @@ Kjørt 2026-10-17T10:55:07.474Z mot `dist/` servert med Netlify-regelen (`tests/
 | F firefox | Uten view()-støtte: artikler synlige uten scrolling | OK | animation-timeline støttet: false; artikler før scroll 1.00/1.00/1.00, i visning 1.00/1.00/1.00; heroplan 1/1/1/1 |
 | F webkit | Med view()-støtte: artikler synlige i visning | OK | animation-timeline støttet: true; artikler før scroll 0.00/0.00/0.00, i visning 1.00/1.00/1.00; heroplan 1/1/1/1 |
 | P1 | Ingen layout per bilde under inngangen (4× struping, mobil) | OK | kumulativ LayoutCount hvert 100. ms: 0 0 0 0 0 0 0 0 0 |
-| P2 | Jevne bilder (4× struping) | OK | 61 bilder, p95 16.8 ms, median 16.7 ms |
+| P2 | Jevne bilder (4× struping) | OK | 61 bilder, p95 16.7 ms, median 16.7 ms |
 | O 320 | Ingen horisontal overflow | OK | 0 px |
 | O 375 | Ingen horisontal overflow | OK | 0 px |
 | O 390 | Ingen horisontal overflow | OK | 0 px |

@@ -88,3 +88,35 @@ Uten JS vises hele forsiden (alle seksjoner, lenker, motiv i sluttposisjon). Mob
 | Overflow | 0 px ved 320 / 375 / 390 / 768 / 1440 |
 
 Begrensning: tidsmålingen i headless Chromium med CPU-struping er en indikator, ikke måling på en ekte telefon.
+
+## 5.4 Visuell QA og tilgjengelighet
+
+**Kjøring:** `npm run build && node tests/qa.mjs` → **56 av 56 kontroller bestått** ([tests/QA-RESULTAT.md](../../../tests/QA-RESULTAT.md)). Dette er automatiske målinger i Chromium, **ikke en WCAG-samsvarserklæring**. Skjermleser (NVDA/VoiceOver) og manuell gjennomgang på ekte telefon gjenstår og er ikke utført.
+
+**Fullsidebilder** (sluttbilde, redusert bevegelse), forside: [320](screens/qa/forside-320.png) · [375](screens/qa/forside-375.png) · [390](screens/qa/forside-390.png) · [768](screens/qa/forside-768.png) · [1440](screens/qa/forside-1440.png) · [meny åpen 390](screens/qa/forside-meny-apen-390.png). Kontakt: [320](screens/qa/kontakt-320.png) · [375](screens/qa/kontakt-375.png) · [390](screens/qa/kontakt-390.png) · [768](screens/qa/kontakt-768.png) · [1440](screens/qa/kontakt-1440.png).
+
+| Kontroll (per side × 5 bredder) | Resultat |
+|---|---|
+| Kontrast, alle synlige tekstnoder | Laveste 6,13:1 på forsiden, 6,42:1 på kontakt (krav 4,5:1 / 3:1) |
+| Overskrifter | Én H1, ingen hopp (h1 → h2 → h3) |
+| Målområder | Alle frittstående lenker/knapper ≥ 24×24 (WCAG 2.5.8) |
+| Overflow / avkuttet tekst | 0 px og 0 elementer ved 320–1440 |
+| Språk | `lang="no"`, æøå i Outfit og DM Sans, ingen engelske etiketter, «Nettsteder» eller nummerering |
+| Lenkemål | 15 unike på forsiden: alle interne gir 200 med H1, alle ankere finnes |
+| Tastaturfokus | 24 fokusmål på forsiden i logisk rekkefølge, alle med synlig 3 px fokusring i visning |
+| Mobilmeny | Enter → `aria-expanded=true`, fokus på «Tjenester», knapp «Lukk»; Escape → lukket, fokus tilbake |
+
+**Funn rettet i 5.4:**
+1. **Ordmerket «CIDEA MARKETING» var 187×18 px** (under 24 px) i topp og bunn → `min-height: 44px`.
+2. **Mobil scroll-rytme:** artikkelkortene hadde en smal tekstkolonne ved siden av grafikken (1 081 px for tre kort). Nå står en liten grafikk ved tema og tittel, og utdraget går i full bredde. Seksjonsluft på mobil er redusert fra 56 til 48 px. Forsiden ved 390 px er nå 4 740 px høy (før 4 974). Seksjonshøyder: hero 776 · tjenester 988 · slik jobber vi 654 · konsept 666 · innsikt 895 · CTA 372.
+
+**Sammenligning med låst referanse** (`phase3/screens/forside-mobil.png`, ca. 4 380 px ved 390):
+
+| Område | Referanse | Implementert | Vurdering |
+|---|---|---|---|
+| Rekkefølge | Hero → tjenester → konsept → slik jobber vi → innsikt → CTA | Hero → tjenester → **slik jobber vi → konsept** → innsikt → CTA | Følger rekkefølgen i brief 5.2 («tjenester, prosess, ett ekte konsept»). **Eier/ChatGPT avgjør** |
+| Mobilhero | Motiv mellom H1 og ingress | Motiv etter knappene | Tekst og handling kommer først på liten skjerm. Til vurdering |
+| Sekundærknapp | Grå knapp «Se konseptet» | Tekstlenke «Se konseptet →» | Mindre konkurranse med primær-CTA |
+| «Slik jobber vi» | Én lys boks (bilde) / tre fargeplan (DESIGN.md § 6) | Tre steg på lys flate med farget toppkant | Bevisst færre store fargefelt (fase 4-review pkt. 4: «begrens repeterende fargeflater»). **Avvik fra DESIGN.md – til godkjenning** |
+| Tjenestekort | Fargede kort med ikonknapp | Fargede kort med fase 4-markører og tekstlenke | Etter fase 4-assets |
+| Høyde 390 px | ≈ 4 380 px | 4 740 px | +8 %, hovedsakelig fordi teksten i tjenestekort og artikler står i full lengde |

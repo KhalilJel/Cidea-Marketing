@@ -33,7 +33,7 @@
 /* ---------- Toppmeny ---------- */
 .cm-topp { border-bottom: 1px solid rgba(20, 22, 25, .1); background: var(--lys); position: relative; z-index: 20; }
 .cm-topp-rad { display: flex; align-items: center; gap: 32px; height: 76px; }
-.cm-ordmerke { display: inline-flex; align-items: center; gap: 10px; font: 700 18px/1 "Outfit", sans-serif; letter-spacing: -0.01em; text-decoration: none; margin-right: auto; }
+.cm-ordmerke { display: inline-flex; align-items: center; gap: 10px; font: 700 18px/1 "Outfit", sans-serif; letter-spacing: -0.01em; text-decoration: none; margin-right: auto; min-height: 44px; }
 .cm-ordmerke::before { content: ""; width: 14px; height: 14px; background: var(--dyp); }
 .cm-menyknapp { display: none; }
 .cm-meny { display: flex; align-items: center; gap: 32px; }
@@ -162,7 +162,7 @@
   .cm-kun-desktop { display: none; }
   .cm-kun-mobil { display: block; }
 
-  .cm-seksjon { padding: 56px 0; }
+  .cm-seksjon { padding: 48px 0; }
   .cm-under { font-size: 16px; margin: 10px 0 24px !important; }
   .cm-tjenester { grid-template-columns: 1fr; }
   .cm-tjenester a { display: grid; grid-template-columns: 40px 1fr; gap: 4px 16px; padding: 20px; }
@@ -177,8 +177,10 @@
   .cm-konsept h3 { font-size: 24px; }
   .cm-konsept-kunst { padding: 20px; }
   .cm-artikler { grid-template-columns: 1fr; gap: 28px; }
-  .cm-artikler a { display: grid; grid-template-columns: 104px 1fr; gap: 6px 16px; align-items: start; }
-  .cm-artikkel-kunst { grid-row: span 4; }
+  /* Mobil rytme (5.4): liten grafikk ved tema og tittel, utdrag og lenke i full bredde. */
+  .cm-artikler a { display: grid; grid-template-columns: 72px 1fr; gap: 6px 16px; align-items: start; }
+  .cm-artikkel-kunst { grid-row: span 2; }
+  .cm-artikler p, .cm-les { grid-column: 1 / -1; }
   .cm-tema { margin: 0; }
   .cm-artikler h3 { font-size: 19px; margin: 0; }
   .cm-artikler p { font-size: 15px; margin: 0; }
