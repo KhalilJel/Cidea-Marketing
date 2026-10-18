@@ -28,6 +28,16 @@
 - **REA-analyse (Claude Code, lokalt 2026-10-18): ANALYSE OG FORSLAG LEVERT.** Dentsu-siden er observert i vanlig nettleser (curl får Vercel-bot-utfordring, som ikke er omgått): forside, `/services/brand` og `/cases/a-piece-of-me` ved 1440, 768 og 390, pluss redusert bevegelse. Bekreftet: Next.js 16 på Vercel, Storyblok, GSAP 3.11.3 (ScrollTrigger, ScrollSmoother, SplitText), egendefinert scroll (Smooth Scrollbar), Lottie, ingen autoavspilt video (prosjektvideo er Vimeo med klikk for avspilling), og at redusert bevegelse **ikke** respekteres i hovedkoreografien (0–1 % pikselforskjell). REA 6.5.0 er installert lokalt, men kommandoene ble stoppet av Claude Codes tillatelseskontroll. Playwright via CDP er brukt i stedet. Forslag: «Tydelig over tid» (tåke som letter over et rødt naust, 7 øyeblikk) med Higgsfield-liste H1–H6, byggeplan A–E, mobil og redusert bevegelse. Se `phase5/rea-dentsu/ANALYSE.md`, `CIDEA-FORSLAG.md` og `STORYBOARD.png`. Opptak og fullbilder er bare lokale (offentlig repo, tredjepartsmateriale).
 - **Neste beslutning:** eier og ChatGPT vurderer konseptet «Tydelig over tid» og storyboardet, og avgjør om Higgsfield-prøven H1 (hero: tåken letter) kan bestilles og med hvilken kredittramme. Ingen produksjon eller kodeendring før godkjenning.
 
+- **Prototype /konsept-scroll – «Fra ord til gjennomslag» (Claude Code, 2026-10-18, ikke godkjent):** isolert, kjørbar side på `/konsept-scroll` (`noindex`). Dagens forside er uendret. Sekvensen er:
+  1. Gigantisk CIDEA og kontaktknapp.
+  2. Ordmerket flyttes, H1 og ingress avdekkes, og flaten går over til marine.
+  3. Midlertidig merket bildeområde for pigmentscenen.
+  4. «BLI SETT» / «BLI VALGT» i motsatt retning, med ekte tjenestelenker.
+  5. Rolig del med prosess og artikler.
+  6. Marine avslutning.
+
+  Bevegelsen er bare CSS-scrollanimasjoner på vanlig nettleserscroll, uten scrollmotor. Det er én festet scene (85vh desktop, 70vh mobil). Tester: `tests/konsept-scroll.test.mjs` 24/24 (overflow, tastatur, redusert bevegelse, uten JS, reversering, kontrast, Firefox-reserve, WebKit). Eksisterende suiter: 30/30 og 86/86. Bevis: `phase5/konsept-scroll/README.md` og `bevis/` (opptak 1440/390 og skjermbilder 1440/768/390).
+
 ## Neste konkrete oppgave
 
 1. Nettbrett- og rekkefølgerevisjonen er faglig godkjent av ChatGPT etter kontroll av faktiske bilder og kodediff ved f26e9fd. Ingen ny teknisk kjøring hevdet.

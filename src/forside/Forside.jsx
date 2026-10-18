@@ -5,20 +5,20 @@ import { Ramme, SluttCta, useMeta } from "./Ramme.jsx";
 
 // All tekst er godkjent i fase 3 (DESIGN.md § 8, ChatGPT-review utkast 2) eller hentet ordrett
 // fra eksisterende innhold (blog/*.md). Ingen nye faktapåstander.
-const tjenester = [
+export const tjenester = [
   { tittel: "Nettsider", tekst: "Vi designer og koder funksjonelle nettsider med klar struktur og god brukeropplevelse for bedrifter.", lenke: "Les om nettsider", href: "/websites", felt: "marine", glyf: "glyf-nettsider" },
   { tittel: "Merkevarebygging", tekst: "Vi utvikler visuelle identiteter, typografi og fargesystemer som gjør virksomheten tydelig og gjenkjennelig.", lenke: "Les om merkevarebygging", href: "/branding", felt: "dyp", glyf: "glyf-merkevarebygging" },
   { tittel: "SEO", tekst: "Vi optimaliserer teknisk struktur og innhold for å gi bedre organisk synlighet for relevante søk.", lenke: "Les om SEO", href: "/seo", felt: "skog", glyf: "glyf-seo" },
   { tittel: "Digital markedsføring og sosiale medier", tekst: "Vi utformer målrettede kampanjer og innhold som gir jevn synlighet mot riktige målgrupper over tid.", lenke: "Les om digital markedsføring", href: "/digital-marketing", felt: "svart", glyf: "glyf-digital-markedsforing" },
 ];
 
-const steg = [
+export const steg = [
   { tittel: "Avklare behov", tekst: "Vi går gjennom virksomheten, målgruppen og målene.", farge: "marine" },
   { tittel: "Designe og utvikle", tekst: "Vi lager struktur, design og innhold og bygger løsningen.", farge: "dyp" },
   { tittel: "Videreutvikle", tekst: "Etter lansering kan vi forbedre og vedlikeholde løsningen over tid.", farge: "skog" },
 ];
 
-const artikler = [
+export const artikler = [
   { slug: "hvor-mye-koster-en-nettside", tema: "Nettsider", tittel: "Hvor mye koster en nettside?", utdrag: "Prisen på en nettside varierer mye. Det viktigste er ikke antall sider eller hvor avansert designet er, men hva nettsiden skal gjøre for virksomheten." },
   { slug: "hva-bor-en-god-bedriftsnettside-inneholde", tema: "Nettsider", tittel: "Hva bør en god bedriftsnettside inneholde?", utdrag: "En god bedriftsnettside skal gjøre det enkelt for en besøkende å forstå tre ting: hvem dere er, hva dere tilbyr og hva neste steg er." },
   { slug: "hvorfor-vises-ikke-nettsiden-pa-google", tema: "SEO", tittel: "Hvorfor vises ikke nettsiden på Google?", utdrag: "Det kan være mange grunner til at en nettside får lite synlighet i Google. Teknisk struktur, innhold, søkeintensjon, konkurranse og autoritet spiller alle en rolle." },
