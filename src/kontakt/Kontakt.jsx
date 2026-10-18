@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../forside/forside.css";
 import "../sider/sider.css";
 import { Ramme, useMeta } from "../forside/Ramme.jsx";
@@ -8,6 +8,10 @@ import { selskap } from "../sider/tjenester-innhold.js";
 // Netlify finner skjemaet i den forhåndsrendrede HTML-en (data-netlify) ved deploy. Med JavaScript sendes det med
 // fetch og siden viser lasting, feil eller bekreftelse; uten JavaScript sendes det vanlig til /kontakt/takk.
 // Bekreftelse vises bare ved et vellykket svar (HTTP 2xx). Ingen falsk suksessmelding.
+// Validering: den forhåndsrendrede HTML-en har nettleserens egen validering (required, type=email, minlength), som
+// gjelder uten JavaScript. Når JavaScript er lastet, slås den av (noValidate) og erstattes av tilgjengelige feltfeil
+// og feiloppsummering. Klientsidevalidering er ingen beskyttelse på serveren; Netlify tar imot det som sendes.
+// Feltet heter «email» slik at Netlify bruker avsenderen som svaradresse i e-postvarselet; «subject» er emnelinjen.
 // MOTTAK_BEKREFTET settes til true først når eier har aktivert skjemaregistrering og e-postvarsel hos Netlify
 // og en testhenvendelse faktisk er mottatt (se docs/cinematic-pilot/phase6/README.md).
 const MOTTAK_BEKREFTET = false;
@@ -17,10 +21,10 @@ const tomFeil = {};
 
 function valider(data) {
   const f = {};
-  if (!data.get("navn")?.trim()) f.navn = "Skriv inn navnet ditt.";
-  const e = data.get("epost")?.trim() || "";
-  if (!e) f.epost = "Skriv inn e-postadressen din.";
-  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)) f.epost = "E-postadressen ser ikke riktig ut. Eksempel: navn@bedrift.no";
+  if (!data.get("navn")?.trim()) f.navn = "Skriv inn navn.";
+  const e = data.get("email")?.trim() || "";
+  if (!e) f.email = "Skriv inn e-postadresse.";
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)) f.email = "E-postadressen ser ikke riktig ut. Eksempel: navn@bedrift.no";
   if (!data.get("tema")) f.tema = "Velg hva henvendelsen gjelder.";
   const m = data.get("melding")?.trim() || "";
   if (m.length < 10) f.melding = "Skriv en kort melding (minst 10 tegn).";
@@ -35,6 +39,8 @@ export default function Kontakt() {
   });
   const [status, setStatus] = useState("klar"); // klar | sender | sendt | feil
   const [feil, setFeil] = useState(tomFeil);
+  const [js, setJs] = useState(false); // false i forhåndsrendret HTML → nettleserens validering uten JavaScript
+  useEffect(() => setJs(true), []);
   const oppsummering = useRef(null);
   const bekreftelse = useRef(null);
   const feilmelding = useRef(null);
@@ -84,8 +90,9 @@ export default function Kontakt() {
               <p>Takk. Vi leser henvendelsen og svarer på e-post.</p>
             </div>
           ) : (
-            <form name="kontakt" method="POST" action="/kontakt/takk" data-netlify="true" netlify-honeypot="bot-felt" noValidate onSubmit={send}>
+            <form name="kontakt" method="POST" action="/kontakt/takk" data-netlify="true" netlify-honeypot="bot-felt" noValidate={js} onSubmit={send}>
               <input type="hidden" name="form-name" value="kontakt" />
+              <input type="hidden" name="subject" value="Ny henvendelse fra cideamarketing.com (%{submissionId})" />
               <p className="sd-honning" aria-hidden="true"><label>Ikke fyll ut dette feltet <input name="bot-felt" tabIndex={-1} autoComplete="off" /></label></p>
 
               {antallFeil > 0 && (
@@ -105,23 +112,23 @@ export default function Kontakt() {
                 <input {...felt("bedrift")} type="text" autoComplete="organization" />
               </div>
               <div className="sd-felt">
-                <label htmlFor="k-epost">E-post</label>
-                <input {...felt("epost", true)} type="email" autoComplete="email" inputMode="email" required />
-                <p className="sd-hjelp" id="k-epost-hjelp">Vi svarer på denne adressen.</p>
-                <Feil navn="epost" />
+                <label htmlFor="k-email">E-post</label>
+                <input {...felt("email", true)} type="email" autoComplete="email" inputMode="email" required />
+                <p className="sd-hjelp" id="k-email-hjelp">Vi svarer på denne adressen.</p>
+                <Feil navn="email" />
               </div>
               <fieldset className="sd-felt" aria-describedby={feil.tema ? "k-tema-feil" : undefined}>
                 <legend>Hva gjelder det?</legend>
                 <div className="sd-valg">
                   {temaer.map((t, i) => (
-                    <label key={t} className="sd-valg-alt"><input type="radio" id={`k-tema-${i}`} name="tema" value={t} aria-invalid={feil.tema ? "true" : undefined} /> {t}</label>
+                    <label key={t} className="sd-valg-alt"><input type="radio" id={`k-tema-${i}`} name="tema" value={t} required aria-invalid={feil.tema ? "true" : undefined} /> {t}</label>
                   ))}
                 </div>
                 <Feil navn="tema" />
               </fieldset>
               <div className="sd-felt">
                 <label htmlFor="k-melding">Melding</label>
-                <textarea {...felt("melding", true)} rows={6} required />
+                <textarea {...felt("melding", true)} rows={6} required minLength={10} />
                 <p className="sd-hjelp" id="k-melding-hjelp">Fortell kort om bedriften og hva dere ønsker hjelp med.</p>
                 <Feil navn="melding" />
               </div>

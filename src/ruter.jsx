@@ -16,7 +16,7 @@ export const ruter = {
   // Prototype og foreslått forside i forhåndsvisningsflyten (fase 5, ikke godkjent): skal ikke indekseres.
   "/konsept-scroll": { komponent: KonseptScroll, tittel: "Konsept: Fra ord til gjennomslag | Cidea Marketing", beskrivelse: "Prototype av en scrollstyrt forside for Cidea Marketing. Ikke publisert som forside.", robots: "noindex, nofollow" },
   "/tjenester": { komponent: Tjenester, tittel: "Tjenester | Cidea Marketing", beskrivelse: "Nettsider, merkevarebygging, SEO og digital markedsføring for bedrifter." },
-  "/om-oss": { komponent: OmOss, tittel: "Om oss | Cidea Marketing", beskrivelse: "Slik jobber Cidea Marketing – fra første avklaring til videreutvikling." },
+  "/om-oss": { komponent: OmOss, tittel: "Om oss | Cidea Marketing", beskrivelse: "Cidea Marketing hjelper bedrifter med nettsider, merkevarebygging, SEO og digital markedsføring." },
   "/blog": { komponent: Innsikt, tittel: "Innsikt | Cidea Marketing", beskrivelse: "Artikler om nettsider, synlighet og merkevare." },
   "/kontakt": { komponent: Kontakt, tittel: "Kontakt | Cidea Marketing", beskrivelse: "Ta kontakt med Cidea Marketing om nettsider, merkevarebygging, SEO eller digital markedsføring." },
   "/kontakt/takk": { komponent: Takk, tittel: "Henvendelsen er sendt | Cidea Marketing", beskrivelse: "Bekreftelse på henvendelse.", robots: "noindex, follow" },

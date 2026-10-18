@@ -4,7 +4,7 @@ En nettside trenger ikke bare å se bra ut. Den må gjøre det enkelt for riktig
 
 ## Start med budskapet
 
-Besøkende bør raskt forstå hvem du hjelper, hva du tilbyr og hvorfor det er relevant. Uklare budskap gjør at potensielle kunder forsvinner før de vurderer å ta kontakt.
+Besøkende bør raskt forstå hvem dere hjelper, hva dere tilbyr og hvorfor det er relevant. Uklare budskap gjør at potensielle kunder forsvinner før de vurderer å ta kontakt.
 
 ## Gjør neste steg tydelig
 
@@ -14,8 +14,8 @@ En god nettside bør ha en naturlig vei videre. Det kan være å kontakte virkso
 
 Eksempler på arbeid, konkrete forklaringer, kundeuttalelser og tydelig informasjon om virksomheten kan redusere usikkerhet.
 
-## Test før du bygger mer
+## Test før dere bygger mer
 
-Før du legger til flere sider eller funksjoner, se på hvilke sider som faktisk får trafikk og hvor brukerne faller av. Små forbedringer på en eksisterende side kan være mer verdifulle enn en stor redesign.
+Før dere legger til flere sider eller funksjoner, se på hvilke sider som faktisk får trafikk og hvor brukerne faller av. Små forbedringer på en eksisterende side kan være mer verdifulle enn en stor redesign.
 
-Vil du ha en konkret vurdering av nettsiden din? [Få en uforpliktende vurdering](/contact).
+Vil dere ha en konkret vurdering av nettsiden deres? [Få en uforpliktende vurdering](/kontakt).

@@ -1,6 +1,6 @@
 # Testresultat – prototype /konsept-scroll
 
-Kjørt 2026-10-18T12:58:51.164Z mot `dist/` (Netlify-regel). Chromium, og Firefox og WebKit fra Playwright der de er installert. Automatiske målinger, ikke en WCAG-samsvarserklæring.
+Kjørt 2026-10-18T13:29:05.924Z mot `dist/` (Netlify-regel). Chromium, og Firefox og WebKit fra Playwright der de er installert. Automatiske målinger, ikke en WCAG-samsvarserklæring.
 
 | ID | Test | Resultat | Måling |
 |---|---|---|---|

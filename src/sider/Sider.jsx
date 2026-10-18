@@ -72,7 +72,7 @@ export function Tjenester() {
                 <h2><a href={t.sti}>{t.navn}</a></h2>
                 <p className="sd-tjeneste-ingress">{t.ingress}</p>
                 <p>{t.behov}</p>
-                <a className="sd-lenke" href={t.sti} aria-hidden="true" tabIndex={-1}>Les om {t.navn.toLowerCase()} <span>→</span></a>
+                <a className="sd-lenke" href={t.sti} aria-hidden="true" tabIndex={-1}>Les om {t.navn === "SEO" ? t.navn : t.navn.toLowerCase()} <span>→</span></a>
               </li>
             ))}
           </ul>
@@ -80,8 +80,8 @@ export function Tjenester() {
       </section>
       <section className="cm-seksjon cm-lys sd-seksjon" aria-labelledby="usikker">
         <div className="cm-wrap sd-smal">
-          <h2 id="usikker">Usikre på hva dere trenger?</h2>
-          <p>Vi anbefaler det minste tiltaket som hjelper. Noen ganger er dagens nettside god nok og trenger bare forbedringer. Da sier vi det.</p>
+          <h2 id="usikker">Riktige tiltak for bedriften deres</h2>
+          <p>Vi tar utgangspunkt i målene deres og prioriterer tiltakene som støtter dem. Noen ganger betyr det å forbedre det dere allerede har. Andre ganger trengs en ny løsning.</p>
           <a className="cm-knapp" href="/kontakt">Snakk med oss <span aria-hidden="true">→</span></a>
         </div>
       </section>
@@ -126,10 +126,22 @@ export function TjenesteSide({ t }) {
 
 /* ---------- Om oss ---------- */
 export function OmOss() {
-  useMeta({ tittel: "Om oss | Cidea Marketing", beskrivelse: "Slik jobber Cidea Marketing – fra første avklaring til videreutvikling.", sti: "/om-oss" });
+  useMeta({ tittel: "Om oss | Cidea Marketing", beskrivelse: "Cidea Marketing hjelper bedrifter med nettsider, merkevarebygging, SEO og digital markedsføring.", sti: "/om-oss" });
   return (
     <Ramme aktiv="/om-oss">
-      <Sidehode tittel="Slik jobber vi – fra første avklaring til videreutvikling." ingress="Vi jobber med bedrifter over tid: fra første avklaring til videreutvikling etter lansering." />
+      <Sidehode tittel="Om Cidea Marketing" ingress="Cidea Marketing hjelper bedrifter med å bli enklere å forstå, finne og velge på nett. Vi lager nettsider, bygger merkevarer og jobber med SEO og digital markedsføring – og kan videreutvikle løsningene etter lansering." />
+      <section className="cm-seksjon sd-seksjon sd-tett" aria-labelledby="tilbyr">
+        <div className="cm-wrap sd-to">
+          <h2 id="tilbyr">Hva vi tilbyr</h2>
+          <dl className="sd-rader">{tjenesteSider.map(t => <div key={t.sti}><dt><a href={t.sti}>{t.navn}</a></dt><dd>{t.ingress}</dd></div>)}</dl>
+        </div>
+      </section>
+      <section className="cm-seksjon cm-lys sd-seksjon" aria-labelledby="anbefalinger">
+        <div className="cm-wrap sd-to">
+          <h2 id="anbefalinger">Anbefalinger ut fra målene deres</h2>
+          <p className="sd-brod">Vi anbefaler det som faktisk støtter målene deres, ikke mest mulig. Er nettsiden eller merkevaren dere har god nok, sier vi det og foreslår forbedringer i stedet for noe nytt.</p>
+        </div>
+      </section>
       <Steg tittel="Slik jobber vi" id="slik" steg={[
         ["Avklare behov", "Vi går gjennom virksomheten, målgruppen og målene."],
         ["Designe og utvikle", "Vi lager struktur, design og innhold og bygger løsningen."],
@@ -146,13 +158,7 @@ export function OmOss() {
           </ul>
         </div>
       </section>
-      <section className="cm-seksjon cm-lys sd-seksjon" aria-labelledby="minste">
-        <div className="cm-wrap sd-to">
-          <h2 id="minste">Det minste tiltaket som hjelper</h2>
-          <p className="sd-brod">Vi selger ikke en ny nettside når den dere har, er god nok. Vi anbefaler det minste tiltaket som hjelper, og bygger videre derfra.</p>
-        </div>
-      </section>
-      <section className="cm-seksjon sd-seksjon" aria-labelledby="selskapet">
+      <section className="cm-seksjon cm-lys sd-seksjon" aria-labelledby="selskapet">
         <div className="cm-wrap sd-to">
           <h2 id="selskapet">Selskapet</h2>
           <div className="sd-brod">
@@ -245,7 +251,7 @@ export function Takk() {
   useMeta({ tittel: "Henvendelsen er sendt | Cidea Marketing", beskrivelse: "Bekreftelse på henvendelse.", sti: "/kontakt/takk" });
   return (
     <Ramme aktiv="/kontakt">
-      <Sidehode tittel="Henvendelsen er sendt" ingress="Når du kommer hit etter å ha sendt skjemaet, har skjemaløsningen tatt imot meldingen. Vi leser henvendelsen og svarer på e-post." />
+      <Sidehode tittel="Henvendelsen er sendt" ingress="Takk for henvendelsen. Skjemaløsningen har tatt imot meldingen, og vi svarer på e-post." />
       <div className="cm-wrap sd-avslutt"><a className="cm-lenke" href="/tjenester">Se tjenestene <span aria-hidden="true">→</span></a></div>
     </Ramme>
   );

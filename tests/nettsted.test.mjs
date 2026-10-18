@@ -108,23 +108,26 @@ for (const sti of ['/websites', '/blog/hvor-mye-koster-en-nettside', '/kontakt']
   const p = await b.newPage({ viewport: { width: 1440, height: 900 } }); await p.goto(base + '/kontakt', { waitUntil: 'networkidle' });
   await p.click('button[type=submit]'); await p.waitForTimeout(100);
   const tom = await p.evaluate(() => ({ felt: [...document.querySelectorAll('[aria-invalid=true]')].map(e => e.name), fokus: document.activeElement.getAttribute('role'), feil: [...document.querySelectorAll('.sd-feltfeil')].map(e => e.textContent) }));
-  check('S7a', 'Skjema: tomt skjema gir feilmelding per felt og fokus på oppsummering', tom.felt.includes('navn') && tom.felt.includes('epost') && tom.felt.includes('melding') && tom.feil.length === 4 && tom.fokus === 'alert', `ugyldige felt: ${[...new Set(tom.felt)].join(', ')}; ${tom.feil.length} feilmeldinger; fokus på ${tom.fokus}`);
-  await p.fill('#k-navn', 'Test Testesen'); await p.fill('#k-epost', 'ikke-en-adresse'); await p.check('#k-tema-0'); await p.fill('#k-melding', 'Dette er en testmelding.');
+  check('S7a', 'Skjema: tomt skjema gir feilmelding per felt og fokus på oppsummering', tom.felt.includes('navn') && tom.felt.includes('email') && tom.felt.includes('melding') && tom.feil.length === 4 && tom.fokus === 'alert', `ugyldige felt: ${[...new Set(tom.felt)].join(', ')}; ${tom.feil.length} feilmeldinger; fokus på ${tom.fokus}`);
+  await p.fill('#k-navn', 'Test Testesen'); await p.fill('#k-email', 'ikke-en-adresse'); await p.check('#k-tema-0'); await p.fill('#k-melding', 'Dette er en testmelding.');
   await p.click('button[type=submit]'); await p.waitForTimeout(100);
-  const epost = await p.evaluate(() => document.querySelector('#k-epost-feil')?.textContent || '');
-  await p.fill('#k-epost', 'test@eksempel.no');
-  let underveis = null; p.on('request', async r => { if (r.method() === 'POST') underveis = await p.evaluate(() => ({ knapp: document.querySelector('button[type=submit]').textContent.trim(), deaktivert: document.querySelector('button[type=submit]').disabled })).catch(() => null); });
+  const epost = await p.evaluate(() => document.querySelector('#k-email-feil')?.textContent || '');
+  await p.fill('#k-email', 'test@eksempel.no');
+  // Svaret forsinkes 600 ms (fortsatt 405, som lokalt) slik at lastetilstanden kan leses pålitelig underveis.
+  await p.route('**/', async r => { if (r.request().method() !== 'POST') return r.continue(); await new Promise(x => setTimeout(x, 600)); await r.fulfill({ status: 405, body: 'Ingen skjemamottak lokalt' }); });
   const [post] = await Promise.all([p.waitForRequest(r => r.method() === 'POST'), p.click('button[type=submit]')]);
-  await p.waitForTimeout(400);
+  await p.waitForTimeout(250);
+  const underveis = await p.evaluate(() => ({ knapp: document.querySelector('button[type=submit]').textContent.trim(), deaktivert: document.querySelector('button[type=submit]').disabled }));
+  await p.waitForTimeout(700);
   const etter = await p.evaluate(() => ({ feil: document.querySelector('.sd-melding-feil h3')?.textContent || '', ok: !!document.querySelector('.sd-melding-ok'), notis: !!document.querySelector('.sd-hull') }));
   const body = new URLSearchParams(post.postData());
   check('S7b', 'Skjema: ugyldig e-post avvises', /E-postadressen ser ikke riktig ut/.test(epost), `«${epost}»`);
-  check('S7c', 'Skjema: sender riktige felt; uten mottak (HTTP 405 lokalt) vises feil, ikke suksess', body.get('form-name') === 'kontakt' && body.get('navn') === 'Test Testesen' && body.get('tema') === 'Nettsider' && etter.feil === 'Henvendelsen ble ikke sendt' && !etter.ok && etter.notis, `POST ${new URL(post.url()).pathname} med felt ${[...body.keys()].join(', ')}; resultat «${etter.feil}», suksess vist: ${etter.ok}; merknad om ubekreftet mottak synlig: ${etter.notis}${underveis ? `; under sending: «${underveis.knapp}», deaktivert ${underveis.deaktivert}` : ''}`);
+  check('S7c', 'Skjema: sender riktige felt; uten mottak (HTTP 405 lokalt) vises feil, ikke suksess', body.get('form-name') === 'kontakt' && body.get('navn') === 'Test Testesen' && body.get('tema') === 'Nettsider' && body.get('email') === 'test@eksempel.no' && /%\{submissionId\}/.test(body.get('subject') || '') && etter.feil === 'Henvendelsen ble ikke sendt' && !etter.ok && etter.notis && underveis.deaktivert && /Sender/.test(underveis.knapp), `POST ${new URL(post.url()).pathname} med felt ${[...body.keys()].join(', ')}; resultat «${etter.feil}», suksess vist: ${etter.ok}; merknad om ubekreftet mottak synlig: ${etter.notis}; under sending: «${underveis.knapp}», deaktivert ${underveis.deaktivert}`);
   await p.close();
   // Suksess bare ved HTTP 2xx: simuler et vellykket svar fra skjemamottaket
   const q = await b.newPage({ viewport: { width: 390, height: 844 } }); await q.route('**/', r => r.request().method() === 'POST' ? r.fulfill({ status: 200, body: 'ok' }) : r.continue());
   await q.goto(base + '/kontakt', { waitUntil: 'networkidle' });
-  await q.fill('#k-navn', 'Test'); await q.fill('#k-epost', 'test@eksempel.no'); await q.check('#k-tema-4'); await q.fill('#k-melding', 'Simulert vellykket innsending.');
+  await q.fill('#k-navn', 'Test'); await q.fill('#k-email', 'test@eksempel.no'); await q.check('#k-tema-4'); await q.fill('#k-melding', 'Simulert vellykket innsending.');
   await q.click('button[type=submit]'); await q.waitForTimeout(300);
   const sim = await q.evaluate(() => ({ ok: document.querySelector('.sd-melding-ok h3')?.textContent, fokus: document.activeElement.textContent }));
   await q.screenshot({ path: `${bilder}kontakt-bekreftelse-simulert-390.png`, fullPage: true });
@@ -132,7 +135,7 @@ for (const sti of ['/websites', '/blog/hvor-mye-koster-en-nettside', '/kontakt']
   await q.close();
   // Honningfelle: skjult felt utfylt sendes ikke
   const h = await b.newPage({ viewport: { width: 1440, height: 900 } }); await h.goto(base + '/kontakt', { waitUntil: 'networkidle' }); let sendt = false; h.on('request', r => { if (r.method() === 'POST') sendt = true; });
-  await h.fill('#k-navn', 'Robot'); await h.fill('#k-epost', 'r@eksempel.no'); await h.check('#k-tema-1'); await h.fill('#k-melding', 'Søppelpost søppelpost.');
+  await h.fill('#k-navn', 'Robot'); await h.fill('#k-email', 'r@eksempel.no'); await h.check('#k-tema-1'); await h.fill('#k-melding', 'Søppelpost søppelpost.');
   await h.evaluate(() => { document.querySelector('[name=bot-felt]').value = 'x'; }); await h.click('button[type=submit]'); await h.waitForTimeout(300);
   const hp = await h.evaluate(() => ({ synlig: document.querySelector('[name=bot-felt]').getBoundingClientRect().left >= 0, tab: document.querySelector('[name=bot-felt]').tabIndex }));
   check('S7e', 'Skjema: honningfelle er skjult og stopper innsending', !sendt && !hp.synlig && hp.tab === -1, `innsending stoppet: ${!sendt}, feltet utenfor skjermen: ${!hp.synlig}, tabIndex ${hp.tab}`);
@@ -151,10 +154,33 @@ for (const sti of ['/websites', '/blog/hvor-mye-koster-en-nettside', '/kontakt']
   await c.close();
 }
 
+// S10: validering uten JavaScript (nettleserens egen) og med JavaScript (egen, tilgjengelig validering)
+{
+  const c = await b.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 }, ...mobil(390) }); const p = await c.newPage();
+  await p.goto(base + '/kontakt', { waitUntil: 'load' }); let poster = 0; p.on('request', r => { if (r.method() === 'POST') poster++; });
+  const steg = [];
+  const forsøk = async navn => { const før = poster; await p.click('button[type=submit]'); await p.waitForTimeout(400); const r = await p.evaluate(() => { const f = document.querySelector('form[name=kontakt]'); return { gyldig: f.checkValidity(), ugyldige: [...f.elements].filter(e => e.willValidate && !e.validity.valid).map(e => e.name) }; }).catch(() => ({ gyldig: null, ugyldige: [] })); steg.push(`${navn}: sendt ${poster > før}, ugyldige ${[...new Set(r.ugyldige)].join('/') || 'ingen'}`); return poster > før; };
+  const tomSendt = await forsøk('tomt');
+  await p.fill('#k-navn', 'Test'); await p.fill('#k-email', 'ikke-epost'); await p.check('#k-tema-2'); await p.fill('#k-melding', 'Kort');
+  const ugyldigSendt = await forsøk('ugyldig e-post og kort melding');
+  await p.fill('#k-email', 'test@eksempel.no'); await p.fill('#k-melding', 'Gyldig melding uten JavaScript.');
+  const [svar] = await Promise.all([p.waitForResponse(r => r.request().method() === 'POST').catch(() => null), p.click('button[type=submit]')]);
+  steg.push(`gyldig: sendt til ${svar ? new URL(svar.url()).pathname + ' (HTTP ' + svar.status() + ' lokalt)' : 'ingen'}`);
+  const novalidateUtenJs = await p.goto(base + '/kontakt').then(() => p.evaluate(() => document.querySelector('form[name=kontakt]').noValidate));
+  check('S10a', 'Uten JavaScript: nettleserens validering stopper ugyldig skjema, gyldig skjema sendes', !tomSendt && !ugyldigSendt && !!svar && new URL(svar.url()).pathname === '/kontakt/takk' && novalidateUtenJs === false, `novalidate uten JS: ${novalidateUtenJs}; ${steg.join('; ')}`);
+  await c.close();
+  const q = await b.newPage({ viewport: { width: 1440, height: 900 } }); await q.goto(base + '/kontakt', { waitUntil: 'networkidle' });
+  await q.fill('#k-navn', 'Test'); await q.fill('#k-email', 'test@eksempel.no'); await q.check('#k-tema-0'); await q.fill('#k-melding', 'Kort');
+  await q.click('button[type=submit]'); await q.waitForTimeout(150);
+  const r = await q.evaluate(() => ({ nv: document.querySelector('form[name=kontakt]').noValidate, feil: document.querySelector('#k-melding-feil')?.textContent }));
+  check('S10b', 'Med JavaScript: novalidate satt, egen validering (meldingslengde) med feltfeil', r.nv === true && /minst 10 tegn/.test(r.feil || ''), `novalidate ${r.nv}, feil «${r.feil}»`);
+  await q.close();
+}
+
 // S9: artiklene viser hele teksten fra blog/*.md
 {
   const p = await b.newPage(); const avvik = [];
-  for (const [slug, setning] of [['hvor-mye-koster-en-nettside', 'En billig nettside som ikke blir funnet eller forstått'], ['hva-bor-en-god-bedriftsnettside-inneholde', 'Innhold og design må samarbeide'], ['hvorfor-vises-ikke-nettsiden-pa-google', 'Se på kommersiell relevans'], ['hvordan-fa-flere-henvendelser-fra-nettsiden', 'Test før du bygger mer']]) {
+  for (const [slug, setning] of [['hvor-mye-koster-en-nettside', 'En billig nettside som ikke blir funnet eller forstått'], ['hva-bor-en-god-bedriftsnettside-inneholde', 'Innhold og design må samarbeide'], ['hvorfor-vises-ikke-nettsiden-pa-google', 'Se på kommersiell relevans'], ['hvordan-fa-flere-henvendelser-fra-nettsiden', 'Test før dere bygger mer']]) {
     await p.goto(`${base}/blog/${slug}`, { waitUntil: 'load' });
     if (!(await p.evaluate(s => document.querySelector('main').innerText.includes(s), setning))) avvik.push(slug);
   }

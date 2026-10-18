@@ -30,6 +30,7 @@
 .sd-rader > div { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 4px 32px; padding: 18px 0; border-top: 1px solid rgba(20, 22, 25, .14); }
 .sd-rader > div:last-child { border-bottom: 1px solid rgba(20, 22, 25, .14); }
 .sd-rader dt { font: 600 19px/1.35 "Outfit", system-ui, sans-serif; }
+.sd-rader dt a { color: var(--dyp); text-underline-offset: 4px; display: inline-flex; min-height: 24px; align-items: center; }
 .sd-rader dd { margin: 0; color: var(--dempet); }
 
 /* Punktlister uten nummerering */

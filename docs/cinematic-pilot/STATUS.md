@@ -53,6 +53,7 @@
   - Kontaktskjemaet (Netlify Forms) er bygget og testet lokalt, men **faktisk levering er ikke testet eller bekreftet**: skjemaregistrering og e-postvarsel må slås på i Netlify.
   - Tester (Chromium): nettsted 33/33, forside 28/30 + 2 ikke kjørt, QA 86/86, prototype 28/30 + 2 ikke kjørt.
   - Estetisk godkjenning gjenstår.
+- **Fase 6 – innholds- og funksjonsrevisjon (Claude Code skyøkt, 2026-10-18):** ny Om oss-innledning (hva Cidea Marketing er, hvem vi hjelper, hva vi tilbyr), nytt verdibudskap på Tjenester og Om oss, «dere» konsekvent i artikler, skjema og Takk, nettleserens egen validering uten JavaScript, e-postfeltet heter nå `email` (svaradresse i Netlify-varselet) og skjult `subject`. Netlify-veiledning for eier i `phase6/README.md`. `MOTTAK_BEKREFTET` er fortsatt `false`; levering er ikke testet. Tester (Chromium): nettsted 35/35, forside 28/30 + 2 ikke kjørt, QA 86/86, prototype 28/30 + 2 ikke kjørt. Fase 5 og 6 er fortsatt åpne.
 
 ## Neste konkrete oppgave
 
