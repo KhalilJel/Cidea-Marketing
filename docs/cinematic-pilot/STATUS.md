@@ -38,6 +38,14 @@
 
   Bevegelsen er bare CSS-scrollanimasjoner på vanlig nettleserscroll, uten scrollmotor. Det er én festet scene (85vh desktop, 70vh mobil). Tester: `tests/konsept-scroll.test.mjs` 24/24 (overflow, tastatur, redusert bevegelse, uten JS, reversering, kontrast, Firefox-reserve, WebKit). Eksisterende suiter: 30/30 og 86/86. Bevis: `phase5/konsept-scroll/README.md` og `bevis/` (opptak 1440/390 og skjermbilder 1440/768/390).
 
+- **Prototype /konsept-scroll, revisjon 1 (Claude Code skyøkt, 2026-10-18):**
+  - Tom marine strekning fjernet: bildet glir inn under overgangen, og tomrommet er 41–46 % → 7–10 % av skjermhøyden.
+  - Mobil viser H1 og ingress i første skjermbilde (tomrom under ordmerket 310 → 25 px ved 390).
+  - «BLI VALGT» er hvit (laveste kontrast 3,43 → 6,42:1).
+  - Fokusert kontaktknapp er aldri dekket.
+  - Tester (Chromium): konsept-scroll 28/30 bestått + 2 ikke kjørt (Firefox/WebKit mangler i skymiljøet), forside 28/30 + 2 ikke kjørt, QA 86/86. Forsiden er uendret.
+  - Se `phase5/konsept-scroll/README.md` § Revisjon 1. Retningen er ikke godkjent.
+
 ## Neste konkrete oppgave
 
 1. Nettbrett- og rekkefølgerevisjonen er faglig godkjent av ChatGPT etter kontroll av faktiske bilder og kodediff ved f26e9fd. Ingen ny teknisk kjøring hevdet.

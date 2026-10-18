@@ -1,7 +1,7 @@
 # Prototype /konsept-scroll – «Fra ord til gjennomslag»
 
 **Status:** kjørbar prototype. **Retningen og fase 5 er ikke godkjent.** Dagens forside (`/`) er uendret. Siden har `noindex, nofollow` og er ikke lenket fra menyen.
-**Dato:** 2026-10-18 · **Utført av:** Claude Code (lokalt) · **Gren:** `experiment/cinematic-marketing-pilot` · **PR:** #13
+**Dato:** 2026-10-18 · **Utført av:** Claude Code (lokalt; revisjon 1 i skyøkt, se nederst) · **Gren:** `experiment/cinematic-marketing-pilot` · **PR:** #13
 
 ## Forhåndsvisning
 
@@ -18,9 +18,9 @@ Netlifys PR-forhåndsvisning for #13 bygges automatisk av GitHub og er ikke prod
 | # | Scene | Hva skjer | Drivkraft |
 |---|---|---|---|
 | 1 | Gigantisk CIDEA på lys flate | Ordmerket i Outfit 800 (27vw, maks 420 px). «Snakk med oss» er synlig fra første skjermbilde, både i toppmenyen (desktop) og nederst i scenen (alle bredder) | Ingen bevegelse ved lasting |
-| 2 | Ordmerket flyttes, H1 og ingress avdekkes, overgang til marine | CIDEA krymper og flytter seg opp til venstre (0–40 %). Eksisterende H1 og ingress tones inn nedenfra (15–45 %). Marine flate stiger opp nedenfra (80–100 %). Kontaktknappen ligger over flaten | Scroll, én festet scene (`position: sticky`): 85vh desktop, 70vh mobil |
-| 3 | Stor bildescene | **Tydelig merket midlertidig bildeområde** («Midlertidig bildeområde – Blått pigment som sprer seg i klart vann. Endelig bilde er ikke produsert.»). Ingen pigment-simulering med CSS. Rammen skaleres fra 80 % til 100 % mens den kommer inn | Scroll, ikke festet |
-| 4 | «BLI SETT» / «BLI VALGT» | To linjer (hvit og terrakotta) glir i motsatt retning, ±12vw (desktop) og ±5vw (mobil). Under står de fire tjenestene som ekte, lesbare lenker | Scroll, ikke festet |
+| 2 | Ordmerket flyttes, H1 og ingress avdekkes, overgang til marine | CIDEA krymper og flytter seg opp til venstre (0–40 %). Desktop: H1 og ingress tones inn nedenfra (15–45 %). Mobil og nettbrett: H1 og ingress står rett under ordmerket og er synlige fra start. Bildescenen glir inn over slutten av scenen, og marine flate stiger opp bak (80–100 %) | Scroll, én festet scene (`position: sticky`): 115vh desktop, 60vh mobil |
+| 3 | Stor bildescene, glir inn under overgangen (negativ marg −55vh, ligger over startscenen) | **Tydelig merket midlertidig bildeområde** («Midlertidig bildeområde – Blått pigment som sprer seg i klart vann. Endelig bilde er ikke produsert.»). Ingen pigment-simulering med CSS. Rammen skaleres fra 80 % til 100 % mens den kommer inn | Scroll, ikke festet |
+| 4 | «BLI SETT» / «BLI VALGT» | To hvite linjer glir i motsatt retning, ±12vw (desktop) og ±5vw (mobil). Under står de fire tjenestene som ekte, lesbare lenker | Scroll, ikke festet |
 | 5 | Rolig, lys del | Eksisterende «Slik jobber vi» (tre steg) og tre ekte artikler med lenker. Ingen bevegelse | Vanlig scroll |
 | 6 | Marine avslutning | Stor CIDEA vokser inn (skala 82 % → 100 %). Eksisterende kontaktbudskap og «Snakk med oss →» | Scroll, ikke festet |
 
@@ -32,7 +32,8 @@ All tekst er eksisterende, godkjent innhold, hentet fra samme datakilde som fors
 - All bevegelse er knyttet til scrollposisjonen, så scroll opp reverserer den.
 - **Statisk grunnoppsett** gjelder uten støtte for scroll-drevne animasjoner (Firefox), med `prefers-reduced-motion: reduce` og ellers. Bevegelse legges på i `@supports (animation-timeline: view())` kombinert med `prefers-reduced-motion: no-preference`.
 - Uten JavaScript er innholdet forhåndsrendret. CSS-bevegelsen virker fortsatt, siden den ikke trenger JS.
-- Mobil (≤ 860 px) har kortere festing (70vh), mindre forskyvning (±5vw), større ordmerke-sluttstørrelse og knapper i full bredde.
+- Mobil og nettbrett (≤ 860 px) har kortere festing (60vh), H1 og ingress synlige fra start, mindre forskyvning (±5vw), større ordmerke-sluttstørrelse og knapper i full bredde.
+- Når noe i startscenen har fokus (`:focus-within`), legges scenen over bildescenen. En fokusert kontaktknapp er dermed aldri dekket, heller ikke med Shift+Tab nedenfra.
 - Gjenbruk: `Ramme` (toppmeny med tilgjengelig mobilmeny, bunntekst), selvhostede fonter, godkjente farger og innholdslister eksportert fra `Forside.jsx` (uendret visning).
 
 | Fil | Innhold |
@@ -82,7 +83,34 @@ All tekst er eksisterende, godkjent innhold, hentet fra samme datakilde som fors
 
 - **Bildeområdet er en plassholder.** Pigmentscenen er ikke produsert. Ingen bildegenerering eller betalte ressurser er brukt.
 - **Firefox viser ingen bevegelse** (mangler `animation-timeline`). Siden er statisk og lesbar der. Et JavaScript-reservespor er bevisst ikke laget, for å unngå scroll-lyttere.
-- **Tom marine strekning:** etter overgangen til marine scroller man ca. én skjermhøyde med bare marine flate og kontaktknappen før bildeområdet kommer (synlig i kontaktarkene). Det kan kortes inn, men da får H1 kortere lesetid. Til vurdering.
-- «BLI VALGT» i terrakotta på marine har 3,43:1. Det holder for stor tekst, men er lavest på siden.
+- ~~Tom marine strekning~~ og ~~«BLI VALGT» 3,43:1~~: rettet i revisjon 1 (se nedenfor).
 - Bare automatiske målinger i Playwright (Chromium 141, Firefox 142, WebKit 26). Ekte telefon, Safari på iOS og skjermleser er ikke testet. Dette er ikke en WCAG-samsvarserklæring.
 - Kontaktflyten bak «Snakk med oss» er fortsatt den midlertidige `/kontakt`.
+
+## Revisjon 1 (2026-10-18, Claude Code skyøkt) – etter ChatGPT-bestilling
+
+**Rettet:**
+
+| # | Bestilling | Løsning | Målt før → etter |
+|---|---|---|---|
+| 1 | Fjern den tomme marine strekningen | Bildescenen glir inn over slutten av den festede startscenen (`margin-top: -55vh`, lag over scenen). Festingen på desktop er forlenget fra 85vh til 115vh, slik at H1 beholder lesetiden. | Scroll med marine øverst og bildeområdet under 25 % av skjermen: 1440: **46 % → 10 %** av skjermhøyden · 768: 43 % → 8 % · 390: 41 % → 8 % · 375: 41 % → 7 % · 320: 41 % → 8 %. Resten er bildeseksjonens egen bunnluft når bildet forlater skjermen. Lesetid for H1 (helt synlig og udekket): 1440: 300 px → 300 px · 390: 220 px → 480 px |
+| 2 | Hovedbudskapet tidligere på mobil | ≤ 860 px: H1 og ingress står rett under ordmerket og er synlige fra første skjermbilde (før usynlige til 15 % av scenen). Ordmerket er like stort. Kontaktknappen står fortsatt nederst. Festingen er 60vh (før 70vh). | 390: H1 synlig ved start (opasitet 0 → 1), H1 starter 552 → 250 px fra toppen, tomrom mellom ordmerke og H1 310 → 25 px. 320×640: H1 213 px, 20 px luft til kontaktknappen. Kontaktknappen er synlig ved start på alle bredder |
+| 3 | «BLI VALGT» i hvitt | `color: var(--hvit)`. Bevegelsen i motsatt retning er beholdt. Ingen andre fargeendringer. | Laveste kontrast i prototypen 3,43:1 → **6,42:1** |
+| 4 | Behold bildeplassholderen | Uendret. Ingen bilder, ingen Higgsfield-kreditter. | – |
+
+**Funn underveis:** Fordi bildescenen nå glir over startscenen, kunne kontaktknappen få fokus mens den var dekket (Shift+Tab nedenfra). Det er rettet med `.ks-start:focus-within .ks-scene { z-index: 4 }` og dekkes av den nye testen K14. Uten fokus dekkes knappen bevisst av bildet under overgangen. På mobil skjer det etter ca. 250 px scroll.
+
+**Tester (skyøkt, Chromium 141 headless via Playwright 1.56.1):**
+- `node tests/konsept-scroll.test.mjs` → **28 av 30 bestått, 2 ikke kjørt.** **K11 Firefox og K11 WebKit er IKKE KJØRT**, fordi nettleserne ikke er installert i skymiljøet. Testen registrerer dem nå som ikke kjørt i stedet for å krasje.
+- Nye kontroller: K12 (tom marine strekning ≤ 15 % av skjermhøyden), K13 (kontaktknapp i første skjermbilde; mobil: H1 og ingress også synlige) og K14 (kontaktknapp udekket med fokus under overgangen).
+- Endret kontroll: K5 har grense ≤ 120vh på desktop (ny koreografi, 115vh). K8 sjekker elementer i startscenen på toppen av scenen, fordi bildescenen bevisst ligger over dem under overgangen. Fokus i den situasjonen dekkes av K14.
+- Forsiden er uendret: `test:forside` 28/30 (2 ikke kjørt: Firefox/WebKit), `qa.mjs` 86/86.
+- Overflow 0 px ved 320, 375, 390, 768 og 1440 gjennom hele scrollen (K2). Reversering (K4), redusert bevegelse (K7), uten JS (K8) og tastaturrekkefølge (K9) er bestått.
+
+**Bevis:** før: [`bevis/for/`](bevis/for/) (kontaktark 1440/768/390 fra 9da3f50). Etter: [`bevegelse-1440.jpg`](bevis/bevegelse-1440.jpg), [`bevegelse-768.jpg`](bevis/bevegelse-768.jpg), [`bevegelse-390.jpg`](bevis/bevegelse-390.jpg), opptak [`opptak-1440.webm`](bevis/opptak-1440.webm) (musehjul ned og opp) og [`opptak-390.webm`](bevis/opptak-390.webm) (berøringssveip ned og opp), fullsidebilder med redusert bevegelse.
+
+**Begrensninger:**
+- Firefox og WebKit er ikke testet i denne revisjonen.
+- Ingen ekte telefon og ingen skjermleser.
+- Uten JavaScript på mobil skyver den statiske menyen startscenen ca. 400 px ned, så kontaktknappen havner under første skjermbilde. Dette er den eksisterende fallbacken og gjaldt også før.
+- Netlify-forhåndsvisningen kan ikke åpnes fra skymiljøet (`netlify.app` er blokkert), så den er ikke verifisert herfra.

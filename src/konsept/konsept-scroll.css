@@ -27,7 +27,7 @@
 .ks-ord { background: var(--ks-marine); color: var(--hvit); padding: 4vh 0 14vh; overflow-x: clip; }
 .ks-ordpar { font: 800 clamp(64px, 15vw, 240px)/.86 "Outfit", system-ui, sans-serif !important; letter-spacing: -0.04em !important; text-transform: uppercase; margin: 0 0 8vh !important; padding: 0 var(--gutter); }
 .ks-ord-1, .ks-ord-2 { display: block; white-space: nowrap; }
-.ks-ord-2 { color: var(--terrakotta); padding-left: 14vw; }
+.ks-ord-2 { color: var(--hvit); padding-left: 14vw; }
 .ks-under { font-size: 18px; max-width: 46ch; margin-bottom: 40px !important; }
 .ks-ord .ks-under { color: rgba(255, 255, 255, .86); }
 .ks-tjenester { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
@@ -88,7 +88,12 @@
    Bare transform og opacity animeres. Én kort festet sekvens (starten); resten scroller fritt. */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .ks-start { height: 185vh; view-timeline: --ks-start block; }
+    .ks-start { height: 215vh; view-timeline: --ks-start block; }
+    /* Bildescenen glir inn over slutten av den festede scenen, slik at det ikke blir en tom marine strekning
+       mellom overgangen og bildet. Lesetiden for H1 bevares ved at festingen er litt lengre (215vh). */
+    .ks-bilde { position: relative; z-index: 3; margin-top: -55vh; }
+    /* Kontaktknappen i startscenen skal aldri være dekket når den har fokus (f.eks. Shift+Tab nedenfra). */
+    .ks-start:focus-within .ks-scene { z-index: 4; }
     .ks-scene { position: sticky; top: 0; height: 100vh; height: 100svh; display: block; padding: 0; overflow: hidden; }
     .ks-ordmerke { position: absolute; left: var(--gutter); top: 12vh; margin: 0 !important; transform-origin: 0 0; }
     .ks-intro { position: absolute; left: var(--gutter); right: var(--gutter); bottom: calc(var(--ks-bunn) + var(--ks-topp) + 80px); }
@@ -118,9 +123,11 @@
   .ks { --ks-bunn: 5vh; --ks-topp: 64px; }
   @supports (animation-timeline: view()) {
     @media (prefers-reduced-motion: no-preference) {
-      .ks-start { height: 170vh; }
-      .ks-ordmerke { top: 10vh; }
-      .ks-intro { bottom: calc(var(--ks-bunn) + var(--ks-topp) + 72px); }
+      .ks-start { height: 160vh; }
+      .ks-bilde { margin-top: -55vh; }
+      .ks-ordmerke { top: 8vh; }
+      /* Mobil: hovedbudskapet står rett under ordmerket og er synlig fra første skjermbilde. */
+      .ks-intro { top: calc(8vh + 21.6vw + 3vh); bottom: auto; animation: none; opacity: 1; transform: none; }
       .ks-kontakt { right: var(--gutter); }
       .ks-ordmerke { animation-name: ks-ordmerke-m; }
       .ks-ord-1 { animation-name: ks-ord-1-m; }
