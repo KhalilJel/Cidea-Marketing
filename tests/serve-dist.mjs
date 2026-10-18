@@ -1,5 +1,6 @@
-// Liten statisk server for dist/ med samme regel som netlify.toml:
-// eksisterende fil (eller mappe/index.html) serveres direkte, alt annet får /spa.html (status 200).
+// Liten statisk server for dist/ med samme regel som Netlify (netlify.toml):
+// eksisterende fil, eller mappe/index.html, serveres med 200; alt annet får dist/404.html med status 404.
+// POST besvares med 405: lokalt finnes ingen skjemamottak, så kontaktskjemaet skal vise feil, aldri falsk suksess.
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
@@ -11,10 +12,14 @@ const isFile = async p => { try { return (await stat(p)).isFile(); } catch { ret
 
 export function serve(port = 4174) {
   const server = createServer(async (req, res) => {
+    if (req.method !== 'GET' && req.method !== 'HEAD') { res.writeHead(405, { 'content-type': 'text/plain; charset=utf-8' }); res.end('Ingen skjemamottak lokalt'); return; }
     const path = normalize(decodeURIComponent(new URL(req.url, 'http://x').pathname)).replace(/^([/\\])+/, '');
-    let file = join(dist, path);
-    if (!(await isFile(file))) file = (await isFile(join(file, 'index.html'))) ? join(file, 'index.html') : join(dist, 'spa.html');
-    res.writeHead(200, { 'content-type': types[extname(file)] || 'application/octet-stream' });
+    let file = join(dist, path), status = 200;
+    if (!(await isFile(file))) {
+      if (await isFile(join(file, 'index.html'))) file = join(file, 'index.html');
+      else { file = join(dist, '404.html'); status = 404; }
+    }
+    res.writeHead(status, { 'content-type': types[extname(file)] || 'application/octet-stream' });
     res.end(await readFile(file));
   });
   return new Promise(r => server.listen(port, '127.0.0.1', () => r(server)));

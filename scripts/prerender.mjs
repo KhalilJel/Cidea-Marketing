@@ -1,9 +1,8 @@
-// Etter `vite build` og SSR-bygg av src/entry-server.jsx: skriv ferdig HTML for de nye sidene.
-//  dist/index.html          → forsiden, forhåndsrendret (vises uten JS, hydreres med JS)
-//  dist/kontakt/index.html  → /kontakt, forhåndsrendret
-//  dist/konsept-scroll/index.html → prototype (noindex)
-//  dist/spa.html            → tomt skall for alle andre stier (gamle sider), brukt av netlify.toml
-// Gamle sider får dermed ikke forsidens HTML, og forsiden er ikke lenger en tom React-rot.
+// Etter `vite build` og SSR-bygg av src/entry-server.jsx: skriv ferdig HTML for alle sider (src/ruter.jsx).
+//  dist/index.html            → forsiden
+//  dist/<sti>/index.html      → hver side, også tjenester, artikler og /konsept-scroll (noindex)
+//  dist/404.html              → ukjente stier; Netlify serverer den med status 404
+// Alle sider vises uten JavaScript og hydreres med JS. Direktelenker og oppdatering fungerer uten omskriving.
 import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -27,11 +26,12 @@ function side(sti) {
     .replace('<div id="root"></div>', `<div id="root" data-forhandsrendret="${sti}">${html}</div>`);
 }
 
-writeFileSync(`${root}dist/spa.html`, shell);
 for (const sti of Object.keys(sider)) {
-  if (sti === '/') { writeFileSync(`${root}dist/index.html`, side('/')); continue; }
+  if (sti === '/') continue;
+  if (sti === '/404') { writeFileSync(`${root}dist/404.html`, side('/404')); continue; }
   mkdirSync(`${root}dist${sti}`, { recursive: true });
   writeFileSync(`${root}dist${sti}/index.html`, side(sti));
 }
+writeFileSync(`${root}dist/index.html`, side('/')); // sist: skallet over leses fra dist/index.html
 rmSync(`${root}dist-ssr`, { recursive: true, force: true });
-console.log(`forhåndsrendret: ${Object.keys(sider).join(', ')}; skall for øvrige stier: dist/spa.html`);
+console.log(`forhåndsrendret ${Object.keys(sider).length} sider: ${Object.keys(sider).join(', ')}`);

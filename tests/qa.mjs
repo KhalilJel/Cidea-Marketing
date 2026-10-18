@@ -43,7 +43,7 @@ for (const side of ['/', '/kontakt']) for (const w of [320, 375, 390, 600, 768, 
     const under44 = mål.filter(m => !m.inline && (m.w < 44 || m.h < 44)).map(m => `${m.t} ${m.w}×${m.h}`);
     const lenker = [...new Set([...document.querySelectorAll('a[href]')].map(a => a.getAttribute('href')))];
     const seksjoner = [...document.querySelectorAll('main > section, main > *')].filter(synlig).map(s => Math.round(s.getBoundingClientRect().height));
-    const ord = [...document.querySelectorAll('h1,h2,h3,p,a,li,button')].filter(synlig).filter(e => e.scrollWidth > e.clientWidth + 1 && getComputedStyle(e).overflowX !== 'visible').length;
+    const ord = [...document.querySelectorAll('h1,h2,h3,p,a,li,button')].filter(synlig).filter(e => !e.closest('[aria-hidden=true]')).filter(e => e.scrollWidth > e.clientWidth + 1 && getComputedStyle(e).overflowX !== 'visible').length;
     return { checked, min, fails, hs, hopp, h1: hs.filter(n => n === 1).length, sma, under44, lenker, seksjoner, ord, text: document.body.innerText,
       overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth, lang: document.documentElement.lang,
       aeoeaa: ['Outfit', 'DM Sans'].every(ff => document.fonts.check(`700 20px "${ff}"`, 'æøåÆØÅ')), hoyde: document.documentElement.scrollHeight };
@@ -60,6 +60,7 @@ for (const side of ['/', '/kontakt']) for (const w of [320, 375, 390, 600, 768, 
     const brutt = [];
     for (const h of r.lenker) {
       if (h.startsWith('#') || h.startsWith('/#')) { const id = h.split('#')[1]; const fins = await p.evaluate(i => !!document.getElementById(i), id); if (side === '/' && !fins) brutt.push(h); continue; }
+      if (h === 'mailto:jelassi@cideamarketing.com') continue; // bekreftet kontaktadresse (fase 6)
       if (!h.startsWith('/')) { brutt.push(h + ' (ekstern)'); continue; }
       const q = await b.newPage(); const svar = await q.goto(base + h, { waitUntil: 'networkidle' }); const h1 = await q.locator('h1').count(); await q.close();
       if (svar.status() !== 200 || !h1) brutt.push(h);

@@ -1,0 +1,100 @@
+# Fase 6 – hele nettstedet til strukturgjennomgang
+
+**Dato:** 2026-10-18 · **Utført av:** Claude Code (skyøkt) · **Gren:** `experiment/cinematic-marketing-pilot` · **PR:** #13
+**Status:** struktur, innhold og funksjon er levert til kontroll. **Estetisk godkjenning gjenstår** og gjøres sammen med eier senere. Fase 5 er fortsatt åpen. Ingen merge, produksjonslansering eller DNS/MX-endringer. Higgsfield og annen bildegenerering er pauset; ingen nye kreditter eller betalte ressurser er brukt.
+
+## Sidekart (forhåndsvisning)
+
+Forhåndsvisning: `https://deploy-preview-13--cideamarketing.netlify.app` + stien under. Den er ikke verifisert fra skyøkten, fordi `netlify.app` er blokkert der. Lokalt: `npm run build && node tests/serve-dist.mjs`, deretter `http://127.0.0.1:4174` + stien.
+
+| Side | Sti | Innhold | Kilde |
+|---|---|---|---|
+| Foreslått forside (arbeidsversjon) | `/konsept-scroll` | Uendret prototype med bevegelse og bildeplassholder. `noindex, nofollow` | Fase 5 |
+| Ordinær forside | `/` | Uendret innhold, ny meny | Fase 5 |
+| Tjenester | `/tjenester` (ny) | Fire tjenester med behov og lenke, «det minste tiltaket som hjelper» | Fase 3-tekst + nye utkast |
+| Nettsider | `/websites` | Behov, leveranse (6), samarbeid (3 steg), videre, tre relevante artikler | Fase 3-skisse Nettsider |
+| Merkevarebygging | `/branding` | Behov, leveranse (6), samarbeid, videre | Fase 3-skisse Merkevarebygging |
+| SEO | `/seo` | Behov, leveranse (5), samarbeid, videre (ingen rangeringsløfter), én artikkel | Fase 3-skisse SEO |
+| Digital markedsføring og sosiale medier | `/digital-marketing` | Behov, leveranse (6, inkl. innhold for sosiale medier), samarbeid, videre (annonsebudsjett i tillegg) | Fase 3-skisse Digital markedsføring |
+| Om oss | `/om-oss` (ny) | Arbeidsmåte, hva dere kan forvente, «det minste tiltaket», bekreftede selskapsopplysninger | Fase 3-skisse Tilnærming, `commercial-offer.md`, Enhetsregisteret |
+| Innsikt | `/blog` | De fire eksisterende artiklene | `blog/*.md` |
+| Artikler | `/blog/{slug}` × 4 | Hele artikkelteksten fra `blog/*.md` (før vistes bare ingressen) | `blog/*.md` |
+| Kontakt | `/kontakt` | Skjema, direkte e-post, selskapsopplysninger | Fase 3-skisse Kontakt |
+| Takk | `/kontakt/takk` | Bekreftelse etter innsending uten JavaScript. `noindex` | Ny |
+| Personvern | `/personvern` | Nytt: nettstedet og kontaktskjemaet. Uendret: eiergodkjent Gullkornet-tekst | Ny + `src/Privacy.jsx` ordrett |
+| 404 | alle ukjente stier | «Siden finnes ikke» med lenker videre, HTTP 404. `noindex` | Ny |
+
+**Navigasjon:** Tjenester · Om oss · Innsikt · «Snakk med oss», likt på alle sider, også prototypen. Logoen leder til `/konsept-scroll` i forhåndsvisningsflyten (konstanten `FORSIDE` i `src/forside/Ramme.jsx`, settes til `/` ved lansering). Bunnteksten viser menyen, Kontakt, Personvern og CIDEA AS, org.nr. og e-post.
+
+**Ruter:** de eksisterende engelske stiene er gjenbrukt for å unngå parallelle sider. Norske adresser (`/nettsider`, `/innsikt` …) og 301-omdirigeringer hører til fase 7 (SIDEPLAN). Den gamle appen (`src/legacy/`, `src/Privacy.jsx`) er fjernet. Alle sider forhåndsrendres til egne filer (`src/ruter.jsx` → `scripts/prerender.mjs`), så direktelenker og oppdatering fungerer også uten JavaScript. Ukjente stier får `dist/404.html` med status 404. Omskrivingen til `spa.html` i `netlify.toml` er derfor fjernet; byggeinnstillingene i Netlify er uendret.
+
+## Kontaktskjemaet – faktisk status
+
+| Del | Status |
+|---|---|
+| Teknikk | Netlify Forms, en del av eksisterende hosting. Skjemaet `kontakt` ligger i forhåndsrendret HTML (`data-netlify="true"`, `netlify-honeypot="bot-felt"`). Ingen nøkler eller hemmeligheter i koden, og ingen ny tjeneste |
+| Felt | Navn, bedrift (valgfritt), e-post, hva gjelder det (Nettsider, Merkevarebygging, SEO, Digital markedsføring, Annet), melding |
+| Validering | Påkrevde felt, e-postformat, minst 10 tegn i melding, feil per felt (`aria-invalid`, `aria-describedby`) og feiloppsummering med fokus |
+| Lasting, feil, bekreftelse | «Sender …» med deaktivert knapp. Ved feil: «Henvendelsen ble ikke sendt» med e-post som alternativ. Bekreftelsen vises **bare ved HTTP 2xx** |
+| Spam | Skjult honningfelle (stopper innsending i nettleseren; Netlify forkaster den i tillegg) |
+| Uten JavaScript | Vanlig POST til `/kontakt/takk` |
+| Testet lokalt | Validering, lasting, feil (lokalt finnes ikke mottak, serveren svarer 405), bekreftelse ved simulert 200-svar og honningfelle (`tests/nettsted.test.mjs` S7) |
+| **Ikke testet** | **Faktisk innsending til Netlify og mottak på e-post.** Det krever tilgang til Netlify, som skyøkten ikke har |
+| Ærlig merknad på siden | Til mottak er bekreftet, står det synlig at mottak ikke er bekreftet, med e-postadressen som alternativ (`MOTTAK_BEKREFTET = false` i `src/kontakt/Kontakt.jsx`) |
+
+**Konfigurasjon eier må gjøre før skjemaet kan tas i bruk:**
+1. Netlify → prosjektet `cideamarketing` → **Forms** → slå på skjemaregistrering (form detection), hvis den er av. Bygg forhåndsvisningen på nytt, og kontroller at skjemaet «kontakt» vises i listen.
+2. **Forms → Form notifications** → legg til e-postvarsel til `jelassi@cideamarketing.com` for skjemaet «kontakt».
+3. Send en testhenvendelse fra forhåndsvisningen. Kontroller at den vises i Netlify (Forms → kontakt) **og** kommer fram på e-post.
+4. Fastsett lagringstid for henvendelser, og om Netlifys overføringsgrunnlag skal beskrives. Hullet er tydelig merket på `/personvern`.
+5. Deretter: sett `MOTTAK_BEKREFTET = true`, og fjern merknaden.
+
+Skillet: «testet innsending» betyr at nettleseren fikk et 2xx-svar. «Bekreftet mottak» betyr at meldingen faktisk er sett i Netlify og i innboksen. Ingen av delene er gjort ennå.
+
+## Bekreftede opplysninger som er brukt
+
+- CIDEA AS, org.nr. 927 394 391, Gunnar Schjelderups vei 13A, 0485 Oslo, driver Cidea Marketing (Enhetsregisteret, kontrollert 16.10.2026, eierbekreftet; `docs/PERSONVERN-LEVERANSE.md`).
+- `jelassi@cideamarketing.com`: eksisterende overvåket postkasse (samme kilde). Den gamle SmartSvar-adressen er fjernet sammen med den gamle appen.
+- Ingen team, personer, erfaring, sertifiseringer, kunder, resultater, priser, datoer eller omtaler er lagt til. Prisene i `commercial-offer.md` er bevisst utelatt.
+
+## Tekst til godkjenning (ChatGPT/eier)
+
+- Nye utkast: «Hva vi hjelper med» og «Videre etter leveransen» på hver tjenesteside, ingressen på Tjenester og Om oss-teksten «Det minste tiltaket som hjelper». Dette er ny tekst; resten er fra fase 3 eller artiklene.
+- Ord fra fase 3-skissene som lovet mer enn vi kan dokumentere er dempet («alltid fungerer», «autoritært uttrykk», «størst effekt», «basert på resultater»).
+- Artiklene bruker «du» og «din» (eksisterende tekst, uendret). Bare lenker til sider som ikke fantes er rettet (`/contact` → `/kontakt`, `./x.md` → `/blog/x`).
+- Om oss-H1 er ChatGPT-vedtaket for Tilnærming: «Slik jobber vi – fra første avklaring til videreutvikling.»
+
+## Tester (skyøkt, Chromium 141 headless via Playwright 1.56.1)
+
+| Kjøring | Resultat |
+|---|---|
+| `npm run build` | OK, 17 sider forhåndsrendret |
+| `node tests/nettsted.test.mjs` (ny) | **33 av 33**: direktelenke og oppdatering for 15 sider + 404 (S1), alle interne lenker (S2), lik meny, logo og noindex (S3), overflow, avkuttet tekst og språk ved 390/768/1440 (S4), mobilmeny med tastatur (S5), synlig tastaturfokus (S6), kontaktskjema (S7a–e), uten JS (S8), hele artikler (S9) |
+| `npm run test:forside` | 28/30, **2 ikke kjørt** (Firefox og WebKit er ikke installert i skymiljøet) |
+| `node tests/qa.mjs` | 86/86 (320–1440 for `/` og `/kontakt`) |
+| `node tests/konsept-scroll.test.mjs` | 28/30, **2 ikke kjørt** (Firefox og WebKit) |
+
+Endrede testforventninger, med begrunnelse:
+- `forside.test` R: de gamle sidene er erstattet av nye.
+- `forside.test` N og `konsept-scroll` K8: menyen har 4 lenker, ikke 6.
+- `qa.mjs`: den bekreftede e-postadressen er en gyldig lenke, og honningfeltet (skjult) regnes ikke som avkuttet tekst.
+- Ordkontrollen i `nettsted.test` hopper over den låste Gullkornet-teksten («garantier» om SCC, «gratis» om protest).
+
+Rettet under arbeidet:
+- 14 px overflow på `/kontakt` ved 320 px (rutenett med `1fr` → `minmax(0, 1fr)`).
+- «Les mer» i skjemateksten.
+- Midtstilt blokk på Tjenester.
+
+Begrensninger: bare Chromium. Ingen ekte telefon, ingen skjermleser, og ingen innsending mot Netlify. Automatiske tester er ikke estetisk godkjenning.
+
+## Oversiktsbilder
+
+`bilder/` – fullside, redusert bevegelse: `{side}-1440.png` og `{side}-390.png` for tjenester, websites, branding, seo, digital-marketing, om-oss, blog, fire artikler, kontakt, personvern og 404, samt `kontakt-bekreftelse-simulert-390.png` (bekreftelse ved simulert 2xx-svar, ikke ekte levering).
+
+## Kjente mangler
+
+- Kontaktskjemaets levering er ikke aktivert eller bekreftet (se over).
+- Personvern: lagringstid og overføringsgrunnlag for skjemahenvendelser må fastsettes.
+- Undersidene har ingen bilder (bevisst; ingen bildegenerering nå). Estetisk finpuss gjenstår.
+- Engelske stier (`/websites`, `/blog` …) til fase 7. Sitemap er oppdatert med nye sider; `/konsept-scroll`, `/kontakt/takk` og 404 er utelatt.
+- `docs/launch-checklist.md` nevner fortsatt mailto-CTA-er og NO/EN-navigasjon, som ikke lenger finnes. Sjekklisten bør revideres i fase 9.

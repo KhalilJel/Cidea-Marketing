@@ -21,7 +21,8 @@ for (const [sti, h1Forvent] of [['/', 'Nettsider og helhetlig markedsføring som
   const r = await p.goto(base + sti, { waitUntil: 'networkidle' });
   const h1 = (await p.locator('h1').first().textContent().catch(() => '')).trim();
   const forside = await p.evaluate(() => !!document.querySelector('.cm'));
-  check(`R ${sti}`, 'Rute rendres uten feil', r.status() === 200 && h1 && feil.length === 0 && (!h1Forvent || h1 === h1Forvent) && (h1Forvent ? forside : !forside), `HTTP ${r.status()}, H1 «${h1.slice(0, 40)}», ${h1Forvent ? 'ny side' : 'gammel side'}, feil: ${feil.length ? feil.join('; ').slice(0, 120) : 'ingen'}`);
+  // Fase 6: de tidligere gamle sidene (tjenester, blogg, personvern) er erstattet av nye sider i samme ramme (.cm).
+  check(`R ${sti}`, 'Rute rendres uten feil', r.status() === 200 && h1 && feil.length === 0 && (!h1Forvent || h1 === h1Forvent) && forside, `HTTP ${r.status()}, H1 «${h1.slice(0, 40)}», ${forside ? 'ny side' : 'gammel side'}, feil: ${feil.length ? feil.join('; ').slice(0, 120) : 'ingen'}`);
   await p.close();
 }
 
@@ -31,7 +32,8 @@ for (const [sti, bredde] of [['/', 1440], ['/', 390], ['/kontakt', 390]]) {
   await p.goto(base + sti, { waitUntil: 'load' });
   const r = await p.evaluate(() => ({ h: [...document.querySelectorAll('h1,h2')].map(x => x.textContent.trim()), menyLenker: [...document.querySelectorAll('.cm-meny a')].filter(a => a.getBoundingClientRect().height > 0).length, knapp: getComputedStyle(document.querySelector('.cm-menyknapp')).display, tekst: document.body.innerText.length }));
   await p.screenshot({ path: `${here}bilder/uten-js${sti === '/' ? '-forside' : sti.replace('/', '-')}-${bredde}.png`, fullPage: true });
-  check(`N ${sti} ${bredde}`, 'Uten JavaScript: innhold og navigasjon synlig', r.h.length >= (sti === '/' ? 6 : 2) && r.menyLenker >= 6 && r.knapp === 'none' && r.tekst > 300, `${r.h.length} overskrifter (${r.h.slice(0, 3).join(' · ').slice(0, 70)} …), ${r.menyLenker} synlige menylenker, menyknapp ${r.knapp}, ${r.tekst} tegn tekst`);
+  // Fase 6: menyen har tre lenker pluss «Snakk med oss» (før fem pluss knapp).
+  check(`N ${sti} ${bredde}`, 'Uten JavaScript: innhold og navigasjon synlig', r.h.length >= (sti === '/' ? 6 : 2) && r.menyLenker >= 4 && r.knapp === 'none' && r.tekst > 300, `${r.h.length} overskrifter (${r.h.slice(0, 3).join(' · ').slice(0, 70)} …), ${r.menyLenker} synlige menylenker, menyknapp ${r.knapp}, ${r.tekst} tegn tekst`);
   await c.close();
 }
 

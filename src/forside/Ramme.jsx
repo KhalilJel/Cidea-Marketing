@@ -1,12 +1,16 @@
 import React, { useEffect, useId, useRef, useState } from "react";
+import { selskap } from "../sider/tjenester-innhold.js";
 
+// Fase 6: én sammenhengende meny for prototypen og undersidene. Kontakt nås via knappen «Snakk med oss».
 export const meny = [
-  { tekst: "Tjenester", href: "/#tjenester" },
-  { tekst: "Konsepter", href: "/#konsept" },
-  { tekst: "Tilnærming", href: "/#slik-jobber-vi" },
+  { tekst: "Tjenester", href: "/tjenester" },
+  { tekst: "Om oss", href: "/om-oss" },
   { tekst: "Innsikt", href: "/blog" },
-  { tekst: "Kontakt", href: "/kontakt" },
 ];
+
+// I forhåndsvisningsflyten fører logoen til arbeidsforsiden (scrollprototypen). Ordinær / er ikke erstattet.
+// Settes til "/" når eier har godkjent ny forside.
+export const FORSIDE = "/konsept-scroll";
 
 /** Setter tittel, beskrivelse og kanonisk adresse for siden (erstatter den umonterte Meta i gammel kode). */
 export function useMeta({ tittel, beskrivelse, sti }) {
@@ -37,7 +41,7 @@ function Toppmeny({ aktiv }) {
   return (
     <header className="cm-topp">
       <div className="cm-wrap cm-topp-rad">
-        <a className="cm-ordmerke" href="/">CIDEA MARKETING</a>
+        <a className="cm-ordmerke" href={FORSIDE} aria-label="Cidea Marketing – til forsiden">CIDEA MARKETING</a>
         <button ref={knapp} className="cm-menyknapp" type="button" aria-expanded={apen} aria-controls={id}
           onClick={() => setApen(v => !v)}>{apen ? "Lukk" : "Meny"}</button>
         <nav id={id} ref={panel} className="cm-meny" data-apen={apen ? "1" : "0"} aria-label="Hovedmeny"
@@ -48,7 +52,7 @@ function Toppmeny({ aktiv }) {
                 onClick={() => setApen(false)}>{m.tekst}</a></li>
             ))}
           </ul>
-          <a className="cm-knapp cm-meny-cta" href="/kontakt" onClick={() => setApen(false)}>Snakk med oss</a>
+          <a className="cm-knapp cm-meny-cta" href="/kontakt" aria-current={aktiv === "/kontakt" ? "page" : undefined} onClick={() => setApen(false)}>Snakk med oss</a>
         </nav>
       </div>
     </header>
@@ -59,9 +63,9 @@ function Bunn() {
   return (
     <footer className="cm-bunn">
       <div className="cm-wrap cm-bunn-rad">
-        <a className="cm-ordmerke" href="/">CIDEA MARKETING</a>
-        <nav aria-label="Bunnmeny"><ul>{meny.map(m => <li key={m.href}><a href={m.href}>{m.tekst}</a></li>)}<li><a href="/personvern">Personvern</a></li></ul></nav>
-        <p className="cm-copy">© 2026 Cidea Marketing</p>
+        <a className="cm-ordmerke" href={FORSIDE} aria-label="Cidea Marketing – til forsiden">CIDEA MARKETING</a>
+        <nav aria-label="Bunnmeny"><ul>{meny.map(m => <li key={m.href}><a href={m.href}>{m.tekst}</a></li>)}<li><a href="/kontakt">Kontakt</a></li><li><a href="/personvern">Personvern</a></li></ul></nav>
+        <p className="cm-copy">© 2026 Cidea Marketing · Drives av {selskap.navn}, org.nr. {selskap.orgnr} · <a href={`mailto:${selskap.epost}`}>{selskap.epost}</a></p>
       </div>
     </footer>
   );

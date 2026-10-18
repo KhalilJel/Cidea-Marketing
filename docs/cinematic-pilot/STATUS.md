@@ -1,7 +1,7 @@
 # Cidea Marketing – Status / verificerbar fremdrift
 
 **Oppdatert:** 2026-10-18
-**Nå:** FASE **5/9 – NETTBRETTREVISJON FAGLIG GODKJENT; VISUELLE RESSURSER OG EIERVURDERING GJENSTÅR**. **4/9 faseporter godkjent**. Fase 4 godkjent med vilkår (`phase4/CHATGPT-REVIEW.md`). Claude Code har implementert 5.2–5.5 på eksperimentgrenen. Fase 5 er **ikke godkjent** før eier har vurdert faktisk forhåndsvisning. Ingen merge, deploy eller nye kjøp.
+**Nå (2026-10-18):** **Fase 5 åpen**: forsidens hovedretning (/konsept-scroll) er akseptert av eier, og estetisk ferdigstilling gjenstår. **Fase 6 åpnet parallelt**: struktur og funksjon for hele nettstedet er levert til kontroll (`phase6/README.md`). **Fase 7–9 gjenstår.** Higgsfield og annen bildegenerering er pauset. Tidligere statuslinje: **4/9 faseporter godkjent**. Fase 4 godkjent med vilkår (`phase4/CHATGPT-REVIEW.md`). Claude Code har implementert 5.2–5.5 på eksperimentgrenen. Fase 5 er **ikke godkjent** før eier har vurdert faktisk forhåndsvisning. Ingen merge, deploy eller nye kjøp.
 **Godkjent metode:** ChatGPT → Google Stitch → Claude Code → ChatGPT QA.
 **Kostnader:** Eier har 2026-10-17 åpnet for nødvendige betalte visuelle verktøy, inkludert Higgsfield hvis det gir ønsket kvalitet. Ingen konkret plan, pris eller kjøp er valgt eller gjennomført. Tidligere nullkostnadsregel er dermed ikke et absolutt hinder for vurdering; faktiske kjøp må ha avklart omfang og kostnad.
 **Eksperimentgren:** `experiment/cinematic-marketing-pilot`; [draft PR #13](https://github.com/KhalilJel/Cidea-Marketing/pull/13); ingen produksjonsendring.
@@ -45,6 +45,14 @@
   - Fokusert kontaktknapp er aldri dekket.
   - Tester (Chromium): konsept-scroll 28/30 bestått + 2 ikke kjørt (Firefox/WebKit mangler i skymiljøet), forside 28/30 + 2 ikke kjørt, QA 86/86. Forsiden er uendret.
   - Se `phase5/konsept-scroll/README.md` § Revisjon 1. Retningen er ikke godkjent.
+
+- **Fase 6 – hele nettstedet til strukturgjennomgang (Claude Code skyøkt, 2026-10-18):**
+  - Forhåndsvisningen har /konsept-scroll som foreslått forside (logoen leder dit; ordinær / er ikke erstattet).
+  - Nye eller fullførte sider: tjenesteoversikt, fire tjenestesider (eksisterende ruter), Om oss, Innsikt med fire hele artikler, kontakt med skjema, personvern tilpasset nettstedet og ekte 404.
+  - Alle sider forhåndsrendres, så direktelenker og oppdatering fungerer. Den gamle appen er fjernet.
+  - Kontaktskjemaet (Netlify Forms) er bygget og testet lokalt, men **faktisk levering er ikke testet eller bekreftet**: skjemaregistrering og e-postvarsel må slås på i Netlify.
+  - Tester (Chromium): nettsted 33/33, forside 28/30 + 2 ikke kjørt, QA 86/86, prototype 28/30 + 2 ikke kjørt.
+  - Estetisk godkjenning gjenstår.
 
 ## Neste konkrete oppgave
 

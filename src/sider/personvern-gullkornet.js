@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
-
-const sections = [
+// Personvernerklæringen for Gullkornet, ordrett fra src/Privacy.jsx (publisert på main i #14, eiergodkjent 16.10.2026,
+// se docs/PERSONVERN-LEVERANSE.md). Ikke endre innholdet uten ny eiergodkjenning.
+export const gullkornetSistOppdatert = "16. oktober 2026";
+export const gullkornetSeksjoner = [
   ['Hvem er ansvarlig?', 'CIDEA AS, org.nr. 927 394 391, Gunnar Schjelderups vei 13A, 0485 Oslo, driver Cidea Marketing og er behandlingsansvarlig for Gullkornet. Denne informasjonen gjelder kvalifisering av virksomheter, eventuelle bedriftshenvendelser og tilhørende dialog gjennom Gullkornet.'],
   ['Opplysninger, kilder og formål', 'Vi bruker selskapsnavn, organisasjonsnummer, organisasjonsform, bransje, kommune, nettsted og offentlig publisert fellesadresse fra Enhetsregisteret og bedriftens egen nettside. Vi registrerer kilde, tidspunkt, kontaktstatus, svar og reservasjoner. Svar kan inneholde personnavn, kontaktinformasjon og korrespondanse. Formålet er én relevant bedriftshenvendelse, ønsket videre dialog og å hindre gjentatt eller uønsket kontakt. Dette løpet retter seg ikke mot navngitte personadresser eller enkeltpersonforetak. Vi bruker ikke åpnings- eller klikksporing i dette løpet.'],
   ['Behandlingsgrunnlag', 'Der opplysningene gjelder personer, vurderer vi berettiget interesse etter personvernforordningen artikkel 6 nr. 1 bokstav f for avgrenset bedriftshenvendelse, svar og nødvendig sperrehåndtering. Vurderingen omfatter relevans, nødvendighet, rimelige forventninger, én kontakt og enkel protest. Dette erstatter ikke eventuelle krav etter markedsføringsloven. Nødvendig avtaleoppfølging og lovpålagt bevaring vurderes separat; en bedriftsansatt er ikke automatisk selv avtalepart.'],
@@ -10,28 +11,3 @@ const sections = [
   ['Automatiske kontroller', 'Vi bruker automatiske kontroller av blant annet selskapsform, kontaktadresse, duplikater og e-postserver for å kvalifisere virksomheter. Vi bruker ikke dette til automatiserte avgjørelser med rettslig eller tilsvarende betydelig virkning for personer.'],
   ['Rettigheter', 'Dere kan kontakte oss for innsyn, retting, sletting eller begrensning der vilkårene er oppfylt. Personer kan når som helst og gratis protestere mot direkte markedsføring ved å svare på henvendelsen eller kontakte oss. Da stopper markedsføringen; minimale sperreopplysninger kan beholdes for å respektere protesten. Henvendelser håndteres uten ugrunnet opphold og normalt innen én måned. Klage kan sendes til Datatilsynet.']
 ];
-
-export default function Privacy() {
-  useEffect(() => {
-    const previousTitle = document.title;
-    document.title = 'Personvern | Cidea Marketing';
-    const canonical = document.querySelector('link[rel="canonical"]');
-    const previousCanonical = canonical?.getAttribute('href');
-    canonical?.setAttribute('href', 'https://cideamarketing.com/personvern');
-    return () => {
-      document.title = previousTitle;
-      if (canonical && previousCanonical !== null && previousCanonical !== undefined) canonical.setAttribute('href', previousCanonical);
-    };
-  }, []);
-  return <section className="page privacyPage" aria-labelledby="privacy-title">
-    <p className="eyebrow">CIDEA MARKETING / PERSONVERN</p>
-    <h1 id="privacy-title">Personvern</h1>
-    <p className="pageLead">Slik behandler vi opplysninger ved kvalifisering av virksomheter og bedriftshenvendelser gjennom Gullkornet.</p>
-    <div className="articleBody">
-    <p>Sist oppdatert: 16. oktober 2026. Kontakt om personvern: <a href="mailto:jelassi@cideamarketing.com">jelassi@cideamarketing.com</a>.</p>
-      {sections.map(([heading, text]) => <section key={heading}><h2>{heading}</h2><p>{text}</p></section>)}
-      <p><a href="https://www.datatilsynet.no/">Datatilsynet</a></p>
-    </div>
-    <a className="textLink" href="/">← Til forsiden</a>
-  </section>;
-}

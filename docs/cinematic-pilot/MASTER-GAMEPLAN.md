@@ -1,7 +1,7 @@
 # Cidea Marketing — Master Gameplan (Approved production method)
 
 **Decision date:** 2026-10-15
-**Status:** PHASES 1–4 USER-APPROVED; **PHASE 5/9 IN PROGRESS** as of 2026-10-17. **4/9 phase gates approved**. Phase 4 approved with conditions in `phase4/CHATGPT-REVIEW.md`; phase 5 React implementation delivered by Claude; ChatGPT screenshot review completed 2026-10-17; Claude implemented both visual revisions the same day (`phase5/REVISJON-NETTBRETT.md`); awaiting ChatGPT QA and owner approval. No production changes.
+**Status (2026-10-18):** PHASES 1–4 USER-APPROVED. **PHASE 5 OPEN** – homepage main direction (scroll prototype /konsept-scroll) accepted by owner; aesthetic finishing remains. **PHASE 6 OPENED IN PARALLEL** – structure and function of all pages delivered for review on the experiment branch. **PHASES 7–9 NOT STARTED.** Higgsfield and other image generation are paused (no new credits or paid resources). Earlier status, as of 2026-10-17: **4/9 phase gates approved**. Phase 4 approved with conditions in `phase4/CHATGPT-REVIEW.md`; phase 5 React implementation delivered by Claude; ChatGPT screenshot review completed 2026-10-17; Claude implemented both visual revisions the same day (`phase5/REVISJON-NETTBRETT.md`); awaiting ChatGPT QA and owner approval. No production changes.
 **Objective:** Replace the existing weak cideamarketing.com experience with an extraordinary, original, professional, conversion-ready Norwegian digital-agency website. Distinctive art direction, real content, elegant code-based interactions, desktop/mobile quality, SEO, working contact and real blog publishing are non-negotiable.
 **Selected workflow (user-approved 2026-10-17):** **ChatGPT — hjernen (strategy, creative direction, briefs, coordination and visual QA) → Higgsfield — artisten (images, film and visual assets) → Claude Code — koderen (React/Vite, integration, scroll choreography and technical QA) → ChatGPT/eier review**. Owner relays prompts and reports between ChatGPT and Claude. Google Stitch is no longer an active production stage; its exports and earlier decisions remain historical foundations.
 **Other infrastructure:** GitHub and EXISTING hosting. Existing React + Vite repo and routes. User has authorized necessary paid visual tooling in principle and connected Higgsfield with an active three-day trial. Use current available credits for a bounded test; no new subscription, purchase or automatic renewal action by ChatGPT. No Hostinger or domain/DNS/MX changes. Older no-video/no-Higgsfield/zero-spend instructions below are historical and superseded for this new visual work.
@@ -59,14 +59,14 @@ _Note (Claude): the two research/positioning items above are ChatGPT deliverable
 - [ ] Match every visual asset to final page content and crops.
 **Gate:** CLOSED by explicit owner approval with `phase4/CHATGPT-REVIEW.md` conditions. Asset/motion package accepted as foundation. Stitch/Labs commercial-rights review remains OPEN before publication; approval does not assert legal clearance. Delivered evidence: `phase4/README.md`, `ASSETS.md`, `QA.md`, `motion/TEST-RESULTATER.md`. Historical unchecked subtasks above are superseded by this gate decision; prototype test results are Claude reports, not newly rerun tests.
 
-### PHASE 5 — Build and perfect homepage [IN PROGRESS — CINEMATIC SCROLL EXPERIENCE 2026-10-17]
+### PHASE 5 — Build and perfect homepage [OPEN — MAIN DIRECTION ACCEPTED 2026-10-18; AESTHETIC FINISHING REMAINS]
 - [ ] Claude takes approved Stitch design + `DESIGN.md`, implements in **existing Vite/React**, preserving routes and codebase.
 - [ ] Builds hero, navigation, social proof only when factual, services, capability showcase, blog preview and one clear CTA.
 - [ ] React/CSS/SVG motion with mobile-first quality and accessible fallback.
 - [ ] Browser renders at 320/375/768/1440; compare to Stitch screens and fix visual drift.
 **Gate:** Live test preview of homepage works, visual fidelity is documented, user approves.
 
-### PHASE 6 — All inner pages and actual content [NOT STARTED]
+### PHASE 6 — All inner pages and actual content [OPENED IN PARALLEL 2026-10-18 — STRUCTURE AND FUNCTION DELIVERED FOR REVIEW; see `phase6/README.md`]
 - [ ] Implement Nettsider, Branding, SEO, Sosiale medier / Digital markedsføring, About, relevant honest Work/Concepts, Blog index, article template, Contact.
 - [ ] Genuine complete Norwegian copy; secondary English only if actually translated end-to-end.
 - [ ] Working blog creation/update/publishing process, not static lorem ipsum; real initial articles reviewed.
@@ -126,3 +126,6 @@ Next: complete/review keyframes, one continuity film test, owner creative review
 
 ## Reference decision — 2026-10-17: Dentsu Creative (proposal stage, not approved)
 Owner selected https://www.dentsucreative.com/ as the main reference for a living, cinematic homepage with motion and crafted transitions; service, blog and contact pages may stay plain and clear. Earlier abstract geometry, the ROM mockup and the CIDEA storyboard no longer steer the next proposal. Previously approved work (phases 1–4, tablet revision f26e9fd) stays as history and comparison baseline; the new direction is NOT approved. Claude must deliver an evidence-based REA analysis (`phase5/rea-dentsu/ANALYSE.md`) and one Cidea proposal with storyboard (`CIDEA-FORSLAG.md`) before any production. Status at this record: REA 6.5.0 installed and verified locally; analysis blocked because the cloud environment's network policy denies www.dentsucreative.com (see `phase5/rea-dentsu/README.md`). No site code change, no Higgsfield generation, no merge or deploy.
+
+## Owner decision — 2026-10-18: review the whole site structure first; phase 6 opened in parallel
+Owner wants to review the structure, content and function of the whole site before aesthetics, which are assessed with the owner later. The homepage main direction (/konsept-scroll) is accepted; phase 5 stays open for aesthetic finishing. Phase 6 opens in parallel for inner pages and function. Higgsfield and other image generation are paused: no new credits or paid resources. Claude built a coherent preview of the whole site on the experiment branch (`phase6/README.md`): the prototype as proposed homepage (logo links to it in the preview flow; ordinary / not replaced), calm inner pages for services, about, insight with full articles, contact with a Netlify Forms form whose delivery is NOT yet verified, privacy adapted to what the site does, and a real 404. No merge, production release or DNS/MX change. Phases 7–9 remain.
