@@ -42,6 +42,8 @@ Use the detailed `MASTER-GAMEPLAN.md`. Code motion with CSS, SVG, React/JS; do n
 
 **Always end every reply to the owner — every task, status update, CI/PR notice or short check — with a summary the owner can forward to ChatGPT, placed inside one fenced ```text code block so the app shows a copy button. No exceptions, also when nothing changed.** Write it in Norwegian and make it self-contained: status, branch and commit SHA, what changed and why, actual test results (including what was not run), evidence paths, known deviations, preview link, what ChatGPT should assess, and next step.
 
+**All text for ChatGPT goes in ONE combined block per reply — never several separate blocks.** If earlier messages since the owner's last message also carried ChatGPT text (e.g. PR/CI notices), merge their content into the single block so the owner only copies once.
+
 Never invent completion or treat passing CI as proof that a page looks polished. Stop all unrelated work until current phase gate passed. Do not merge PR #11 or #13 without approval.
 
 ## Work vs. ordinary ChatGPT mode
