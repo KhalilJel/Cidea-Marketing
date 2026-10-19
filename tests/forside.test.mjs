@@ -10,8 +10,8 @@ const here = fileURLToPath(new URL('.', import.meta.url));
 mkdirSync(`${here}bilder`, { recursive: true });
 const server = await serve(4180);
 const base = 'http://127.0.0.1:4180';
-const res = []; let fail = 0; let ikkeKjort = 0;
-const check = (id, navn, ok, mål) => { res.push(`| ${id} | ${navn} | ${ok ? 'OK' : '**FEIL**'} | ${mål} |`); if (!ok) fail++; console.log(ok ? 'OK  ' : 'FEIL', id, navn, '–', mål); };
+const res = []; let fail = 0; let ikkeKjort = 0; const feilet = [];
+const check = (id, navn, ok, mål) => { res.push(`| ${id} | ${navn} | ${ok ? 'OK' : '**FEIL**'} | ${mål} |`); if (!ok) { fail++; feilet.push(`${id}: ${mål}`); } console.log(ok ? 'OK  ' : 'FEIL', id, navn, '–', mål); };
 const b = await chromium.launch();
 
 // R: ruter, H1, nettleserfeil og hydreringsadvarsler
@@ -114,5 +114,7 @@ for (const w of [320, 375, 390, 600, 768, 860, 1024, 1440]) {
 
 await b.close(); server.close();
 writeFileSync(`${here}RESULTAT.md`, `# Testresultat – fase 5 (faktisk side)\n\nKjørt ${new Date().toISOString()} mot \`dist/\` servert med Netlify-regelen (\`tests/serve-dist.mjs\`). Chromium (Playwright); Firefox og WebKit for fallback der de er installert.\n\n| ID | Test | Resultat | Måling |\n|---|---|---|---|\n${res.join('\n')}\n\n**${res.length - fail - ikkeKjort} av ${res.length} bestått${ikkeKjort ? `, ${ikkeKjort} ikke kjørt` : ''}.**\n`);
+// Feilede punkter gjentas sist, slik at de synes også når bare slutten av utskriften leses.
+if (feilet.length) console.log(`FEILET: ${feilet.join(' || ')}`);
 console.log(`${res.length - fail - ikkeKjort}/${res.length} OK${ikkeKjort ? `, ${ikkeKjort} ikke kjørt` : ''}`);
 process.exit(fail ? 1 : 0);
