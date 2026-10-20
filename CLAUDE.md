@@ -26,7 +26,7 @@ Prosjektskill: `.claude/skills/cidea-website/SKILL.md`. Status og historikk: `do
 ## Teknisk
 - React 18 + Vite. Alle sider forhåndsrendres (`src/ruter.jsx` → `src/entry-server.jsx` → `scripts/prerender.mjs`) og hydreres i `src/main.jsx`. Ukjente stier → `dist/404.html`.
 - Tokens og designretning: `docs/cinematic-pilot/phase3/DESIGN.md`, CSS under `.cm` i `src/forside/forside.css`, undersider i `src/sider/sider.css`.
-- `/konsept-scroll` (`src/konsept/`) er foreslått forside (prototype, `noindex`). Logoen leder dit via `FORSIDE` i `src/forside/Ramme.jsx`.
+- `/konsept-scroll` (`src/konsept/`) er foreslått forside (prototype, `noindex`). Logoen leder dit via `FORSIDE` i `src/forside/Ramme.jsx`. Fast toppmeny der via `<Ramme fastMeny>`.
 - Tester (krever `npm run build` og `npm install --no-save playwright@1.56.1`; Chromium ligger i `/opt/pw-browsers`, kjør aldri `playwright install`):
   `node tests/nettsted.test.mjs` · `npm run test:forside` · `node tests/qa.mjs` · `node tests/konsept-scroll.test.mjs` · bevis for filmen: `node tests/film-bevis.mjs`.
   Firefox/WebKit finnes ikke i skymiljøet → rapporteres som «IKKE KJØRT», aldri som bestått. Ikke svekk forventninger eller legg til retries for å få grønt.
@@ -34,7 +34,7 @@ Prosjektskill: `.claude/skills/cidea-website/SKILL.md`. Status og historikk: `do
 - Skymiljøet blokkerer bl.a. `netlify.app`, `docs.netlify.com` og CloudFront (`d8j0ntlcm91z4.cloudfront.net`). Ikke omgå blokkeringer; si hvilken vert som er blokkert og hva eier kan gjøre.
 
 ## Åpne oppgaver (per 2026-10-20)
-1. **Filmintegrasjon på `/konsept-scroll`: levert til vurdering 2026-10-20** (se `docs/cinematic-pilot/phase5/konsept-scroll/FILM.md`). Åpne punkter: startklippet med innbrent «CIDEA»-knapp er tatt ut, «Bli sett. Bli valgt.» gjentas av den store overskriften rett etter, 480p er mykt på store skjermer, og Firefox/Safari/ekte telefon er ikke testet. Ny film i høyere oppløsning: kod om med kommandoene i FILM.md, og kontroller replikktidene i `replikker`/`tidskart` mot klippene.
+1. **Filmforløp på `/konsept-scroll`, revisjon 2 levert til vurdering 2026-10-20** (`docs/cinematic-pilot/phase5/konsept-scroll/FILM.md` § Revisjon 2). Gjeldende føring: hvit åpning med én CIDEA-knapp; første scroll/klikk trykker den inn og åpner filmen over hele skjermen; tekst oppå filmen; fast meny; H1 etter filmen; ingen gjentakelse av «Bli sett. Bli valgt.». Åpne punkter: mobilutsnittets kompromisser (tabell i FILM.md), 480p, Firefox/Safari/ekte telefon ikke testet. Ny film: kod om etter FILM.md og kontroller `replikker`, `tidskart` og `utsnitt` mot klippene.
 2. **Testfeil P2: analysert 2026-10-20** (`docs/cinematic-pilot/phase6/P2-ANALYSE.md`). Feilen kunne ikke gjenskapes i 50 kjøringer. Kodesplitting per side er innført (`vite.config.js`, `src/ruter-klient.js`, `src/ruter-sider.jsx`, modulepreload i `scripts/prerender.mjs`). Til vurdering: delvis hydrering, og om P2 skal måle et fast antall bilder.
 3. **aria-current: levert 2026-10-20** (`Ramme sti=… seksjon=…`, test S11).
 4. **Personvernutkast: levert til vurdering** (`docs/cinematic-pilot/phase6/PERSONVERN-SKJEMA-UTKAST.md`). Venter på eierbeslutninger, særlig lagringstid. `/personvern` er ikke endret.

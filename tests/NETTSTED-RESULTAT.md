@@ -1,6 +1,6 @@
 # Testresultat – fase 6, hele nettstedet
 
-Kjørt 2026-10-20T12:55:38.307Z i Chromium (Playwright) mot `dist/` med Netlify-regelen (fil → mappe/index.html → 404.html; POST → 405 fordi det ikke finnes skjemamottak lokalt). Automatiske målinger – ikke estetisk godkjenning og ikke en WCAG-samsvarserklæring.
+Kjørt 2026-10-20T18:06:47.247Z i Chromium (Playwright) mot `dist/` med Netlify-regelen (fil → mappe/index.html → 404.html; POST → 405 fordi det ikke finnes skjemamottak lokalt). Automatiske målinger – ikke estetisk godkjenning og ikke en WCAG-samsvarserklæring.
 
 | ID | Test | Resultat | Måling |
 |---|---|---|---|
@@ -21,7 +21,7 @@ Kjørt 2026-10-20T12:55:38.307Z i Chromium (Playwright) mot `dist/` med Netlify-
 | S1 / | Direktelenke og oppdatering | OK | HTTP 200, H1 «Nettsider og helhetlig markedsføring som utvikles », tittel «Cidea Marketing – Nettsider og helhetlig», robots index,follow, forhåndsrendret /, feil: ingen |
 | S1 /finnes-ikke | Ukjent sti gir 404-side | OK | HTTP 404, H1 «Siden finnes ikke», tittel «Siden finnes ikke | Cidea Marketing», robots noindex, follow, forhåndsrendret /404, feil: ingen |
 | S1 /blog/finnes-ikke | Ukjent sti gir 404-side | OK | HTTP 404, H1 «Siden finnes ikke», tittel «Siden finnes ikke | Cidea Marketing», robots noindex, follow, forhåndsrendret /404, feil: ingen |
-| S2 | Alle interne lenker virker | OK | 18 unike interne lenker og 2 eksterne/e-post kontrollert |
+| S2 | Alle interne lenker virker | OK | 19 unike interne lenker og 2 eksterne/e-post kontrollert |
 | S3 | Lik meny på alle sider, logo til arbeidsforsiden, prototypen har noindex | OK | 15 sider, meny «Tjenester · Om oss · Innsikt · Snakk med oss», logo → /konsept-scroll, /konsept-scroll robots «noindex, nofollow» |
 | S4 390 | Ingen overflow, avkuttet tekst, engelske etiketter eller nummerering | OK | 16 sider |
 | S4 768 | Ingen overflow, avkuttet tekst, engelske etiketter eller nummerering | OK | 16 sider |

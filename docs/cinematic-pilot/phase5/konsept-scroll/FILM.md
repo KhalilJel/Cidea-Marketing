@@ -1,4 +1,54 @@
-# Filmscenen på /konsept-scroll (Claude Code skyøkt, 2026-10-20, ikke godkjent)
+# Filmscenen på /konsept-scroll
+
+## Revisjon 2 – åpning med CIDEA-knapp (Claude Code skyøkt, 2026-10-20, ikke godkjent)
+
+Eiers føring 2026-10-20 erstatter kravet om å bevare den tidligere synlige åpningen. Produksjonsforsiden (`/`) er uendret. Samme film (480p-utkast), ingen ny generering og ingen kredittbruk.
+
+### Implementert
+- **Før scroll:** hvit flate med én sentrert knapp, «CIDEA» (HTML-lenke med knappeutseende, `aria-label="CIDEA – se filmen"`). Ingen overskrift, ingress eller annet innhold i `<main>`. Toppmenyen er fast (`Ramme fastMeny`): full meny på desktop, «Meny» med hamburgerikon på mobil. Menyens «Snakk med oss» er en del av navigasjonen og vises derfor også i åpningen.
+- **Første scroll** (eller klikk, eller Enter med tastatur): knappen trykkes inn (0,34 s). Deretter åpner filmen seg som en sirkel fra knappen til hele skjermflaten (0,8 s). Klikk og tastatur scroller i tillegg til filmens start og flytter fokus til filmscenen. Tilbake helt til toppen lukker sirkelen, og knappen vises igjen. Filmens innbrente knappesekvens (0–2,7 s i originalen) er fortsatt ikke brukt.
+- **Filmen** fyller hele skjermen på alle bredder (`object-fit: cover`). Videre scroll styrer filmen som før, med en passiv lytter og uten scrollkapring. Én festet scene: 320vh på brede skjermer, 260vh på stående.
+- **Tekst oppå filmen:** fire replikker. Brede skjermer: hjørner som før. Stående skjermer: bånd øverst eller nederst med myk, mørk flate. Hver replikk slutter litt før klippet, så teksten ikke henger over neste scene.
+- **Mobilutsnitt per scene** (`utsnitt` i `KonseptScroll.jsx`): når mindre enn 75 % av bildebredden vises, følger utsnittet handlingen (`object-position`). Det hopper ved klippene (5,08 · 9,17 · 15,21 · 17,25 s) og i overtoningen ved 12,75–13,0 s. På 390×844 vises ca. 26 % av bildebredden.
+- **Toppmenyen** er lys på hvite flater og mørk og halvgjennomsiktig (`rgba(20,22,25,.76)`) mens filmen fyller skjermen. Den mørkner når sirkelen når toppen.
+- **Etter filmen:** den store overskriften «Bli sett / Bli valgt», deretter H1, ingress og «Snakk med oss» (flyttet hit fra den gamle åpningen), så tjenestene. Filmreplikken «Bli sett. Bli valgt.» er fjernet, så gjentakelsen er borte. Paret ved restauranten står uten tekst.
+- **Statisk alternativ** (redusert bevegelse, uten JS, videofeil): hvit åpning med CIDEA (lenke til plakaten), plakatbilde, alle fire replikker som liste, deretter H1 og innhold. Ingen filmnedlasting ved redusert bevegelse eller uten JS.
+- **Feilretting som gjelder hele nettstedet:** `body` hadde nettleserens standardmarg (8 px), som ga en hvit ramme rundt alle sider etter at den gamle appens globale CSS ble fjernet. Margen er nå 0 (`body:has(> #root > .cm)` i `forside.css`).
+
+### Mobil: hva utsnittet ikke kan beholde (390×844, konkret)
+| Filmtid | Hva skjer | Kompromiss |
+|---|---|---|
+| 1,8–2,6 s | Mannen ser på telefonen; telefonen speiles til venstre | Utsnittet følger telefonen, og mannen er delvis ute av bildet |
+| 3,3–4,9 s | Nærbilde av salongsiden på telefonen | Replikk 2 (bånd øverst) dekker telefonens øverste kant (statuslinje og «Salon»-tittel). «Bestill time»-knappen er fri |
+| 5,8–6,1 s | Ansiktet til høyre, telefonen helt til venstre i samme bilde | Utsnittet panorerer fra ansiktet til telefonen; i ca. 0,3 s er ingen av dem helt i bildet |
+| 6,6–9,0 s | Bestilling i frisørstolen | Replikk 3 (bånd nederst) dekker hånden og telefonens nedre kant. «Bestill befaring»-knappen er fri |
+| 9,95–10,5 s | Elektrikerens hånd ved skapet, ansiktet helt til høyre | Hånd og skap vises; ansiktet kommer inn ved ca. 10,6 s |
+| 11,0–12,5 s | Elektriker og kunde side om side | Begge får ikke plass samtidig: utsnittet følger elektrikeren og så kunden, og begge er delvis synlige ved 12,0–12,5 s |
+| 18,5–19,5 s | Paret og servitøren | Paret er i bildet; servitøren er utenfor utsnittet |
+
+Brede skjermer: ved 1440×900 kuttes ca. 5 % i hver side, ellers som før.
+
+### Verifisert (headless Chromium 141, Playwright 1.56.1)
+`node tests/konsept-scroll.test.mjs` → **51/53 bestått, 2 ikke kjørt** (K11 Firefox/WebKit finnes ikke i skymiljøet). Testsuiten er skrevet om for det nye forløpet:
+- **Åpningen:** A1 (bare CIDEA synlig, sentrert ±2 px, hvit bakgrunn, fast meny, ved 1440/390/768). A2 (første scroll: trykk-animasjon, filmen dekker skjermen, knappelaget skjult, mørk meny; tilbake lukker). A3 (klikk og Tab+Enter på 1440 og 390).
+- **Filmen:** F2 (synkronisering fram/tilbake, fire replikker, ingen gjentakelse). F3 (hjørner ved fire bredder). F4 (fyller skjermen, tekst oppå filmen mellom meny og hoppelenke, utsnittet endres, ved 320/375/390/768). F5 (pikselkontrast bak tekst: laveste 6,11:1 ved 1440, 5,92:1 ved 1920, 4,90:1 ved 390).
+- **Menyen:** M1 (fast, udekket og lesbar i lys og mørk tilstand, kontrast målt over både hvitt og svart). M2 (mobilmeny med tastatur over filmen).
+- **Øvrig:** F6 hoppelenke, K9 tastatur gjennom hele siden, K7/K8 statisk alternativ uten filmnedlasting, F7 videofeil, F9 lastetid (strupet 4G), K2 overflow, K3 vanlig scroll, K5 festing, K4, K10.
+- F2 har nå toleranse på ett filmbilde (0,045 s) for stigende tid. WebM-filen starter på 0,042 s, så første måling kan være 0,04 s og neste 0,00 s.
+- Øvrige suiter etter endringen: nettsted 36/36, QA 86/86, forside 28/30 + 2 ikke kjørt (Firefox/WebKit).
+
+### Ikke verifisert
+- Firefox, Safari/WebKit, ekte telefon og skjermleser.
+- Visuell kvalitet på andre sider etter at body-margen ble fjernet. Testene er grønne, men sidene er ikke gjennomgått visuelt i denne runden.
+- Opplevd jevnhet i spolingen på svake telefoner.
+
+### Bevis
+`bevis/film/opptak-film-1440.mp4` (29 s) og `opptak-film-390.mp4` (25 s): hele opplevelsen med naturlig scrolltempo. Skjermbilder `1440-1…11-*.jpg` og `390-1…11-*.jpg`: åpning, knappetrykk, sirkel, åpen film, replikk 1–4, paret, «Bli sett / Bli valgt», H1 og tjenester. Lages med `node tests/film-bevis.mjs` og ffmpeg (WebM → MP4).
+
+---
+
+## Revisjon 1 (opprinnelig filmintegrasjon)
+
 
 Higgsfield-utkastet (24 s, 480p) erstatter pigmentplassholderen. Godkjent åpning, H1, ingress og kontaktknapp er uendret.
 Ingen nye genereringer og ingen kredittbruk. Fase 5 og 6 er fortsatt åpne.

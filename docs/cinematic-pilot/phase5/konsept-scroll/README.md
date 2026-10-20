@@ -118,3 +118,7 @@ All tekst er eksisterende, godkjent innhold, hentet fra samme datakilde som fors
 ## Revisjon 2 – filmscene (2026-10-20, Claude Code skyøkt)
 
 Pigmentplassholderen er erstattet av Higgsfield-utkastet (480p), som spoles av scrollen, med fem HTML-replikker lagt på hendelser i filmen. Detaljer, tider, tester og begrensninger: [`FILM.md`](FILM.md). Bevis: [`bevis/film/`](bevis/film/). Retningen er ikke godkjent.
+
+## Revisjon 3 – åpning med CIDEA-knapp (2026-10-20, Claude Code skyøkt)
+
+Ny føring fra eier: hvit åpning med én CIDEA-knapp. Første scroll trykker den inn og åpner filmen over hele skjermen. Teksten ligger oppå filmen, toppmenyen er fast, og H1/ingress står etter filmen. Gjentakelsen av «Bli sett. Bli valgt.» er fjernet. Se [`FILM.md`](FILM.md) § Revisjon 2. Retningen er ikke godkjent.

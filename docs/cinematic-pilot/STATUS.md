@@ -61,6 +61,7 @@
   - `aria-current`: «page» på eksakt side og «true» på overordnet seksjon (ny test S11, nettsted 36/36).
   - Personvernutkast for skjemaet med offisielle Netlify-kilder og åtte eierbeslutninger (`phase6/PERSONVERN-SKJEMA-UTKAST.md`). `/personvern` er uendret.
   - Kort Netlify-sjekkliste for eier (`phase6/NETLIFY-SJEKKLISTE.md`). Kontoen, kvoten og databehandleravtalen er ikke kontrollert. `MOTTAK_BEKREFTET` er fortsatt `false`.
+- **Fase 5, ny føring fra eier (Claude Code skyøkt, 2026-10-20, ikke godkjent):** `/konsept-scroll` åpner nå med en hvit flate og én CIDEA-knapp. Første scroll, klikk eller Enter trykker knappen inn og åpner filmen som en sirkel over hele skjermen. Filmen fyller skjermen også på mobil, med utsnitt per scene og avvik dokumentert. Fire replikker ligger oppå filmen. Toppmenyen er fast (hamburger på mobil): lys på hvitt, mørk over filmen. H1, ingress og CTA står etter «Bli sett / Bli valgt», og gjentakelsen er fjernet. Statisk alternativ beholdt. Body-margen på 8 px (hvit ramme på alle sider) er rettet. Tester (Chromium): konsept-scroll 51/53 + 2 ikke kjørt, nettsted 36/36, QA 86/86, forside 28/30 + 2 ikke kjørt. Se `phase5/konsept-scroll/FILM.md` § Revisjon 2.
 
 ## Neste konkrete oppgave
 

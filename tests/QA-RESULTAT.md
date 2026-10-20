@@ -1,6 +1,6 @@
 # QA-resultat – fase 5.4 (faktisk side)
 
-Kjørt 2026-10-20T12:56:14.835Z i Chromium mot `dist/` (Netlify-regel), med `prefers-reduced-motion: reduce` (sluttbildet). Automatiske målinger – **ikke en WCAG-samsvarserklæring**; skjermleser og manuell gjennomgang gjenstår.
+Kjørt 2026-10-20T18:07:16.487Z i Chromium mot `dist/` (Netlify-regel), med `prefers-reduced-motion: reduce` (sluttbildet). Automatiske målinger – **ikke en WCAG-samsvarserklæring**; skjermleser og manuell gjennomgang gjenstår.
 
 | Side | Bredde | Kontroll | Resultat | Måling |
 |---|---|---|---|---|
@@ -95,7 +95,7 @@ Kjørt 2026-10-20T12:56:14.835Z i Chromium mot `dist/` (Netlify-regel), med `pre
 
 ## Mobil seksjonsrytme
 
-- / 390px: sidehøyde 4763 px, seksjonshøyder 776 / 988 / 666 / 654 / 895 / 372
-- / 1440px: sidehøyde 3884 px, seksjonshøyder 768 / 647 / 668 / 513 / 726 / 306
-- /kontakt 390px: sidehøyde 2503 px, seksjonshøyder 274 / 1818
-- /kontakt 1440px: sidehøyde 1750 px, seksjonshøyder 296 / 1198
+- / 390px: sidehøyde 4685 px, seksjonshøyder 788 / 988 / 677 / 654 / 871 / 312
+- / 1440px: sidehøyde 3876 px, seksjonshøyder 768 / 647 / 674 / 513 / 728 / 306
+- /kontakt 390px: sidehøyde 2424 px, seksjonshøyder 210 / 1818
+- /kontakt 1440px: sidehøyde 1734 px, seksjonshøyder 296 / 1198

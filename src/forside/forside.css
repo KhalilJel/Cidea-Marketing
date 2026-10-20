@@ -11,6 +11,8 @@
   min-height: 100vh; background: var(--lys); color: var(--svart);
   font: 400 16px/1.625 "DM Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased;
 }
+/* Nettleserens standardmarg på body (8 px) ga en hvit ramme rundt alle sider etter at den gamle appens globale CSS ble fjernet. */
+body:has(> #root > .cm) { margin: 0; }
 .cm *, .cm *::before, .cm *::after { box-sizing: border-box; }
 .cm h1, .cm h2, .cm h3 { font-family: "Outfit", system-ui, sans-serif; margin: 0; letter-spacing: -0.025em; color: inherit; text-wrap: balance; }
 .cm p { margin: 0; }
@@ -36,6 +38,18 @@
 .cm-ordmerke { display: inline-flex; align-items: center; gap: 10px; font: 700 18px/1 "Outfit", sans-serif; letter-spacing: -0.01em; text-decoration: none; margin-right: auto; min-height: 44px; }
 .cm-ordmerke::before { content: ""; width: 14px; height: 14px; background: var(--dyp); }
 .cm-menyknapp { display: none; }
+/* Fast toppmeny (filmprototypen /konsept-scroll): alltid tilgjengelig. Lys på hvite flater, mørk og halvgjennomsiktig
+   mens filmen fyller skjermen (data-meny="film", settes av filmscenen). Kontrast er målt i begge tilstander. */
+.cm-fast .cm-topp { position: fixed; top: 0; left: 0; right: 0; z-index: 40; background: var(--hvit); transition: background-color .3s, color .3s, border-color .3s; }
+html:has(.cm-fast) { scroll-padding-top: 96px; }
+.cm-fast[data-meny="film"] .cm-topp { background: rgba(20, 22, 25, .76); color: var(--hvit); border-bottom-color: rgba(255, 255, 255, .14); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  transition-delay: .7s; } /* mørkner når filmsirkelen når toppen, ikke mens knappen trykkes */
+.cm-fast[data-meny="film"] .cm-meny ul a:hover { color: var(--hvit); text-decoration: underline; text-underline-offset: 6px; }
+.cm-fast[data-meny="film"] .cm-meny ul a[aria-current] { color: var(--hvit); box-shadow: inset 0 -2px var(--hvit); }
+.cm-fast[data-meny="film"] .cm-topp :focus-visible { outline-color: var(--hvit); }
+.cm-hamburger { display: inline-block; position: relative; width: 18px; height: 2px; margin-right: 10px; background: currentColor; box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor; }
+[aria-expanded="true"] > .cm-hamburger { box-shadow: none; transform: rotate(45deg); }
+[aria-expanded="true"] > .cm-hamburger::after { content: ""; position: absolute; inset: 0; background: currentColor; transform: rotate(90deg); }
 .cm-meny { display: flex; align-items: center; gap: 32px; }
 .cm-meny ul { display: flex; gap: 28px; }
 .cm-meny ul a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; font-size: 15px; }
@@ -151,8 +165,27 @@
   /* Med JS: menyen er lukket til knappen åpner den. Uten JS: lenkene vises (fallback). */
   .js .cm-meny[data-apen="0"] { display: none; }
   html:not(.js) .cm-menyknapp { display: none; }
+/* Fast toppmeny (filmprototypen /konsept-scroll): alltid tilgjengelig. Lys på hvite flater, mørk og halvgjennomsiktig
+   mens filmen fyller skjermen (data-meny="film", settes av filmscenen). Kontrast er målt i begge tilstander. */
+.cm-fast .cm-topp { position: fixed; top: 0; left: 0; right: 0; z-index: 40; background: var(--hvit); transition: background-color .3s, color .3s, border-color .3s; }
+html:has(.cm-fast) { scroll-padding-top: 96px; }
+.cm-fast[data-meny="film"] .cm-topp { background: rgba(20, 22, 25, .76); color: var(--hvit); border-bottom-color: rgba(255, 255, 255, .14); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  transition-delay: .7s; } /* mørkner når filmsirkelen når toppen, ikke mens knappen trykkes */
+.cm-fast[data-meny="film"] .cm-meny ul a:hover { color: var(--hvit); text-decoration: underline; text-underline-offset: 6px; }
+.cm-fast[data-meny="film"] .cm-meny ul a[aria-current] { color: var(--hvit); box-shadow: inset 0 -2px var(--hvit); }
+.cm-fast[data-meny="film"] .cm-topp :focus-visible { outline-color: var(--hvit); }
+.cm-hamburger { display: inline-block; position: relative; width: 18px; height: 2px; margin-right: 10px; background: currentColor; box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor; }
+[aria-expanded="true"] > .cm-hamburger { box-shadow: none; transform: rotate(45deg); }
+[aria-expanded="true"] > .cm-hamburger::after { content: ""; position: absolute; inset: 0; background: currentColor; transform: rotate(90deg); }
   html:not(.js) .cm-meny { position: static; padding: 0 0 12px; border: 0; }
   html:not(.js) .cm-topp-rad { height: auto; flex-wrap: wrap; padding-top: 14px; }
+  /* Uten JS vises lenkene under logoen; da ligger menyen i vanlig flyt i stedet for fast, så den ikke dekker skjermen. */
+  html:not(.js) .cm-fast .cm-topp { position: relative; }
+  html:has(.cm-fast) { scroll-padding-top: 80px; }
+  /* Åpnet mobilmeny over filmen: panelet er lyst, så teksten er mørk. */
+  .cm-fast[data-meny="film"] .cm-meny { color: var(--svart); }
+  .cm-fast[data-meny="film"] .cm-meny :focus-visible { outline-color: var(--svart); }
+  .cm-fast[data-meny="film"] .cm-meny ul a[aria-current] { color: var(--dyp); box-shadow: none; }
 
   .cm-hero-rad { grid-template-columns: 1fr; gap: 28px; padding-top: 28px; padding-bottom: 44px; }
   .cm-hero h1 { font-size: 38px; line-height: 1.1; }

@@ -47,7 +47,7 @@ function Toppmeny({ sti, seksjon }) {
       <div className="cm-wrap cm-topp-rad">
         <a className="cm-ordmerke" href={FORSIDE} aria-label="Cidea Marketing – til forsiden" aria-current={naa(FORSIDE, sti)}>CIDEA MARKETING</a>
         <button ref={knapp} className="cm-menyknapp" type="button" aria-expanded={apen} aria-controls={id}
-          onClick={() => setApen(v => !v)}>{apen ? "Lukk" : "Meny"}</button>
+          onClick={() => setApen(v => !v)}><span className="cm-hamburger" aria-hidden="true" />{apen ? "Lukk" : "Meny"}</button>
         <nav id={id} ref={panel} className="cm-meny" data-apen={apen ? "1" : "0"} aria-label="Hovedmeny"
           onBlur={e => { if (apen && !panel.current?.contains(e.relatedTarget) && e.relatedTarget !== knapp.current) setApen(false); }}>
           <ul>
@@ -75,10 +75,11 @@ function Bunn({ sti, seksjon }) {
   );
 }
 
-/** Felles ramme for nye sider: hopp-lenke, toppmeny, innhold, bunntekst. sti = sidens adresse, seksjon = overordnet menypunkt. */
-export function Ramme({ sti, seksjon = sti, children }) {
+/** Felles ramme for nye sider: hopp-lenke, toppmeny, innhold, bunntekst. sti = sidens adresse, seksjon = overordnet menypunkt.
+ *  fastMeny: toppmenyen ligger fast øverst og er alltid tilgjengelig (brukes i filmprototypen /konsept-scroll). */
+export function Ramme({ sti, seksjon = sti, fastMeny = false, children }) {
   return (
-    <div className="cm">
+    <div className={fastMeny ? "cm cm-fast" : "cm"}>
       <a className="cm-hopp" href="#innhold">Hopp til innhold</a>
       <Toppmeny sti={sti} seksjon={seksjon} />
       <main id="innhold">{children}</main>
