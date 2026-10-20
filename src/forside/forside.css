@@ -40,7 +40,7 @@
 .cm-meny ul { display: flex; gap: 28px; }
 .cm-meny ul a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; font-size: 15px; }
 .cm-meny ul a:hover { color: var(--dyp); }
-.cm-meny ul a[aria-current="page"] { color: var(--dyp); box-shadow: inset 0 -2px var(--dyp); }
+.cm-meny ul a[aria-current="page"], .cm-meny ul a[aria-current="true"] { color: var(--dyp); box-shadow: inset 0 -2px var(--dyp); } /* side eller overordnet seksjon */
 
 /* ---------- Hero ---------- */
 .cm-hero-rad { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; padding-top: 56px; padding-bottom: 72px; }
@@ -146,7 +146,7 @@
   .cm-meny { position: absolute; left: 0; right: 0; top: 64px; flex-direction: column; align-items: stretch; gap: 16px; padding: 12px 20px 24px; background: var(--lys); border-bottom: 1px solid rgba(20, 22, 25, .1); }
   .cm-meny ul { flex-direction: column; gap: 0; }
   .cm-meny ul a { width: 100%; min-height: 52px; font-size: 18px; border-bottom: 1px solid rgba(20, 22, 25, .08); }
-  .cm-meny ul a[aria-current="page"] { box-shadow: none; }
+  .cm-meny ul a[aria-current="page"], .cm-meny ul a[aria-current="true"] { box-shadow: none; }
   .cm-meny-cta { justify-content: center; }
   /* Med JS: menyen er lukket til knappen åpner den. Uten JS: lenkene vises (fallback). */
   .js .cm-meny[data-apen="0"] { display: none; }

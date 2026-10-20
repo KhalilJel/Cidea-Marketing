@@ -62,7 +62,7 @@ function ArtikkelListe({ slugs, overskrift, id }) {
 export function Tjenester() {
   useMeta({ tittel: "Tjenester | Cidea Marketing", beskrivelse: "Nettsider, merkevarebygging, SEO og digital markedsføring for bedrifter.", sti: "/tjenester" });
   return (
-    <Ramme aktiv="/tjenester">
+    <Ramme sti="/tjenester">
       <Sidehode tittel="Dette kan vi hjelpe dere med" ingress="Vi hjelper bedrifter med nettsider, merkevare, SEO og digital markedsføring. Tjenestene kan brukes hver for seg eller sammen." />
       <section className="cm-seksjon sd-seksjon sd-tett" aria-label="Tjenester">
         <div className="cm-wrap">
@@ -92,7 +92,7 @@ export function Tjenester() {
 export function TjenesteSide({ t }) {
   useMeta({ tittel: `${t.navn} | Cidea Marketing`, beskrivelse: t.ingress, sti: t.sti });
   return (
-    <Ramme aktiv="/tjenester">
+    <Ramme sti={t.sti} seksjon="/tjenester">
       <Sidehode sti={[["Tjenester", "/tjenester"], [t.navn]]} tittel={t.tittel} ingress={t.ingress}>
         <div className="sd-handling">
           <a className="cm-knapp" href="/kontakt">Snakk med oss <span aria-hidden="true">→</span></a>
@@ -128,7 +128,7 @@ export function TjenesteSide({ t }) {
 export function OmOss() {
   useMeta({ tittel: "Om oss | Cidea Marketing", beskrivelse: "Cidea Marketing hjelper bedrifter med nettsider, merkevarebygging, SEO og digital markedsføring.", sti: "/om-oss" });
   return (
-    <Ramme aktiv="/om-oss">
+    <Ramme sti="/om-oss">
       <Sidehode tittel="Om Cidea Marketing" ingress="Cidea Marketing hjelper bedrifter med å bli enklere å forstå, finne og velge på nett. Vi lager nettsider, bygger merkevarer og jobber med SEO og digital markedsføring – og kan videreutvikle løsningene etter lansering." />
       <section className="cm-seksjon sd-seksjon sd-tett" aria-labelledby="tilbyr">
         <div className="cm-wrap sd-to">
@@ -176,7 +176,7 @@ export function OmOss() {
 export function Innsikt() {
   useMeta({ tittel: "Innsikt | Cidea Marketing", beskrivelse: "Artikler om nettsider, synlighet og merkevare.", sti: "/blog" });
   return (
-    <Ramme aktiv="/blog">
+    <Ramme sti="/blog">
       <Sidehode tittel="Innsikt" ingress="Artikler om nettsider, synlighet og merkevare." />
       <section className="cm-seksjon sd-seksjon sd-tett" aria-label="Artikler">
         <div className="cm-wrap">
@@ -202,7 +202,7 @@ export function Innsikt() {
 export function Artikkel({ a }) {
   useMeta({ tittel: `${a.tittel} | Cidea Marketing`, beskrivelse: a.utdrag, sti: `/blog/${a.slug}` });
   return (
-    <Ramme aktiv="/blog">
+    <Ramme sti={`/blog/${a.slug}`} seksjon="/blog">
       <article>
         <Sidehode sti={[["Innsikt", "/blog"], [a.tittel]]} tittel={a.tittel}>
           <p className="sd-tema">{a.tema}</p>
@@ -221,7 +221,7 @@ export function Artikkel({ a }) {
 export function Personvern() {
   useMeta({ tittel: "Personvern | Cidea Marketing", beskrivelse: "Slik behandler Cidea Marketing personopplysninger.", sti: "/personvern" });
   return (
-    <Ramme>
+    <Ramme sti="/personvern">
       <Sidehode tittel="Personvern" ingress="Slik behandler vi opplysninger på dette nettstedet, i kontaktskjemaet og ved bedriftshenvendelser gjennom Gullkornet." />
       <div className="cm-wrap">
         <div className="sd-artikkel">
@@ -250,7 +250,7 @@ export function Personvern() {
 export function Takk() {
   useMeta({ tittel: "Henvendelsen er sendt | Cidea Marketing", beskrivelse: "Bekreftelse på henvendelse.", sti: "/kontakt/takk" });
   return (
-    <Ramme aktiv="/kontakt">
+    <Ramme sti="/kontakt/takk" seksjon="/kontakt">
       <Sidehode tittel="Henvendelsen er sendt" ingress="Takk for henvendelsen. Skjemaløsningen har tatt imot meldingen, og vi svarer på e-post." />
       <div className="cm-wrap sd-avslutt"><a className="cm-lenke" href="/tjenester">Se tjenestene <span aria-hidden="true">→</span></a></div>
     </Ramme>

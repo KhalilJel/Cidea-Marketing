@@ -69,7 +69,7 @@ export default function Kontakt() {
   const antallFeil = Object.keys(feil).length;
 
   return (
-    <Ramme aktiv="/kontakt">
+    <Ramme sti="/kontakt">
       <header className="sd-hode">
         <div className="cm-wrap">
           <h1 id="h1">Ta kontakt for en uforpliktende fagprat.</h1>

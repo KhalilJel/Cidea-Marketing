@@ -23,7 +23,11 @@ export function useMeta({ tittel, beskrivelse, sti }) {
   }, [tittel, beskrivelse, sti]);
 }
 
-function Toppmeny({ aktiv }) {
+// aria-current: "page" på lenken til siden man står på, "true" på overordnet seksjon (f.eks. Tjenester på en
+// tjenesteside, Innsikt på en artikkel). sti er sidens egen adresse, seksjon er menypunktet den hører under.
+const naa = (href, sti, seksjon) => (href === sti ? "page" : href === seksjon ? "true" : undefined);
+
+function Toppmeny({ sti, seksjon }) {
   const [apen, setApen] = useState(false);
   const knapp = useRef(null);
   const panel = useRef(null);
@@ -41,44 +45,44 @@ function Toppmeny({ aktiv }) {
   return (
     <header className="cm-topp">
       <div className="cm-wrap cm-topp-rad">
-        <a className="cm-ordmerke" href={FORSIDE} aria-label="Cidea Marketing – til forsiden">CIDEA MARKETING</a>
+        <a className="cm-ordmerke" href={FORSIDE} aria-label="Cidea Marketing – til forsiden" aria-current={naa(FORSIDE, sti)}>CIDEA MARKETING</a>
         <button ref={knapp} className="cm-menyknapp" type="button" aria-expanded={apen} aria-controls={id}
           onClick={() => setApen(v => !v)}>{apen ? "Lukk" : "Meny"}</button>
         <nav id={id} ref={panel} className="cm-meny" data-apen={apen ? "1" : "0"} aria-label="Hovedmeny"
           onBlur={e => { if (apen && !panel.current?.contains(e.relatedTarget) && e.relatedTarget !== knapp.current) setApen(false); }}>
           <ul>
             {meny.map(m => (
-              <li key={m.href}><a href={m.href} aria-current={aktiv === m.href ? "page" : undefined}
+              <li key={m.href}><a href={m.href} aria-current={naa(m.href, sti, seksjon)}
                 onClick={() => setApen(false)}>{m.tekst}</a></li>
             ))}
           </ul>
-          <a className="cm-knapp cm-meny-cta" href="/kontakt" aria-current={aktiv === "/kontakt" ? "page" : undefined} onClick={() => setApen(false)}>Snakk med oss</a>
+          <a className="cm-knapp cm-meny-cta" href="/kontakt" aria-current={naa("/kontakt", sti, seksjon)} onClick={() => setApen(false)}>Snakk med oss</a>
         </nav>
       </div>
     </header>
   );
 }
 
-function Bunn() {
+function Bunn({ sti, seksjon }) {
   return (
     <footer className="cm-bunn">
       <div className="cm-wrap cm-bunn-rad">
-        <a className="cm-ordmerke" href={FORSIDE} aria-label="Cidea Marketing – til forsiden">CIDEA MARKETING</a>
-        <nav aria-label="Bunnmeny"><ul>{meny.map(m => <li key={m.href}><a href={m.href}>{m.tekst}</a></li>)}<li><a href="/kontakt">Kontakt</a></li><li><a href="/personvern">Personvern</a></li></ul></nav>
+        <a className="cm-ordmerke" href={FORSIDE} aria-label="Cidea Marketing – til forsiden" aria-current={naa(FORSIDE, sti)}>CIDEA MARKETING</a>
+        <nav aria-label="Bunnmeny"><ul>{[...meny, { tekst: "Kontakt", href: "/kontakt" }, { tekst: "Personvern", href: "/personvern" }].map(m => <li key={m.href}><a href={m.href} aria-current={naa(m.href, sti, seksjon)}>{m.tekst}</a></li>)}</ul></nav>
         <p className="cm-copy">© 2026 Cidea Marketing · Drives av {selskap.navn}, org.nr. {selskap.orgnr} · <a href={`mailto:${selskap.epost}`}>{selskap.epost}</a></p>
       </div>
     </footer>
   );
 }
 
-/** Felles ramme for nye sider: hopp-lenke, toppmeny, innhold, bunntekst. */
-export function Ramme({ aktiv, children }) {
+/** Felles ramme for nye sider: hopp-lenke, toppmeny, innhold, bunntekst. sti = sidens adresse, seksjon = overordnet menypunkt. */
+export function Ramme({ sti, seksjon = sti, children }) {
   return (
     <div className="cm">
       <a className="cm-hopp" href="#innhold">Hopp til innhold</a>
-      <Toppmeny aktiv={aktiv} />
+      <Toppmeny sti={sti} seksjon={seksjon} />
       <main id="innhold">{children}</main>
-      <Bunn />
+      <Bunn sti={sti} seksjon={seksjon} />
     </div>
   );
 }

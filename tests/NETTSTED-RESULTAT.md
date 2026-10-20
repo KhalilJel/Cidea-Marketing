@@ -1,6 +1,6 @@
 # Testresultat – fase 6, hele nettstedet
 
-Kjørt 2026-10-20T12:49:40.484Z i Chromium (Playwright) mot `dist/` med Netlify-regelen (fil → mappe/index.html → 404.html; POST → 405 fordi det ikke finnes skjemamottak lokalt). Automatiske målinger – ikke estetisk godkjenning og ikke en WCAG-samsvarserklæring.
+Kjørt 2026-10-20T12:55:38.307Z i Chromium (Playwright) mot `dist/` med Netlify-regelen (fil → mappe/index.html → 404.html; POST → 405 fordi det ikke finnes skjemamottak lokalt). Automatiske målinger – ikke estetisk godkjenning og ikke en WCAG-samsvarserklæring.
 
 | ID | Test | Resultat | Måling |
 |---|---|---|---|
@@ -39,5 +39,6 @@ Kjørt 2026-10-20T12:49:40.484Z i Chromium (Playwright) mot `dist/` med Netlify-
 | S10a | Uten JavaScript: nettleserens validering stopper ugyldig skjema, gyldig skjema sendes | OK | novalidate uten JS: false; tomt: sendt false, ugyldige navn/email/tema/melding; ugyldig e-post og kort melding: sendt false, ugyldige email/melding; gyldig: sendt til /kontakt/takk (HTTP 405 lokalt) |
 | S10b | Med JavaScript: novalidate satt, egen validering (meldingslengde) med feltfeil | OK | novalidate true, feil «Skriv en kort melding (minst 10 tegn).» |
 | S9 | Artikkelsidene viser hele artikkelen | OK | 4 artikler kontrollert mot tekst fra blog/*.md |
+| S11 | aria-current: «page» på eksakt side, «true» på overordnet seksjon | OK | 11 sider kontrollert med og uten JS (topp- og bunnmeny, logo): tjenestesider markerer Tjenester, artikler markerer Innsikt, takkesiden markerer Kontakt som seksjon |
 
-**35 av 35 bestått.**
+**36 av 36 bestått.**

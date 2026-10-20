@@ -31,7 +31,7 @@ export default function Forside() {
     sti: "/",
   });
   return (
-    <Ramme aktiv="/">
+    <Ramme sti="/">
       <section className="cm-hero" aria-labelledby="h1">
         <div className="cm-wrap cm-hero-rad">
           <div className="cm-hero-tekst">

@@ -99,7 +99,7 @@ export default function KonseptScroll() {
     sti: "/konsept-scroll",
   });
   return (
-    <Ramme>
+    <Ramme sti="/konsept-scroll">
       <div className="ks">
         <section className="ks-start" aria-labelledby="ks-h1">
           <div className="ks-scene">

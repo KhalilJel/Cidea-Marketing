@@ -188,6 +188,35 @@ for (const sti of ['/websites', '/blog/hvor-mye-koster-en-nettside', '/kontakt']
   await p.close();
 }
 
+// S11: aria-current – "page" bare på lenken til siden man står på, "true" på overordnet seksjon (topp- og bunnmeny, logo)
+{
+  const forventet = {
+    '/konsept-scroll': { page: ['CIDEA MARKETING'], true: [] },
+    '/tjenester': { page: ['Tjenester'], true: [] },
+    '/websites': { page: [], true: ['Tjenester'] },
+    '/seo': { page: [], true: ['Tjenester'] },
+    '/om-oss': { page: ['Om oss'], true: [] },
+    '/blog': { page: ['Innsikt'], true: [] },
+    '/blog/hvor-mye-koster-en-nettside': { page: [], true: ['Innsikt'] },
+    '/kontakt': { page: ['Snakk med oss', 'Kontakt'], true: [] },
+    '/kontakt/takk': { page: [], true: ['Snakk med oss', 'Kontakt'] },
+    '/personvern': { page: ['Personvern'], true: [] },
+    '/': { page: [], true: [] },
+  };
+  const avvik = [];
+  for (const [sti, f] of Object.entries(forventet)) {
+    for (const js of [true, false]) {
+      const c = await b.newContext({ viewport: { width: 1440, height: 900 }, javaScriptEnabled: js }); const p = await c.newPage();
+      await p.goto(base + sti, { waitUntil: js ? 'networkidle' : 'load' });
+      const r = await p.evaluate(() => { const ut = { page: new Set(), true: new Set(), annet: [] }; for (const a of document.querySelectorAll('header a[aria-current], footer a[aria-current]')) { const v = a.getAttribute('aria-current'), t = a.textContent.trim(); (ut[v] ? ut[v].add(t) : ut.annet.push(`${t}=${v}`)); } return { page: [...ut.page].sort(), true: [...ut.true].sort(), annet: ut.annet }; });
+      const lik = (x, y) => x.join('|') === [...y].sort().join('|');
+      if (!lik(r.page, f.page) || !lik(r.true, f.true) || r.annet.length) avvik.push(`${sti}${js ? '' : ' (uten JS)'}: page [${r.page}] true [${r.true}]${r.annet.length ? ' annet ' + r.annet : ''}`);
+      await c.close();
+    }
+  }
+  check('S11', 'aria-current: «page» på eksakt side, «true» på overordnet seksjon', avvik.length === 0, avvik.length ? avvik.join('; ') : `${Object.keys(forventet).length} sider kontrollert med og uten JS (topp- og bunnmeny, logo): tjenestesider markerer Tjenester, artikler markerer Innsikt, takkesiden markerer Kontakt som seksjon`);
+}
+
 await b.close(); server.close();
 writeFileSync(`${here}NETTSTED-RESULTAT.md`, `# Testresultat – fase 6, hele nettstedet\n\nKjørt ${new Date().toISOString()} i Chromium (Playwright) mot \`dist/\` med Netlify-regelen (fil → mappe/index.html → 404.html; POST → 405 fordi det ikke finnes skjemamottak lokalt). Automatiske målinger – ikke estetisk godkjenning og ikke en WCAG-samsvarserklæring.\n\n| ID | Test | Resultat | Måling |\n|---|---|---|---|\n${res.join('\n')}\n\n**${res.length - fail} av ${res.length} bestått.**\n`);
 console.log(`${res.length - fail}/${res.length} OK`); process.exit(fail ? 1 : 0);
