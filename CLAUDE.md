@@ -35,7 +35,7 @@ Prosjektskill: `.claude/skills/cidea-website/SKILL.md`. Status og historikk: `do
 
 ## Åpne oppgaver (per 2026-10-20)
 1. **Filmintegrasjon på `/konsept-scroll`: levert til vurdering 2026-10-20** (se `docs/cinematic-pilot/phase5/konsept-scroll/FILM.md`). Åpne punkter: startklippet med innbrent «CIDEA»-knapp er tatt ut, «Bli sett. Bli valgt.» gjentas av den store overskriften rett etter, 480p er mykt på store skjermer, og Firefox/Safari/ekte telefon er ikke testet. Ny film i høyere oppløsning: kod om med kommandoene i FILM.md, og kontroller replikktidene i `replikker`/`tidskart` mot klippene.
-2. **Testfeil P2** («Jevne bilder, 4× struping» i `tests/forside.test.mjs`) feiler i ca. 2 av 15 kjøringer. Lange bilder i de første ~600 ms faller sammen med JS-kjøring/hydrering; én felles JS-fil på 279 kB for alle sider. Avklar om produktfeil (sannsynlig retning: kodesplitting per side) og rett dokumentert årsak.
-3. **aria-current:** `page` på eksakt side; Tjenester markeres som overordnet seksjon på tjenesteundersider (f.eks. `aria-current="true"`); tilsvarende Innsikt for artikler.
-4. **Personvernutkast** for skjemaet med offisielle Netlify-kilder (Forms, databehandling, overføring utenfor EØS) og liste over eierbeslutninger (særlig lagringstid). Ikke påstå at avtaler eller kontoinnstillinger er kontrollert.
-5. **Netlify-overlevering:** korteste steg for skjemaregistrering, e-postvarsel og bekreftet mottak (se `phase6/README.md`). Kvoter for kontoen er ukjente; ikke anta gratisplanens tall.
+2. **Testfeil P2: analysert 2026-10-20** (`docs/cinematic-pilot/phase6/P2-ANALYSE.md`). Feilen kunne ikke gjenskapes i 50 kjøringer. Kodesplitting per side er innført (`vite.config.js`, `src/ruter-klient.js`, `src/ruter-sider.jsx`, modulepreload i `scripts/prerender.mjs`). Til vurdering: delvis hydrering, og om P2 skal måle et fast antall bilder.
+3. **aria-current: levert 2026-10-20** (`Ramme sti=… seksjon=…`, test S11).
+4. **Personvernutkast: levert til vurdering** (`docs/cinematic-pilot/phase6/PERSONVERN-SKJEMA-UTKAST.md`). Venter på eierbeslutninger, særlig lagringstid. `/personvern` er ikke endret.
+5. **Netlify-overlevering: levert** (`docs/cinematic-pilot/phase6/NETLIFY-SJEKKLISTE.md`). Venter på at eier gjør stegene og bekrefter mottak. Deretter settes `MOTTAK_BEKREFTET = true`.

@@ -55,7 +55,7 @@ Kontrollert i forhåndsrendret HTML (`dist/kontakt/index.html`): `<form name="ko
 5. **Bekreft mottak:** Netlify → Forms → kontakt: henvendelsen skal ligge der (sjekk også **Spam**-listen). Innboksen `jelassi@cideamarketing.com` skal få varselet med emnet «Ny henvendelse fra cideamarketing.com (…)». Svar-knappen skal gå til avsenderens adresse.
 6. **Gi beskjed** om resultatet. Først etter bekreftet mottak i både Netlify og innboks settes `MOTTAK_BEKREFTET = true` (Claude gjør endringen).
 
-Gratisplanen har 100 innsendinger i måneden. Personvernhullene (lagringstid for henvendelser og om Netlifys overføringsgrunnlag skal beskrives) er **ikke løst**. De er fortsatt merket på `/personvern` og må avklares av eier før skjemaet tas i bruk.
+Kvoten for innsendinger avhenger av kontoens plan, som ikke er kontrollert (ikke anta gratisplanens tall). Personvernhullene (lagringstid for henvendelser og om Netlifys overføringsgrunnlag skal beskrives) er **ikke løst**. De er fortsatt merket på `/personvern` og må avklares av eier før skjemaet tas i bruk. Utkast til tekst og liste over eierbeslutninger: [`PERSONVERN-SKJEMA-UTKAST.md`](PERSONVERN-SKJEMA-UTKAST.md).
 
 Skillet: «testet innsending» betyr at nettleseren fikk et 2xx-svar. «Bekreftet mottak» betyr at meldingen faktisk er sett i Netlify og i innboksen. Ingen av delene er gjort ennå.
 

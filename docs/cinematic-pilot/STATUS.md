@@ -55,6 +55,12 @@
   - Estetisk godkjenning gjenstår.
 - **Fase 6 – innholds- og funksjonsrevisjon (Claude Code skyøkt, 2026-10-18):** ny Om oss-innledning (hva Cidea Marketing er, hvem vi hjelper, hva vi tilbyr), nytt verdibudskap på Tjenester og Om oss, «dere» konsekvent i artikler, skjema og Takk, nettleserens egen validering uten JavaScript, e-postfeltet heter nå `email` (svaradresse i Netlify-varselet) og skjult `subject`. Netlify-veiledning for eier i `phase6/README.md`. `MOTTAK_BEKREFTET` er fortsatt `false`; levering er ikke testet. Tester (Chromium): nettsted 35/35, forside 28/30 + 2 ikke kjørt, QA 86/86, prototype 28/30 + 2 ikke kjørt. Fase 5 og 6 er fortsatt åpne.
 - **Filmscene på /konsept-scroll (Claude Code skyøkt, 2026-10-20, ikke godkjent):** Higgsfield-utkastet (480p) erstatter pigmentplassholderen. Det er kodet om til VP9/WebM (2,09 MB) og H.264/MP4 (2,85 MB) uten lyd, med nøkkelbilde hvert 0,25 s og faststart. Startklippet med innbrent «CIDEA»-knapp er tatt ut (til vurdering). Filmen spoles av vanlig scroll via en passiv lytter, med festet lengde 300vh desktop og 240vh mobil og lenken «Hopp til tjenestene». Fem HTML-replikker er lagt på hendelser i filmen, unna ansikter og telefoner. På mobil vises hele filmbildet med teksten under. Statisk oppsett (plakat og alle replikker) gjelder uten JS, ved redusert bevegelse og ved feil. Tester (Chromium): konsept-scroll 48/50 + 2 ikke kjørt (Firefox/WebKit), nettsted 35/35, QA 86/86, forside 27/30 + 2 ikke kjørt (P2 feilet, kjent ustabil, oppgave 2). Se `phase5/konsept-scroll/FILM.md` og `bevis/film/`.
+- **Fase 6, tekniske punkter (Claude Code skyøkt, 2026-10-20):**
+  - Kodesplitting per side: JS 282 kB → 240–257 kB per side.
+  - P2 kunne ikke gjenskapes i 50 kjøringer. Analysen står i `phase6/P2-ANALYSE.md`, og testen er uendret.
+  - `aria-current`: «page» på eksakt side og «true» på overordnet seksjon (ny test S11, nettsted 36/36).
+  - Personvernutkast for skjemaet med offisielle Netlify-kilder og åtte eierbeslutninger (`phase6/PERSONVERN-SKJEMA-UTKAST.md`). `/personvern` er uendret.
+  - Kort Netlify-sjekkliste for eier (`phase6/NETLIFY-SJEKKLISTE.md`). Kontoen, kvoten og databehandleravtalen er ikke kontrollert. `MOTTAK_BEKREFTET` er fortsatt `false`.
 
 ## Neste konkrete oppgave
 
