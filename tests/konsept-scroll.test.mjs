@@ -63,10 +63,11 @@ for (const [w, h] of [[1440, 900], [390, 844]]) {
   await til(p, ord + h * .2); const o1 = await tf('.ks-ord-1');
   await til(p, ord - h * .8); const o2 = await tf('.ks-ord-1');
   check(`K4 ${w}`, 'Scroll opp reverserer bevegelsen', a0 === 'none' && a1 !== 'none' && a2 === a0 && o0 !== o1 && o2 === o0, `ordmerke ${a0} → ${a1} → ${a2}; «Bli sett» ${o0} → ${o1} → ${o2}`);
-  // K5: begrenset festing
-  const sticky = await p.evaluate(() => [...document.querySelectorAll('.ks *')].filter(e => getComputedStyle(e).position === 'sticky').length);
+  // K5: begrenset festing – startscenen og filmscenen er de eneste festede scenene, begge med begrenset lengde
+  const sticky = await p.evaluate(() => [...document.querySelectorAll('.ks *')].filter(e => getComputedStyle(e).position === 'sticky').map(e => e.className));
   const pin = (hero.h - h) / h;
-  check(`K5 ${w}`, 'Én kort festet sekvens', sticky === 1 && pin <= (w < 768 ? .75 : 1.2), `${sticky} festet element, festet strekning ${Math.round(pin * 100)}vh`);
+  const filmPin = await p.evaluate(() => (document.querySelector('.ks-film').offsetHeight - innerHeight) / innerHeight);
+  check(`K5 ${w}`, 'To korte festede sekvenser (start og film)', sticky.length === 2 && sticky.includes('ks-scene') && sticky.includes('ks-film-scene') && pin <= (w < 768 ? .75 : 1.2) && filmPin <= (w < 768 ? 2.45 : 3.05), `festet: ${sticky.join(', ')}; startscenen ${Math.round(pin * 100)}vh, filmscenen ${Math.round(filmPin * 100)}vh`);
   // K6: hvor lenge H1 og ingress er helt synlige og udekket
   let fra = null, til_ = null;
   for (let y = hero.top; y <= hero.top + hero.h - h; y += 10) {
@@ -78,12 +79,14 @@ for (const [w, h] of [[1440, 900], [390, 844]]) {
   check(`K6 ${w}`, 'H1 og ingress får lesetid før overgangen', lese >= (w < 768 ? 180 : 240), `helt synlige og udekket over ${lese} px scroll (${fra}–${til_})`);
   // K12: ingen tom marine strekning – øvre del helt marine mens bildeområdet dekker under 25 % av skjermen
   let tom = 0;
-  for (let y = 0; y <= ord; y += 10) {
+  // Måles fra toppen til filmscenen er festet. Inne i den festede filmscenen er marine flate rundt filmbildet en del av oppsettet (mobil).
+  const filmTopp = await p.evaluate(() => document.querySelector('.ks-film').getBoundingClientRect().top + scrollY);
+  for (let y = 0; y <= filmTopp; y += 10) {
     await til(p, y);
-    const e = await p.evaluate(() => { const H = innerHeight, pl = document.querySelector('.ks-plassholder').getBoundingClientRect(); const plH = Math.max(0, Math.min(pl.bottom, H) - Math.max(pl.top, 0)) / H; const el = document.elementFromPoint(innerWidth / 2, H * .25); const tr = document.querySelector('.ks-teppe').getBoundingClientRect(); const marine = (getComputedStyle(document.querySelector('.ks-teppe')).display !== 'none' && tr.top <= H * .05 && tr.bottom >= H * .5) || (!!el && !!el.closest('.ks-bilde') && !el.closest('.ks-plassholder')); return marine && plH < .25; });
+    const e = await p.evaluate(() => { const H = innerHeight, pl = document.querySelector('.ks-film-bilde').getBoundingClientRect(); const plH = Math.max(0, Math.min(pl.bottom, H) - Math.max(pl.top, 0)) / Math.min(pl.height, H); const el = document.elementFromPoint(innerWidth / 2, H * .25); const tr = document.querySelector('.ks-teppe').getBoundingClientRect(); const marine = (getComputedStyle(document.querySelector('.ks-teppe')).display !== 'none' && tr.top <= H * .05 && tr.bottom >= H * .5) || (!!el && !!el.closest('.ks-bilde') && !el.closest('.ks-film-bilde')); return marine && plH < .5; });
     if (e) tom += 10;
   }
-  check(`K12 ${w}`, 'Ingen tom marine strekning mellom overgang og bilde', tom <= h * .15, `${tom} px (${Math.round(tom / h * 100)} % av skjermhøyden) med marine øverst og bildeområdet under 25 % av skjermen; krav ≤ 15 %`);
+  check(`K12 ${w}`, 'Ingen tom marine strekning mellom overgang og bilde', tom <= h * .15, `${tom} px (${Math.round(tom / h * 100)} % av skjermhøyden) med marine øverst og under halvparten av filmbildet synlig; krav ≤ 15 %`);
   // K13: hovedbudskap og kontakt i første skjermbilde (mobil: H1 og ingress synlige uten scrolling)
   await til(p, 0);
   const st = await p.evaluate(() => { const i = document.querySelector('.ks-intro'), k = document.querySelector('.ks-kontakt').getBoundingClientRect(), ir = i.getBoundingClientRect(); return { op: +getComputedStyle(i).opacity, iBunn: Math.round(ir.bottom), kTopp: Math.round(k.top), kBunn: Math.round(k.bottom) }; });
@@ -164,6 +167,172 @@ for (const w of [1440, 390]) {
     return { n, min: min.toFixed(2), fails };
   });
   check(`K10 ${w}`, 'Kontrast for all tekst i prototypen', r.fails.length === 0, `${r.n} tekstelementer, laveste ${r.min}:1${r.fails.length ? ' – ' + r.fails.join('; ') : ''}`);
+  await c.close();
+}
+// ---------- Filmscenen (F1–F9) ----------
+const filmInfo = p => p.evaluate(() => { const s = document.querySelector('.ks-film'); return { top: s.getBoundingClientRect().top + scrollY, len: s.offsetHeight - innerHeight }; });
+// Scroller til andel q av filmscenens festede lengde og venter til filmen har funnet riktig bilde.
+const tilFilm = async (p, f, q) => {
+  await til(p, f.top + f.len * q);
+  await p.waitForFunction(() => { const v = document.querySelector('video'); return v.readyState >= 2 && !v.seeking; }, null, { timeout: 4000 }).catch(() => {});
+  await frame(p);
+  return p.evaluate(() => ({ t: document.querySelector('video').currentTime, r: +(document.querySelector('.ks-film').dataset.replikk || 0) }));
+};
+const vent = async (p, f) => { await til(p, f.top - 200); await p.waitForFunction(() => document.querySelector('video').readyState >= 3, null, { timeout: 15000 }); };
+const replikkMidt = [.09, .26, .485, .715, .935];
+const H5 = ['Noen trenger det dere tilbyr.', 'Gjør det enkelt å finne dere.', 'Og enkelt å ta neste steg.', 'Fra digital interesse til ekte møter.', 'Bli sett. Bli valgt.'];
+
+// F1: filfiler – størrelse, faststart (moov før mdat), uten lyd, plakat
+{
+  const boks = buf => { const ut = []; for (let i = 0; i + 8 <= buf.length;) { const n = buf.readUInt32BE(i), t = buf.toString('latin1', i + 4, i + 8); ut.push(t); if (n < 8) break; i += n; } return ut; };
+  const hent = async f => { const r = await fetch('http://127.0.0.1:4181' + f); return { s: r.status, type: r.headers.get('content-type'), buf: Buffer.from(await r.arrayBuffer()) }; };
+  const [mp4, webm, plakat, del] = [await hent('/film/cidea-film-utkast-480p.mp4'), await hent('/film/cidea-film-utkast-480p.webm'), await hent('/film/cidea-film-plakat.jpg'), await fetch('http://127.0.0.1:4181/film/cidea-film-utkast-480p.mp4', { headers: { range: 'bytes=100-199' } })];
+  const toppbokser = boks(mp4.buf); const faststart = toppbokser.indexOf('moov') > -1 && toppbokser.indexOf('moov') < toppbokser.indexOf('mdat');
+  const mp4Lyd = mp4.buf.includes(Buffer.from('soun')); const webmLyd = /A_OPUS|A_VORBIS|A_AAC/.test(webm.buf.toString('latin1'));
+  const mb = b => (b.length / 1048576).toFixed(2);
+  check('F1', 'Filmfiler: små, faststart, uten lyd, plakat og byteområder', mp4.s === 200 && webm.s === 200 && plakat.s === 200 && mp4.buf.length < 3.5 * 1048576 && webm.buf.length < 3 * 1048576 && faststart && !mp4Lyd && !webmLyd && del.status === 206,
+    `MP4 ${mb(mp4.buf)} MB (bokser ${toppbokser.join(' ')}), WebM ${mb(webm.buf)} MB, plakat ${(plakat.buf.length / 1024).toFixed(0)} kB, lydspor MP4 ${mp4Lyd} / WebM ${webmLyd}, Range-svar ${del.status}`);
+}
+
+// F2: filmen følger scrollen begge veier, replikkene kommer i riktig rekkefølge og reverseres
+for (const [w, h] of [[1440, 900], [390, 844]]) {
+  const c = await b.newContext({ viewport: { width: w, height: h }, ...mobil(w) }); const p = await c.newPage(); const feil = [];
+  p.on('pageerror', e => feil.push(e.message));
+  await p.goto(url, { waitUntil: 'networkidle' }); const f = await filmInfo(p); await vent(p, f);
+  const fram = [], bak = [];
+  for (let q = 0; q <= 1.0001; q += .025) fram.push(await tilFilm(p, f, Math.min(q, 1)));
+  for (let q = 1; q >= -.0001; q -= .025) bak.push(await tilFilm(p, f, Math.max(q, 0)));
+  const rekke = a => a.map(x => x.r).filter((r, i, arr) => r && r !== arr[i - 1]);
+  const mono = fram.every((x, i) => i === 0 || x.t >= fram[i - 1].t - .03);
+  const avvik = Math.max(...bak.slice().reverse().map((x, i) => Math.abs(x.t - fram[i].t)));
+  check(`F2 ${w}`, 'Filmen følger scrollen fram og tilbake, replikker i rekkefølge', mono && rekke(fram).join() === '1,2,3,4,5' && rekke(bak.slice().reverse()).join() === '1,2,3,4,5' && avvik < .1 && fram.at(-1).t > 20 && feil.length === 0,
+    `fram: replikker ${rekke(fram).join('→')}, tid ${fram[0].t.toFixed(2)}→${fram.at(-1).t.toFixed(2)} s, stigende ${mono}; tilbake: største tidsavvik ${avvik.toFixed(3)} s; feil: ${feil.join('; ') || 'ingen'}`);
+  await c.close();
+}
+
+// F3: brede skjermer – hver replikk står i sitt hjørne, innenfor filmbildet, og overlapper ikke hoppelenken
+for (const [w, h] of [[1440, 900], [1280, 720], [1920, 1080], [1024, 768]]) {
+  const c = await b.newContext({ viewport: { width: w, height: h } }); const p = await c.newPage();
+  await p.goto(url, { waitUntil: 'networkidle' }); await p.evaluate(() => document.fonts.ready); const f = await filmInfo(p); await vent(p, f);
+  const ut = [];
+  for (const [i, q] of replikkMidt.entries()) {
+    await tilFilm(p, f, q); await p.waitForTimeout(800);
+    ut.push(await p.evaluate(nr => {
+      const li = document.querySelector(`.ks-replikk[data-nr="${nr}"]`), r = li.getBoundingClientRect(), W = innerWidth, H = innerHeight, hopp = document.querySelector('.ks-hopp').getBoundingClientRect();
+      const plass = [...li.classList].find(k => k.startsWith('ks-plass-')).slice(9);
+      const hjørne = (plass[1] === 'v' ? r.right <= W * .42 : r.left >= W * .58) && (plass[0] === 'o' ? r.bottom <= H * .38 : r.top >= H * .58);
+      const synlige = [...document.querySelectorAll('.ks-replikk')].filter(e => +getComputedStyle(e).opacity > .5).length;
+      const krysser = !(r.right < hopp.left || r.left > hopp.right || r.bottom < hopp.top || r.top > hopp.bottom);
+      return { nr, plass, ok: hjørne && r.top >= 0 && r.bottom <= H && r.left >= 0 && r.right <= W && synlige === 1 && +getComputedStyle(li).opacity > .99 && !krysser, boks: `${Math.round(r.left / W * 100)}–${Math.round(r.right / W * 100)} % × ${Math.round(r.top / H * 100)}–${Math.round(r.bottom / H * 100)} %` };
+    }, i + 1));
+  }
+  check(`F3 ${w}×${h}`, 'Replikkene står i avtalt hjørne, én om gangen', ut.every(x => x.ok), ut.map(x => `${x.nr} ${x.plass} ${x.boks}${x.ok ? '' : ' FEIL'}`).join('; '));
+  await c.close();
+}
+
+// F4: smale og stående skjermer – hele filmbildet vises (ingen beskjæring) og teksten ligger under filmen
+for (const [w, h] of [[320, 640], [375, 812], [390, 844], [768, 1024]]) {
+  const c = await b.newContext({ viewport: { width: w, height: h }, ...mobil(w) }); const p = await c.newPage();
+  await p.goto(url, { waitUntil: 'networkidle' }); await p.evaluate(() => document.fonts.ready); const f = await filmInfo(p); await vent(p, f);
+  const ut = [];
+  for (const [i, q] of replikkMidt.entries()) {
+    await tilFilm(p, f, q); await p.waitForTimeout(800);
+    ut.push(await p.evaluate(nr => {
+      const v = document.querySelector('.ks-video'), vr = v.getBoundingClientRect(), li = document.querySelector(`.ks-replikk[data-nr="${nr}"]`), r = li.getBoundingClientRect(), hopp = document.querySelector('.ks-hopp').getBoundingClientRect();
+      const forhold = vr.width / vr.height, helt = Math.abs(forhold - v.videoWidth / v.videoHeight) < .02 && vr.left >= -1 && vr.right <= innerWidth + 1 && vr.top >= 0 && vr.bottom <= innerHeight;
+      const under = r.top >= vr.bottom && r.bottom <= hopp.top && r.right <= innerWidth;
+      return { nr, ok: helt && under && +getComputedStyle(li).opacity > .99, m: `film ${Math.round(vr.width)}×${Math.round(vr.height)} (${forhold.toFixed(3)}), ${Math.round(vr.top)}–${Math.round(vr.bottom)}, tekst ${Math.round(r.top)}–${Math.round(r.bottom)}, lenke fra ${Math.round(hopp.top)}` };
+    }, i + 1));
+  }
+  const bad = ut.filter(x => !x.ok);
+  check(`F4 ${w}×${h}`, 'Hele filmbildet synlig, teksten under filmen', bad.length === 0, bad.length ? bad.map(x => `${x.nr}: ${x.m}`).join('; ') : ut[0].m.replace(/, tekst.*/, '') + `; alle fem replikker under filmen`);
+  await c.close();
+}
+
+// F5: kontrast for replikkene over filmen (brede skjermer). Måler faktiske piksler bak teksten (teksten skjult, mørk flate med),
+// og regner kontrast mot hvit tekst for det lyseste 5 % av pikslene.
+for (const [w, h] of [[1440, 900], [1920, 1080]]) {
+  const c = await b.newContext({ viewport: { width: w, height: h } }); const p = await c.newPage();
+  await p.goto(url, { waitUntil: 'networkidle' }); await p.evaluate(() => document.fonts.ready); const f = await filmInfo(p); await vent(p, f);
+  const ut = [];
+  for (const [i, q] of replikkMidt.entries()) {
+    for (const dq of [-.05, 0, .05]) {
+      await tilFilm(p, f, q + dq); await p.waitForTimeout(700);
+      const r = await p.evaluate(nr => { const li = document.querySelector(`.ks-replikk[data-nr="${nr}"]`); li.style.color = 'transparent'; li.style.textShadow = 'none'; const b = li.getBoundingClientRect(); return { x: Math.max(0, b.left), y: Math.max(0, b.top), width: b.width, height: b.height }; }, i + 1);
+      const png = await p.screenshot({ clip: r });
+      await p.evaluate(nr => { const li = document.querySelector(`.ks-replikk[data-nr="${nr}"]`); li.style.color = ''; li.style.textShadow = ''; }, i + 1);
+      const k = await p.evaluate(async b64 => {
+        const img = new Image(); img.src = 'data:image/png;base64,' + b64; await img.decode();
+        const cv = document.createElement('canvas'); cv.width = img.width; cv.height = img.height; const x = cv.getContext('2d'); x.drawImage(img, 0, 0);
+        const d = x.getImageData(0, 0, cv.width, cv.height).data, L = [];
+        const lin = v => { v /= 255; return v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4; };
+        for (let j = 0; j < d.length; j += 16) L.push(.2126 * lin(d[j]) + .7152 * lin(d[j + 1]) + .0722 * lin(d[j + 2]));
+        L.sort((a, b) => a - b); return 1.05 / (L[Math.floor(L.length * .95)] + .05);
+      }, png.toString('base64'));
+      ut.push({ nr: i + 1, dq, k });
+    }
+  }
+  const min = Math.min(...ut.map(x => x.k));
+  check(`F5 ${w}`, 'Kontrast: hvit replikk mot filmbildet bak (lyseste 5 %)', min >= 4.5, ut.filter(x => x.dq === 0).map(x => `${x.nr}: ${x.k.toFixed(2)}:1`).join(', ') + `; laveste inkl. start/slutt av hver replikk ${min.toFixed(2)}:1 (krav 4,5:1)`);
+  await c.close();
+}
+
+// F6: hoppelenken – tastatur og klikk fører rett til tjenestene
+for (const [w, h] of [[1440, 900], [390, 844]]) {
+  const c = await b.newContext({ viewport: { width: w, height: h }, ...mobil(w) }); const p = await c.newPage();
+  await p.goto(url, { waitUntil: 'networkidle' }); const f = await filmInfo(p);
+  await til(p, f.top + f.len * .3);
+  await p.focus('.ks-hopp'); await frame(p);
+  const før = await p.evaluate(() => { const e = document.activeElement, r = e.getBoundingClientRect(), el = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); return { tekst: e.textContent.trim(), ring: getComputedStyle(e).outlineStyle !== 'none', udekket: !!el && (e.contains(el) || el === e), inne: r.top >= 0 && r.bottom <= innerHeight }; });
+  await p.keyboard.press('Enter'); await p.waitForTimeout(400);
+  const etter = await p.evaluate(() => ({ topp: Math.round(document.getElementById('tjenester').getBoundingClientRect().top), hash: location.hash }));
+  check(`F6 ${w}`, 'Hoppelenken er synlig med fokus og fører til tjenestene', før.ring && før.udekket && før.inne && Math.abs(etter.topp) <= 30 && etter.hash === '#tjenester', `«${før.tekst}» fokusring ${før.ring}, udekket ${før.udekket}, i bildet ${før.inne}; etter Enter: tjenestene ${etter.topp} px fra toppen, ${etter.hash}`);
+  await c.close();
+}
+
+// F7: uten videostøtte eller når filene ikke kan lastes: statisk oppsett med plakat og alle replikker
+for (const [w, h] of [[1440, 900], [390, 844]]) {
+  const c = await b.newContext({ viewport: { width: w, height: h }, ...mobil(w) }); const p = await c.newPage();
+  await p.route(/\/film\/.*\.(mp4|webm)$/, r => r.abort());
+  await p.goto(url, { waitUntil: 'networkidle' }); const f = await filmInfo(p); await til(p, f.top); await p.waitForTimeout(1500);
+  const r = await p.evaluate(() => { const s = document.querySelector('.ks-film'); return { aktiv: s.classList.contains('ks-film-aktiv'), sticky: getComputedStyle(s.querySelector('.ks-film-scene')).position, synlige: [...s.querySelectorAll('.ks-replikk')].filter(e => +getComputedStyle(e).opacity > .99 && e.getBoundingClientRect().height > 0).length, h: Math.round(s.offsetHeight / innerHeight * 100), plakat: document.querySelector('.ks-video').poster.endsWith('cidea-film-plakat.jpg') }; });
+  check(`F7 ${w}`, 'Filmen kan ikke lastes: statisk oppsett med alle replikker', !r.aktiv && r.sticky !== 'sticky' && r.synlige === 5 && r.plakat && r.h < 200, `aktiv ${r.aktiv}, scene ${r.sticky}, ${r.synlige}/5 replikker synlige, seksjonen ${r.h}vh, plakat ${r.plakat}`);
+  await c.close();
+}
+
+// F8: redusert bevegelse og uten JavaScript – ingen filmnedlasting, plakat og alle replikker
+for (const [navn, opts] of [['redusert bevegelse', { reducedMotion: 'reduce' }], ['uten JavaScript', { javaScriptEnabled: false }]]) {
+  const c = await b.newContext({ viewport: { width: 390, height: 844 }, ...mobil(390), ...opts }); const p = await c.newPage(); const film = [];
+  p.on('request', q => /\/film\/.*\.(mp4|webm)$/.test(q.url()) && film.push(q.url()));
+  await p.goto(url, { waitUntil: 'networkidle' }); await p.evaluate(() => { const s = document.querySelector('.ks-film'); scrollTo(0, s.getBoundingClientRect().top + scrollY); }); await p.waitForTimeout(1200);
+  const r = await p.evaluate(() => { const s = document.querySelector('.ks-film'); return { aktiv: s.classList.contains('ks-film-aktiv'), tekster: [...s.querySelectorAll('.ks-replikk')].filter(e => +getComputedStyle(e).opacity > .99).map(e => e.textContent), hopp: !!s.querySelector('a.ks-hopp[href="#tjenester"]') }; });
+  check(`F8 ${navn}`, `${navn[0].toUpperCase() + navn.slice(1)}: ingen film lastet, alle replikker som tekst`, !r.aktiv && film.length === 0 && r.tekster.join('|') === H5.join('|') && r.hopp, `aktiv ${r.aktiv}, filmforespørsler ${film.length}, replikker: ${r.tekster.length}/5, hoppelenke ${r.hopp}`);
+  await c.close();
+}
+
+// F9: lastetid – filmen konkurrerer ikke med sidens første innlasting (ingen filmforespørsel før load-hendelsen), og med
+// strupet nett (ca. 4G: 9 Mbit/s, 85 ms) er den klar før en leser i vanlig tempo når filmscenen
+{
+  const c = await b.newContext({ viewport: { width: 390, height: 844 }, ...mobil(390) }); const p = await c.newPage();
+  const cdp = await c.newCDPSession(p); await cdp.send('Network.enable');
+  await cdp.send('Network.emulateNetworkConditions', { offline: false, latency: 85, downloadThroughput: 9e6 / 8, uploadThroughput: 1.5e6 / 8 });
+  const film = []; p.on('request', q => /\/film\/.*\.(mp4|webm)$/.test(q.url()) && film.push({ u: q.url().split('/').pop(), t: Date.now() }));
+  const t0 = Date.now(); let lastet = 0; p.once('load', () => { lastet = Date.now(); });
+  await p.goto(url, { waitUntil: 'load' }); lastet ||= Date.now();
+  const f = await filmInfo(p);
+  // Vanlig lesetempo ned mot filmen: H1 og ingress leses (3 s), deretter ett halvt skjermbilde hvert sekund
+  await p.waitForTimeout(3000);
+  let y = 0; while (y < f.top) { y = Math.min(f.top, y + 422); await til(p, y); await p.waitForTimeout(1000); }
+  const nådd = Date.now();
+  const bufret = await p.evaluate(() => { const v = document.querySelector('video'), b = v.buffered; return b.length > 0 && b.end(b.length - 1) >= v.duration - .1; });
+  // Tid fra scenen nås til filmen viser et bilde (Chromium kan kort melde readyState 1 mens et bilde hentes fram fra bufferen)
+  await p.waitForFunction(() => { const v = document.querySelector('video'); return v.readyState >= 2 && !v.seeking; }, null, { timeout: 10000, polling: 16 }).catch(() => {});
+  const bilde = Date.now() - nådd;
+  const plakat = await p.evaluate(() => document.querySelector('video').poster.split('/').pop());
+  // Ytterkant: hopp rett til siste replikk og mål tiden til riktig bilde vises
+  const fr = Date.now(); await tilFilm(p, f, .95); const hopp = Date.now() - fr;
+  check('F9', 'Lastetid: filmen lastes etter siden, er bufret når scenen nås, og riktig bilde vises (strupet 4G)', film.length >= 1 && film[0].t >= lastet && bufret && plakat === 'cidea-film-start.jpg' && bilde <= 1000 && hopp <= 500,
+    `siden lastet etter ${((lastet - t0) / 1000).toFixed(1)} s; første filmforespørsel (${film[0]?.u}) ${film[0] ? ((film[0].t - t0) / 1000).toFixed(1) + ' s' : 'ingen'}; filmscenen nådd etter ${((nådd - t0) / 1000).toFixed(1)} s, hele filmen bufret da: ${bufret}; plakat i mellomtiden ${plakat} (filmens første bilde); filmbildet dekodet ${bilde} ms etter ankomst; hopp til 95 % vist etter ${hopp} ms`);
   await c.close();
 }
 await b.close();

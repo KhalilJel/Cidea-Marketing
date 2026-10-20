@@ -114,3 +114,7 @@ All tekst er eksisterende, godkjent innhold, hentet fra samme datakilde som fors
 - Ingen ekte telefon og ingen skjermleser.
 - Uten JavaScript på mobil skyver den statiske menyen startscenen ca. 400 px ned, så kontaktknappen havner under første skjermbilde. Dette er den eksisterende fallbacken og gjaldt også før.
 - Netlify-forhåndsvisningen kan ikke åpnes fra skymiljøet (`netlify.app` er blokkert), så den er ikke verifisert herfra.
+
+## Revisjon 2 – filmscene (2026-10-20, Claude Code skyøkt)
+
+Pigmentplassholderen er erstattet av Higgsfield-utkastet (480p), som spoles av scrollen, med fem HTML-replikker lagt på hendelser i filmen. Detaljer, tider, tester og begrensninger: [`FILM.md`](FILM.md). Bevis: [`bevis/film/`](bevis/film/). Retningen er ikke godkjent.

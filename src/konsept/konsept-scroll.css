@@ -1,7 +1,8 @@
 /* Prototype /konsept-scroll – «Fra ord til gjennomslag» (fase 5, ikke godkjent).
    Grunnoppsett: statisk og lesbart (gjelder uten støtte for scroll-drevne animasjoner, med redusert
    bevegelse og uten JavaScript). Bevegelse legges på i @supports-blokken nederst og bruker bare vanlig
-   nettleserscroll via CSS animation-timeline. Ingen scroll-lyttere, ingen scrollmotor. */
+   nettleserscroll via CSS animation-timeline. Filmscenen styres av klassen .ks-film-aktiv, som bare settes av
+   JavaScript når filmen kan spilles og redusert bevegelse ikke er valgt. Ingen scrollmotor. */
 
 .ks-ordmerke, .ks-slutt-merke, .ks-teppe { pointer-events: none; } /* dekor: skal ikke ta imot klikk */
 .ks a { scroll-margin-block: 24px; } /* plass til fokusringen når nettleseren scroller til et fokusert element */
@@ -16,12 +17,45 @@
 .ks-kontakt { margin-top: 32px; }
 .ks-teppe { display: none; }
 
-/* ---------- 3. Bildescene (midlertidig bildeområde) ---------- */
+/* ---------- 3. Filmscene ----------
+   Statisk grunnoppsett: plakatbilde i 16:9 og alle replikkene som en liste under. */
 .ks-bilde { background: var(--ks-marine); padding: 6vh var(--gutter) 10vh; }
-.ks-bilderamme { margin: 0 auto; max-width: 1344px; }
-.ks-plassholder { aspect-ratio: 16 / 9; display: grid; place-content: center; gap: 10px; text-align: center; padding: 24px; background: #26344A; border: 2px dashed rgba(255, 255, 255, .55); border-radius: 4px; color: var(--hvit); }
-.ks-plassholder-merke { font: 700 15px/1.2 "DM Sans", sans-serif; letter-spacing: .08em; text-transform: uppercase; }
-.ks-plassholder-tekst { font-size: 17px; max-width: 34ch; margin: 0 auto !important; color: rgba(255, 255, 255, .86); }
+.ks-film-scene { margin: 0 auto; max-width: 1344px; }
+.ks-film-bilde { position: relative; margin: 0; aspect-ratio: 854 / 480; overflow: hidden; border-radius: 4px; background: #26344A; }
+.ks-video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ks-replikker { list-style: none; margin: 32px 0 0 !important; padding: 0; display: grid; gap: 10px; color: var(--hvit); }
+.ks-replikk { font: 700 clamp(22px, 2.4vw, 34px)/1.15 "Outfit", system-ui, sans-serif; letter-spacing: -0.015em; }
+.ks .ks-hopp { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin-top: 20px; color: var(--hvit); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+
+/* Aktiv film: scenen festes, filmen fyller skjermen og scrollposisjonen bestemmer bildet (se useFilmscroll).
+   Festet scrollengde: 300vh på brede skjermer, 240vh på mobil og stående nettbrett. */
+.ks-film.ks-film-aktiv { height: calc(100vh + 300vh); height: calc(100svh + 300vh); padding: 0; }
+.ks-film-aktiv .ks-film-scene { position: sticky; top: 0; height: 100vh; height: 100svh; max-width: none; overflow: hidden; }
+.ks-film-aktiv .ks-film-bilde { position: absolute; inset: 0; aspect-ratio: auto; border-radius: 0; animation: none !important; }
+.ks-film-aktiv .ks-replikker { position: absolute; inset: 0; margin: 0 !important; pointer-events: none; }
+.ks-film-aktiv .ks-replikk { position: absolute; z-index: 0; max-width: min(36%, 13ch); font-size: clamp(34px, 3.7vw, 60px); line-height: 1.04; text-wrap: balance;
+  opacity: 0; transform: translateY(18px); transition: opacity .28s linear, transform .5s var(--ease); text-shadow: 0 2px 20px rgba(10, 14, 22, .5); }
+/* Mørk, myk flate bak hver replikk, slik at hvit tekst er lesbar på lyse partier i filmen. Følger replikkens opasitet. */
+.ks-film-aktiv .ks-replikk::before { content: ""; position: absolute; z-index: -1; inset: -90% -60%; background: radial-gradient(closest-side, rgba(12, 17, 28, .62), rgba(12, 17, 28, .38) 45%, rgba(12, 17, 28, .12) 75%, rgba(12, 17, 28, 0)); }
+.ks-film-aktiv .ks-plass-nv { left: 7%; bottom: 13%; }
+.ks-film-aktiv .ks-plass-ov { left: 7%; top: 12%; }
+.ks-film-aktiv .ks-plass-oh { right: 7%; top: 12%; text-align: right; }
+.ks-film-aktiv .ks-replikk[data-nr="5"] { font-size: clamp(40px, 4.6vw, 76px); max-width: min(40%, 11ch); }
+.ks-film[data-replikk="1"] .ks-replikk[data-nr="1"], .ks-film[data-replikk="2"] .ks-replikk[data-nr="2"], .ks-film[data-replikk="3"] .ks-replikk[data-nr="3"],
+.ks-film[data-replikk="4"] .ks-replikk[data-nr="4"], .ks-film[data-replikk="5"] .ks-replikk[data-nr="5"] { opacity: 1; transform: none; }
+.ks .ks-film-aktiv .ks-hopp { position: absolute; right: var(--gutter); bottom: 5vh; margin: 0; padding: 0 18px; border-radius: 999px; background: rgba(20, 22, 25, .62); text-decoration: none; }
+.ks .ks-film-aktiv .ks-hopp:hover, .ks .ks-film-aktiv .ks-hopp:focus-visible { text-decoration: underline; }
+
+/* Smale og stående skjermer: hele filmbildet vises (ingen beskjæring), replikkene står under filmen og dekker den aldri. */
+@media (max-width: 860px), (max-aspect-ratio: 1/1) {
+  .ks-film.ks-film-aktiv { height: calc(100vh + 240vh); height: calc(100svh + 240vh); }
+  .ks-film-aktiv .ks-film-scene { display: flex; flex-direction: column; justify-content: center; }
+  .ks-film-aktiv .ks-film-bilde { position: relative; inset: auto; flex: none; aspect-ratio: 854 / 480; }
+  .ks-film-aktiv .ks-replikker { position: relative; inset: auto; display: grid; margin: 28px var(--gutter) 0 !important; min-height: 3.3em; font-size: clamp(30px, 8.6vw, 46px); }
+  .ks-film-aktiv .ks-replikk, .ks-film-aktiv .ks-replikk[data-nr="5"] { position: static; grid-area: 1 / 1; max-width: 16ch; font-size: inherit; text-align: left; text-shadow: none; }
+  .ks-film-aktiv .ks-replikk::before { display: none; }
+  .ks .ks-film-aktiv .ks-hopp { right: auto; left: var(--gutter); bottom: 4vh; }
+}
 
 /* ---------- 4. Bli sett / Bli valgt + tjenester ---------- */
 .ks-ord { background: var(--ks-marine); color: var(--hvit); padding: 4vh 0 14vh; overflow-x: clip; }
@@ -38,7 +72,7 @@
 .ks-lenketekst { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-weight: 700; }
 .ks-tjenester a:hover .ks-lenketekst, .ks-tjenester a:focus-visible .ks-lenketekst,
 .ks-artikler a:hover .ks-lenketekst, .ks-artikler a:focus-visible .ks-lenketekst { text-decoration: underline; text-underline-offset: 4px; }
-.ks-ord :focus-visible, .ks-slutt :focus-visible, .ks-bilde :focus-visible { outline-color: var(--hvit); }
+.ks-ord :focus-visible, .ks-slutt :focus-visible, .ks-bilde :focus-visible, .ks-hopp:focus-visible { outline-color: var(--hvit); }
 
 /* ---------- 5. Rolig del: arbeidsprosess og innsikt ---------- */
 .ks-rolig { background: var(--lys); padding: 14vh 0 12vh; }
@@ -71,7 +105,6 @@
   .ks-ordmerke { margin-bottom: 5vh !important; }
   .ks-kontakt { width: 100%; justify-content: center; }
   .ks-bilde { padding: 4vh var(--gutter) 8vh; }
-  .ks-plassholder { aspect-ratio: 4 / 5; }
   .ks-ordpar { font-size: 17vw !important; margin-bottom: 6vh !important; }
   .ks-ord-2 { padding-left: 8vw; }
   .ks-tjenester, .ks-steg, .ks-artikler { grid-template-columns: 1fr; gap: 24px; }
@@ -105,7 +138,7 @@
     .ks-intro { animation-name: ks-intro; }
     .ks-teppe { animation-name: ks-teppe; }
 
-    .ks-plassholder { animation: ks-avdekk linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
+    .ks-film-bilde { animation: ks-avdekk linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
     .ks-ord-1 { animation: ks-ord-1 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
     .ks-ord-2 { animation: ks-ord-2 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
     .ks-slutt-merke { animation: ks-slutt linear both; animation-timeline: view(); animation-range: entry 0% cover 40%; }

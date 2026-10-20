@@ -1,6 +1,6 @@
 # Cidea Marketing – Status / verificerbar fremdrift
 
-**Oppdatert:** 2026-10-18
+**Oppdatert:** 2026-10-20
 **Nå (2026-10-18):** **Fase 5 åpen**: forsidens hovedretning (/konsept-scroll) er akseptert av eier, og estetisk ferdigstilling gjenstår. **Fase 6 åpnet parallelt**: struktur og funksjon for hele nettstedet er levert til kontroll (`phase6/README.md`). **Fase 7–9 gjenstår.** Higgsfield og annen bildegenerering er pauset. Tidligere statuslinje: **4/9 faseporter godkjent**. Fase 4 godkjent med vilkår (`phase4/CHATGPT-REVIEW.md`). Claude Code har implementert 5.2–5.5 på eksperimentgrenen. Fase 5 er **ikke godkjent** før eier har vurdert faktisk forhåndsvisning. Ingen merge, deploy eller nye kjøp.
 **Godkjent metode:** ChatGPT → Google Stitch → Claude Code → ChatGPT QA.
 **Kostnader:** Eier har 2026-10-17 åpnet for nødvendige betalte visuelle verktøy, inkludert Higgsfield hvis det gir ønsket kvalitet. Ingen konkret plan, pris eller kjøp er valgt eller gjennomført. Tidligere nullkostnadsregel er dermed ikke et absolutt hinder for vurdering; faktiske kjøp må ha avklart omfang og kostnad.
@@ -54,6 +54,7 @@
   - Tester (Chromium): nettsted 33/33, forside 28/30 + 2 ikke kjørt, QA 86/86, prototype 28/30 + 2 ikke kjørt.
   - Estetisk godkjenning gjenstår.
 - **Fase 6 – innholds- og funksjonsrevisjon (Claude Code skyøkt, 2026-10-18):** ny Om oss-innledning (hva Cidea Marketing er, hvem vi hjelper, hva vi tilbyr), nytt verdibudskap på Tjenester og Om oss, «dere» konsekvent i artikler, skjema og Takk, nettleserens egen validering uten JavaScript, e-postfeltet heter nå `email` (svaradresse i Netlify-varselet) og skjult `subject`. Netlify-veiledning for eier i `phase6/README.md`. `MOTTAK_BEKREFTET` er fortsatt `false`; levering er ikke testet. Tester (Chromium): nettsted 35/35, forside 28/30 + 2 ikke kjørt, QA 86/86, prototype 28/30 + 2 ikke kjørt. Fase 5 og 6 er fortsatt åpne.
+- **Filmscene på /konsept-scroll (Claude Code skyøkt, 2026-10-20, ikke godkjent):** Higgsfield-utkastet (480p) erstatter pigmentplassholderen. Det er kodet om til VP9/WebM (2,09 MB) og H.264/MP4 (2,85 MB) uten lyd, med nøkkelbilde hvert 0,25 s og faststart. Startklippet med innbrent «CIDEA»-knapp er tatt ut (til vurdering). Filmen spoles av vanlig scroll via en passiv lytter, med festet lengde 300vh desktop og 240vh mobil og lenken «Hopp til tjenestene». Fem HTML-replikker er lagt på hendelser i filmen, unna ansikter og telefoner. På mobil vises hele filmbildet med teksten under. Statisk oppsett (plakat og alle replikker) gjelder uten JS, ved redusert bevegelse og ved feil. Tester (Chromium): konsept-scroll 48/50 + 2 ikke kjørt (Firefox/WebKit), nettsted 35/35, QA 86/86, forside 27/30 + 2 ikke kjørt (P2 feilet, kjent ustabil, oppgave 2). Se `phase5/konsept-scroll/FILM.md` og `bevis/film/`.
 
 ## Neste konkrete oppgave
 

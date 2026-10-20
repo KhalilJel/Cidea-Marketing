@@ -1,6 +1,6 @@
 # Testresultat – fase 5 (faktisk side)
 
-Kjørt 2026-10-18T12:57:47.589Z mot `dist/` servert med Netlify-regelen (`tests/serve-dist.mjs`). Chromium (Playwright); Firefox og WebKit for fallback der de er installert.
+Kjørt 2026-10-20T12:32:25.534Z mot `dist/` servert med Netlify-regelen (`tests/serve-dist.mjs`). Chromium (Playwright); Firefox og WebKit for fallback der de er installert.
 
 | ID | Test | Resultat | Måling |
 |---|---|---|---|
@@ -25,7 +25,7 @@ Kjørt 2026-10-18T12:57:47.589Z mot `dist/` servert med Netlify-regelen (`tests/
 | F webkit | Fallback i ekte webkit | IKKE KJØRT | nettleseren er ikke installert i dette miljøet |
 | F0 | Stedfortreder (Chromium uten view()-animasjon): artikler synlige uten scrolling | OK | artikler før scroll 1.00/1.00/1.00 |
 | P1 | Ingen layout per bilde under inngangen (4× struping, mobil) | OK | kumulativ LayoutCount hvert 100. ms: 0 0 0 0 0 0 0 0 0 |
-| P2 | Jevne bilder (4× struping) | OK | 56 bilder, p95 16.8 ms, median 16.7 ms |
+| P2 | Jevne bilder (4× struping) | **FEIL** | 10 bilder, p95 550.0 ms, median 16.7 ms |
 | O 320 | Ingen horisontal overflow | OK | 0 px |
 | O 375 | Ingen horisontal overflow | OK | 0 px |
 | O 390 | Ingen horisontal overflow | OK | 0 px |
@@ -35,4 +35,4 @@ Kjørt 2026-10-18T12:57:47.589Z mot `dist/` servert med Netlify-regelen (`tests/
 | O 1024 | Ingen horisontal overflow | OK | 0 px |
 | O 1440 | Ingen horisontal overflow | OK | 0 px |
 
-**28 av 30 bestått, 2 ikke kjørt.**
+**27 av 30 bestått, 2 ikke kjørt.**

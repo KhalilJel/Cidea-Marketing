@@ -28,16 +28,13 @@ Prosjektskill: `.claude/skills/cidea-website/SKILL.md`. Status og historikk: `do
 - Tokens og designretning: `docs/cinematic-pilot/phase3/DESIGN.md`, CSS under `.cm` i `src/forside/forside.css`, undersider i `src/sider/sider.css`.
 - `/konsept-scroll` (`src/konsept/`) er foreslått forside (prototype, `noindex`). Logoen leder dit via `FORSIDE` i `src/forside/Ramme.jsx`.
 - Tester (krever `npm run build` og `npm install --no-save playwright@1.56.1`; Chromium ligger i `/opt/pw-browsers`, kjør aldri `playwright install`):
-  `node tests/nettsted.test.mjs` · `npm run test:forside` · `node tests/qa.mjs` · `node tests/konsept-scroll.test.mjs`.
+  `node tests/nettsted.test.mjs` · `npm run test:forside` · `node tests/qa.mjs` · `node tests/konsept-scroll.test.mjs` · bevis for filmen: `node tests/film-bevis.mjs`.
   Firefox/WebKit finnes ikke i skymiljøet → rapporteres som «IKKE KJØRT», aldri som bestått. Ikke svekk forventninger eller legg til retries for å få grønt.
 - Commit-meldinger: tydelige, med attribusjonslinjene fra økten. Push med `git push -u origin experiment/cinematic-marketing-pilot`. Kommenter PR #13 kort ved større leveranser.
 - Skymiljøet blokkerer bl.a. `netlify.app`, `docs.netlify.com` og CloudFront (`d8j0ntlcm91z4.cloudfront.net`). Ikke omgå blokkeringer; si hvilken vert som er blokkert og hva eier kan gjøre.
 
-## Åpne oppgaver (per 2026-10-20, HEAD 77d3222)
-1. **Filmintegrasjon på `/konsept-scroll` (prioritet).** Higgsfield-utkast, 480p mp4. Filen har ikke nådd skyøkten ennå (CloudFront blokkert, vedlegg kom ikke fram). Eier leverer via Google Drive, opplasting til `public/film/` på grenen, eller vedlegg.
-   Brief: behold godkjent åpning, H1, ingress og CTA; filmen erstatter pigmentplassholderen; tekstene som HTML (ikke innbrent), lagt på faktiske hendelser i filmen og uten å dekke telefoner, ansikter eller viktige handlinger:
-   «Noen trenger det dere tilbyr.» → «Gjør det enkelt å finne dere.» → «Og enkelt å ta neste steg.» → «Fra digital interesse til ekte møter.» → «Bli sett. Bli valgt.»
-   Undersøk seeking (keyframes/GOP; kod om med ffmpeg ved behov, faststart, uten lyd). Vanlig nettleserscroll, ingen scrollkapring, begrenset festet scrollengde, lenke for å hoppe til tjenestene. Statisk oppsett ved redusert bevegelse, uten JS og uten videostøtte. Ingen hard beskjæring på mobil. Test desktop og mobil, begge scrollretninger, tastatur, redusert bevegelse og lastetid. Lever korte opptak og forhåndsvisning.
+## Åpne oppgaver (per 2026-10-20)
+1. **Filmintegrasjon på `/konsept-scroll`: levert til vurdering 2026-10-20** (se `docs/cinematic-pilot/phase5/konsept-scroll/FILM.md`). Åpne punkter: startklippet med innbrent «CIDEA»-knapp er tatt ut, «Bli sett. Bli valgt.» gjentas av den store overskriften rett etter, 480p er mykt på store skjermer, og Firefox/Safari/ekte telefon er ikke testet. Ny film i høyere oppløsning: kod om med kommandoene i FILM.md, og kontroller replikktidene i `replikker`/`tidskart` mot klippene.
 2. **Testfeil P2** («Jevne bilder, 4× struping» i `tests/forside.test.mjs`) feiler i ca. 2 av 15 kjøringer. Lange bilder i de første ~600 ms faller sammen med JS-kjøring/hydrering; én felles JS-fil på 279 kB for alle sider. Avklar om produktfeil (sannsynlig retning: kodesplitting per side) og rett dokumentert årsak.
 3. **aria-current:** `page` på eksakt side; Tjenester markeres som overordnet seksjon på tjenesteundersider (f.eks. `aria-current="true"`); tilsvarende Innsikt for artikler.
 4. **Personvernutkast** for skjemaet med offisielle Netlify-kilder (Forms, databehandling, overføring utenfor EØS) og liste over eierbeslutninger (særlig lagringstid). Ikke påstå at avtaler eller kontoinnstillinger er kontrollert.
