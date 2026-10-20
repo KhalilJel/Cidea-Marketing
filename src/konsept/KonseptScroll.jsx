@@ -55,6 +55,15 @@ function useFilmscroll(ref) {
     const rolig = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (!video || rolig.matches) return; // redusert bevegelse: statisk oppsett via CSS
     if (!FILM.kilder.some(k => video.canPlayType(k.type))) { sek.classList.add("ks-statisk"); return; }
+    // Hovedskriptet kom etter at oppstartsskriptet hadde slått på reserven (js-reserve, se index.html). Står leseren
+    // fortsatt i åpningen, byttes det til film uten overganger (åpningen ser lik ut i begge oppsett). Har leseren
+    // scrollet, beholdes det statiske oppsettet for denne visningen, så innholdet ikke flytter seg.
+    const html = document.documentElement;
+    if (html.classList.contains("js-reserve")) {
+      if (html.classList.contains("js-feil") || window.scrollY > 2) { sek.classList.add("ks-statisk"); return; }
+      const m = ramme0 || sek; m.classList.add("ks-direkte"); html.classList.remove("js-reserve");
+      requestAnimationFrame(() => requestAnimationFrame(() => m.classList.remove("ks-direkte")));
+    }
     const linjer = [...sek.querySelectorAll(".ks-replikk")];
     // vist = filmtiden til bildet som faktisk vises (kan ligge litt bak mål mens nettleseren spoler).
     let ramme = 0, aktiv = -1, mål = 0, vist = 0, apen = false, posisjon = "", første = true;

@@ -162,9 +162,10 @@ html:has(.cm-fast) { scroll-padding-top: 96px; }
   .cm-meny ul a { width: 100%; min-height: 52px; font-size: 18px; border-bottom: 1px solid rgba(20, 22, 25, .08); }
   .cm-meny ul a[aria-current="page"], .cm-meny ul a[aria-current="true"] { box-shadow: none; }
   .cm-meny-cta { justify-content: center; }
-  /* Med JS: menyen er lukket til knappen åpner den. Uten JS: lenkene vises (fallback). */
-  .js .cm-meny[data-apen="0"] { display: none; }
-  html:not(.js) .cm-menyknapp { display: none; }
+  /* Med JS: menyen er lukket til knappen åpner den. Uten JS, eller når hovedskriptet ikke kunne lastes (js-feil, se
+     index.html): lenkene vises (fallback). */
+  .js:not(.js-feil) .cm-meny[data-apen="0"] { display: none; }
+  :is(html:not(.js), html.js-feil) .cm-menyknapp { display: none; }
 /* Fast toppmeny (filmprototypen /konsept-scroll): alltid tilgjengelig. Lys på hvite flater, mørk og halvgjennomsiktig
    mens filmen fyller skjermen (data-meny="film", settes av filmscenen). Kontrast er målt i begge tilstander. */
 .cm-fast .cm-topp { position: fixed; top: 0; left: 0; right: 0; z-index: 40; background: var(--hvit); transition: background-color .3s, color .3s, border-color .3s; }
@@ -177,10 +178,10 @@ html:has(.cm-fast) { scroll-padding-top: 96px; }
 .cm-hamburger { display: inline-block; position: relative; width: 18px; height: 2px; margin-right: 10px; background: currentColor; box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor; }
 [aria-expanded="true"] > .cm-hamburger { box-shadow: none; transform: rotate(45deg); }
 [aria-expanded="true"] > .cm-hamburger::after { content: ""; position: absolute; inset: 0; background: currentColor; transform: rotate(90deg); }
-  html:not(.js) .cm-meny { position: static; padding: 0 0 12px; border: 0; }
-  html:not(.js) .cm-topp-rad { height: auto; flex-wrap: wrap; padding-top: 14px; }
+  :is(html:not(.js), html.js-feil) .cm-meny { position: static; padding: 0 0 12px; border: 0; }
+  :is(html:not(.js), html.js-feil) .cm-topp-rad { height: auto; flex-wrap: wrap; padding-top: 14px; }
   /* Uten JS vises lenkene under logoen; da ligger menyen i vanlig flyt i stedet for fast, så den ikke dekker skjermen. */
-  html:not(.js) .cm-fast .cm-topp { position: relative; }
+  :is(html:not(.js), html.js-feil) .cm-fast .cm-topp { position: relative; }
   html:has(.cm-fast) { scroll-padding-top: 80px; }
   /* Åpnet mobilmeny over filmen: panelet er lyst, så teksten er mørk. */
   .cm-fast[data-meny="film"] .cm-meny { color: var(--svart); }

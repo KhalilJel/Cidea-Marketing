@@ -1,5 +1,36 @@
 # Filmscenen på /konsept-scroll
 
+## Revisjon 2.2 – når hovedskriptet ikke tar over (Claude Code skyøkt, 2026-10-20, ikke godkjent)
+
+Retter begrensningen dokumentert i 2.1: med JS aktivert, men uten at hovedskriptet ble lastet, sto siden i aktivt oppsett med en hvit, festet strekning på 320/260vh. Visuell retning, knapp, meny og sirkelåpning er uendret.
+
+### Implementert
+- **Oppstartsskriptet i `<head>`** (`index.html`) setter fortsatt `js` før første tegning. Det setter i tillegg `js-reserve` når hovedskriptet ikke har tatt over (`data-js-klar` settes av `src/main.jsx` etter hydrering):
+  - straks ved lastefeil på et skript eller en modulepreload (også `js-feil`);
+  - etter 5 s (skriptet henger eller er svært tregt);
+  - straks leseren begynner å scrolle (hjul, berøring, musetrykk, scrolltaster) før skriptet er klart.
+  
+  Med `js-reserve` gjelder det statiske alternativet: hvit åpning med CIDEA, plakat, replikkene som liste og innholdet.
+- **Skript som kommer sent:** står leseren fortsatt i åpningen (scrollY ≤ 2), byttes det til film uten overganger. Åpningen ser lik ut i begge oppsett. Har leseren scrollet, beholdes det statiske oppsettet for visningen, og filmen lastes ikke.
+- **Menyen:** ved `js-feil` brukes menyens reserve uten JS (lenkene synlige på mobil). Før var mobilmenyen skjult og kunne ikke åpnes hvis hovedskriptet var blokkert. Henger skriptet uten feil, er mobilmenyen fortsatt lukket til skriptet kommer.
+- **Normal og treg innlasting** er uendret: aktivt oppsett fra første tegning, uten tekstblink.
+
+### Verifisert (headless Chromium 141)
+`node tests/konsept-scroll.test.mjs` → **73/75 bestått, 2 ikke kjørt** (K11 Firefox/WebKit). Nye tester, ved 1440 og 390:
+- **R1 hovedskript blokkert:** statisk med en gang; filmseksjonen er 2,31 / 1,66 skjermhøyder (aktivt oppsett 4,2 / 3,6); lengste strekning uten innhold er 100 px; plakat, replikker og H1 synlige; menylenker synlige på mobil; 0 filmforespørsler.
+- **R2 hovedskript henger:** ren åpning de første 5 s, deretter statisk. CIDEA-knappen står stille (samme senter før og etter), og 0 av ca. 178 bilder har filmtekst over åpningen.
+- **R3 leseren scroller før skriptet er klart:** statisk med en gang, og midt i skjermen er det filminnhold eller tjenester, ikke tom flate.
+- **R4 skriptet kommer etter 7 s med leseren i åpningen:** reserve → film. Én knappeposisjon gjennom hele forløpet, scrollY 0, 0 av 469 bilder med tekstblink, og filmen åpner ved første scroll.
+- **R5 skriptet kommer etter 7 s etter at leseren har scrollet:** statisk oppsett beholdes. scrollY, plakatens posisjon og H1-posisjonen er uendret, og 0 filmforespørsler.
+- **B1–B4** (normal og treg innlasting, rask scroll, oppdatering) består fortsatt.
+- **Testene fanger feilen:** mot d989b14 feiler R1–R3 (scene festet, 4,2 skjermhøyder, ingen reserve). R4 og R5 kan ikke kjøres der, fordi det gamle bygget ikke setter `data-js-klar`.
+- **Øvrige suiter:** nettsted 36/36, QA 86/86, forside 28/30 + 2 ikke kjørt.
+
+### Ikke verifisert
+Firefox, Safari/WebKit, ekte telefon og skjermleser. Grensen på 5 s er valgt etter målinger, ikke ut fra brukerdata: kald innlasting med 4× CPU og 1,6 Mbit/s tar ca. 2,5 s. Trigges reserven på en svært treg forbindelse, gjenopprettes filmen hvis leseren fortsatt står i åpningen.
+
+---
+
 ## Revisjon 2.1 – oppstartsblink og tekst over neste scene (Claude Code skyøkt, 2026-10-20, ikke godkjent)
 
 Etter ChatGPTs gjennomgang av opptakene ved a39265a. Fullskjermretningen, knappen, menyen og sirkelåpningen er beholdt.

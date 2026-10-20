@@ -147,6 +147,102 @@ for (const [w, h] of [[1440, 900], [390, 844]]) {
   await c.close();
 }
 
+// R1–R5: hovedskriptet tar ikke over som normalt. Siden skal da vise det statiske alternativet (ingen tom, festet
+// strekning), og et skript som kommer sent skal ikke gi overlappende oppsett eller hopp.
+const HOVED = /\/assets\/index-[^/]*\.js$/;
+const vent = ms => new Promise(r => setTimeout(r, ms));
+const tilstand = p => p.evaluate(() => {
+  const d = document.documentElement, s = document.querySelector('.ks-film'), k = document.querySelector('.ks-cidea').getBoundingClientRect();
+  const synligeFilmdeler = [...document.querySelectorAll('.ks-replikk, .ks-hopp')].filter(e => { const r = e.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight && e.checkVisibility({ opacityProperty: true, visibilityProperty: true }) && +getComputedStyle(e).opacity > .02; }).length;
+  return { reserve: d.classList.contains('js-reserve'), feil: d.classList.contains('js-feil'), klar: d.hasAttribute('data-js-klar'), aktiv: s.classList.contains('ks-film-aktiv'), statisk: s.classList.contains('ks-statisk'),
+    sticky: getComputedStyle(s.querySelector('.ks-film-scene')).position, seksjonVh: +(s.offsetHeight / innerHeight).toFixed(2), y: Math.round(scrollY), knapp: [Math.round(k.left + k.width / 2), Math.round(k.top + k.height / 2)], synligeFilmdeler,
+    h1: Math.round(document.querySelector('h1').getBoundingClientRect().top + scrollY) };
+});
+// Største sammenhengende scrollstrekning der skjermen bare viser tom flate (ingen tekst, bilde eller video i midtlinjen)
+const tomStrekning = p => p.evaluate(async () => {
+  const raf = () => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+  const tot = document.documentElement.scrollHeight - innerHeight; let maks = 0, nå = 0;
+  for (let y = 0; y <= tot; y += 50) {
+    scrollTo(0, y); await raf();
+    const innhold = [.2, .35, .5, .65, .8].some(fy => { for (const fx of [.1, .3, .5, .7, .9]) { const el = document.elementFromPoint(innerWidth * fx, innerHeight * fy); if (!el || el.closest('.cm-topp')) continue; if (el.closest('video, img, figure, a, button, h1, h2, h3, p, li, span')) return true; } return false; });
+    if (innhold) nå = 0; else { nå += 50; maks = Math.max(maks, nå); }
+  }
+  scrollTo(0, 0); return maks;
+});
+for (const [w, h] of [[1440, 900], [390, 844]]) {
+  // R1: hovedskriptet blokkeres (nettverksfeil) – statisk alternativ straks, menyen virker uten JS, ingen film lastes
+  {
+    const c = await b.newContext({ viewport: { width: w, height: h }, ...mobil(w) }); const p = await c.newPage(); const film = [];
+    p.on('request', q => /\/film\/.*\.(mp4|webm)$/.test(q.url()) && film.push(q.url()));
+    await p.route(HOVED, r => r.abort());
+    await p.goto(url, { waitUntil: 'load' }); await p.waitForTimeout(400);
+    const t = await tilstand(p); const tom = await tomStrekning(p);
+    const meny = await p.evaluate(() => ({ lenker: [...document.querySelectorAll('.cm-meny ul a')].filter(a => a.getBoundingClientRect().height > 0).length, knapp: getComputedStyle(document.querySelector('.cm-menyknapp')).display }));
+    const innhold = await p.evaluate(() => [...document.querySelectorAll('.ks-replikk, .ks-film-bilde, h1')].every(e => { e.scrollIntoView({ block: 'center' }); const r = e.getBoundingClientRect(), el = document.elementFromPoint(r.left + Math.min(20, r.width / 2), r.top + Math.min(12, r.height / 2)); return +getComputedStyle(e).opacity > .99 && !!el && (e.contains(el) || el.contains(e)); }));
+    check(`R1 ${w}`, 'Hovedskript blokkert: statisk alternativ uten tom strekning, meny uten JS, ingen filmnedlasting', t.reserve && t.feil && !t.klar && t.sticky !== 'sticky' && t.seksjonVh < 2.6 && tom <= h * 1.05 && innhold && (w < 768 ? meny.lenker >= 3 && meny.knapp === 'none' : true) && film.length === 0,
+      `reserve ${t.reserve}, js-feil ${t.feil}, scene ${t.sticky}, filmseksjonen ${t.seksjonVh} skjermhøyder (aktivt oppsett: ${w < 768 ? 3.6 : 4.2}); lengste tomme strekning ${tom} px (åpningen er én skjermhøyde, ${h} px); plakat, replikker og H1 synlige ${innhold}; ${w < 768 ? `menylenker synlige ${meny.lenker}, menyknapp ${meny.knapp}; ` : ''}filmforespørsler ${film.length}`);
+    await c.close();
+  }
+  // R2: hovedskriptet henger (svarer aldri) – ren åpning til reserven slår inn etter 5 s, deretter statisk uten hopp
+  {
+    const c = await b.newContext({ viewport: { width: w, height: h }, ...mobil(w) }); const p = await c.newPage();
+    await p.route(HOVED, () => {}); // aldri besvart
+    await p.addInitScript(loggInit);
+    await p.goto(url, { waitUntil: 'commit' }); await p.waitForSelector('.ks-cidea'); await p.waitForTimeout(1200);
+    const før = await tilstand(p); await p.waitForTimeout(4300); const etter = await tilstand(p);
+    const l = await p.evaluate(() => window.__logg); const tom = await tomStrekning(p);
+    check(`R2 ${w}`, 'Hovedskript henger: ren åpning, reserve etter 5 s, knappen flytter seg ikke', !før.reserve && før.synligeFilmdeler === 0 && etter.reserve && !etter.klar && etter.sticky !== 'sticky' && etter.knapp.join() === før.knapp.join() && l.every(x => !x.vis.length) && tom <= h * 1.05,
+      `ved 1,2 s: reserve ${før.reserve}, filmtekst/kontroller synlige ${før.synligeFilmdeler}; ved 5,5 s: reserve ${etter.reserve}, scene ${etter.sticky}; CIDEA-knappens senter ${før.knapp.join(',')} → ${etter.knapp.join(',')}; bilder med filmtekst over åpningen: ${l.filter(x => x.vis.length).length} av ${l.length}; lengste tomme strekning ${tom} px`);
+    await c.close();
+  }
+  // R3: leseren scroller før hovedskriptet er klart (skriptet henger) – statisk med en gang, ingen tom strekning å scrolle gjennom
+  {
+    const c = await b.newContext({ viewport: { width: w, height: h }, ...mobil(w) }); const p = await c.newPage();
+    await p.route(HOVED, () => {});
+    await p.goto(url, { waitUntil: 'commit' }); await p.waitForSelector('.ks-cidea'); await p.waitForTimeout(800);
+    if (w === 1440) { await p.mouse.move(700, 450); await p.mouse.wheel(0, h * 1.3); } else { await p.dispatchEvent('body', 'touchmove'); await p.evaluate(h => scrollBy(0, h * 1.3), h); }
+    await p.waitForTimeout(500);
+    const t = await tilstand(p);
+    const ser = await p.evaluate(() => { const el = document.elementFromPoint(innerWidth / 2, innerHeight / 2); return el?.closest('figure, .ks-replikker, .ks-ord, video') ? (el.closest('figure, .ks-replikker, .ks-ord, video').className || el.tagName) : (el?.className || 'ingenting'); });
+    check(`R3 ${w}`, 'Leseren scroller før skriptet er klart: statisk innhold, ikke tom hvit flate', t.reserve && t.sticky !== 'sticky' && /ks-film-bilde|ks-replikker|ks-ord|ks-video/.test(ser),
+      `reserve ${t.reserve}, scene ${t.sticky}, scrollY ${t.y}; midt i skjermen: ${ser}`);
+    await c.close();
+  }
+  // R4: hovedskriptet kommer etter 7 s mens leseren står i åpningen – bytter til film uten hopp og uten tekstblink
+  {
+    const c = await b.newContext({ viewport: { width: w, height: h }, ...mobil(w) }); const p = await c.newPage();
+    await p.route(HOVED, async r => { await vent(7000); await r.continue().catch(() => {}); });
+    await p.addInitScript(() => { window.__r4 = []; const t0 = performance.now(); const g = () => { const s = document.querySelector('.ks-film'); if (s) { const k = document.querySelector('.ks-cidea').getBoundingClientRect(); window.__r4.push({ t: Math.round(performance.now() - t0), k: Math.round(k.top + k.height / 2) + ',' + Math.round(k.left + k.width / 2), vis: [...document.querySelectorAll('.ks-replikk, .ks-hopp')].filter(e => { const r = e.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight && e.checkVisibility({ opacityProperty: true, visibilityProperty: true }) && +getComputedStyle(e).opacity > .02; }).length, y: Math.round(scrollY) }); } if (performance.now() - t0 < 9500) requestAnimationFrame(g); }; requestAnimationFrame(g); });
+    await p.goto(url, { waitUntil: 'commit' }); await p.waitForSelector('.ks-cidea'); await p.waitForTimeout(5600);
+    const før = await tilstand(p);
+    await p.waitForFunction(() => document.documentElement.hasAttribute('data-js-klar'), null, { timeout: 15000 }); await p.waitForTimeout(800);
+    const etter = await tilstand(p); const l = await p.evaluate(() => window.__r4);
+    const posisjoner = [...new Set(l.map(x => x.k))], blink = l.filter(x => x.vis).length;
+    await klar(p); await p.evaluate(() => scrollTo(0, 60)); await p.waitForTimeout(1500);
+    const åpnet = await p.evaluate(() => document.querySelector('.ks-film').dataset.apning);
+    check(`R4 ${w}`, 'Skript kommer etter 7 s, leseren i åpningen: reserve → film uten hopp eller tekstblink, filmen virker', før.reserve && !etter.reserve && etter.aktiv && etter.sticky === 'sticky' && etter.y === 0 && posisjoner.length === 1 && blink === 0 && åpnet === 'apen',
+      `ved 5,6 s: reserve ${før.reserve} (scene ${før.sticky}); etter skriptet: reserve ${etter.reserve}, film styrt av JS ${etter.aktiv}, scene ${etter.sticky}, scrollY ${etter.y}; CIDEA-knappens posisjoner gjennom hele forløpet: ${posisjoner.join(' | ')}; bilder med filmtekst/kontroller over åpningen: ${blink} av ${l.length}; første scroll etterpå: ${åpnet}`);
+    await c.close();
+  }
+  // R5: hovedskriptet kommer etter 7 s, men leseren har scrollet inn i det statiske innholdet – oppsettet beholdes
+  {
+    const c = await b.newContext({ viewport: { width: w, height: h }, ...mobil(w) }); const p = await c.newPage(); const film = [];
+    p.on('request', q => /\/film\/.*\.(mp4|webm)$/.test(q.url()) && film.push(q.url()));
+    await p.route(HOVED, async r => { await vent(7000); await r.continue().catch(() => {}); });
+    await p.goto(url, { waitUntil: 'commit' }); await p.waitForSelector('.ks-cidea'); await p.waitForTimeout(1000);
+    if (w === 1440) { await p.mouse.move(700, 450); await p.mouse.wheel(0, h * 1.4); } else { await p.dispatchEvent('body', 'touchmove'); await p.evaluate(h => scrollBy(0, h * 1.4), h); }
+    await p.waitForTimeout(600);
+    const før = await tilstand(p);
+    const plakatFør = await p.evaluate(() => Math.round(document.querySelector('.ks-film-bilde').getBoundingClientRect().top));
+    await p.waitForFunction(() => document.documentElement.hasAttribute('data-js-klar'), null, { timeout: 15000 }); await p.waitForTimeout(1000);
+    const etter = await tilstand(p);
+    const plakatEtter = await p.evaluate(() => Math.round(document.querySelector('.ks-film-bilde').getBoundingClientRect().top));
+    check(`R5 ${w}`, 'Skript kommer etter 7 s, leseren har scrollet: statisk oppsett beholdes, ingenting flytter seg', før.reserve && etter.statisk && etter.reserve && etter.sticky !== 'sticky' && etter.y === før.y && plakatEtter === plakatFør && etter.h1 === før.h1 && film.length === 0,
+      `før skriptet: scrollY ${før.y}, plakat ${plakatFør} px, H1 ved ${før.h1}; etter: statisk ${etter.statisk}, scene ${etter.sticky}, scrollY ${etter.y}, plakat ${plakatEtter} px, H1 ved ${etter.h1}; filmforespørsler ${film.length}`);
+    await c.close();
+  }
+}
+
 // B3: oppdatering midt i scenen – filmen er åpen med en gang (uten sirkelanimasjon), riktig bilde og replikk, mørk meny,
 // og ingen tekst over feil scene under innlastingen
 for (const [w, h] of [[1440, 900], [390, 844]]) {

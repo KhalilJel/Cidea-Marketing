@@ -1,6 +1,6 @@
 # Testresultat – prototype /konsept-scroll
 
-Kjørt 2026-10-20T19:05:47.004Z mot `dist/` (Netlify-regel). Chromium, og Firefox og WebKit fra Playwright der de er installert. Automatiske målinger, ikke en WCAG-samsvarserklæring.
+Kjørt 2026-10-20T19:25:09.194Z mot `dist/` (Netlify-regel). Chromium, og Firefox og WebKit fra Playwright der de er installert. Automatiske målinger, ikke en WCAG-samsvarserklæring.
 
 | ID | Test | Resultat | Måling |
 |---|---|---|---|
@@ -14,18 +14,28 @@ Kjørt 2026-10-20T19:05:47.004Z mot `dist/` (Netlify-regel). Chromium, og Firefo
 | A3 1440 tastatur | CIDEA aktiveres med tastatur | OK | fokus på knappen etter 7 Tab, filmen apen, scrollY 148 (forventet ca. 148), fokus på #film, adresse uendret: true |
 | A3 390 klikk | CIDEA aktiveres med klikk | OK | filmen apen, scrollY 114 (forventet ca. 114), fokus på #film, adresse uendret: true |
 | A3 390 tastatur | CIDEA aktiveres med tastatur | OK | fokus på knappen etter 4 Tab, filmen apen, scrollY 114 (forventet ca. 114), fokus på #film, adresse uendret: true |
-| B1 1440 kald | Oppstart (kald): ingen filmtekst, hoppelenke eller film over åpningen | OK | 122 bilder logget over 3 s; bilder med synlig filmtekst/kontroll/film før åpning: 0; JS styrer filmen etterpå: true |
-| B1 1440 treg JS | Oppstart (treg JS): ingen filmtekst, hoppelenke eller film over åpningen | OK | 134 bilder logget over 3 s; bilder med synlig filmtekst/kontroll/film før åpning: 0; JS styrer filmen etterpå: true |
-| B1 390 kald | Oppstart (kald): ingen filmtekst, hoppelenke eller film over åpningen | OK | 121 bilder logget over 3 s; bilder med synlig filmtekst/kontroll/film før åpning: 0; JS styrer filmen etterpå: true |
-| B1 390 treg JS | Oppstart (treg JS): ingen filmtekst, hoppelenke eller film over åpningen | OK | 135 bilder logget over 3 s; bilder med synlig filmtekst/kontroll/film før åpning: 0; JS styrer filmen etterpå: true |
-| B2 1440 | Rask scroll fram og tilbake over klippgrensene: tekst aldri over feil scene | OK | 295 bilder kontrollert ved 8 raske hopp (4 grenser × 2 retninger); brudd: ingen |
-| B2 390 | Rask scroll fram og tilbake over klippgrensene: tekst aldri over feil scene | OK | 285 bilder kontrollert ved 8 raske hopp (4 grenser × 2 retninger); brudd: ingen |
-| B4 1440 → 0.28 | Rask scroll fra toppen inn i filmen: ingen tekst eller hoppelenke før filmen dekker skjermen | OK | 97 bilder; tekst/lenke synlig mens sirkelen var under 70 %: 0; tekst synlig etter åpning: true |
+| B1 1440 kald | Oppstart (kald): ingen filmtekst, hoppelenke eller film over åpningen | OK | 114 bilder logget over 3 s; bilder med synlig filmtekst/kontroll/film før åpning: 0; JS styrer filmen etterpå: true |
+| B1 1440 treg JS | Oppstart (treg JS): ingen filmtekst, hoppelenke eller film over åpningen | OK | 129 bilder logget over 3 s; bilder med synlig filmtekst/kontroll/film før åpning: 0; JS styrer filmen etterpå: true |
+| B1 390 kald | Oppstart (kald): ingen filmtekst, hoppelenke eller film over åpningen | OK | 116 bilder logget over 3 s; bilder med synlig filmtekst/kontroll/film før åpning: 0; JS styrer filmen etterpå: true |
+| B1 390 treg JS | Oppstart (treg JS): ingen filmtekst, hoppelenke eller film over åpningen | OK | 133 bilder logget over 3 s; bilder med synlig filmtekst/kontroll/film før åpning: 0; JS styrer filmen etterpå: true |
+| B2 1440 | Rask scroll fram og tilbake over klippgrensene: tekst aldri over feil scene | OK | 296 bilder kontrollert ved 8 raske hopp (4 grenser × 2 retninger); brudd: ingen |
+| B2 390 | Rask scroll fram og tilbake over klippgrensene: tekst aldri over feil scene | OK | 296 bilder kontrollert ved 8 raske hopp (4 grenser × 2 retninger); brudd: ingen |
+| B4 1440 → 0.28 | Rask scroll fra toppen inn i filmen: ingen tekst eller hoppelenke før filmen dekker skjermen | OK | 96 bilder; tekst/lenke synlig mens sirkelen var under 70 %: 0; tekst synlig etter åpning: true |
 | B4 1440 → 0.505 | Rask scroll fra toppen inn i filmen: ingen tekst eller hoppelenke før filmen dekker skjermen | OK | 97 bilder; tekst/lenke synlig mens sirkelen var under 70 %: 0; tekst synlig etter åpning: true |
 | B4 390 → 0.28 | Rask scroll fra toppen inn i filmen: ingen tekst eller hoppelenke før filmen dekker skjermen | OK | 97 bilder; tekst/lenke synlig mens sirkelen var under 70 %: 0; tekst synlig etter åpning: true |
 | B4 390 → 0.505 | Rask scroll fra toppen inn i filmen: ingen tekst eller hoppelenke før filmen dekker skjermen | OK | 97 bilder; tekst/lenke synlig mens sirkelen var under 70 %: 0; tekst synlig etter åpning: true |
-| B3 1440 | Oppdatering midt i scenen: filmen åpen uten sirkelanimasjon, riktig replikk, ingen tekst over feil scene | OK | scroll før/etter oppdatering 1454/1454; åpen fra 62 ms med klipp circle(75%); mellomstørrelser på sirkelen: false; replikk 3, filmtid 7.90 s, meny «film»; bilder med tekst over feil scene: 0 av 151 |
-| B3 390 | Oppdatering midt i scenen: filmen åpen uten sirkelanimasjon, riktig replikk, ingen tekst over feil scene | OK | scroll før/etter oppdatering 1108/1108; åpen fra 65 ms med klipp circle(75%); mellomstørrelser på sirkelen: false; replikk 3, filmtid 7.90 s, meny «film»; bilder med tekst over feil scene: 0 av 151 |
+| R1 1440 | Hovedskript blokkert: statisk alternativ uten tom strekning, meny uten JS, ingen filmnedlasting | OK | reserve true, js-feil true, scene static, filmseksjonen 2.31 skjermhøyder (aktivt oppsett: 4.2); lengste tomme strekning 100 px (åpningen er én skjermhøyde, 900 px); plakat, replikker og H1 synlige true; filmforespørsler 0 |
+| R2 1440 | Hovedskript henger: ren åpning, reserve etter 5 s, knappen flytter seg ikke | OK | ved 1,2 s: reserve false, filmtekst/kontroller synlige 0; ved 5,5 s: reserve true, scene static; CIDEA-knappens senter 720,450 → 720,450; bilder med filmtekst over åpningen: 0 av 179; lengste tomme strekning 100 px |
+| R3 1440 | Leseren scroller før skriptet er klart: statisk innhold, ikke tom hvit flate | OK | reserve true, scene static, scrollY 1170; midt i skjermen: ks-video |
+| R4 1440 | Skript kommer etter 7 s, leseren i åpningen: reserve → film uten hopp eller tekstblink, filmen virker | OK | ved 5,6 s: reserve true (scene static); etter skriptet: reserve false, film styrt av JS true, scene sticky, scrollY 0; CIDEA-knappens posisjoner gjennom hele forløpet: 450,720; bilder med filmtekst/kontroller over åpningen: 0 av 469; første scroll etterpå: apen |
+| R5 1440 | Skript kommer etter 7 s, leseren har scrollet: statisk oppsett beholdes, ingenting flytter seg | OK | før skriptet: scrollY 1260, plakat -288 px, H1 ved 2561; etter: statisk true, scene static, scrollY 1260, plakat -288 px, H1 ved 2561; filmforespørsler 0 |
+| R1 390 | Hovedskript blokkert: statisk alternativ uten tom strekning, meny uten JS, ingen filmnedlasting | OK | reserve true, js-feil true, scene static, filmseksjonen 1.66 skjermhøyder (aktivt oppsett: 3.6); lengste tomme strekning 100 px (åpningen er én skjermhøyde, 844 px); plakat, replikker og H1 synlige true; menylenker synlige 3, menyknapp none; filmforespørsler 0 |
+| R2 390 | Hovedskript henger: ren åpning, reserve etter 5 s, knappen flytter seg ikke | OK | ved 1,2 s: reserve false, filmtekst/kontroller synlige 0; ved 5,5 s: reserve true, scene static; CIDEA-knappens senter 195,422 → 195,422; bilder med filmtekst over åpningen: 0 av 177; lengste tomme strekning 50 px |
+| R3 390 | Leseren scroller før skriptet er klart: statisk innhold, ikke tom hvit flate | OK | reserve true, scene static, scrollY 1097; midt i skjermen: ks-ord |
+| R4 390 | Skript kommer etter 7 s, leseren i åpningen: reserve → film uten hopp eller tekstblink, filmen virker | OK | ved 5,6 s: reserve true (scene static); etter skriptet: reserve false, film styrt av JS true, scene sticky, scrollY 0; CIDEA-knappens posisjoner gjennom hele forløpet: 422,195; bilder med filmtekst/kontroller over åpningen: 0 av 469; første scroll etterpå: apen |
+| R5 390 | Skript kommer etter 7 s, leseren har scrollet: statisk oppsett beholdes, ingenting flytter seg | OK | før skriptet: scrollY 1182, plakat -270 px, H1 ved 1600; etter: statisk true, scene static, scrollY 1182, plakat -270 px, H1 ved 1600; filmforespørsler 0 |
+| B3 1440 | Oppdatering midt i scenen: filmen åpen uten sirkelanimasjon, riktig replikk, ingen tekst over feil scene | OK | scroll før/etter oppdatering 1454/1454; åpen fra 48 ms med klipp circle(75%); mellomstørrelser på sirkelen: false; replikk 3, filmtid 7.90 s, meny «film»; bilder med tekst over feil scene: 0 av 150 |
+| B3 390 | Oppdatering midt i scenen: filmen åpen uten sirkelanimasjon, riktig replikk, ingen tekst over feil scene | OK | scroll før/etter oppdatering 1108/1108; åpen fra 63 ms med klipp circle(75%); mellomstørrelser på sirkelen: false; replikk 3, filmtid 7.90 s, meny «film»; bilder med tekst over feil scene: 0 av 151 |
 | K2 320 | Ingen horisontal overflow | OK | 0 px, målt i 28 scrollposisjoner over 5868 px |
 | K2 375 | Ingen horisontal overflow | OK | 0 px, målt i 24 scrollposisjoner over 6298 px |
 | K2 390 | Ingen horisontal overflow | OK | 0 px, målt i 23 scrollposisjoner over 6417 px |
@@ -36,8 +46,8 @@ Kjørt 2026-10-20T19:05:47.004Z mot `dist/` (Netlify-regel). Chromium, og Firefo
 | K3 390 | Vanlig nettleserscroll, ingen blokkerende hjul-/berøringslyttere | OK | scrollY etter scroll: 600, overflow html/body: visible/visible, ikke-passive lyttere: ingen |
 | K5 390 | Én festet scene (åpning + film) med begrenset lengde | OK | festet: ks-film-scene; festet strekning 260vh (grense 265vh) |
 | F1 | Filmfiler: små, faststart, uten lyd, plakat og byteområder | OK | MP4 2.85 MB (bokser ftyp moov free mdat), WebM 2.09 MB, plakat 29 kB, lydspor MP4 false / WebM false, Range-svar 206 |
-| F2 1440 | Filmen følger scrollen fram og tilbake; fire replikker; ingen gjentakelse av «Bli sett. Bli valgt.» | OK | fram: replikker 1→2→3→4, tid 0.04→21.25 s, stigende true; tilbake: største tidsavvik 0.042 s; replikker i filmen: 4; overskrift etter filmen «Bli settBli valgt»; feil: ingen |
-| F2 390 | Filmen følger scrollen fram og tilbake; fire replikker; ingen gjentakelse av «Bli sett. Bli valgt.» | OK | fram: replikker 1→2→3→4, tid 0.00→21.25 s, stigende true; tilbake: største tidsavvik 0.000 s; replikker i filmen: 4; overskrift etter filmen «Bli settBli valgt»; feil: ingen |
+| F2 1440 | Filmen følger scrollen fram og tilbake; fire replikker; ingen gjentakelse av «Bli sett. Bli valgt.» | OK | fram: replikker 1→2→3→4, tid 0.00→21.25 s, stigende true; tilbake: største tidsavvik 0.042 s; replikker i filmen: 4; overskrift etter filmen «Bli settBli valgt»; feil: ingen |
+| F2 390 | Filmen følger scrollen fram og tilbake; fire replikker; ingen gjentakelse av «Bli sett. Bli valgt.» | OK | fram: replikker 1→2→3→4, tid 0.04→21.25 s, stigende true; tilbake: største tidsavvik 0.042 s; replikker i filmen: 4; overskrift etter filmen «Bli settBli valgt»; feil: ingen |
 | F3 1440×900 | Replikkene står i avtalt hjørne oppå filmen, én om gangen | OK | 1 nv 7–39 % × 75–87 %; 2 ov 7–39 % × 14–26 %; 3 oh 61–93 % × 14–26 %; 4 nv 7–39 % × 69–87 % |
 | F3 1280×720 | Replikkene står i avtalt hjørne oppå filmen, én om gangen | OK | 1 nv 7–39 % × 73–87 %; 2 ov 7–39 % × 14–28 %; 3 oh 61–93 % × 14–28 %; 4 nv 7–39 % × 66–87 % |
 | F3 1920×1080 | Replikkene står i avtalt hjørne oppå filmen, én om gangen | OK | 1 nv 7–34 % × 75–87 %; 2 ov 7–34 % × 14–26 %; 3 oh 66–93 % × 14–26 %; 4 nv 7–34 % × 70–87 % |
@@ -70,4 +80,4 @@ Kjørt 2026-10-20T19:05:47.004Z mot `dist/` (Netlify-regel). Chromium, og Firefo
 | K11 firefox | firefox | IKKE KJØRT | nettleseren er ikke installert i dette miljøet |
 | K11 webkit | webkit | IKKE KJØRT | nettleseren er ikke installert i dette miljøet |
 
-**63 av 65 bestått, 2 ikke kjørt.**
+**73 av 75 bestått, 2 ikke kjørt.**
