@@ -1,6 +1,6 @@
 # Testresultat – fase 6, hele nettstedet
 
-Kjørt 2026-10-20T18:06:47.247Z i Chromium (Playwright) mot `dist/` med Netlify-regelen (fil → mappe/index.html → 404.html; POST → 405 fordi det ikke finnes skjemamottak lokalt). Automatiske målinger – ikke estetisk godkjenning og ikke en WCAG-samsvarserklæring.
+Kjørt 2026-10-20T19:10:04.870Z i Chromium (Playwright) mot `dist/` med Netlify-regelen (fil → mappe/index.html → 404.html; POST → 405 fordi det ikke finnes skjemamottak lokalt). Automatiske målinger – ikke estetisk godkjenning og ikke en WCAG-samsvarserklæring.
 
 | ID | Test | Resultat | Måling |
 |---|---|---|---|

@@ -22,19 +22,23 @@ const FILM = {
   ],
 };
 
-// Replikkene er lagt på faktiske hendelser i filmen (sekunder i den omkodede filen):
-// mannen i speilet 0–1,4 · finner salongen på telefonen 1,75–4,9 · bestiller i frisørstolen 6,6–9,0 ·
-// elektrikeren møter kunden 9,95–15,0. Hver replikk slutter litt før klippet, så teksten ikke henger over neste scene. Paret ved restauranten (17,3–21,25) står uten tekst; «Bli sett / Bli valgt»
-// kommer som stor overskrift etter filmen.
-// fra/til er andel av den festede scrollengden. plass = hjørne på brede skjermer (nv = nede til venstre, ov = oppe til
-// venstre, oh = oppe til høyre); mobil = bånd øverst eller nederst på stående skjermer. Valgt der filmen ikke viser
-// ansikter, telefoner eller viktige handlinger (avvik på mobil er dokumentert i FILM.md).
+// Replikkene er lagt på faktiske hendelser i filmen. fra/til er filmtid i sekunder i den omkodede filen:
+// mannen i speilet · finner salongen på telefonen · bestiller i frisørstolen · elektrikeren møter kunden.
+// Paret ved restauranten (17,25–21,25) står uten tekst; «Bli sett / Bli valgt» kommer som stor overskrift etter filmen.
+// Hver replikk er helt borte senest ved til, som ligger før neste klipp (5,08 · 9,17 · 15,21 s). Synligheten regnes ut
+// fra filmtiden (se styrke), så den følger filmen uansett hvor fort eller i hvilken retning det scrolles.
+// plass = hjørne på brede skjermer (nv = nede til venstre, ov = oppe til venstre, oh = oppe til høyre); mobil = bånd
+// øverst eller nederst på stående skjermer. Valgt der filmen ikke viser ansikter, telefoner eller viktige handlinger
+// (avvik på mobil er dokumentert i FILM.md).
 export const replikker = [
-  { tekst: "Noen trenger det dere tilbyr.", fra: .07, til: .175, plass: "nv", mobil: "bunn" },
-  { tekst: "Gjør det enkelt å finne dere.", fra: .20, til: .35, plass: "ov", mobil: "topp" },
-  { tekst: "Og enkelt å ta neste steg.", fra: .43, til: .57, plass: "oh", mobil: "bunn" },
-  { tekst: "Fra digital interesse til ekte møter.", fra: .65, til: .82, plass: "nv", mobil: "bunn" },
+  { tekst: "Noen trenger det dere tilbyr.", fra: .05, til: 1.42, plass: "nv", mobil: "bunn" },
+  { tekst: "Gjør det enkelt å finne dere.", fra: 1.75, til: 4.95, plass: "ov", mobil: "topp" },
+  { tekst: "Og enkelt å ta neste steg.", fra: 6.6, til: 9.05, plass: "oh", mobil: "bunn" },
+  { tekst: "Fra digital interesse til ekte møter.", fra: 9.95, til: 15.05, plass: "nv", mobil: "bunn" },
 ];
+// Inn- og uttoning i filmsekunder. 0 utenfor fra–til, 1 i midten, lineært over RAMPE i hver ende.
+export const RAMPE = .4;
+export const styrke = (r, t) => Math.max(0, Math.min(1, (t - r.fra) / RAMPE, (r.til - t) / RAMPE));
 // Første del (0–ÅPNING) er åpningen: knappen trykkes inn og filmen åpnes; filmen står på første bilde.
 export const ÅPNING = .05;
 // Scroll → filmtid, stykkevis lineært: hver replikk får omtrent like lang scroll uansett hvor lang hendelsen er,
@@ -49,8 +53,11 @@ function useFilmscroll(ref) {
   useEffect(() => {
     const sek = ref.current, video = sek?.querySelector("video"), knapp = sek?.querySelector(".ks-cidea"), ramme0 = sek?.closest(".cm");
     const rolig = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (!video || rolig.matches || !FILM.kilder.some(k => video.canPlayType(k.type))) return;
-    let ramme = 0, aktiv = -1, mål = 0, apen = false, posisjon = "";
+    if (!video || rolig.matches) return; // redusert bevegelse: statisk oppsett via CSS
+    if (!FILM.kilder.some(k => video.canPlayType(k.type))) { sek.classList.add("ks-statisk"); return; }
+    const linjer = [...sek.querySelectorAll(".ks-replikk")];
+    // vist = filmtiden til bildet som faktisk vises (kan ligge litt bak mål mens nettleseren spoler).
+    let ramme = 0, aktiv = -1, mål = 0, vist = 0, apen = false, posisjon = "", første = true;
     const sok = () => { if (video.readyState >= 1 && !video.seeking && Math.abs(video.currentTime - mål) > .02) video.currentTime = mål; };
     // Beskjæring: andel av bildebredden som vises. Under 0,75 (stående skjermer) følger utsnittet handlingen.
     const settUtsnitt = t => {
@@ -59,19 +66,34 @@ function useFilmscroll(ref) {
       if (synlig < .75) { const s = Math.min(1 - synlig, Math.max(0, interpoler(utsnitt, t) - synlig / 2)); p = `${(s / (1 - synlig) * 100).toFixed(1)}% 50%`; }
       if (p !== posisjon) { video.style.objectPosition = p; posisjon = p; }
     };
-    const åpne = verdi => { if (verdi === apen) return; apen = verdi; sek.dataset.apning = verdi ? "apen" : "lukket"; };
+    // Åpningsanimasjonen (knappetrykk og sirkel) spilles bare når man kommer fra toppen. Lastes siden midt i scenen
+    // (oppdatering, tilbakeknapp), er filmen åpen med en gang.
+    const direkte = () => { const m = ramme0 || sek; m.classList.add("ks-direkte"); requestAnimationFrame(() => requestAnimationFrame(() => m.classList.remove("ks-direkte"))); };
+    const åpne = (verdi, p = 0) => {
+      if (verdi === apen) return;
+      if (verdi && (første || p > ÅPNING * 1.5)) direkte();
+      apen = verdi; sek.dataset.apning = verdi ? "apen" : "lukket";
+    };
     const oppdater = () => {
       ramme = 0;
       const r = sek.getBoundingClientRect(), lengde = sek.offsetHeight - window.innerHeight;
       const p = Math.min(1, Math.max(0, -r.top / lengde));
       // Første scroll åpner filmen; tilbake helt til toppen lukker den igjen.
-      åpne(-r.top > 2);
-      const nr = apen ? replikker.findIndex(x => p >= x.fra && p <= x.til) + 1 : 0;
+      åpne(-r.top > 2, p); første = false;
+      mål = Math.min(interpoler(tidskart, p), (video.duration || 99) - .05);
+      // En replikk vises bare når både målet for scrollen og bildet som faktisk vises ligger innenfor dens tid.
+      // Da kan den aldri ligge over feil scene, selv om filmen henger litt etter ved rask scroll.
+      let nr = 0, best = .5;
+      replikker.forEach((x, i) => {
+        const o = apen ? Math.min(styrke(x, mål), styrke(x, vist)) : 0, v = o.toFixed(3);
+        if (linjer[i].style.getPropertyValue("--o") !== v) linjer[i].style.setProperty("--o", v);
+        if (o > best) { best = o; nr = i + 1; }
+      });
       if (nr !== aktiv) { sek.dataset.replikk = nr; aktiv = nr; }
       // Mørk toppmeny mens filmen fyller skjermen, lys ellers (kontrast i begge tilstander).
       if (ramme0) { const film = apen && r.top <= 0 && r.bottom > 80; if ((ramme0.dataset.meny === "film") !== film) { if (film) ramme0.dataset.meny = "film"; else delete ramme0.dataset.meny; } }
-      mål = Math.min(interpoler(tidskart, p), (video.duration || 99) - .05);
-      settUtsnitt(mål);
+      // Utsnittet følger bildet som faktisk vises, ikke målet, så det stemmer også mens filmen henger etter.
+      settUtsnitt(vist);
       sok();
     };
     const planlegg = () => { if (!ramme) ramme = requestAnimationFrame(oppdater); };
@@ -83,10 +105,12 @@ function useFilmscroll(ref) {
       sek.focus({ preventScroll: true });
     };
     const stopp = () => {
-      sek.classList.remove("ks-film-aktiv"); delete sek.dataset.replikk; delete sek.dataset.apning; if (ramme0) delete ramme0.dataset.meny;
+      sek.classList.remove("ks-film-aktiv"); sek.classList.add("ks-statisk"); delete sek.dataset.replikk; delete sek.dataset.apning; if (ramme0) delete ramme0.dataset.meny;
+      linjer.forEach(l => l.style.removeProperty("--o"));
       video.poster = FILM.plakat; video.style.objectPosition = ""; posisjon = "";
       window.removeEventListener("scroll", planlegg); window.removeEventListener("resize", planlegg);
       video.removeEventListener("seeked", sok); video.removeEventListener("loadedmetadata", planlegg);
+      video.removeEventListener("seeked", spolt); if (vfc) video.cancelVideoFrameCallback(vfc);
       knapp?.removeEventListener("click", trykk);
       cancelAnimationFrame(ramme); ramme = 0;
     };
@@ -94,7 +118,13 @@ function useFilmscroll(ref) {
     // hver kilde (Chromium hopper stille over en kilde med ukjent type), så tilstanden sjekkes etter hver feil.
     const feil = () => setTimeout(() => { if (video.error || video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) stopp(); });
     const endret = () => { if (rolig.matches) stopp(); };
+    // ks-film-aktiv markerer at JS styrer filmen; selve oppsettet gjelder fra første tegning (se konsept-scroll.css).
     sek.classList.add("ks-film-aktiv"); sek.dataset.apning = "lukket"; video.poster = FILM.start;
+    // Bildet som faktisk vises: requestVideoFrameCallback der det finnes, ellers tiden når spolingen er ferdig.
+    let vfc = 0;
+    const vistBilde = (_, md) => { vist = md.mediaTime; sek.dataset.vist = vist.toFixed(3); planlegg(); vfc = video.requestVideoFrameCallback(vistBilde); };
+    const spolt = () => { vist = video.currentTime; sek.dataset.vist = vist.toFixed(3); planlegg(); };
+    if ("requestVideoFrameCallback" in video) vfc = video.requestVideoFrameCallback(vistBilde); else video.addEventListener("seeked", spolt);
     window.addEventListener("scroll", planlegg, { passive: true });
     window.addEventListener("resize", planlegg, { passive: true });
     video.addEventListener("seeked", sok);

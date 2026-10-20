@@ -1,6 +1,6 @@
 # Testresultat – prototype /konsept-scroll
 
-Kjørt 2026-10-20T18:13:17.286Z mot `dist/` (Netlify-regel). Chromium, og Firefox og WebKit fra Playwright der de er installert. Automatiske målinger, ikke en WCAG-samsvarserklæring.
+Kjørt 2026-10-20T19:05:47.004Z mot `dist/` (Netlify-regel). Chromium, og Firefox og WebKit fra Playwright der de er installert. Automatiske målinger, ikke en WCAG-samsvarserklæring.
 
 | ID | Test | Resultat | Måling |
 |---|---|---|---|
@@ -14,6 +14,18 @@ Kjørt 2026-10-20T18:13:17.286Z mot `dist/` (Netlify-regel). Chromium, og Firefo
 | A3 1440 tastatur | CIDEA aktiveres med tastatur | OK | fokus på knappen etter 7 Tab, filmen apen, scrollY 148 (forventet ca. 148), fokus på #film, adresse uendret: true |
 | A3 390 klikk | CIDEA aktiveres med klikk | OK | filmen apen, scrollY 114 (forventet ca. 114), fokus på #film, adresse uendret: true |
 | A3 390 tastatur | CIDEA aktiveres med tastatur | OK | fokus på knappen etter 4 Tab, filmen apen, scrollY 114 (forventet ca. 114), fokus på #film, adresse uendret: true |
+| B1 1440 kald | Oppstart (kald): ingen filmtekst, hoppelenke eller film over åpningen | OK | 122 bilder logget over 3 s; bilder med synlig filmtekst/kontroll/film før åpning: 0; JS styrer filmen etterpå: true |
+| B1 1440 treg JS | Oppstart (treg JS): ingen filmtekst, hoppelenke eller film over åpningen | OK | 134 bilder logget over 3 s; bilder med synlig filmtekst/kontroll/film før åpning: 0; JS styrer filmen etterpå: true |
+| B1 390 kald | Oppstart (kald): ingen filmtekst, hoppelenke eller film over åpningen | OK | 121 bilder logget over 3 s; bilder med synlig filmtekst/kontroll/film før åpning: 0; JS styrer filmen etterpå: true |
+| B1 390 treg JS | Oppstart (treg JS): ingen filmtekst, hoppelenke eller film over åpningen | OK | 135 bilder logget over 3 s; bilder med synlig filmtekst/kontroll/film før åpning: 0; JS styrer filmen etterpå: true |
+| B2 1440 | Rask scroll fram og tilbake over klippgrensene: tekst aldri over feil scene | OK | 295 bilder kontrollert ved 8 raske hopp (4 grenser × 2 retninger); brudd: ingen |
+| B2 390 | Rask scroll fram og tilbake over klippgrensene: tekst aldri over feil scene | OK | 285 bilder kontrollert ved 8 raske hopp (4 grenser × 2 retninger); brudd: ingen |
+| B4 1440 → 0.28 | Rask scroll fra toppen inn i filmen: ingen tekst eller hoppelenke før filmen dekker skjermen | OK | 97 bilder; tekst/lenke synlig mens sirkelen var under 70 %: 0; tekst synlig etter åpning: true |
+| B4 1440 → 0.505 | Rask scroll fra toppen inn i filmen: ingen tekst eller hoppelenke før filmen dekker skjermen | OK | 97 bilder; tekst/lenke synlig mens sirkelen var under 70 %: 0; tekst synlig etter åpning: true |
+| B4 390 → 0.28 | Rask scroll fra toppen inn i filmen: ingen tekst eller hoppelenke før filmen dekker skjermen | OK | 97 bilder; tekst/lenke synlig mens sirkelen var under 70 %: 0; tekst synlig etter åpning: true |
+| B4 390 → 0.505 | Rask scroll fra toppen inn i filmen: ingen tekst eller hoppelenke før filmen dekker skjermen | OK | 97 bilder; tekst/lenke synlig mens sirkelen var under 70 %: 0; tekst synlig etter åpning: true |
+| B3 1440 | Oppdatering midt i scenen: filmen åpen uten sirkelanimasjon, riktig replikk, ingen tekst over feil scene | OK | scroll før/etter oppdatering 1454/1454; åpen fra 62 ms med klipp circle(75%); mellomstørrelser på sirkelen: false; replikk 3, filmtid 7.90 s, meny «film»; bilder med tekst over feil scene: 0 av 151 |
+| B3 390 | Oppdatering midt i scenen: filmen åpen uten sirkelanimasjon, riktig replikk, ingen tekst over feil scene | OK | scroll før/etter oppdatering 1108/1108; åpen fra 65 ms med klipp circle(75%); mellomstørrelser på sirkelen: false; replikk 3, filmtid 7.90 s, meny «film»; bilder med tekst over feil scene: 0 av 151 |
 | K2 320 | Ingen horisontal overflow | OK | 0 px, målt i 28 scrollposisjoner over 5868 px |
 | K2 375 | Ingen horisontal overflow | OK | 0 px, målt i 24 scrollposisjoner over 6298 px |
 | K2 390 | Ingen horisontal overflow | OK | 0 px, målt i 23 scrollposisjoner over 6417 px |
@@ -25,18 +37,18 @@ Kjørt 2026-10-20T18:13:17.286Z mot `dist/` (Netlify-regel). Chromium, og Firefo
 | K5 390 | Én festet scene (åpning + film) med begrenset lengde | OK | festet: ks-film-scene; festet strekning 260vh (grense 265vh) |
 | F1 | Filmfiler: små, faststart, uten lyd, plakat og byteområder | OK | MP4 2.85 MB (bokser ftyp moov free mdat), WebM 2.09 MB, plakat 29 kB, lydspor MP4 false / WebM false, Range-svar 206 |
 | F2 1440 | Filmen følger scrollen fram og tilbake; fire replikker; ingen gjentakelse av «Bli sett. Bli valgt.» | OK | fram: replikker 1→2→3→4, tid 0.04→21.25 s, stigende true; tilbake: største tidsavvik 0.042 s; replikker i filmen: 4; overskrift etter filmen «Bli settBli valgt»; feil: ingen |
-| F2 390 | Filmen følger scrollen fram og tilbake; fire replikker; ingen gjentakelse av «Bli sett. Bli valgt.» | OK | fram: replikker 1→2→3→4, tid 0.04→21.25 s, stigende true; tilbake: største tidsavvik 0.042 s; replikker i filmen: 4; overskrift etter filmen «Bli settBli valgt»; feil: ingen |
+| F2 390 | Filmen følger scrollen fram og tilbake; fire replikker; ingen gjentakelse av «Bli sett. Bli valgt.» | OK | fram: replikker 1→2→3→4, tid 0.00→21.25 s, stigende true; tilbake: største tidsavvik 0.000 s; replikker i filmen: 4; overskrift etter filmen «Bli settBli valgt»; feil: ingen |
 | F3 1440×900 | Replikkene står i avtalt hjørne oppå filmen, én om gangen | OK | 1 nv 7–39 % × 75–87 %; 2 ov 7–39 % × 14–26 %; 3 oh 61–93 % × 14–26 %; 4 nv 7–39 % × 69–87 % |
 | F3 1280×720 | Replikkene står i avtalt hjørne oppå filmen, én om gangen | OK | 1 nv 7–39 % × 73–87 %; 2 ov 7–39 % × 14–28 %; 3 oh 61–93 % × 14–28 %; 4 nv 7–39 % × 66–87 % |
 | F3 1920×1080 | Replikkene står i avtalt hjørne oppå filmen, én om gangen | OK | 1 nv 7–34 % × 75–87 %; 2 ov 7–34 % × 14–26 %; 3 oh 66–93 % × 14–26 %; 4 nv 7–34 % × 70–87 % |
 | F3 1024×768 | Replikkene står i avtalt hjørne oppå filmen, én om gangen | OK | 1 nv 7–39 % × 77–87 %; 2 ov 7–39 % × 14–24 %; 3 oh 61–93 % × 14–24 %; 4 nv 7–39 % × 72–87 % |
-| F4 320×640 | Filmen fyller skjermen, teksten oppå filmen, utsnittet følger handlingen | OK | utsnitt (object-position) ved replikk 1–4: 65.1% 50% / 59% 50% / 41.6% 50% / 73.2% 50% |
-| F4 375×812 | Filmen fyller skjermen, teksten oppå filmen, utsnittet følger handlingen | OK | utsnitt (object-position) ved replikk 1–4: 64.6% 50% / 58.7% 50% / 41.9% 50% / 72.5% 50% |
-| F4 390×844 | Filmen fyller skjermen, teksten oppå filmen, utsnittet følger handlingen | OK | utsnitt (object-position) ved replikk 1–4: 64.6% 50% / 58.7% 50% / 41.9% 50% / 72.5% 50% |
-| F4 768×1024 | Filmen fyller skjermen, teksten oppå filmen, utsnittet følger handlingen | OK | utsnitt (object-position) ved replikk 1–4: 68.7% 50% / 61.2% 50% / 39.6% 50% / 78.8% 50% |
-| F5 1440 | Kontrast: hvit replikk mot filmbildet bak (lyseste 5 %) | OK | 1: 11.05:1, 2: 6.60:1, 3: 13.01:1, 4: 6.52:1; laveste inkl. start/slutt 6.11:1 (krav 4,5:1) |
-| F5 1920 | Kontrast: hvit replikk mot filmbildet bak (lyseste 5 %) | OK | 1: 9.91:1, 2: 7.26:1, 3: 12.83:1, 4: 7.56:1; laveste inkl. start/slutt 5.92:1 (krav 4,5:1) |
-| F5 390 | Kontrast: hvit replikk mot filmbildet bak (lyseste 5 %) | OK | 1: 7.68:1, 2: 5.47:1, 3: 5.36:1, 4: 6.28:1; laveste inkl. start/slutt 4.90:1 (krav 4,5:1) |
+| F4 320×640 | Filmen fyller skjermen, teksten oppå filmen, utsnittet følger handlingen | OK | utsnitt (object-position) ved replikk 1–4: 65.1% 50% / 58.8% 50% / 41.5% 50% / 73.3% 50% |
+| F4 375×812 | Filmen fyller skjermen, teksten oppå filmen, utsnittet følger handlingen | OK | utsnitt (object-position) ved replikk 1–4: 64.6% 50% / 58.6% 50% / 41.7% 50% / 72.6% 50% |
+| F4 390×844 | Filmen fyller skjermen, teksten oppå filmen, utsnittet følger handlingen | OK | utsnitt (object-position) ved replikk 1–4: 64.6% 50% / 58.6% 50% / 41.7% 50% / 72.6% 50% |
+| F4 768×1024 | Filmen fyller skjermen, teksten oppå filmen, utsnittet følger handlingen | OK | utsnitt (object-position) ved replikk 1–4: 68.4% 50% / 61% 50% / 39.4% 50% / 78.9% 50% |
+| F5 1440 | Kontrast: hvit replikk mot filmbildet bak (lyseste 5 %) der replikken er helt synlig | OK | 1: 11.05:1, 2: 6.60:1, 3: 13.01:1, 4: 6.52:1; laveste inkl. start og slutt av fullt synlig del 5.94:1 (krav 4,5:1) |
+| F5 1920 | Kontrast: hvit replikk mot filmbildet bak (lyseste 5 %) der replikken er helt synlig | OK | 1: 9.91:1, 2: 7.26:1, 3: 12.83:1, 4: 7.56:1; laveste inkl. start og slutt av fullt synlig del 5.90:1 (krav 4,5:1) |
+| F5 390 | Kontrast: hvit replikk mot filmbildet bak (lyseste 5 %) der replikken er helt synlig | OK | 1: 7.68:1, 2: 5.47:1, 3: 5.36:1, 4: 6.28:1; laveste inkl. start og slutt av fullt synlig del 5.10:1 (krav 4,5:1) |
 | M1 1440 | Fast toppmeny: alltid øverst, udekket og lesbar (lys og mørk tilstand) | OK | åpning: lys, topp 0 px, laveste kontrast 18.13:1; film: film, topp 0 px, laveste kontrast 8.35:1; filmslutt: film, topp 0 px, laveste kontrast 8.35:1; tjenester: lys, topp 0 px, laveste kontrast 18.13:1; bunn: lys, topp 0 px, laveste kontrast 18.13:1 |
 | M1 390 | Fast toppmeny: alltid øverst, udekket og lesbar (lys og mørk tilstand) | OK | åpning: lys, topp 0 px, laveste kontrast 18.13:1; film: film, topp 0 px, laveste kontrast 8.35:1; filmslutt: film, topp 0 px, laveste kontrast 8.35:1; tjenester: lys, topp 0 px, laveste kontrast 18.13:1; bunn: lys, topp 0 px, laveste kontrast 18.13:1 |
 | M2 | Mobilmeny med tastatur over filmen | OK | åpnet: aria-expanded true, fokus på «Tjenester» (farge rgb(20, 22, 25), fokusring true, udekket true), 4 lenker udekket: true; Escape: aria-expanded false, fokus tilbake på knappen true |
@@ -58,4 +70,4 @@ Kjørt 2026-10-20T18:13:17.286Z mot `dist/` (Netlify-regel). Chromium, og Firefo
 | K11 firefox | firefox | IKKE KJØRT | nettleseren er ikke installert i dette miljøet |
 | K11 webkit | webkit | IKKE KJØRT | nettleseren er ikke installert i dette miljøet |
 
-**51 av 53 bestått, 2 ikke kjørt.**
+**63 av 65 bestått, 2 ikke kjørt.**

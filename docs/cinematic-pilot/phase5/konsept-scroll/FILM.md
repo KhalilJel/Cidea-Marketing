@@ -1,5 +1,39 @@
 # Filmscenen på /konsept-scroll
 
+## Revisjon 2.1 – oppstartsblink og tekst over neste scene (Claude Code skyøkt, 2026-10-20, ikke godkjent)
+
+Etter ChatGPTs gjennomgang av opptakene ved a39265a. Fullskjermretningen, knappen, menyen og sirkelåpningen er beholdt.
+
+### Årsaker (målt, ikke antatt)
+1. **Oppstartsblink:** siden ble forhåndsrendret i statisk oppsett, med replikkene som liste og hoppelenken synlig. Når JavaScript la til `ks-film-aktiv`, gikk de fra opasitet 1 til 0 via CSS-overgangen (0,28–0,3 s) og lå da over den hvite åpningen. Med 4× CPU-struping var alle fire replikkene og hoppelenken synlige i 13 bilder (0,54–0,82 s) på mobil og i 3 bilder på desktop.
+2. **Tekst over neste scene:** replikkens synlighet fulgte scrollposisjonen med en tidsbasert uttoning (0,28 s) og tok ikke hensyn til hvilket bilde filmen faktisk viste. Ved rask scroll fortsatte uttoningen over neste klipp. Baklengs tonet teksten inn før filmen hadde spolt tilbake.
+3. **Funnet underveis:** rask scroll rett fra toppen inn i filmen viste replikker over den hvite flaten mens sirkelen åpnet seg. Mobilutsnittet fulgte scrollmålet og ikke bildet som vises, slik at det kort kunne vise feil del av bildet mens filmen hang etter.
+
+### Rettet
+- Det aktive oppsettet gjelder fra første tegning når JavaScript er på (`html.js` settes i `<head>`) og redusert bevegelse ikke er valgt. Filmtekst og hoppelenke er skjult fra første rendering. JavaScript legger til `.ks-statisk` hvis filmen ikke kan spilles. Statisk alternativ uten JS, ved redusert bevegelse og ved videofeil er uendret.
+- Replikkene har filmtid i sekunder (`fra`/`til`). Synligheten (`--o`) er minimum av styrken ved scrollmålet og ved bildet som faktisk vises (`requestVideoFrameCallback`, ellers `seeked`), med inn- og uttoning over 0,4 filmsekunder. Hver replikk er helt borte før neste klipp (til: 1,42 · 4,95 · 9,05 · 15,05 s; klipp 5,08 · 9,17 · 15,21 s). Ingen tidsbasert overgang.
+- Tekstlaget vises først når sirkelen har åpnet seg, og skjules straks den lukkes.
+- Oppdatering eller tilbakeknapp midt i scenen åpner filmen direkte, uten sirkelanimasjon og knappetrykk.
+- Mobilutsnittet følger bildet som faktisk vises.
+
+### Verifisert (headless Chromium 141)
+`node tests/konsept-scroll.test.mjs` → **63/65 bestått, 2 ikke kjørt** (K11 Firefox/WebKit). Nye tester:
+- **B1:** kald innlasting og treg JS (hovedfilen holdt tilbake 2 s), begge med 4× CPU og ca. 1,6 Mbit/s / 150 ms, 1440 og 390. 0 bilder med filmtekst, hoppelenke eller film over åpningen, i 114–134 loggede bilder per kjøring.
+- **B2:** rask scroll (ett hopp) fram og tilbake over alle fire klippgrensene. 294–296 bilder kontrollert per størrelse; ingen synlig replikk utenfor filmtiden til bildet som vises.
+- **B3:** oppdatering midt i scenen. Samme scrollposisjon, filmen åpen fra 50–76 ms med full sirkel (ingen mellomstørrelser), replikk 3, mørk meny, 0 av 150 bilder med tekst over feil scene.
+- **B4:** rask scroll fra toppen inn i filmen. Ingen tekst eller hoppelenke mens sirkelen er under 70 %.
+- **Testene fanger feilene:** de nye testene er kjørt mot a39265a. B1 kald feilet (18–19 bilder med tekst over åpningen) og B3 feilet (animert sirkel). B2 feilet også, men bare fordi det gamle bygget mangler `data-vist`, så den kjøringen viser ikke feilen; der er før-opptaket beviset. B4 er kjørt mot en midlertidig versjon uten den nye sperren og feilet 2 av 4.
+- **F5 måler nå der replikken er helt synlig** (midten og første/siste punkt med opasitet ≥ 0,99, funnet ved skanning): laveste 5,94:1 (1440), 5,90:1 (1920), 5,10:1 (390). Under inn- og uttoningen (0,4 filmsekunder) er teksten delvis gjennomsiktig, og der måles ikke kontrast.
+- **Øvrige suiter:** nettsted 36/36, QA 86/86, forside 28/30 + 2 ikke kjørt.
+
+### Bevis
+`bevis/film/for-etter/`: for-etter-kald-1440.mp4, for-etter-kald-390.mp4, for-etter-rask-1440.mp4 og for-etter-rask-390.mp4. Før (a39265a) til venstre, etter til høyre; ikke tidssynkronisert ved rask scroll, fordi spolingen henger ulikt. Lages med `node tests/for-etter-opptak.mjs` og ffmpeg (hstack). Opptakene av hele opplevelsen (`opptak-film-*.mp4`) og skjermbildene er laget på nytt.
+
+### Ikke verifisert
+Firefox, Safari/WebKit (`requestVideoFrameCallback` finnes i Safari 15.4+ og Firefox 132+; ellers brukes `seeked`), ekte telefon og skjermleser. Hvis JavaScript-filen ikke lastes selv om JS er på, står siden i aktivt oppsett med hvit åpning gjennom den festede strekningen (320/260vh) før innholdet kommer.
+
+---
+
 ## Revisjon 2 – åpning med CIDEA-knapp (Claude Code skyøkt, 2026-10-20, ikke godkjent)
 
 Eiers føring 2026-10-20 erstatter kravet om å bevare den tidligere synlige åpningen. Produksjonsforsiden (`/`) er uendret. Samme film (480p-utkast), ingen ny generering og ingen kredittbruk.

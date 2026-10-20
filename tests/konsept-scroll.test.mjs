@@ -91,6 +91,81 @@ for (const [w, h, måte] of [[1440, 900, 'klikk'], [1440, 900, 'tastatur'], [390
   await c.close();
 }
 
+// B1: oppstart – filmtekst og hoppelenke er aldri synlige før filmen er åpen: kald innlasting med 4× CPU og tregt nett,
+// og treg JavaScript (hovedfilen holdes tilbake 2 s). Logger hvert bilde de første 3 s.
+const loggInit = () => { window.__logg = []; const t0 = performance.now(); const f = () => { const s = document.querySelector('.ks-film'); if (s) { const vis = [...document.querySelectorAll('.ks-replikk, .ks-hopp, .ks-film-bilde')].filter(e => { const r = e.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight && r.width > 0 && e.checkVisibility({ opacityProperty: true, visibilityProperty: true }) && +getComputedStyle(e).opacity > .02 && (!e.classList.contains('ks-film-bilde') || !/circle\(0%/.test(getComputedStyle(e).clipPath)); }).map(e => e.className.split(' ')[0] + (e.dataset.nr || '')); window.__logg.push({ t: Math.round(performance.now() - t0), apen: s.dataset.apning === 'apen', vis }); } if (performance.now() - t0 < 3000) requestAnimationFrame(f); }; requestAnimationFrame(f); };
+for (const [w, h] of [[1440, 900], [390, 844]]) {
+  for (const måte of ['kald', 'treg JS']) {
+    const c = await b.newContext({ viewport: { width: w, height: h }, ...mobil(w) }); const p = await c.newPage(); const cdp = await c.newCDPSession(p);
+    await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 }); await cdp.send('Network.enable');
+    await cdp.send('Network.emulateNetworkConditions', { offline: false, latency: 150, downloadThroughput: 1.6e6 / 8, uploadThroughput: 750e3 / 8 });
+    if (måte === 'treg JS') await p.route(/\/assets\/index-.*\.js$/, async r => { await new Promise(x => setTimeout(x, 2000)); await r.continue(); });
+    await p.addInitScript(loggInit);
+    await p.goto(url, { waitUntil: 'load' }); await p.waitForTimeout(3200);
+    const l = await p.evaluate(() => window.__logg);
+    const feil = l.filter(x => !x.apen && x.vis.length);
+    const aktivEtter = await p.evaluate(() => document.querySelector('.ks-film').classList.contains('ks-film-aktiv'));
+    check(`B1 ${w} ${måte}`, `Oppstart (${måte}): ingen filmtekst, hoppelenke eller film over åpningen`, l.length > 10 && feil.length === 0 && aktivEtter,
+      `${l.length} bilder logget over 3 s; bilder med synlig filmtekst/kontroll/film før åpning: ${feil.length}${feil.length ? ' (først ' + feil[0].t + ' ms: ' + feil[0].vis.join(',') + ')' : ''}; JS styrer filmen etterpå: ${aktivEtter}`);
+    await c.close();
+  }
+}
+
+// B2: tekst over feil scene – rask scroll fram og tilbake over hver klippgrense. Hvert bilde de neste 0,6 s kontrolleres:
+// en replikk som er synlig (opasitet > 0,01) må høre til filmtiden til bildet som faktisk vises (data-vist).
+for (const [w, h] of [[1440, 900], [390, 844]]) {
+  const c = await b.newContext({ viewport: { width: w, height: h }, ...mobil(w) }); const p = await c.newPage();
+  await p.goto(url, { waitUntil: 'networkidle' }); await klar(p); const f = await filmInfo(p);
+  await tilFilm(p, f, .1, 8); await p.waitForTimeout(800);
+  const RANGER = [[.05, 1.42], [1.75, 4.95], [6.6, 9.05], [9.95, 15.05]];
+  const grenser = [[.15, .40], [.33, .62], [.55, .70], [.78, .92]]; // [før, etter] rundt slutten av replikk 1–4 og neste klipp
+  const brudd = []; let n = 0;
+  for (const [før, etter] of grenser) {
+    for (const [fra, til] of [[før, etter], [etter, før]]) {
+      await tilFilm(p, f, fra, 4); await p.waitForTimeout(600);
+      await p.evaluate(([y]) => scrollTo(0, y), [f.top + f.len * til]); // ett hopp: rask scroll
+      const logg = await p.evaluate(RANGER => new Promise(r => { const ut = []; const t0 = performance.now(); const g = () => { const s = document.querySelector('.ks-film'), vist = +(s.dataset.vist || 0); const lis = [...document.querySelectorAll('.ks-replikk')].map((e, i) => [i, +getComputedStyle(e).opacity]).filter(([, o]) => o > .01); ut.push({ vist, lis, feil: lis.filter(([i]) => vist < RANGER[i][0] || vist > RANGER[i][1]).map(([i, o]) => `replikk ${i + 1} (${o.toFixed(2)}) ved filmtid ${vist.toFixed(2)}`) }); if (performance.now() - t0 < 600) requestAnimationFrame(g); else r(ut); }; requestAnimationFrame(g); }), RANGER);
+      n += logg.length; for (const x of logg) brudd.push(...x.feil);
+    }
+  }
+  check(`B2 ${w}`, 'Rask scroll fram og tilbake over klippgrensene: tekst aldri over feil scene', brudd.length === 0 && n > 100, `${n} bilder kontrollert ved 8 raske hopp (4 grenser × 2 retninger); brudd: ${brudd.length ? [...new Set(brudd)].slice(0, 5).join('; ') : 'ingen'}`);
+  await c.close();
+}
+
+// B4: rask scroll rett fra toppen inn i filmen – ingen filmtekst eller hoppelenke før sirkelen dekker skjermen
+for (const [w, h] of [[1440, 900], [390, 844]]) {
+  const c = await b.newContext({ viewport: { width: w, height: h }, ...mobil(w) }); const p = await c.newPage();
+  await p.goto(url, { waitUntil: 'networkidle' }); await klar(p); const f = await filmInfo(p);
+  for (const q of [.28, .505]) {
+    await til(p, 0); await p.waitForTimeout(1300);
+    const logg = p.evaluate(() => new Promise(r => { const ut = []; const t0 = performance.now(); const g = () => { const s = document.querySelector('.ks-film'), k = getComputedStyle(document.querySelector('.ks-film-bilde')).clipPath, rad = +(k.match(/circle\(([\d.]+)%/) || [0, 0])[1]; const sk = +getComputedStyle(document.querySelector('.ks-replikker')).opacity; const synlig = [...document.querySelectorAll('.ks-replikk')].some(e => sk * +getComputedStyle(e).opacity > .01) || (getComputedStyle(document.querySelector('.ks-hopp')).visibility === 'visible' && +getComputedStyle(document.querySelector('.ks-hopp')).opacity > .01); ut.push({ t: Math.round(performance.now() - t0), rad, synlig }); if (performance.now() - t0 < 1600) requestAnimationFrame(g); else r(ut); }; requestAnimationFrame(g); }));
+    for (let i = 1; i <= 6; i++) { await p.evaluate(y => scrollTo(0, y), f.top + f.len * q * i / 6); await p.waitForTimeout(16); }
+    const l = await logg;
+    const brudd = l.filter(x => x.synlig && x.rad < 70);
+    check(`B4 ${w} → ${q}`, 'Rask scroll fra toppen inn i filmen: ingen tekst eller hoppelenke før filmen dekker skjermen', brudd.length === 0 && l.some(x => x.synlig), `${l.length} bilder; tekst/lenke synlig mens sirkelen var under 70 %: ${brudd.length}${brudd.length ? ' (først ' + brudd[0].t + ' ms, ' + brudd[0].rad + ' %)' : ''}; tekst synlig etter åpning: ${l.some(x => x.synlig)}`);
+  }
+  await c.close();
+}
+
+// B3: oppdatering midt i scenen – filmen er åpen med en gang (uten sirkelanimasjon), riktig bilde og replikk, mørk meny,
+// og ingen tekst over feil scene under innlastingen
+for (const [w, h] of [[1440, 900], [390, 844]]) {
+  const c = await b.newContext({ viewport: { width: w, height: h }, ...mobil(w) }); const p = await c.newPage();
+  await p.goto(url, { waitUntil: 'networkidle' }); await klar(p); const f = await filmInfo(p);
+  await tilFilm(p, f, MIDT[2], 8); await p.waitForTimeout(800);
+  const yFør = await p.evaluate(() => Math.round(scrollY));
+  await p.addInitScript(() => { window.__b3 = []; const t0 = performance.now(); const RANGER = [[.05, 1.42], [1.75, 4.95], [6.6, 9.05], [9.95, 15.05]]; const g = () => { const s = document.querySelector('.ks-film'); if (s) { const vist = +(s.dataset.vist || 0); const bilde = document.querySelector('.ks-film-bilde'); window.__b3.push({ t: Math.round(performance.now() - t0), apning: s.dataset.apning || '', klipp: getComputedStyle(bilde).clipPath, overgang: getComputedStyle(bilde).transitionDuration, feil: [...document.querySelectorAll('.ks-replikk')].map((e, i) => [i, +getComputedStyle(e).opacity]).filter(([i, o]) => o > .01 && (vist < RANGER[i][0] || vist > RANGER[i][1])).length }); } if (performance.now() - t0 < 2500) requestAnimationFrame(g); }; requestAnimationFrame(g); });
+  await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(2600);
+  const l = await p.evaluate(() => window.__b3);
+  const r = await p.evaluate(() => ({ y: Math.round(scrollY), apning: document.querySelector('.ks-film').dataset.apning, replikk: document.querySelector('.ks-film').dataset.replikk, meny: document.querySelector('.cm').dataset.meny || '', t: document.querySelector('video').currentTime }));
+  const førsteÅpen = l.find(x => x.apning === 'apen');
+  const animert = l.some(x => x.apning === 'apen' && /circle\((?!75%)/.test(x.klipp));
+  const feil = l.reduce((s, x) => s + x.feil, 0);
+  check(`B3 ${w}`, 'Oppdatering midt i scenen: filmen åpen uten sirkelanimasjon, riktig replikk, ingen tekst over feil scene', r.y === yFør && r.apning === 'apen' && r.replikk === '3' && r.meny === 'film' && !animert && feil === 0 && !!førsteÅpen,
+    `scroll før/etter oppdatering ${yFør}/${r.y}; åpen fra ${førsteÅpen?.t ?? '–'} ms med klipp ${førsteÅpen?.klipp ?? '–'}; mellomstørrelser på sirkelen: ${animert}; replikk ${r.replikk}, filmtid ${r.t.toFixed(2)} s, meny «${r.meny}»; bilder med tekst over feil scene: ${feil} av ${l.length}`);
+  await c.close();
+}
+
 // K2: ingen horisontal overflow gjennom hele scrollen
 for (const [w, h] of [[320, 640], [375, 812], [390, 844], [768, 1024], [1440, 900]]) {
   const c = await b.newContext({ viewport: { width: w, height: h }, ...mobil(w) }); const p = await c.newPage();
@@ -198,10 +273,18 @@ for (const [w, h] of [[320, 640], [375, 812], [390, 844], [768, 1024]]) {
 for (const [w, h] of [[1440, 900], [1920, 1080], [390, 844]]) {
   const c = await b.newContext({ viewport: { width: w, height: h }, ...mobil(w) }); const p = await c.newPage();
   await p.goto(url, { waitUntil: 'networkidle' }); await p.evaluate(() => document.fonts.ready); await klar(p); const f = await filmInfo(p);
-  const ut = [];
+  // Målepunkter: midten og første/siste punkt der replikken er helt synlig (opasitet ≥ 0,99), funnet ved skanning.
+  // Under inn- og uttoning (0,4 filmsekunder) er teksten delvis gjennomsiktig; der måles ikke kontrast.
+  const punkter = [];
   for (const [i, q] of MIDT.entries()) {
-    for (const dq of [-.04, 0, .04]) {
-      await tilFilm(p, f, q + dq); await p.waitForTimeout(700);
+    const fulle = [];
+    for (let x = q - .12; x <= q + .12; x += .005) { await tilFilm(p, f, x, 1); if (await p.evaluate(nr => +getComputedStyle(document.querySelector(`.ks-replikk[data-nr="${nr}"]`)).opacity >= .99, i + 1)) fulle.push(x); }
+    punkter.push([i, [[fulle[0] + .002, -1], [q, 0], [fulle.at(-1) - .002, 1]]]);
+  }
+  const ut = [];
+  for (const [i, liste] of punkter) {
+    for (const [q, dq] of liste) {
+      await tilFilm(p, f, q); await p.waitForTimeout(700);
       const r = await p.evaluate(nr => { const li = document.querySelector(`.ks-replikk[data-nr="${nr}"]`); li.style.color = 'transparent'; li.style.textShadow = 'none'; const b = li.getBoundingClientRect(); return { x: Math.max(0, b.left), y: Math.max(0, b.top), width: Math.min(b.width, innerWidth - Math.max(0, b.left)), height: b.height }; }, i + 1);
       const png = await p.screenshot({ clip: r });
       await p.evaluate(nr => { const li = document.querySelector(`.ks-replikk[data-nr="${nr}"]`); li.style.color = ''; li.style.textShadow = ''; }, i + 1);
@@ -217,7 +300,7 @@ for (const [w, h] of [[1440, 900], [1920, 1080], [390, 844]]) {
     }
   }
   const min = Math.min(...ut.map(x => x.k));
-  check(`F5 ${w}`, 'Kontrast: hvit replikk mot filmbildet bak (lyseste 5 %)', min >= 4.5, ut.filter(x => x.dq === 0).map(x => `${x.nr}: ${x.k.toFixed(2)}:1`).join(', ') + `; laveste inkl. start/slutt ${min.toFixed(2)}:1 (krav 4,5:1)`);
+  check(`F5 ${w}`, 'Kontrast: hvit replikk mot filmbildet bak (lyseste 5 %) der replikken er helt synlig', min >= 4.5, ut.filter(x => x.dq === 0).map(x => `${x.nr}: ${x.k.toFixed(2)}:1`).join(', ') + `; laveste inkl. start og slutt av fullt synlig del ${min.toFixed(2)}:1 (krav 4,5:1)`);
   await c.close();
 }
 
@@ -331,8 +414,8 @@ for (const [w, h] of [[1440, 900], [390, 844]]) {
   const c = await b.newContext({ viewport: { width: w, height: h }, ...mobil(w) }); const p = await c.newPage();
   await p.route(/\/film\/.*\.(mp4|webm)$/, r => r.abort());
   await p.goto(url, { waitUntil: 'networkidle' }); await til(p, 300); await p.waitForTimeout(1500);
-  const r = await p.evaluate(() => { const s = document.querySelector('.ks-film'); return { aktiv: s.classList.contains('ks-film-aktiv'), apning: s.dataset.apning || '', sticky: getComputedStyle(s.querySelector('.ks-film-scene')).position, synlige: [...s.querySelectorAll('.ks-replikk')].filter(e => +getComputedStyle(e).opacity > .99 && e.getBoundingClientRect().height > 0).length, meny: document.querySelector('.cm').dataset.meny || '', plakat: document.querySelector('.ks-video').poster.endsWith('cidea-film-plakat.jpg') }; });
-  check(`F7 ${w}`, 'Filmen kan ikke lastes: statisk oppsett med alle replikker', !r.aktiv && !r.apning && r.sticky !== 'sticky' && r.synlige === 4 && r.plakat && !r.meny, `aktiv ${r.aktiv}, apning «${r.apning}», scene ${r.sticky}, ${r.synlige}/4 replikker synlige, plakat ${r.plakat}, menytilstand «${r.meny || 'lys'}»`);
+  const r = await p.evaluate(() => { const s = document.querySelector('.ks-film'); return { aktiv: s.classList.contains('ks-film-aktiv'), statisk: s.classList.contains('ks-statisk'), apning: s.dataset.apning || '', sticky: getComputedStyle(s.querySelector('.ks-film-scene')).position, synlige: [...s.querySelectorAll('.ks-replikk')].filter(e => +getComputedStyle(e).opacity > .99 && e.getBoundingClientRect().height > 0).length, meny: document.querySelector('.cm').dataset.meny || '', plakat: document.querySelector('.ks-video').poster.endsWith('cidea-film-plakat.jpg') }; });
+  check(`F7 ${w}`, 'Filmen kan ikke lastes: statisk oppsett med alle replikker', !r.aktiv && r.statisk && !r.apning && r.sticky !== 'sticky' && r.synlige === 4 && r.plakat && !r.meny, `aktiv ${r.aktiv}, apning «${r.apning}», scene ${r.sticky}, ${r.synlige}/4 replikker synlige, plakat ${r.plakat}, menytilstand «${r.meny || 'lys'}»`);
   await c.close();
 }
 
