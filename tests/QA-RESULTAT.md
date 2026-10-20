@@ -1,6 +1,6 @@
 # QA-resultat – fase 5.4 (faktisk side)
 
-Kjørt 2026-10-18T13:28:29.412Z i Chromium mot `dist/` (Netlify-regel), med `prefers-reduced-motion: reduce` (sluttbildet). Automatiske målinger – **ikke en WCAG-samsvarserklæring**; skjermleser og manuell gjennomgang gjenstår.
+Kjørt 2026-10-20T12:50:08.026Z i Chromium mot `dist/` (Netlify-regel), med `prefers-reduced-motion: reduce` (sluttbildet). Automatiske målinger – **ikke en WCAG-samsvarserklæring**; skjermleser og manuell gjennomgang gjenstår.
 
 | Side | Bredde | Kontroll | Resultat | Måling |
 |---|---|---|---|---|

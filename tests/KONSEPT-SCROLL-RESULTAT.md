@@ -1,6 +1,6 @@
 # Testresultat – prototype /konsept-scroll
 
-Kjørt 2026-10-20T12:38:06.487Z mot `dist/` (Netlify-regel). Chromium, og Firefox og WebKit fra Playwright der de er installert. Automatiske målinger, ikke en WCAG-samsvarserklæring.
+Kjørt 2026-10-20T12:52:30.979Z mot `dist/` (Netlify-regel). Chromium, og Firefox og WebKit fra Playwright der de er installert. Automatiske målinger, ikke en WCAG-samsvarserklæring.
 
 | ID | Test | Resultat | Måling |
 |---|---|---|---|
@@ -51,7 +51,7 @@ Kjørt 2026-10-20T12:38:06.487Z mot `dist/` (Netlify-regel). Chromium, og Firefo
 | F7 390 | Filmen kan ikke lastes: statisk oppsett med alle replikker | OK | aktiv false, scene static, 5/5 replikker synlige, seksjonen 65vh, plakat true |
 | F8 redusert bevegelse | Redusert bevegelse: ingen film lastet, alle replikker som tekst | OK | aktiv false, filmforespørsler 0, replikker: 5/5, hoppelenke true |
 | F8 uten JavaScript | Uten JavaScript: ingen film lastet, alle replikker som tekst | OK | aktiv false, filmforespørsler 0, replikker: 5/5, hoppelenke true |
-| F9 | Lastetid: filmen lastes etter siden, er bufret når scenen nås, og riktig bilde vises (strupet 4G) | OK | siden lastet etter 0.6 s; første filmforespørsel (cidea-film-utkast-480p.webm) 0.6 s; filmscenen nådd etter 6.7 s, hele filmen bufret da: true; plakat i mellomtiden cidea-film-start.jpg (filmens første bilde); filmbildet dekodet 449 ms etter ankomst; hopp til 95 % vist etter 85 ms |
+| F9 | Lastetid: filmen lastes etter siden, er bufret når scenen nås, og riktig bilde vises (strupet 4G) | OK | siden lastet etter 0.6 s; første filmforespørsel (cidea-film-utkast-480p.webm) 0.6 s; filmscenen nådd etter 6.7 s, hele filmen bufret da: true; plakat i mellomtiden cidea-film-start.jpg (filmens første bilde); filmbildet dekodet 285 ms etter ankomst; hopp til 95 % vist etter 63 ms |
 | K11 firefox | firefox | IKKE KJØRT | nettleseren er ikke installert i dette miljøet |
 | K11 webkit | webkit | IKKE KJØRT | nettleseren er ikke installert i dette miljøet |
 
