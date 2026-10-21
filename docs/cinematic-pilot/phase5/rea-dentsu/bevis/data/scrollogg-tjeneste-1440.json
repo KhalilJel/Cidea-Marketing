@@ -1,0 +1,164 @@
+[
+ {
+  "step": 0,
+  "y": 0,
+  "ty": 0,
+  "docH": 900,
+  "bodyH": 900,
+  "contentTf": "matrix(1, 0, 0, 1, 0, 0)",
+  "vis": [
+   "PageHeader_header",
+   "Heading_heading",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 1
+ },
+ {
+  "step": 1,
+  "y": 500,
+  "ty": 500,
+  "docH": 900,
+  "bodyH": 900,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -500)",
+  "vis": [
+   "PageHeader_media-holder",
+   "Image_image-holder",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 2,
+  "y": 1000,
+  "ty": 1000,
+  "docH": 900,
+  "bodyH": 900,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -1000)",
+  "vis": [
+   "ServicePage_service-page",
+   "TitleAndText_title-and-text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 3,
+  "y": 1500,
+  "ty": 1500,
+  "docH": 900,
+  "bodyH": 900,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -1500)",
+  "vis": [
+   "ServicePage_service-page",
+   "TitleAndText_title-and-text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 4,
+  "y": 2000,
+  "ty": 2000,
+  "docH": 900,
+  "bodyH": 900,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -2000)",
+  "vis": [
+   "Accordion_accordion",
+   "AccordionItem_header",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 5,
+  "y": 2420,
+  "ty": 2420,
+  "docH": 900,
+  "bodyH": 900,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -2420)",
+  "vis": [
+   "Accordion_accordion",
+   "AccordionItem_header",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 6,
+  "y": 2420,
+  "ty": 2420,
+  "docH": 900,
+  "bodyH": 900,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -2420)",
+  "vis": [
+   "Accordion_accordion",
+   "AccordionItem_header",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 1
+ },
+ {
+  "step": 7,
+  "y": 2420,
+  "ty": 2420,
+  "docH": 900,
+  "bodyH": 900,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -2420)",
+  "vis": [
+   "Accordion_accordion",
+   "AccordionItem_header",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 1
+ },
+ {
+  "step": "tilbake",
+  "y": 1420,
+  "ty": 1420,
+  "docH": 900,
+  "bodyH": 900,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -1420)",
+  "vis": [
+   "ServicePage_service-page",
+   "TitleAndText_title-and-text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ }
+]

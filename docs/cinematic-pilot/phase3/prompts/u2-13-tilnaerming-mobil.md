@@ -1,0 +1,6 @@
+PAGE: «Tilnærming», MOBILE 390px. Same header («CIDEA MARKETING» + «Meny»), footer and design system as the homepage mobile screen in this project.
+1. H1 «Et langsiktig partnerskap for digital vekst og stabilitet.» Sentence «Vi jobber med bedrifter over tid: fra første avklaring til videreutvikling etter lansering.» Full-width button «Snakk med oss». Artwork at full width: {{SVG:hero-mobil}}
+2. H2 «Slik jobber vi»: three connected colour planes stacked vertically and touching (navy, deep terracotta, forest green), white text: «Avklare behov» – «Vi går gjennom virksomheten, målgruppen og målene.»; «Designe og utvikle» – «Vi lager struktur, design og innhold og bygger løsningen.»; «Videreutvikle» – «Etter lansering kan vi forbedre og vedlikeholde løsningen over tid.»
+3. H2 «Hva du kan forvente»: a simple list with thin dividers: «Tydelige avklaringer før vi starter» · «Forslag basert på hva bedriften faktisk trenger» · «Løpende forbedringer når det er avtalt» · «Åpen dialog om prioriteringer».
+4. H2 «Cidea Marketing er en del av Cidea» – «Cidea Marketing er Cideas fagmiljø for nettsider, merkevare og digital synlighet.» Graphic {{SVG:konsept-kort}}. Buttons «Les om nettsider» and «Snakk med oss».
+5. Closing CTA exactly as in the rules (forest green field), then footer.

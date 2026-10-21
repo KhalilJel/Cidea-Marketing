@@ -21,8 +21,8 @@ En nettside bør vurderes ut fra hvilken jobb den skal gjøre. Hvis målet er fl
 
 En billig nettside som ikke blir funnet eller forstått kan derfor bli dyrere enn en gjennomtenkt løsning.
 
-## Før du bygger
+## Før dere bygger
 
-Definer hvem nettsiden skal hjelpe, hva de skal forstå og hva du ønsker at de skal gjøre etter besøket. Deretter kan teknologi og design velges rundt behovet.
+Definer hvem nettsiden skal hjelpe, hva de skal forstå og hva dere ønsker at de skal gjøre etter besøket. Deretter kan teknologi og design velges rundt behovet.
 
 Les også: [Hva bør en god bedriftsnettside inneholde?](./hva-bor-en-god-bedriftsnettside-inneholde.md)

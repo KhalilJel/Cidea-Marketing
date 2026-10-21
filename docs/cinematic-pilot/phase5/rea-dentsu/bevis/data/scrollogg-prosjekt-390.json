@@ -1,0 +1,470 @@
+[
+ {
+  "step": 0,
+  "y": 0,
+  "ty": 0,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, 0)",
+  "vis": [
+   "CaseHeader_case-header",
+   "CitiesNavigation_citiesNavigation",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 1
+ },
+ {
+  "step": 1,
+  "y": 318,
+  "ty": 318,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -318)",
+  "vis": [
+   "CaseHeader_case-header",
+   "Image_inner-image",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 2,
+  "y": 669,
+  "ty": 669,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -669)",
+  "vis": [
+   "Quote_quote",
+   "Text_text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 3,
+  "y": 987,
+  "ty": 987,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -987)",
+  "vis": [
+   "RichText_rich-text",
+   "Text_text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 4,
+  "y": 1305,
+  "ty": 1305,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -1305)",
+  "vis": [
+   "RichText_rich-text",
+   "Text_text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 5,
+  "y": 1623,
+  "ty": 1623,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -1623)",
+  "vis": [
+   "MediaLayout_parent-figure",
+   "Image_image-holder",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 6,
+  "y": 1941,
+  "ty": 1941,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -1941)",
+  "vis": [
+   "MediaLayout_parent-figure",
+   "Image_image-holder",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 7,
+  "y": 2260,
+  "ty": 2260,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -2260)",
+  "vis": [
+   "Case_case",
+   "RichText_rich-text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 8,
+  "y": 2578,
+  "ty": 2578,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -2578)",
+  "vis": [
+   "RichText_rich-text",
+   "Text_text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 9,
+  "y": 2896,
+  "ty": 2896,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -2896)",
+  "vis": [
+   "Case_case",
+   "RichText_rich-text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 10,
+  "y": 3214,
+  "ty": 3214,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -3214)",
+  "vis": [
+   "MediaLayout_parent-figure",
+   "Image_image-holder",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 11,
+  "y": 3533,
+  "ty": 3533,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -3533)",
+  "vis": [
+   "MediaLayout_parent-figure",
+   "Image_image-holder",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 12,
+  "y": 3851,
+  "ty": 3851,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -3851)",
+  "vis": [
+   "MediaLayout_parent-figure",
+   "Image_image-holder",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 13,
+  "y": 4169,
+  "ty": 4169,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -4169)",
+  "vis": [
+   "RichText_rich-text",
+   "Text_text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 14,
+  "y": 4487,
+  "ty": 4487,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -4487)",
+  "vis": [
+   "RichText_rich-text",
+   "Text_text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 15,
+  "y": 4805,
+  "ty": 4805,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -4805)",
+  "vis": [
+   "RichText_rich-text",
+   "Text_text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 16,
+  "y": 5123,
+  "ty": 5123,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -5123)",
+  "vis": [
+   "Case_case",
+   "RichText_rich-text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 17,
+  "y": 5441,
+  "ty": 5441,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -5441)",
+  "vis": [
+   "RichText_rich-text",
+   "Text_text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 18,
+  "y": 5760,
+  "ty": 5760,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -5760)",
+  "vis": [
+   "MediaLayout_parent-figure",
+   "Image_image-holder",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 19,
+  "y": 6078,
+  "ty": 6078,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -6078)",
+  "vis": [
+   "Statistics_statistics",
+   "Statistics_stat",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 20,
+  "y": 6396,
+  "ty": 6396,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -6396)",
+  "vis": [
+   "Statistics_container",
+   "Statistics_statistics",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 21,
+  "y": 6714,
+  "ty": 6714,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -6714)",
+  "vis": [
+   "RichText_rich-text",
+   "Text_text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 22,
+  "y": 7032,
+  "ty": 7032,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -7032)",
+  "vis": [
+   "Case_case",
+   "RichText_rich-text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 23,
+  "y": 7082,
+  "ty": 7082,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -7082)",
+  "vis": [
+   "RichText_rich-text",
+   "Text_text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 1
+ },
+ {
+  "step": 24,
+  "y": 7082,
+  "ty": 7082,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -7082)",
+  "vis": [
+   "RichText_rich-text",
+   "Text_text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 1
+ },
+ {
+  "step": 25,
+  "y": 7082,
+  "ty": 7082,
+  "docH": 844,
+  "bodyH": 844,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -7082)",
+  "vis": [
+   "RichText_rich-text",
+   "Text_text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 1
+ }
+]

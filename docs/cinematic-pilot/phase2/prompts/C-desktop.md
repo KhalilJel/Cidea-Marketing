@@ -1,0 +1,4 @@
+**CREATIVE DIRECTION – Konsept C: «Fremtidig håndverk» (Future Craft)**
+Gallery-like yet dynamic: vibrant but controlled colour layers, a playful and systematic typographic system, modular responsive compositions that rearrange like a well-curated exhibition, and unusually thoughtful transitions between sections. Elevated art direction without depending on stock photography – use original shapes, colour fields, type compositions and crafted illustrations. Avoid stereotypical glassmorphism, generic pastel agency templates and gradient blobs. This direction must be clearly different from a sculptural editorial magazine look and from a dark avant-garde technology look – different typography, composition and visual language, not only a colour swap.
+
+**PLATFORM:** Web, Desktop-first, 1440px wide full homepage.

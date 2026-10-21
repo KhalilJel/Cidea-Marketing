@@ -1,0 +1,130 @@
+/* Undersider (fase 6): rolig og oversiktlig. Bare godkjente tokens fra DESIGN.md (definert i forside.css under .cm).
+   Ingen nye figurer eller bilder; estetisk finpuss gjøres sammen med eier senere. */
+
+.cm .cm-skjult { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Sidehode */
+.sd-hode { padding: 56px 0 40px; border-bottom: 1px solid rgba(20, 22, 25, .1); }
+.sd-hode h1 { font-size: clamp(34px, 4.2vw, 56px); line-height: 1.08; font-weight: 800; max-width: 20ch; }
+.sd-ingress { font-size: 19px; line-height: 1.58; color: var(--dempet); max-width: 40em; margin-top: 18px !important; }
+.sd-sti ol { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-bottom: 20px !important; font-size: 14px; }
+.sd-sti li + li::before { content: "/"; margin-right: 10px; color: var(--dempet); }
+.sd-sti a { color: var(--dyp); font-weight: 700; text-decoration: none; display: inline-flex; min-height: 24px; align-items: center; }
+.sd-sti a:hover { text-decoration: underline; }
+.sd-sti [aria-current] { color: var(--dempet); }
+.sd-handling { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; margin-top: 28px; }
+
+/* Seksjoner */
+.sd-seksjon { padding: 72px 0; }
+.sd-tett { padding-top: 48px; }
+.sd-seksjon h2 { font-size: clamp(26px, 2.6vw, 36px); line-height: 1.15; }
+.sd-to { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 24px 64px; align-items: start; }
+.sd-brod { font-size: 18px; line-height: 1.65; max-width: 40em; }
+.sd-brod p + p { margin-top: 12px !important; }
+.sd-smal > * { max-width: 46em; }
+.sd-smal p { font-size: 18px; margin: 14px 0 28px !important; }
+.sd-seksjon .cm-steg { margin-top: 32px; }
+.sd-lenke { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--dyp); font-weight: 700; text-decoration: none; }
+
+/* Leveranse: rolige rader */
+.sd-rader > div { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 4px 32px; padding: 18px 0; border-top: 1px solid rgba(20, 22, 25, .14); }
+.sd-rader > div:last-child { border-bottom: 1px solid rgba(20, 22, 25, .14); }
+.sd-rader dt { font: 600 19px/1.35 "Outfit", system-ui, sans-serif; }
+.sd-rader dt a { color: var(--dyp); text-underline-offset: 4px; display: inline-flex; min-height: 24px; align-items: center; }
+.sd-rader dd { margin: 0; color: var(--dempet); }
+
+/* Punktlister uten nummerering */
+.sd-punkter li { padding: 16px 0; border-top: 1px solid rgba(20, 22, 25, .14); font-size: 18px; }
+.sd-punkter li:last-child { border-bottom: 1px solid rgba(20, 22, 25, .14); }
+.sd-punkter-lenker li { padding: 0; }
+.sd-punkter-lenker a { display: flex; min-height: 52px; align-items: center; color: var(--dyp); font-weight: 700; text-decoration: none; }
+.sd-punkter-lenker a:hover { text-decoration: underline; }
+
+/* Tjenesteoversikt */
+.sd-tjenester { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 48px; }
+.sd-tjenester li { border-top: 6px solid var(--strek); padding-top: 22px; }
+.sd-strek-marine { --strek: var(--marine); } .sd-strek-dyp { --strek: var(--dyp); } .sd-strek-skog { --strek: var(--skog); } .sd-strek-svart { --strek: var(--svart); }
+.sd-tjenester h2 { font-size: 26px; }
+.sd-tjenester h2 a { text-decoration: none; }
+.sd-tjenester h2 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.sd-tjeneste-ingress { font-weight: 600; margin: 10px 0 8px !important; }
+.sd-tjenester p { color: var(--dempet); }
+.sd-tjenester .sd-tjeneste-ingress { color: var(--svart); }
+
+/* Artikler */
+.sd-artikler { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 28px; }
+.sd-artikler-stor { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 48px; margin-top: 0; }
+.sd-artikler li { border-top: 2px solid var(--svart); }
+.sd-artikler a { display: block; padding-top: 18px; text-decoration: none; }
+.sd-artikler h2, .sd-artikler h3 { font-size: 22px; line-height: 1.25; margin-bottom: 10px; }
+.sd-artikler p { color: var(--dempet); margin-bottom: 8px !important; }
+.sd-artikler a:hover h2, .sd-artikler a:hover h3, .sd-artikler a:focus-visible h2, .sd-artikler a:focus-visible h3 { text-decoration: underline; text-underline-offset: 4px; }
+.sd-tema { display: block; color: var(--dyp); font-weight: 700; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 8px !important; }
+.sd-hode .sd-tema { margin: 18px 0 0 !important; }
+
+/* Lesetekst (artikkel og personvern) */
+.sd-artikkel { max-width: 44em; padding: 40px 0 24px; font-size: 18px; line-height: 1.7; }
+.sd-artikkel h2 { font-size: 28px; line-height: 1.2; margin: 40px 0 12px; }
+.sd-artikkel h3 { font-size: 21px; line-height: 1.3; margin: 28px 0 8px; }
+.sd-artikkel p + p { margin-top: 14px !important; }
+.sd-artikkel ul { list-style: disc; padding-left: 1.3em; margin: 12px 0 16px; }
+.sd-artikkel li + li { margin-top: 6px; }
+.sd-artikkel a { color: var(--dyp); font-weight: 600; text-underline-offset: 3px; }
+.sd-tilbake { padding-bottom: 64px; }
+.sd-avslutt { padding: 32px 0 80px; }
+
+/* Tydelig merket hull / ikke bekreftet */
+.sd-hull { border-left: 6px solid var(--dyp); background: var(--modul); padding: 14px 18px; margin: 18px 0 !important; font-size: 16px; }
+.sd-hull a { color: var(--dyp); font-weight: 600; }
+
+/* Kontakt */
+.sd-kontakt { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 48px 64px; padding-top: 48px; padding-bottom: 96px; align-items: start; }
+.sd-skjemaflate { background: var(--hvit); border: 1px solid rgba(20, 22, 25, .12); padding: 32px; }
+.sd-skjemaflate h2 { font-size: 28px; }
+.sd-felt { margin: 22px 0 0; border: 0; padding: 0; min-width: 0; }
+.sd-felt label, .sd-felt legend { display: block; font-weight: 700; font-size: 15px; margin-bottom: 8px; padding: 0; }
+.sd-valgfritt { font-weight: 400; color: var(--dempet); }
+.sd-felt input:not([type=radio]), .sd-felt textarea { width: 100%; font: 400 16px/1.5 "DM Sans", system-ui, sans-serif; color: var(--svart); background: var(--hvit); border: 1px solid rgba(20, 22, 25, .45); border-radius: 2px; padding: 12px 14px; min-height: 48px; }
+.sd-felt textarea { resize: vertical; }
+.sd-felt [aria-invalid="true"]:not([type=radio]) { border: 2px solid var(--dyp); }
+.sd-hjelp { color: var(--dempet); font-size: 14.5px; margin-top: 6px !important; }
+form > .sd-hjelp { margin-top: 22px !important; }
+.sd-hjelp a { color: var(--dyp); font-weight: 600; }
+.sd-feltfeil { color: var(--dyp-hover); font-weight: 700; font-size: 15px; margin-top: 6px !important; }
+.sd-feltfeil::before { content: "Feil: "; }
+.sd-valg { display: flex; flex-wrap: wrap; gap: 10px; }
+.sd-valg-alt { display: inline-flex !important; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border: 1px solid rgba(20, 22, 25, .3); border-radius: 2px; font-weight: 400 !important; margin: 0 !important; cursor: pointer; }
+.sd-valg-alt input { width: 18px; height: 18px; accent-color: var(--dyp); }
+.sd-valg-alt:has(input:checked) { border-color: var(--dyp); background: var(--modul); }
+.sd-honning { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.sd-send { margin-top: 24px; border: 0; cursor: pointer; }
+.sd-send[disabled] { opacity: .75; cursor: progress; }
+.sd-melding { padding: 16px 18px; margin-top: 22px; border-left: 6px solid; background: var(--modul); }
+.sd-melding h3 { font-size: 19px; margin-bottom: 6px; }
+.sd-melding-feil { border-color: var(--dyp); }
+.sd-melding-feil a { color: var(--dyp); font-weight: 600; }
+.sd-melding-feil ul { list-style: disc; padding-left: 1.2em; }
+.sd-melding-ok { border-color: var(--skog); }
+.sd-kontaktinfo h2 { font-size: 20px; margin: 0 0 8px; }
+.sd-kontaktinfo h2 ~ h2 { margin-top: 28px; }
+.sd-kontaktinfo p { color: var(--dempet); }
+.sd-kontaktinfo a { color: var(--dyp); font-weight: 700; overflow-wrap: anywhere; }
+
+/* Bunntekst: selskapsopplysninger */
+.cm-copy a { color: inherit; }
+
+@media (max-width: 860px) {
+  .sd-hode { padding: 36px 0 28px; }
+  .sd-hode h1 { font-size: 34px; }
+  .sd-ingress { font-size: 17px; }
+  .sd-seksjon { padding: 48px 0; }
+  .sd-tett { padding-top: 32px; }
+  .sd-to, .sd-kontakt { grid-template-columns: minmax(0, 1fr); }
+  .sd-brod { font-size: 17px; }
+  .sd-rader > div { grid-template-columns: 1fr; }
+  .sd-tjenester, .sd-artikler, .sd-artikler-stor { grid-template-columns: 1fr; gap: 32px; }
+  .sd-artikkel { font-size: 17px; padding-top: 28px; }
+  .sd-artikkel h2 { font-size: 24px; }
+  .sd-skjemaflate { padding: 22px 18px; }
+  .sd-send { width: 100%; justify-content: center; }
+}

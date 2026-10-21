@@ -1,0 +1,2 @@
+Targeted correction on this mobile screen only – keep everything else unchanged.
+The hero headline currently breaks the word "MARKEDSFØRING" in the middle ("MARKEDSFØRIN" / "G"). Reduce the hero headline font size on mobile just enough that the longest word "MARKEDSFØRING" fits on one line at 390px width, so the headline reads in four lines: "DESIGN SOM" / "MERKES." / "MARKEDSFØRING" / "SOM VIRKER." No word may ever be split.

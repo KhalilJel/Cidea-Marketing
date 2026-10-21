@@ -1,0 +1,70 @@
+/* Fase 4.3 seksjonsforhåndsvisninger. Bygger på preview.css. Ikke produksjonskode. */
+.seksjon { padding: 96px 0; }
+.seksjon h2 { font-size: 44px; line-height: 1.1; font-weight: 700; margin-bottom: 12px; }
+.seksjon .under { color: var(--dempet); font-size: 18px; margin: 0 0 40px; max-width: 40em; }
+
+/* «Hva vi leverer»: ett stort tjenestefelt delt i fliser med 2 px lyse fuger – ingen hvite rammer. */
+.leveranser { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--lys); }
+.leveranser li { list-style: none; background: var(--felt); color: var(--hvit); padding: 36px 32px 40px; min-height: 230px; }
+.leveranser { padding: 0; margin: 0; }
+.leveranser .glyf { width: 48px; height: 48px; display: block; margin-bottom: 28px; }
+.leveranser h3 { color: var(--hvit); font-size: 22px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.015em; }
+.leveranser p { margin: 0; font-size: 16px; line-height: 1.55; color: rgba(255,255,255,.92); }
+.leveranser li:nth-child(1) { grid-column: span 2; }   /* asymmetri: første flis bredere */
+.leveranser li:nth-child(6) { grid-column: span 3; display: grid; grid-template-columns: 48px 1fr 2fr; gap: 0 32px; align-items: start; min-height: 0; }
+.leveranser li:nth-child(6) .glyf { margin: 0; }
+@media (max-width: 760px) {
+  .seksjon { padding: 56px 0; }
+  .seksjon h2 { font-size: 30px; }
+  .seksjon .under { font-size: 16px; margin-bottom: 24px; }
+  .leveranser { grid-template-columns: 1fr; }
+  .leveranser li, .leveranser li:nth-child(1), .leveranser li:nth-child(6) { grid-column: auto; display: grid; grid-template-columns: 32px 1fr; gap: 4px 16px; padding: 20px; min-height: 0; }
+  .leveranser .glyf, .leveranser li:nth-child(6) .glyf { width: 32px; height: 32px; margin: 2px 0 0; grid-row: span 2; }
+  .leveranser h3 { font-size: 18px; margin: 0; }
+  .leveranser p { font-size: 15px; }
+}
+
+/* Innsikt: fremhevet artikkel som fargefelt + kort uten rammer, med egen grafikk per artikkel. */
+.fremhevet { display: grid; grid-template-columns: 1fr 1fr; background: var(--marine); color: var(--hvit); align-items: center; margin-bottom: 64px; }
+.fremhevet .tekst { padding: 56px; }
+.fremhevet .tema { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #E4E6EC; }
+.fremhevet h3 { color: var(--hvit); font-size: 38px; line-height: 1.1; margin: 14px 0 16px; }
+.fremhevet p { margin: 0 0 28px; color: rgba(255,255,255,.92); font-size: 17px; }
+.fremhevet .lenke-lys { color: var(--hvit); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.fremhevet .bilde { background: #FAFAFD; padding: 40px; height: 100%; display: flex; align-items: center; }
+.fremhevet .bilde svg, .artikler svg { width: 100%; height: auto; display: block; }
+.artikler { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 40px; padding: 0; margin: 0; }
+.artikler li { list-style: none; border-top: 2px solid var(--svart); padding-top: 20px; }
+.artikler .tema { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--dyp); margin: 18px 0 8px; display: block; }
+.artikler h3 { font-size: 22px; line-height: 1.25; margin-bottom: 10px; }
+.artikler p { margin: 0 0 14px; color: var(--dempet); font-size: 15.5px; }
+@media (max-width: 760px) {
+  .fremhevet { grid-template-columns: 1fr; margin-bottom: 40px; }
+  .fremhevet .bilde { order: -1; padding: 20px; }
+  .fremhevet .tekst { padding: 24px 20px 28px; }
+  .fremhevet h3 { font-size: 28px; }
+  .artikler { grid-template-columns: 1fr; gap: 28px; }
+  /* Mobil: grafikken som miniatyr ved siden av tittelen, ikke over kortet (lettere kort). */
+  .artikler li { display: grid; grid-template-columns: 104px 1fr; gap: 6px 16px; align-items: start; padding-top: 16px; }
+  .artikler li svg { grid-row: span 4; }
+  .artikler .tema { margin: 0; }
+  .artikler h3 { font-size: 19px; margin: 0; }
+  .artikler p { font-size: 15px; margin: 0; }
+  .artikler .lenke { min-height: 44px; }
+}
+
+/* Konsept-detalj: regelen som diagram + familien (alle komposisjoner i liten skala). */
+.regel { display: grid; grid-template-columns: 1.1fr .9fr; gap: 64px; align-items: center; }
+.regel .stor svg { width: 100%; height: auto; display: block; max-height: 560px; }
+.regel ol { margin: 0; padding: 0; counter-reset: none; }
+.regel li { list-style: none; padding: 18px 0; border-top: 1px solid rgba(20,22,25,.15); font-size: 18px; }
+.regel li b { font-family: "Outfit", sans-serif; display: block; font-size: 20px; margin-bottom: 4px; }
+.familie { display: grid; grid-template-columns: repeat(5, 1fr); gap: 32px 24px; padding: 0; margin: 0; }
+.familie li { list-style: none; }
+.familie svg { width: 100%; height: auto; display: block; background: #FFFFFF; padding: 14px; }
+.familie span { display: block; font-size: 14px; margin-top: 10px; color: var(--dempet); }
+.familie span b { color: var(--svart); font-weight: 700; }
+@media (max-width: 760px) {
+  .regel { grid-template-columns: 1fr; gap: 24px; }
+  .familie { grid-template-columns: repeat(2, 1fr); gap: 20px 14px; }
+}
