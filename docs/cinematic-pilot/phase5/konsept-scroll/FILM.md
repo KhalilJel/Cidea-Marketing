@@ -1,5 +1,45 @@
 # Filmscenen på /konsept-scroll
 
+## Revisjon 3 – sammenhengende avspilling i stedet for scrollstyrt spoling (Claude Code skyøkt, 2026-10-21, ikke godkjent)
+
+Eiers endelige føring: filmen starter ved første scrollforsøk og spiller sammenhengende i 1× til slutt. Scroll styrer den ikke lenger. Filmfiler, fire replikker med tider, plasseringer og mobilutsnitt, hvit åpning, sirkelåpning, fast meny og statiske reserver er beholdt.
+
+### Implementert (`src/konsept/KonseptScroll.jsx`, `konsept-scroll.css`)
+- **Åpning:** hvit flate med sentrert CIDEA og fast meny. CIDEA er nå et `<p>`: ser ut som en knapp, men er ikke klikkbar, ikke fokuserbar og har ingen knappesemantikk (ingen hover).
+- **Start:** første forsøk på å scrolle nedover i åpningen starter forløpet: hjul (deltaY > 0), sveip oppover (> 8 px) eller tastene Pil ned, Page Down, Mellomrom og End. Først kommer knappetrykket (0,34 s), så sirkelåpningen (0,3 + 0,8 s). Etter 1,1 s starter `video.play()` fra første bilde.
+- **Avspilling:** 1× til slutt, uten spoling, hastighetsendring eller pause. Filmscenen er nå én skjermhøyde, og den lange festede strekningen (320/260vh) er fjernet. Under oppstart og avspilling forkastes scrollforsøk med hjul, sveip og scrolltaster (`preventDefault`). Ingenting samles opp, så ingenting utløses ved filmslutt. Rullefeltet beholdes, så ingenting flytter seg. Scrolles siden likevel (rullefelt, søk i siden), stoppes filmen og siden frigjøres.
+- **Replikker og mobilutsnitt** følger filmtiden til bildet som faktisk vises (`requestVideoFrameCallback`, ellers `timeupdate`). De oppdateres i samme tegning som bildet, ikke ett bilde etter.
+- **«Til tjenester»** står nede til venstre gjennom hele filmscenen, fra åpningen er ferdig og også etter filmslutt. Aktivering stopper filmen, frigjør siden og går til `#tjenester`.
+- **Menyen** virker hele tiden. Et klikk på en menylenke, fokus som flyttes ut av scenen (Tab) og sidebytte (`pagehide`) stopper filmen og frigjør siden. Tilbake fra bfcache gir ingen gjenværende lås.
+- **Filmslutt:** siden frigjøres, siste bilde blir stående, og det er ingen gjentakelse. Leseren scroller selv videre til «Bli sett / Bli valgt», H1 og tjenester. Scroll tilbake til toppen starter ikke filmen på nytt i samme sidevisning (heller ikke etter «Til tjenester» eller avbrudd).
+- **Blokkert avspilling:** avviser nettleseren `play()`, eller står filmen stille i 10 s uten at data kommer, frigjøres siden. Da vises en egen knapp, «Spill av filmen», midt i scenen.
+- **Siden scrollet uten at filmen startet** (gjenopprettet scrollposisjon ved ny innlasting, rullefelt): filmen åpnes direkte med plakatbildet, og den spilles ikke av.
+- **Uendret:** statisk alternativ ved redusert bevegelse, uten JS, ved skriptfeil (`js-reserve`) og ved videofeil. Lasting av filmen etter at siden er lastet, eller straks ved start.
+
+### Verifisert (headless Chromium 141, Playwright 1.56.1)
+`node tests/konsept-scroll.test.mjs` → **79/81 bestått, 2 ikke kjørt** (K11 Firefox/WebKit). Nye eller endrede tester:
+- **P1** (1440 hjul, 390 sveip via ekte berøringshendelser): ett scrollforsøk gir 1 play, 0 spolinger, 0 hastighetsendringer, 1 pause (ved filmslutt). Filmtid/veggtid er 1,000 over 21,2–21,3 s, lengste stopp 0–1 ms, og filmen spiller til 21,31–21,33 av 21,33 s.
+- **P2:** to bølger med raske scrollforsøk begge veier (hjul + Page Down/Pil opp/Mellomrom/Home/End/Pil ned på desktop, sveip på mobil). scrollY er 0 i hele forløpet, og det er 0 spolinger og 0 pauser før slutt.
+- **P3:** replikkene kommer i rekkefølge 1→2→3→4. I ca. 1 340 bilder per størrelse er det ingen replikk utenfor filmtiden til bildet som vises, ingen tekst før sirkelen dekker, og utsnittet kommer alltid fra bildet som vises (282 ulike utsnitt på mobil).
+- **P4 filmslutt:** siden er frigjort og filmen står på siste bilde. Vanlig scroll videre virker. Tilbake til toppen og et nytt scrollforsøk gir ingen ny avspilling.
+- **P4 «Til tjenester»** (klikk, tastatur med fokusring, trykk på mobil): filmen stopper, siden frigjøres, tjenestene kommer rett under menyen, og det er ingen ny avspilling ved scroll til toppen.
+- **P5 meny:** menyvalg midt i filmen (desktop og mobilmeny) går til /om-oss uten lås. Etter Tilbake er det ingen lås.
+- **P6 blokkert avspilling** (simulert: `play()` avvises med NotAllowedError): «Spill av filmen» (`<button>`) vises og er udekket med fokusring, siden er frigjort, og «Til tjenester» er synlig. Enter starter filmen.
+- **A2/A3:** hjul og sveip starter filmen uten at siden scroller, og det samme gjør Pil ned, Page Down og Mellomrom. CIDEA får ikke fokus med Tab, og klikk på CIDEA gjør ingenting.
+- **B3:** ny innlasting nede på siden gir ingen avspilling og ingen lås, og plakatbildet vises, også etter scroll til toppen. **K3:** scenen er 1 skjermhøyde, ingen elementer er festet, og scroll endrer ikke filmtiden.
+- **F9** (strupet 4G, 9 Mbit/s / 85 ms): filmen lastes etter siden og går 1,3 s etter scrollforsøket (åpningen tar 1,1 s). Den venter aldri på data underveis.
+- **Beholdt:** A1, B1, R1–R5, F1, F3–F5 (plassering og kontrast måles nå på filmbilder ved bestemte tider: laveste 5,94 / 5,90 / 5,10:1), F6, F7, K1, K2, K4, K7–K10, M1, M2.
+- **Øvrige suiter:** nettsted 36/36, QA 86/86, forside 28/30 + 2 ikke kjørt (P2-ytelsestesten besto i denne kjøringen; kjent ustabil, se fase 6).
+- **Opptak:** `bevis/film/opptak-film-1440.mp4` (hjul) og `opptak-film-390.mp4` (sveip). Begge viser ett kort scrollforsøk, ingen innspill til filmen er ferdig, og deretter scroll videre (`node tests/film-bevis.mjs`). Skjermbildene `1440-*.jpg` og `390-*.jpg` i samme mappe er fra revisjon 2 (scrollstyrt) og ikke tatt på nytt.
+
+### Ikke verifisert / begrensninger
+- **Ikke testet:** Firefox, Safari/WebKit, ekte telefon (særlig iOS Safari: `preventDefault` på `touchmove` og blokkert autoavspilling) og skjermleser. Blokkert avspilling er bare testet ved simulering.
+- Scrollforsøk under filmen forkastes. Det er en bevisst, kortvarig scrollsperre (ca. 22 s) etter eiers føring, med «Til tjenester» og menyen som utgang. Musens midtklikk-autoscroll og rullefelt stopper filmen i stedet for å sperres.
+- Etter at filmen er avbrutt eller ferdig, kan den ikke spilles på nytt i samme sidevisning (bare ved ny innlasting fra toppen). Ved ny innlasting nede på siden vises plakatbildet uten avspilling.
+- 480p er mykt på store skjermer. Startklippet med innbrent «CIDEA»-knapp er fortsatt tatt ut.
+
+---
+
 ## Revisjon 2.2 – når hovedskriptet ikke tar over (Claude Code skyøkt, 2026-10-20, ikke godkjent)
 
 Retter begrensningen dokumentert i 2.1: med JS aktivert, men uten at hovedskriptet ble lastet, sto siden i aktivt oppsett med en hvit, festet strekning på 320/260vh. Visuell retning, knapp, meny og sirkelåpning er uendret.
