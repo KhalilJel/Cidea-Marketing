@@ -6,9 +6,9 @@ import { chromium } from 'playwright';
 import { mkdirSync, renameSync, rmSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { serve } from './serve-dist.mjs';
+import { serve } from '../serve-dist.mjs';
 
-const ut = fileURLToPath(new URL('../docs/cinematic-pilot/phase5/konsept-scroll/bevis/film/', import.meta.url));
+const ut = fileURLToPath(new URL('../../docs/cinematic-pilot/phase5/konsept-scroll/bevis/film/', import.meta.url));
 const tmp = ut + 'tmp/'; mkdirSync(tmp, { recursive: true });
 const server = await serve(4185); const b = await chromium.launch();
 const ease = t => 1 - Math.pow(1 - t, 3);

@@ -1,10 +1,10 @@
 # Testresultat – fase 6, hele nettstedet
 
-Kjørt 2026-10-21T00:25:56.395Z i Chromium (Playwright) mot `dist/` med Netlify-regelen (fil → mappe/index.html → 404.html; POST → 405 fordi det ikke finnes skjemamottak lokalt). Automatiske målinger – ikke estetisk godkjenning og ikke en WCAG-samsvarserklæring.
+Kjørt 2026-10-23T12:17:10.022Z i Chromium (Playwright) mot `dist/` med Netlify-regelen (fil → mappe/index.html → 404.html; POST → 405 fordi det ikke finnes skjemamottak lokalt). Automatiske målinger – ikke estetisk godkjenning og ikke en WCAG-samsvarserklæring.
 
 | ID | Test | Resultat | Måling |
 |---|---|---|---|
-| S1 /konsept-scroll | Direktelenke og oppdatering | OK | HTTP 200, H1 «Nettsider og helhetlig markedsføring som utvikles », tittel «Konsept: Fra ord til gjennomslag | Cidea», robots noindex, nofollow, forhåndsrendret /konsept-scroll, feil: ingen |
+| S1 /konsept-scroll | Direktelenke og oppdatering | OK | HTTP 200, H1 «Vi gir ideer form.», tittel «Konsept: Vi gir ideer form | Cidea Marke», robots noindex, nofollow, forhåndsrendret /konsept-scroll, feil: ingen |
 | S1 /tjenester | Direktelenke og oppdatering | OK | HTTP 200, H1 «Dette kan vi hjelpe dere med», tittel «Tjenester | Cidea Marketing», robots index,follow, forhåndsrendret /tjenester, feil: ingen |
 | S1 /websites | Direktelenke og oppdatering | OK | HTTP 200, H1 «Nettsider som gjør bedriften enklere å forstå, fin», tittel «Nettsider | Cidea Marketing», robots index,follow, forhåndsrendret /websites, feil: ingen |
 | S1 /branding | Direktelenke og oppdatering | OK | HTTP 200, H1 «Merkevarebygging som gjør bedriften lettere å kjen», tittel «Merkevarebygging | Cidea Marketing», robots index,follow, forhåndsrendret /branding, feil: ingen |
@@ -21,7 +21,7 @@ Kjørt 2026-10-21T00:25:56.395Z i Chromium (Playwright) mot `dist/` med Netlify-
 | S1 / | Direktelenke og oppdatering | OK | HTTP 200, H1 «Nettsider og helhetlig markedsføring som utvikles », tittel «Cidea Marketing – Nettsider og helhetlig», robots index,follow, forhåndsrendret /, feil: ingen |
 | S1 /finnes-ikke | Ukjent sti gir 404-side | OK | HTTP 404, H1 «Siden finnes ikke», tittel «Siden finnes ikke | Cidea Marketing», robots noindex, follow, forhåndsrendret /404, feil: ingen |
 | S1 /blog/finnes-ikke | Ukjent sti gir 404-side | OK | HTTP 404, H1 «Siden finnes ikke», tittel «Siden finnes ikke | Cidea Marketing», robots noindex, follow, forhåndsrendret /404, feil: ingen |
-| S2 | Alle interne lenker virker | OK | 18 unike interne lenker og 2 eksterne/e-post kontrollert |
+| S2 | Alle interne lenker virker | OK | 17 unike interne lenker og 2 eksterne/e-post kontrollert |
 | S3 | Lik meny på alle sider, logo til arbeidsforsiden, prototypen har noindex | OK | 15 sider, meny «Tjenester · Om oss · Innsikt · Snakk med oss», logo → /konsept-scroll, /konsept-scroll robots «noindex, nofollow» |
 | S4 390 | Ingen overflow, avkuttet tekst, engelske etiketter eller nummerering | OK | 16 sider |
 | S4 768 | Ingen overflow, avkuttet tekst, engelske etiketter eller nummerering | OK | 16 sider |

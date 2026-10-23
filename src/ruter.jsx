@@ -11,7 +11,7 @@ import { siderRuter, ikkeFunnet } from "./ruter-sider.jsx";
 export const ruter = {
   "/": { komponent: Forside, tittel: "Cidea Marketing – Nettsider og helhetlig markedsføring", beskrivelse: "Vi bygger nettsider, former merkevarer og driver målrettet SEO og digital markedsføring for bedrifter som ønsker kontinuerlig forbedring." },
   // Prototype og foreslått forside i forhåndsvisningsflyten (fase 5, ikke godkjent): skal ikke indekseres.
-  "/konsept-scroll": { komponent: KonseptScroll, tittel: "Konsept: Fra ord til gjennomslag | Cidea Marketing", beskrivelse: "Prototype av en scrollstyrt forside for Cidea Marketing. Ikke publisert som forside.", robots: "noindex, nofollow" },
+  "/konsept-scroll": { komponent: KonseptScroll, tittel: "Konsept: Vi gir ideer form | Cidea Marketing", beskrivelse: "Prototype av en forside for Cidea Marketing med en blå partikkelskulptur. Ikke publisert som forside.", robots: "noindex, nofollow" },
   "/kontakt": { komponent: Kontakt, tittel: "Kontakt | Cidea Marketing", beskrivelse: "Ta kontakt med Cidea Marketing om nettsider, merkevarebygging, SEO eller digital markedsføring." },
   ...siderRuter,
 };
