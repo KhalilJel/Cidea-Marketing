@@ -3,3 +3,7 @@
 # Kontaktskjemaet bruker Netlify Forms (skjemaet «kontakt» i dist/kontakt/index.html). Skjemaregistrering og
 # e-postvarsel må slås på i Netlify (Forms) før mottak kan testes; se docs/cinematic-pilot/phase6/README.md.
 # Byggeinnstillingene (kommando og publiseringsmappe) ligger uendret i Netlify.
+
+[build]
+  command = "npm run build"
+  publish = "dist"

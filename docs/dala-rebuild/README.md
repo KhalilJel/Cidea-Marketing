@@ -1,3 +1,7 @@
+# Produksjonsoppdatering
+
+Eier har i samtalen eksplisitt bekreftet tillatelse til original kode, 3D-ressurser og PP Neue Montreal-font og bedt om publisering på cideamarketing.com. Bekreftelsen legges til grunn; ingen separat lisensavtale er kontrollert. `npm run build` bygger nå den nye forsiden for produksjon. `build:reference` beholder noindex-prøven, og `build:legacy` bevarer gammel byggeflyt. Kontaktmottak forblir ubekreftet, med synlig e-postalternativ. 29 produksjonskontroller bestått. Teksten nedenfor beskriver tidligere lokal prøvestatus.
+
 # Cidea â€“ lokal referanseprÃ¸ve
 
 Dato: 2026-10-25. Gren: `redesign/dala-reference`, grunnlag `af014772`.
