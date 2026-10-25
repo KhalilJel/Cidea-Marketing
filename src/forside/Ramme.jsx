@@ -1,11 +1,13 @@
 import React, { useEffect, useId, useRef, useState } from "react";
 import { selskap } from "../sider/tjenester-innhold.js";
 
-// Fase 6: én sammenhengende meny for prototypen og undersidene. Kontakt nås via knappen «Snakk med oss».
+// Felles toppmeny for undersidene og mobilmenyen.
 export const meny = [
   { tekst: "Tjenester", href: "/tjenester" },
   { tekst: "Om oss", href: "/om-oss" },
   { tekst: "Innsikt", href: "/blog" },
+  { tekst: "Personvern", href: "/personvern" },
+  { tekst: "Kontakt", href: "/kontakt" },
 ];
 
 // Logoen fører til forsiden i både ordinært bygg og lokalt referansebygg.
