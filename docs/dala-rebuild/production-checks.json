@@ -87,7 +87,7 @@
   {
     "name": "All local links and resources resolve",
     "passed": true,
-    "detail": "{\"links\":412,\"missing\":[]}"
+    "detail": "{\"links\":380,\"missing\":[]}"
   },
   {
     "name": "Homepage indexable",

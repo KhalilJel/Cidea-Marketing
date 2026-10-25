@@ -6,7 +6,6 @@ export const meny = [
   { tekst: "Tjenester", href: "/tjenester" },
   { tekst: "Om oss", href: "/om-oss" },
   { tekst: "Innsikt", href: "/blog" },
-  { tekst: "Personvern", href: "/personvern" },
   { tekst: "Kontakt", href: "/kontakt" },
 ];
 
