@@ -81,7 +81,7 @@ export default function Kontakt() {
         <section className="sd-skjemaflate" aria-labelledby="henvendelse">
           <h2 id="henvendelse">Henvendelse</h2>
           {!MOTTAK_BEKREFTET && (
-            <p className="sd-hull" role="note">Skjemaet er koblet til skjemaløsningen hos nettstedets vertskap, men mottak er ikke bekreftet ennå. Haster det, skriv direkte til <a href={`mailto:${selskap.epost}`}>{selskap.epost}</a>.</p>
+            <p className="sd-hull" role="note">Vi tester fortsatt kontaktskjemaet. Send henvendelsen direkte til <a href={`mailto:${selskap.epost}`}>{selskap.epost}</a> inntil videre.</p>
           )}
 
           {status === "sendt" ? (

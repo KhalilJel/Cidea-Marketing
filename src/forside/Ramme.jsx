@@ -8,9 +8,8 @@ export const meny = [
   { tekst: "Innsikt", href: "/blog" },
 ];
 
-// I forhåndsvisningsflyten fører logoen til arbeidsforsiden (scrollprototypen). Ordinær / er ikke erstattet.
-// Settes til "/" når eier har godkjent ny forside.
-export const FORSIDE = "/konsept-scroll";
+// Logoen fører til forsiden i både ordinært bygg og lokalt referansebygg.
+export const FORSIDE = "/";
 
 /** Setter tittel, beskrivelse og kanonisk adresse for siden (erstatter den umonterte Meta i gammel kode). */
 export function useMeta({ tittel, beskrivelse, sti }) {
