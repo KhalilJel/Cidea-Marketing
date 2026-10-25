@@ -1,0 +1,77 @@
+/* Cidea overrides. Geometry, camera and scroll timings remain in the reference runtime. */
+:root{--cidea-bg:#030812;--cidea-blue:#0077b6;--cidea-ice:#66cfff;--cidea-text:#f5f8fc;--cidea-muted:#bcc6d2;--vh:1vh}
+body{background:var(--cidea-bg);color:var(--cidea-text)}
+::selection{background:#0077b6;color:white}
+a:focus-visible,button:focus-visible{outline:2px solid var(--cidea-ice);outline-offset:6px}
+.cidea-wordmark{display:inline-flex;flex-direction:column;align-items:flex-start;color:#f5f8fc!important;font-size:25px;font-weight:600;letter-spacing:.025em;line-height:1;text-decoration:none}
+.cidea-wordmark span{font-size:9px;letter-spacing:.24em;margin-top:5px}
+.header__logo{width:auto;min-width:100px;min-height:44px}
+.header__bg-inner,.site-loader__background{background:var(--cidea-bg)}
+.header-blur-block{background:linear-gradient(#030812,transparent)}
+.nav__link,.footer__nav__link{text-transform:none;letter-spacing:.025em}
+.btn{background:var(--cidea-blue);text-transform:none;min-height:44px;color:#fff;letter-spacing:.025em}
+.btn__hover{background:#005f92}.btn:hover{color:white}
+.t-yellow{color:var(--cidea-ice)}
+.landing__body p,.introduction__body,.manifesto--section p{color:var(--cidea-muted)}
+.landing__title{margin-top:0}
+#canvas{mix-blend-mode:screen}
+.fixed:has(>#canvas){mix-blend-mode:screen}
+.cidea-skip{position:fixed;top:-100px;left:20px;z-index:12000;background:#0077b6;color:white;padding:14px 20px;border-radius:24px}
+.cidea-skip:focus{top:12px}
+.cidea-motion{position:fixed;bottom:18px;right:20px;z-index:50;border:1px solid #2c465b;border-radius:24px;background:#030812e8;color:#bcc6d2;padding:10px 14px;font-size:12px;min-height:44px;cursor:pointer}
+.cidea-motion[hidden]{display:none}
+.cidea-section-title{font-weight:400;font-size:clamp(38px,5.4vw,78px);line-height:1.1;letter-spacing:-.04em;margin-bottom:48px}
+.cidea-services{width:58%;padding-right:5vw}
+.cidea-service-list a{display:grid;grid-template-columns:1fr 26px;gap:12px;padding:28px 0;border-top:1px solid #284259;text-decoration:none}
+.cidea-service-list h3{font-size:clamp(26px,2.6vw,38px);font-weight:400;letter-spacing:-.035em;line-height:1.15}
+.cidea-service-list p{grid-row:2;font-size:18px;line-height:1.5;color:#bcc6d2;max-width:30em}
+.cidea-service-list a>span{grid-column:2;grid-row:1;font-size:28px;color:#66cfff}
+.cidea-service-list a:hover h3{color:#66cfff}
+.cidea-about{margin-top:70px}.cidea-about h3{font-size:32px;line-height:1.15;font-weight:400;margin-bottom:20px}
+.cidea-about p{font-size:18px;line-height:1.5;color:#bcc6d2;margin-bottom:24px}
+.cidea-text-link{display:inline-block;text-decoration:underline;text-underline-offset:5px;min-height:44px;font-size:15px;font-weight:600}
+.cidea-insights{width:36%;padding-top:24vh;display:block}
+.cidea-insights>p{font-size:18px;line-height:1.5;color:#bcc6d2;margin-bottom:32px}
+.cidea-insights>a:not(.cidea-text-link){display:block;font-size:26px;line-height:1.2;letter-spacing:-.025em;border-top:1px solid #284259;padding:24px 0;text-decoration:none}
+.cidea-insights>a span{color:#66cfff}.cidea-insights>a:hover{color:#66cfff}
+.cidea-insights>.cidea-text-link{margin-top:20px}
+.cidea-services a,.cidea-insights a,.footer__copyright a{color:inherit}
+.js-team-section{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);align-items:start;gap:7vw}
+.js-team-section .cidea-services,.js-team-section .cidea-insights{width:100%;margin:0;padding:0;position:relative;left:auto;right:auto;top:auto}
+.js-team-section .cidea-insights{padding-top:24vh}
+.cidea-services,.cidea-insights{background:radial-gradient(ellipse,#030812e8 10%,#030812b8 70%,transparent 100%)}
+.header{background:linear-gradient(#030812f5,#030812df 75%,transparent)}
+.footer__copyright{display:flex;flex-direction:column;gap:8px;color:#bcc6d2}
+.footer__copyright a{font-size:13px;text-underline-offset:4px}
+.footer__nav{flex-wrap:wrap}.footer__bar{padding-bottom:65px}
+.nav-toggle .js-nav-toggle-cross{display:none}
+.cidea-menu-open .nav-toggle .js-nav-toggle-cross{display:block}
+.cidea-menu-open .nav-toggle .js-nav-toggle-burger{display:none}
+@media(max-width:1023px){.cidea-services{width:55%;padding-right:3vw}.cidea-insights{width:40%}.cidea-service-list p{font-size:16px}}
+@media(max-width:767px){
+ .header__logo{min-width:90px}.cidea-wordmark{font-size:22px}.cidea-wordmark span{font-size:8px}
+ .nav{visibility:hidden;pointer-events:none}.nav__list{padding-top:110px}
+ .cidea-menu-open .nav{position:fixed;inset:0;visibility:visible;background:#030812;pointer-events:auto;min-height:100dvh;overflow:auto}
+ .cidea-menu-open .nav__list{pointer-events:auto}.cidea-menu-open .nav__link{opacity:1!important;visibility:visible!important;transform:none!important;font-size:26px}
+ .cidea-menu-open .nav__item{opacity:1!important;visibility:visible!important;transform:none!important}
+ .nav-toggle{z-index:10200}.header__logo{position:relative;z-index:4}
+ .cidea-services,.cidea-insights{width:100%;padding:0}.cidea-insights{margin-top:80px}
+ .js-team-section{display:block}.js-team-section .cidea-insights{padding-top:80px}
+ .cidea-section-title{margin-bottom:30px}.cidea-service-list a{padding:24px 0}
+ .cidea-service-list p{font-size:18px}.cidea-insights>a:not(.cidea-text-link){font-size:25px}
+ .cidea-motion{bottom:10px;right:12px;font-size:11px;padding:8px 12px}
+ .landing__body p{font-size:18px;line-height:1.5}.landing__body .t-yellow{font-size:12px}
+ .footer__head h2{font-size:40px}.footer__copyright{margin:24px 0}
+}
+/* Semantic HTML is usable before JS, without WebGL, and with reduced motion. */
+.cidea-static,.cidea-static body{overflow:auto!important;height:auto!important;visibility:visible!important}
+.cidea-static .site-loader,.cidea-static .nav-transition-mask,.cidea-static .nav-transition-mask-bg,.cidea-static #canvas,.cidea-static .asscrollbar,.cidea-static .cidea-motion{display:none!important}
+.cidea-static [asscroll-container]{position:relative!important;transform:none!important;height:auto!important}
+.cidea-static [animate-from],.cidea-static [animate-from] *{opacity:1!important;visibility:visible!important;transform:none!important}
+.cidea-static .section{min-height:auto;padding-top:100px;padding-bottom:100px}
+.cidea-static .landing{min-height:85vh;margin-top:0;padding-top:150px;background:radial-gradient(ellipse at 85% 40%,#07354d 0%,transparent 55%)}
+.cidea-static .landing__title{margin-top:0}
+.cidea-static .section--tall{min-height:65vh}
+.cidea-static .manifesto--introduction{min-height:40vh}
+.cidea-static .header__bg{transform:none!important}.cidea-static .header__bg-inner{opacity:.96}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

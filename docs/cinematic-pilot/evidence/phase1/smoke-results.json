@@ -1,0 +1,132 @@
+{
+  "base": "http://127.0.0.1:4173",
+  "date": "2026-10-15T11:22:16.403Z",
+  "results": [
+    {
+      "viewport": 390,
+      "route": "/",
+      "status": 200,
+      "h1": "Gjør bedriften vanskelig å ignorere.",
+      "horizontalOverflowPx": 0,
+      "errors": [],
+      "ok": true
+    },
+    {
+      "viewport": 390,
+      "route": "/websites",
+      "status": 200,
+      "h1": "Nettsider som gjør jobben sin",
+      "horizontalOverflowPx": 0,
+      "errors": [],
+      "ok": true
+    },
+    {
+      "viewport": 390,
+      "route": "/branding",
+      "status": 200,
+      "h1": "En merkevare folk husker",
+      "horizontalOverflowPx": 0,
+      "errors": [],
+      "ok": true
+    },
+    {
+      "viewport": 390,
+      "route": "/seo",
+      "status": 200,
+      "h1": "SEO som bygger synlighet over tid",
+      "horizontalOverflowPx": 0,
+      "errors": [],
+      "ok": true
+    },
+    {
+      "viewport": 390,
+      "route": "/digital-marketing",
+      "status": 200,
+      "h1": "Digital markedsføring som henger sammen",
+      "horizontalOverflowPx": 0,
+      "errors": [],
+      "ok": true
+    },
+    {
+      "viewport": 390,
+      "route": "/blog",
+      "status": 200,
+      "h1": "Innsikt for bedrifter som vil bli tydeligere.",
+      "horizontalOverflowPx": 0,
+      "errors": [],
+      "ok": true
+    },
+    {
+      "viewport": 390,
+      "route": "/blog/hvor-mye-koster-en-nettside",
+      "status": 200,
+      "h1": "Hvor mye koster en nettside?",
+      "horizontalOverflowPx": 0,
+      "errors": [],
+      "ok": true
+    },
+    {
+      "viewport": 1440,
+      "route": "/",
+      "status": 200,
+      "h1": "Gjør bedriften vanskelig å ignorere.",
+      "horizontalOverflowPx": 0,
+      "errors": [],
+      "ok": true
+    },
+    {
+      "viewport": 1440,
+      "route": "/websites",
+      "status": 200,
+      "h1": "Nettsider som gjør jobben sin",
+      "horizontalOverflowPx": 0,
+      "errors": [],
+      "ok": true
+    },
+    {
+      "viewport": 1440,
+      "route": "/branding",
+      "status": 200,
+      "h1": "En merkevare folk husker",
+      "horizontalOverflowPx": 0,
+      "errors": [],
+      "ok": true
+    },
+    {
+      "viewport": 1440,
+      "route": "/seo",
+      "status": 200,
+      "h1": "SEO som bygger synlighet over tid",
+      "horizontalOverflowPx": 0,
+      "errors": [],
+      "ok": true
+    },
+    {
+      "viewport": 1440,
+      "route": "/digital-marketing",
+      "status": 200,
+      "h1": "Digital markedsføring som henger sammen",
+      "horizontalOverflowPx": 0,
+      "errors": [],
+      "ok": true
+    },
+    {
+      "viewport": 1440,
+      "route": "/blog",
+      "status": 200,
+      "h1": "Innsikt for bedrifter som vil bli tydeligere.",
+      "horizontalOverflowPx": 0,
+      "errors": [],
+      "ok": true
+    },
+    {
+      "viewport": 1440,
+      "route": "/blog/hvor-mye-koster-en-nettside",
+      "status": 200,
+      "h1": "Hvor mye koster en nettside?",
+      "horizontalOverflowPx": 0,
+      "errors": [],
+      "ok": true
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+/* Shared Cidea identity for the existing, prerendered React subpages. */
+@font-face{font-family:CideaReference;src:url('/cidea-scene/fonts/PPNeueMontreal-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:CideaReference;src:url('/cidea-scene/fonts/PPNeueMontreal-SemiBold.woff2') format('woff2');font-weight:600 900;font-display:swap}
+.cm{--dyp:#66cfff;--dyp-hover:#005f92;--terrakotta:#0077b6;--marine:#0c324d;--skog:#13455d;--svart:#f5f8fc;--lys:#030812;--modul:#071b2b;--stein:#284259;--dempet:#bcc6d2;--hvit:#f5f8fc;font-family:CideaReference,'DM Sans',sans-serif;color-scheme:dark}
+.cm h1,.cm h2,.cm h3{font-family:CideaReference,'DM Sans',sans-serif;font-weight:400;letter-spacing:-.04em;text-wrap:pretty}
+.cm-wrap{max-width:1440px}.cm .sd-hode{padding:100px 0 64px;border-color:#284259}
+.cm .sd-hode h1{font-size:clamp(44px,5.5vw,78px);line-height:1.08;font-weight:400;max-width:19ch}
+.cm .sd-ingress{font-size:20px;font-weight:400;line-height:1.5;max-width:38em}
+.cm .cm-topp{background:#030812f5;border:0;backdrop-filter:blur(12px)}
+.cm .cm-topp-rad{height:88px}.cm .cm-ordmerke{font-family:CideaReference,sans-serif;font-size:17px;font-weight:600;letter-spacing:.035em}
+.cm .cm-ordmerke::before{display:none}
+.cm .cm-knapp{background:#0077b6;color:#fff!important;border-radius:28px;font-family:inherit;font-size:14px;font-weight:600;min-height:46px;padding:0 20px}
+.cm .cm-knapp:hover{background:#005f92}.cm .cm-knapp-lys{background:#0077b6;color:#fff!important}
+.cm .cm-meny ul a{font-size:14px;color:#bcc6d2;font-weight:600}.cm .cm-meny ul a:hover{color:#fff}
+.cm :focus-visible{outline-color:#66cfff}.cm .cm-hopp{background:#0077b6}
+.cm .cm-bunn{background:#030812;color:#bcc6d2;border-top:1px solid #284259}
+.cm .cm-cta{background:#071b2b;color:#f5f8fc}.cm .cm-cta h2{font-weight:400}
+.cm .sd-rader>div,.cm .sd-punkter li,.cm .sd-artikler li{border-color:#284259}
+.cm .sd-rader dt{font-family:inherit;font-weight:600}.cm .sd-seksjon h2{font-size:clamp(30px,3.2vw,44px)}
+.cm .sd-tjenester li{border-top:1px solid #284259;padding-top:26px}
+.cm .sd-skjemaflate{background:#071b2b;border-color:#284259;border-radius:4px}
+.cm .sd-felt input:not([type=radio]),.cm .sd-felt textarea{background:#030812;color:#f5f8fc;border-color:#526c80;border-radius:4px}
+.cm .sd-felt input::placeholder,.cm .sd-felt textarea::placeholder{color:#9aa4b2}
+.cm .sd-feiloppsummering,.cm .sd-feltfeil{color:#ffd4c8}.cm .sd-feiloppsummering{background:#291b22}
+.cm .sd-radio{accent-color:#0077b6}
+.cm .cm-steg li{background:#071b2b;color:#f5f8fc}.cm .cm-steg p{color:#bcc6d2}
+.cm .cm-steg h3{font-weight:400}
+.cm .cm-menyknapp{background:#071b2b;color:#f5f8fc!important;border:1px solid #526c80;border-radius:24px}
+@media(max-width:767px){.cm .sd-hode{padding:48px 0 36px}.cm .cm-topp-rad{height:76px}.cm .cm-meny{background:#030812}.cm .sd-ingress{font-size:18px}.cm .cm-menyknapp{color:#f5f8fc;border-color:#526c80}}

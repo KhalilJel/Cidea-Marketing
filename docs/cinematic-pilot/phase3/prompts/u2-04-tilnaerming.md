@@ -1,0 +1,7 @@
+«TILNÆRMING» page – targeted draft-2 changes, keep the hero artwork style (it is the source of the Cidea motif) but simplify it to the motif rule: remove the dashed lines, the circle and the small loose squares; keep the connected planes and the one notched plane. Use: {{SVG:hero-desktop}}
+
+1. «Slik jobber vi»: replace the three white bordered boxes with three connected colour planes (navy, deep terracotta, forest green) that touch each other like the motif. Texts: «Avklare behov» – «Vi går gjennom virksomheten, målgruppen og målene.»; «Designe og utvikle» – «Vi lager struktur, design og innhold og bygger løsningen.»; «Videreutvikle» – «Etter lansering kan vi forbedre og vedlikeholde løsningen over tid.»
+2. «Hva du kan forvente»: replace the bordered 2×2 grid with a simple list separated by thin dividers. Keep only statements that describe how we work, not guarantees: «Tydelige avklaringer før vi starter», «Forslag basert på hva bedriften faktisk trenger», «Løpende forbedringer når det er avtalt», «Åpen dialog om prioriteringer». Remove «Én fast kontaktperson» and «Direkte dialog med fagpersonen som faktisk utfører arbeidet».
+3. «Cidea Marketing er en del av Cidea»: keep the heading; body text only: «Cidea Marketing er Cideas fagmiljø for nettsider, merkevare og digital synlighet.» Remove other claims. Artwork: {{SVG:konsept-kort}}
+4. Hero H1 can stay; remove «stabilitet»-type promises from the supporting sentence: use «Vi jobber med bedrifter over tid: fra første avklaring til videreutvikling etter lansering.»
+5. Closing CTA exactly as in the rules.

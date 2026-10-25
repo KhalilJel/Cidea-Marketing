@@ -1,0 +1,81 @@
+{
+ "files": 20,
+ "bytes": 2912970,
+ "hits": {
+  "matchMedia": 3,
+  "three": 3,
+  "IntersectionObserver": 3,
+  "requestAnimationFrame": 6,
+  "gsap": 4,
+  "ScrollTrigger": 2,
+  "ScrollSmoother": 2,
+  "lottie": 3,
+  "storyblok": 2,
+  "prefers-reduced-motion": 1,
+  "smoother_excerpt": "ScrollSmoother-wrapper\");return t||((t=i.createElement(\"div\")).classList.add(\"ScrollSmoother-wrapper\"),e.parentNode.insertBefore(t,e),t.appendChild(e)),t},b=fun",
+  "gsap_version": "3.11.3",
+  "pin-spacer": 1,
+  "SplitText": 1,
+  "scroll-snap": 1
+ },
+ "where": {
+  "matchMedia": [
+   "framework-eb56337f26238b16.js",
+   "854-7d8463a5d1f10b93.js",
+   "_app-43725cf72b0997ca.js"
+  ],
+  "three": [
+   "6c1b831d-26774b42d0eb3b9c.js",
+   "414-91fbce5206350067.js",
+   "69b51223-f46513ed5256c59b.js"
+  ],
+  "IntersectionObserver": [
+   "6c1b831d-26774b42d0eb3b9c.js",
+   "854-7d8463a5d1f10b93.js",
+   "_app-43725cf72b0997ca.js"
+  ],
+  "requestAnimationFrame": [
+   "6c1b831d-26774b42d0eb3b9c.js",
+   "854-7d8463a5d1f10b93.js",
+   "414-91fbce5206350067.js",
+   "69b51223-f46513ed5256c59b.js",
+   "_app-43725cf72b0997ca.js",
+   "4d022aba.2778c13fe2fef642.js"
+  ],
+  "gsap": [
+   "854-7d8463a5d1f10b93.js",
+   "414-91fbce5206350067.js",
+   "_app-43725cf72b0997ca.js",
+   "790.6e23d8c6e457c69a.js"
+  ],
+  "ScrollTrigger": [
+   "854-7d8463a5d1f10b93.js",
+   "_app-43725cf72b0997ca.js"
+  ],
+  "ScrollSmoother": [
+   "854-7d8463a5d1f10b93.js",
+   "_app-43725cf72b0997ca.js"
+  ],
+  "lottie": [
+   "854-7d8463a5d1f10b93.js",
+   "_app-43725cf72b0997ca.js",
+   "4d022aba.2778c13fe2fef642.js"
+  ],
+  "storyblok": [
+   "854-7d8463a5d1f10b93.js",
+   "_app-43725cf72b0997ca.js"
+  ],
+  "prefers-reduced-motion": [
+   "854-7d8463a5d1f10b93.js"
+  ],
+  "pin-spacer": [
+   "_app-43725cf72b0997ca.js"
+  ],
+  "SplitText": [
+   "_app-43725cf72b0997ca.js"
+  ],
+  "scroll-snap": [
+   "_app-43725cf72b0997ca.js"
+  ]
+ }
+}

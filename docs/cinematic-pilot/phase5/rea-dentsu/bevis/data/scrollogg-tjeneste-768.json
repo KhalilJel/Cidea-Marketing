@@ -1,0 +1,146 @@
+[
+ {
+  "step": 0,
+  "y": 0,
+  "ty": 0,
+  "docH": 1024,
+  "bodyH": 1024,
+  "contentTf": "matrix(1, 0, 0, 1, 0, 0)",
+  "vis": [
+   "PageHeader_page-header",
+   "PageHeader_header",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 1
+ },
+ {
+  "step": 1,
+  "y": 394,
+  "ty": 394,
+  "docH": 1024,
+  "bodyH": 1024,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -394)",
+  "vis": [
+   "PageHeader_media-holder",
+   "Image_image-holder",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 2,
+  "y": 788,
+  "ty": 788,
+  "docH": 1024,
+  "bodyH": 1024,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -788)",
+  "vis": [
+   "TitleAndText_title-and-text",
+   "Heading_heading",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 3,
+  "y": 1182,
+  "ty": 1182,
+  "docH": 1024,
+  "bodyH": 1024,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -1182)",
+  "vis": [
+   "ServicePage_service-page",
+   "TitleAndText_title-and-text",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 4,
+  "y": 1628,
+  "ty": 1628,
+  "docH": 1024,
+  "bodyH": 1024,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -1628)",
+  "vis": [
+   "Accordion_accordion",
+   "AccordionItem_header",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 5,
+  "y": 2013,
+  "ty": 2013,
+  "docH": 1024,
+  "bodyH": 1024,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -2013)",
+  "vis": [
+   "Accordion_accordion",
+   "AccordionItem_header",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 2
+ },
+ {
+  "step": 6,
+  "y": 2013,
+  "ty": 2013,
+  "docH": 1024,
+  "bodyH": 1024,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -2013)",
+  "vis": [
+   "Accordion_accordion",
+   "AccordionItem_header",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 1
+ },
+ {
+  "step": 7,
+  "y": 2013,
+  "ty": 2013,
+  "docH": 1024,
+  "bodyH": 1024,
+  "contentTf": "matrix(1, 0, 0, 1, 0, -2013)",
+  "vis": [
+   "Accordion_accordion",
+   "AccordionItem_header",
+   "Modal_background"
+  ],
+  "vids": [],
+  "canvas": 0,
+  "lottie": 0,
+  "pinned": [],
+  "anims": 1
+ }
+]

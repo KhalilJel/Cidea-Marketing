@@ -1,0 +1,222 @@
+[
+  {
+    "name": "One H1: \\404.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Review noindex: \\404.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "One H1: \\blog\\hva-bor-en-god-bedriftsnettside-inneholde\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Review noindex: \\blog\\hva-bor-en-god-bedriftsnettside-inneholde\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "One H1: \\blog\\hvor-mye-koster-en-nettside\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Review noindex: \\blog\\hvor-mye-koster-en-nettside\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "One H1: \\blog\\hvordan-fa-flere-henvendelser-fra-nettsiden\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Review noindex: \\blog\\hvordan-fa-flere-henvendelser-fra-nettsiden\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "One H1: \\blog\\hvorfor-vises-ikke-nettsiden-pa-google\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Review noindex: \\blog\\hvorfor-vises-ikke-nettsiden-pa-google\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "One H1: \\blog\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Review noindex: \\blog\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "One H1: \\branding\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Review noindex: \\branding\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "One H1: \\digital-marketing\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Review noindex: \\digital-marketing\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "One H1: \\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Review noindex: \\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "One H1: \\konsept-scroll\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Review noindex: \\konsept-scroll\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "One H1: \\kontakt\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Review noindex: \\kontakt\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "One H1: \\kontakt\\takk\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Review noindex: \\kontakt\\takk\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "One H1: \\om-oss\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Review noindex: \\om-oss\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "One H1: \\personvern\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Review noindex: \\personvern\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "One H1: \\seo\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Review noindex: \\seo\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "One H1: \\tjenester\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Review noindex: \\tjenester\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "One H1: \\websites\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Review noindex: \\websites\\index.html",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "All local links and resources resolve",
+    "passed": true,
+    "detail": "{\"links\":348,\"missing\":[]}"
+  },
+  {
+    "name": "No reference brand, people or external destinations in homepage",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Tracking bootstrap removed",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Console diagnostics are not suppressed",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Motion attributes parse without unsafe eval",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Contact receipt remains unconfirmed",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Locked privacy source unchanged",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "Button solid colour contrast",
+    "passed": true,
+    "detail": "4.87:1"
+  },
+  {
+    "name": "Body solid colour contrast",
+    "passed": true,
+    "detail": "11.60:1"
+  },
+  {
+    "name": "Heading solid colour contrast",
+    "passed": true,
+    "detail": "18.82:1"
+  }
+]

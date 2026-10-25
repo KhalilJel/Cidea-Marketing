@@ -1,0 +1,290 @@
+{
+  "320": {
+    "side": 5143,
+    "overflow": 0,
+    "rekkefolge": [
+      "h1",
+      "tjenester",
+      "slik-jobber-vi",
+      "konsept",
+      "innsikt-tittel",
+      "cta-tittel"
+    ],
+    "seksjoner": {
+      "h1": 795,
+      "tjenester": 1248,
+      "slik-jobber-vi": 706,
+      "konsept": 615,
+      "innsikt-tittel": 1018,
+      "cta-tittel": 372
+    },
+    "heroGrafikk": {
+      "b": 264,
+      "h": 190
+    },
+    "heroTekstBunn": 606,
+    "konseptGrafikk": {
+      "b": 224,
+      "h": 161
+    },
+    "konseptFlate": {
+      "b": 264,
+      "h": 201
+    },
+    "tjenesteKolonner": 1,
+    "stegKolonner": 1,
+    "artikkelKolonner": 1
+  },
+  "375": {
+    "side": 4904,
+    "overflow": 0,
+    "rekkefolge": [
+      "h1",
+      "tjenester",
+      "slik-jobber-vi",
+      "konsept",
+      "innsikt-tittel",
+      "cta-tittel"
+    ],
+    "seksjoner": {
+      "h1": 807,
+      "tjenester": 1082,
+      "slik-jobber-vi": 654,
+      "konsept": 655,
+      "innsikt-tittel": 945,
+      "cta-tittel": 372
+    },
+    "heroGrafikk": {
+      "b": 319,
+      "h": 229
+    },
+    "heroTekstBunn": 579,
+    "konseptGrafikk": {
+      "b": 279,
+      "h": 200
+    },
+    "konseptFlate": {
+      "b": 319,
+      "h": 240
+    },
+    "tjenesteKolonner": 1,
+    "stegKolonner": 1,
+    "artikkelKolonner": 1
+  },
+  "390": {
+    "side": 4740,
+    "overflow": 0,
+    "rekkefolge": [
+      "h1",
+      "tjenester",
+      "slik-jobber-vi",
+      "konsept",
+      "innsikt-tittel",
+      "cta-tittel"
+    ],
+    "seksjoner": {
+      "h1": 776,
+      "tjenester": 988,
+      "slik-jobber-vi": 654,
+      "konsept": 666,
+      "innsikt-tittel": 895,
+      "cta-tittel": 372
+    },
+    "heroGrafikk": {
+      "b": 334,
+      "h": 240
+    },
+    "heroTekstBunn": 538,
+    "konseptGrafikk": {
+      "b": 294,
+      "h": 211
+    },
+    "konseptFlate": {
+      "b": 334,
+      "h": 251
+    },
+    "tjenesteKolonner": 1,
+    "stegKolonner": 1,
+    "artikkelKolonner": 1
+  },
+  "600": {
+    "side": 4336,
+    "overflow": 0,
+    "rekkefolge": [
+      "h1",
+      "tjenester",
+      "slik-jobber-vi",
+      "konsept",
+      "innsikt-tittel",
+      "cta-tittel"
+    ],
+    "seksjoner": {
+      "h1": 859,
+      "tjenester": 814,
+      "slik-jobber-vi": 550,
+      "konsept": 730,
+      "innsikt-tittel": 750,
+      "cta-tittel": 312
+    },
+    "heroGrafikk": {
+      "b": 544,
+      "h": 391
+    },
+    "heroTekstBunn": 469,
+    "konseptGrafikk": {
+      "b": 504,
+      "h": 362
+    },
+    "konseptFlate": {
+      "b": 544,
+      "h": 402
+    },
+    "tjenesteKolonner": 1,
+    "stegKolonner": 1,
+    "artikkelKolonner": 1
+  },
+  "768": {
+    "side": 4425,
+    "overflow": 0,
+    "rekkefolge": [
+      "h1",
+      "tjenester",
+      "slik-jobber-vi",
+      "konsept",
+      "innsikt-tittel",
+      "cta-tittel"
+    ],
+    "seksjoner": {
+      "h1": 910,
+      "tjenester": 788,
+      "slik-jobber-vi": 550,
+      "konsept": 851,
+      "innsikt-tittel": 726,
+      "cta-tittel": 280
+    },
+    "heroGrafikk": {
+      "b": 712,
+      "h": 511
+    },
+    "heroTekstBunn": 400,
+    "konseptGrafikk": {
+      "b": 672,
+      "h": 482
+    },
+    "konseptFlate": {
+      "b": 712,
+      "h": 522
+    },
+    "tjenesteKolonner": 1,
+    "stegKolonner": 1,
+    "artikkelKolonner": 1
+  },
+  "860": {
+    "side": 4412,
+    "overflow": 0,
+    "rekkefolge": [
+      "h1",
+      "tjenester",
+      "slik-jobber-vi",
+      "konsept",
+      "innsikt-tittel",
+      "cta-tittel"
+    ],
+    "seksjoner": {
+      "h1": 977,
+      "tjenester": 718,
+      "slik-jobber-vi": 550,
+      "konsept": 917,
+      "innsikt-tittel": 726,
+      "cta-tittel": 280
+    },
+    "heroGrafikk": {
+      "b": 804,
+      "h": 577
+    },
+    "heroTekstBunn": 400,
+    "konseptGrafikk": {
+      "b": 764,
+      "h": 549
+    },
+    "konseptFlate": {
+      "b": 804,
+      "h": 589
+    },
+    "tjenesteKolonner": 1,
+    "stegKolonner": 1,
+    "artikkelKolonner": 1
+  },
+  "1024": {
+    "side": 3620,
+    "overflow": 0,
+    "rekkefolge": [
+      "h1",
+      "tjenester",
+      "slik-jobber-vi",
+      "konsept",
+      "innsikt-tittel",
+      "cta-tittel"
+    ],
+    "seksjoner": {
+      "h1": 588,
+      "tjenester": 733,
+      "slik-jobber-vi": 500,
+      "konsept": 519,
+      "innsikt-tittel": 731,
+      "cta-tittel": 291
+    },
+    "heroGrafikk": {
+      "b": 403,
+      "h": 460
+    },
+    "heroTekstBunn": 567,
+    "konseptGrafikk": {
+      "b": 344,
+      "h": 247
+    },
+    "konseptFlate": {
+      "b": 424,
+      "h": 327
+    },
+    "tjenesteKolonner": 4,
+    "stegKolonner": 3,
+    "artikkelKolonner": 3
+  },
+  "1440": {
+    "side": 3884,
+    "overflow": 0,
+    "rekkefolge": [
+      "h1",
+      "tjenester",
+      "slik-jobber-vi",
+      "konsept",
+      "innsikt-tittel",
+      "cta-tittel"
+    ],
+    "seksjoner": {
+      "h1": 768,
+      "tjenester": 647,
+      "slik-jobber-vi": 513,
+      "konsept": 668,
+      "innsikt-tittel": 726,
+      "cta-tittel": 306
+    },
+    "heroGrafikk": {
+      "b": 560,
+      "h": 640
+    },
+    "heroTekstBunn": 647,
+    "konseptGrafikk": {
+      "b": 552,
+      "h": 396
+    },
+    "konseptFlate": {
+      "b": 632,
+      "h": 476
+    },
+    "tjenesteKolonner": 4,
+    "stegKolonner": 3,
+    "artikkelKolonner": 3
+  }
+}

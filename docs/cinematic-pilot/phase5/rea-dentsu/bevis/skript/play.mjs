@@ -1,0 +1,16 @@
+import { chromium } from 'playwright';
+const b = await chromium.connectOverCDP('http://127.0.0.1:9222');
+const c = await b.newContext({ viewport: { width: 1440, height: 900 } }); const p = await c.newPage();
+const media = []; p.on('request', r => { const u = r.url(); if (r.resourceType() === 'media' || /\.(mp4|webm|m3u8)|vimeo|youtube|mux|player/.test(u)) media.push(r.resourceType() + ' ' + u.slice(0, 120)); });
+await p.goto('https://www.dentsucreative.com/cases/a-piece-of-me', { waitUntil: 'domcontentloaded' }); await p.waitForTimeout(5000);
+const rej = p.getByRole('button', { name: /reject all/i }); if (await rej.count()) await rej.first().click().catch(() => {});
+await p.waitForTimeout(800);
+const before = await p.evaluate(() => ({ v: document.querySelectorAll('video').length, f: [...document.querySelectorAll('iframe')].map(f => f.src.slice(0, 80)) }));
+const btn = p.locator('button:has-text("Play"), [class*="play" i], [aria-label*="play" i]').first();
+console.log('knapp', await btn.count(), await btn.getAttribute('class').catch(() => null), await btn.getAttribute('aria-label').catch(() => null));
+await btn.dispatchEvent('click').catch(e => console.log('klikkfeil', e.message.slice(0, 80)));
+await p.waitForTimeout(4000);
+const after = await p.evaluate(() => ({ v: [...document.querySelectorAll('video')].map(v => ({ src: (v.currentSrc || '').slice(0, 100), paused: v.paused, muted: v.muted, controls: v.controls, t: v.currentTime })), f: [...document.querySelectorAll('iframe')].map(f => f.src.slice(0, 100)) }));
+console.log('før', JSON.stringify(before)); console.log('etter', JSON.stringify(after)); console.log('media', media.slice(0, 8).join('\n'));
+await p.screenshot({ path: 'out/prosjekt-1440/etter-play.png' });
+await c.close(); await b.close();

@@ -1,0 +1,158 @@
+[
+  {
+    "path": "reference-assets/cidea-scene/bootstrap.js",
+    "sha256": "e6907b98ece2412fe98293ac42c0753d54cacad3019e92e9d7ca8fc7661c4586",
+    "origin": "Cidea adaptation",
+    "status": "Own integration"
+  },
+  {
+    "path": "reference-assets/cidea-scene/cidea.css",
+    "sha256": "9956b25397646042e1d89b76ff3482a34de642de51be9554140a06b93a1eb77e",
+    "origin": "Cidea adaptation",
+    "status": "Own integration"
+  },
+  {
+    "path": "reference-assets/cidea-scene/css/style.css",
+    "sha256": "0f202619309475bdea9de3aefdcccbc063afd10d1748738d98689145d84de2fd",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/fonts/PPNeueMontreal-Light.woff",
+    "sha256": "3c90273baf1d7a558bb2b269f5c2d6b51dbe83245b87a48287a450d102dc7c41",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/fonts/PPNeueMontreal-Light.woff2",
+    "sha256": "0546de8d009ae1a2fac024023206280cbc8db20cf7cddcb48f809e1ac0a62d75",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/fonts/PPNeueMontreal-Regular.woff",
+    "sha256": "36f13e027917bd45396cafee24c59a15a7157e45494569230e9d56ea6ce6dbe5",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/fonts/PPNeueMontreal-Regular.woff2",
+    "sha256": "0a032deac2aa0ca60c5697831dbf4f74580451c3a78b6e5dd2efe3825441ed49",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/fonts/PPNeueMontreal-SemiBold.woff",
+    "sha256": "5070673f50b1e25feac2358ac9528c0645001b56f3a0cf2f593367f521a7c225",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/fonts/PPNeueMontreal-SemiBold.woff2",
+    "sha256": "2027c8d699f205afdbb26e6b969f90f39f561601efe9f949b96fe3d1bd7dd7f7",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/images/cd-33.png",
+    "sha256": "22816bb0c213e57e73edcd486b7f462566d688591f27bbb20d5647eb997abc45",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/images/dof-2k-10.jpg",
+    "sha256": "0e99f85c7a0fd4f495cf5634392fb7f2848f4b6c4497f331eda003e1a6f0be73",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/images/gradient-noise.jpg",
+    "sha256": "772f41e7654fbd35437642b2cd9a6cb8416f983fc050e8c150b70c3b9cd97e89",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/images/noise.jpg",
+    "sha256": "84ba9116ff4ceca6742efde898970bfb2966c2bc8ca9113d73e4622da33ff8b3",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/images/pos-33.exr",
+    "sha256": "ec2500e54313d2d58247e6e6cbd840b3066866eb03bb464a5d377979735420d6",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/images/sc-33.png",
+    "sha256": "7d26b023f3ddf3470a1fbc234d97875bd7028d73491862869cd8cb3768c0252e",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/models/py-lod1.glb",
+    "sha256": "185c371a2261b65c5d254425bd43a63a96e3a61bde0d6d83f45b501b947dd985",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/models/py-lod2.glb",
+    "sha256": "b9ea319a3338d60c0a1760af7ca7ce8a50f164e2f7a572148eb8258888780630",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/models/py-lod3.glb",
+    "sha256": "66fbdf1eb70d0d9604523f42e10e75d31c38fb4ccf48fde05c27e50f52899334",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/models/py-lod7.glb",
+    "sha256": "8f247565333503f569358d816512724d47e9931c8f574dbdad1fadaf043a82b6",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/models/py-monbile.glb",
+    "sha256": "df1ab5c2aa641c925764ba43689d774c29497598eb7d9827d2441b3d2e79b5b0",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/pages.css",
+    "sha256": "d207aa9349b51a72f8a8ab16859eaaeb19da2dd0460ce6327751e7cdfaad172f",
+    "origin": "Cidea adaptation",
+    "status": "Own integration"
+  },
+  {
+    "path": "reference-assets/cidea-scene/scripts/manifest.js",
+    "sha256": "6018de4cdcd777b29bf3354f82a7354611b355543d931a2b033c200be651c64c",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/scripts/theme.js",
+    "sha256": "aba9d14eb4870eb017b3f61fb18bcbee2c9b6216f93c87399d7630d3f6bfce2a",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/scripts/theme.js.LICENSE.txt",
+    "sha256": "b0a01d80ac2bb07803731813bf88c7a574e79dd872b13e2727020b9df6847540",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/scripts/vendor.js",
+    "sha256": "1c798cc818c0aaeaf76f4bb9dbac45e62cfc40f45bdf7ca50dcf3201d0d61824",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  },
+  {
+    "path": "reference-assets/cidea-scene/scripts/vendor.js.LICENSE.txt",
+    "sha256": "97fca845574d9b9c469ea06eee68407177d42fc383188d6504b7ce3b983b9dba",
+    "origin": "https://dala.craftedbygc.com/",
+    "status": "Local evaluation; redistribution license not established"
+  }
+]
