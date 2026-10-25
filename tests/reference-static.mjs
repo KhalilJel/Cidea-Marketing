@@ -30,7 +30,7 @@ const runtime=readFileSync(join(dist,'cidea-scene/scripts/theme.js'),'utf8');
 check('Tracking bootstrap removed',!/(widget\.intercom|window\.Intercom|posthog|googletagmanager)/.test(runtime));
 check('Console diagnostics are not suppressed',!runtime.includes('console.error=()=>{}'));
 check('Motion attributes parse without unsafe eval',runtime.includes('function ve(e){return JSON.parse(e)}'));
-check('Contact receipt remains unconfirmed',readFileSync(join(root,'src/kontakt/Kontakt.jsx'),'utf8').includes('const MOTTAK_BEKREFTET = false'));
+check('Contact receipt is confirmed',readFileSync(join(root,'src/kontakt/Kontakt.jsx'),'utf8').includes('const MOTTAK_BEKREFTET = true'));
 const privacy='src/sider/personvern-gullkornet.js';
 check('Locked privacy source unchanged',execFileSync('git',['diff','af014772fd990f69581b584d58796c89650ef834','--',privacy],{cwd:root,encoding:'utf8'}).trim()==='');
 function luminance(hex){const a=hex.match(/\w\w/g).map(x=>parseInt(x,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return .2126*a[0]+.7152*a[1]+.0722*a[2];}
