@@ -92,6 +92,14 @@
       const store = window.cideaReference?.store;
       if (!store) throw new Error('Scene initialization failed');
       await store.AssetLoader.load();
+      // The CSS intro event can fire before the runtime attaches its listener.
+      // All assets are now loaded: complete the intro through its own timeline.
+      const loader = store.SiteLoader;
+      if (loader && !loader.dom.el.classList.contains('loaded')) {
+        loader.currentProgress = 100;
+        loader.onCriticalAnimationEnd();
+      }
+      await loader?.revealed;
       initialized = true;
       root.dataset.scene = 'ready';
       clearTimeout(watchdog);
