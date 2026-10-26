@@ -14,7 +14,7 @@ import { selskap } from "../sider/tjenester-innhold.js";
 // Feltet heter «email» slik at Netlify bruker avsenderen som svaradresse i e-postvarselet; «subject» er emnelinjen.
 // MOTTAK_BEKREFTET settes til true først når eier har aktivert skjemaregistrering og e-postvarsel hos Netlify
 // og en testhenvendelse faktisk er mottatt (se docs/cinematic-pilot/phase6/README.md).
-const MOTTAK_BEKREFTET = false;
+const MOTTAK_BEKREFTET = true;
 
 const temaer = ["Nettsider", "Merkevarebygging", "SEO", "Digital markedsføring", "Annet"];
 const tomFeil = {};
