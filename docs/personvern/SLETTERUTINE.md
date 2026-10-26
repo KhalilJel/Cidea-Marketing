@@ -7,7 +7,7 @@
 Henvendelser som ikke fører til et kundeforhold, slettes **senest 6 måneder etter at dialogen er avsluttet**, både hos Netlify og i e-posten.
 
 - **Avsluttet dialog** = datoen for siste e-post i tråden, fra oss eller fra den som tok kontakt.
-- **Kundeforhold:** tråden flyttes til kundens mappe og følger reglene for avtale og regnskap. Den slettes ikke etter denne regelen.
+- **Kundeforhold:** tråden flyttes til kundens mappe. Det betyr ikke at all korrespondanse beholdes. Bare det som trengs for avtalen, dokumentasjon av oppdraget og lovpålagte plikter (for eksempel regnskap) beholdes. Øvrig korrespondanse i tråden, som tidlige avklaringer, småprat og vedlegg som ikke trengs, vurderes for sletting etter samme prinsipp som over.
 - **Søppelpost** i Netlify slettes ved hver gjennomgang.
 - **«Senest»** betyr at tidligere sletting er greit. Netlify-kopien trengs ikke når henvendelsen ligger i e-posten.
 
@@ -37,7 +37,7 @@ Første virkedag hver måned, ca. 10 minutter. Slett det som har passert **5 må
 1. Bruk en egen mappe for skjemavarsler, f.eks. **«Henvendelser»**, med en regel på emnet «Ny henvendelse fra cideamarketing.com».
 2. Sorter mappen etter dato. Åpne trådene der siste e-post har passert grensen.
 3. Ble det ikke et kundeforhold: slett **hele tråden**, også svarene i **Sendte**.
-4. Ble det et kundeforhold: flytt tråden til kundens mappe først.
+4. Ble det et kundeforhold: flytt tråden til kundens mappe først. Gå samtidig gjennom tråden og slett det som ikke trengs for avtalen, dokumentasjonen eller lovpålagte plikter.
 5. Tøm **papirkurven** for disse e-postene.
 6. Har noen lastet ned eller kopiert henvendelser (CSV, notater, skjermbilder), slett også dem.
 
@@ -51,9 +51,17 @@ Første virkedag hver måned, ca. 10 minutter. Slett det som har passert **5 må
 
 Ikke skriv navn, e-postadresser, firmanavn eller innhold i loggen.
 
-## Forespørsel om sletting eller innsyn
+## Forespørsel om innsyn, retting eller sletting
 
-Kommer det en forespørsel til hello@cideamarketing.com: slett eller utlever straks, både i Netlify og i e-posten, og bekreft på e-post. Svar uten ugrunnet opphold og senest innen én måned (personvernforordningen artikkel 12).
+Forespørsler kommer normalt til hello@cideamarketing.com. Svar uten ugrunnet opphold og senest innen én måned (personvernforordningen artikkel 12). Gå gjennom stegene i rekkefølge:
+
+1. **Registrer forespørselen** i loggen (dato og type, uten personopplysninger), og svar kort at den er mottatt.
+2. **Kontroller identitet ved behov.** Ikke utlever opplysninger automatisk til en ubekreftet avsender. Kommer forespørselen fra samme e-postadresse som henvendelsen ble sendt fra, er det som regel nok. Kommer den fra en annen adresse, eller gjelder den noen andre, be om en enkel bekreftelse, f.eks. svar fra den opprinnelige adressen. Be ikke om mer enn nødvendig.
+3. **Avklar omfang.** Hvilke henvendelser og hvilke opplysninger gjelder det: innsending i Netlify, e-posttråder, eventuelle kopier.
+4. **Vurder forespørselen og eventuelle oppbevaringsplikter.** Er det et kundeforhold, kan noe måtte beholdes for avtalen, dokumentasjon eller lovpålagte plikter (for eksempel regnskap). Det øvrige slettes eller utleveres. Er du i tvil, avklar før du sletter.
+5. **Gjennomfør.** Slett i Netlify (også spam-listen) og i jelassi@-postkassen (innboks, Sendte, papirkurv), eller sett sammen innsyn.
+6. **Svar sikkert.** Svar til den bekreftede adressen. Utleveres opplysninger, send bare det som gjelder personen. Skriv hva som er slettet, og hva som eventuelt er beholdt og hvorfor.
+7. **Trenger du mer tid** (opptil to måneder ekstra ved komplekse eller mange forespørsler), si fra innen én måned og forklar hvorfor.
 
 ## Ikke kontrollert
 
