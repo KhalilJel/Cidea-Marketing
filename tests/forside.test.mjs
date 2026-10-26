@@ -15,7 +15,7 @@ const check = (id, navn, ok, mål) => { res.push(`| ${id} | ${navn} | ${ok ? 'OK
 const b = await chromium.launch();
 
 // R: ruter, H1, nettleserfeil og hydreringsadvarsler
-for (const [sti, h1Forvent] of [['/', 'Nettsider og helhetlig markedsføring som utvikles over tid.'], ['/kontakt', 'Ta kontakt for en uforpliktende fagprat.'], ['/websites'], ['/branding'], ['/seo'], ['/digital-marketing'], ['/blog'], ['/blog/hvor-mye-koster-en-nettside'], ['/personvern']]) {
+for (const [sti, h1Forvent] of [['/', 'Nettsider og helhetlig markedsføring som utvikles over tid.'], ['/kontakt', 'Fortell oss hva dere trenger hjelp med'], ['/websites'], ['/branding'], ['/seo'], ['/digital-marketing'], ['/blog'], ['/blog/hvor-mye-koster-en-nettside'], ['/personvern']]) {
   const p = await b.newPage({ viewport: { width: 1440, height: 900 } }); const feil = [];
   p.on('pageerror', e => feil.push(e.message)); p.on('console', m => (m.type() === 'error' || /hydrat|did not match/i.test(m.text())) && feil.push(m.text()));
   const r = await p.goto(base + sti, { waitUntil: 'networkidle' });

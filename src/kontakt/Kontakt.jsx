@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "../forside/forside.css";
 import "../sider/sider.css";
 import { Ramme, useMeta } from "../forside/Ramme.jsx";
+import { siderMeta } from "../sider/sider-meta.js";
 import { selskap } from "../sider/tjenester-innhold.js";
 
 // Kontaktskjema (fase 6) via Netlify Forms – en del av eksisterende hosting, uten egne nøkler eller nye tjenester.
@@ -32,11 +33,7 @@ function valider(data) {
 }
 
 export default function Kontakt() {
-  useMeta({
-    tittel: "Kontakt | Cidea Marketing",
-    beskrivelse: "Ta kontakt med Cidea Marketing om nettsider, merkevarebygging, SEO eller digital markedsføring.",
-    sti: "/kontakt",
-  });
+  useMeta({ ...siderMeta["/kontakt"], sti: "/kontakt" });
   const [status, setStatus] = useState("klar"); // klar | sender | sendt | feil
   const [feil, setFeil] = useState(tomFeil);
   const [js, setJs] = useState(false); // false i forhåndsrendret HTML → nettleserens validering uten JavaScript
@@ -72,8 +69,8 @@ export default function Kontakt() {
     <Ramme sti="/kontakt">
       <header className="sd-hode">
         <div className="cm-wrap">
-          <h1 id="h1">Ta kontakt for en uforpliktende fagprat.</h1>
-          <p className="sd-ingress">Skriv til oss om nettsider, merkevarebygging, SEO eller digital markedsføring for bedriften.</p>
+          <h1 id="h1">Fortell oss hva dere trenger hjelp med</h1>
+          <p className="sd-ingress">Skriv kort om bedriften og hva dere ønsker å få til, enten det gjelder ny nettside, merkevare, SEO eller digital markedsføring. Vi leser henvendelsen og svarer på e-post.</p>
         </div>
       </header>
 
@@ -87,7 +84,7 @@ export default function Kontakt() {
           {status === "sendt" ? (
             <div className="sd-melding sd-melding-ok" role="status">
               <h3 ref={bekreftelse} tabIndex={-1}>Henvendelsen er sendt</h3>
-              <p>Takk. Vi leser henvendelsen og svarer på e-post.</p>
+              <p>Takk, vi har mottatt henvendelsen. Vi leser den og svarer på e-post. Har vi spørsmål, tar vi dem i svaret.</p>
             </div>
           ) : (
             <form name="kontakt" method="POST" action="/kontakt/takk" data-netlify="true" netlify-honeypot="bot-felt" noValidate={js} onSubmit={send}>
@@ -129,7 +126,7 @@ export default function Kontakt() {
               <div className="sd-felt">
                 <label htmlFor="k-melding">Melding</label>
                 <textarea {...felt("melding", true)} rows={6} required minLength={10} />
-                <p className="sd-hjelp" id="k-melding-hjelp">Fortell kort om bedriften og hva dere ønsker hjelp med.</p>
+                <p className="sd-hjelp" id="k-melding-hjelp">Fortell kort om bedriften, hva dere ønsker hjelp med og eventuelt når. Har dere en nettside i dag, lim gjerne inn lenken.</p>
                 <Feil navn="melding" />
               </div>
 
@@ -154,7 +151,7 @@ export default function Kontakt() {
           <h2 id="direkte">Direkte kontakt</h2>
           <p><a href={`mailto:${selskap.epost}`}>{selskap.epost}</a></p>
           <h2>Hva skjer videre?</h2>
-          <p>Vi leser henvendelsen og svarer på e-post. Har vi spørsmål, tar vi dem i svaret.</p>
+          <p>Vi leser henvendelsen og svarer på e-post. Har vi spørsmål, tar vi dem i svaret. Gjelder det en ny nettside, starter vi med å avklare behovet før dere får en fast pris.</p>
           <h2>Selskapet</h2>
           <p>Cidea Marketing drives av {selskap.navn}<br />Org.nr. {selskap.orgnr}<br />{selskap.adresse}</p>
         </aside>
