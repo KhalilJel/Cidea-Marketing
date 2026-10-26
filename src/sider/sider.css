@@ -132,8 +132,8 @@ form > .sd-hjelp { margin-top: 22px !important; }
 /* Innhold oktober 2026: prisliste, FAQ, dato og tabeller i artikler */
 .sd-liste { list-style: disc; padding-left: 1.3em; margin: 12px 0 16px; }
 .sd-liste li + li { margin-top: 6px; }
-.sd-faq details { border-top: 1px solid rgba(20, 22, 25, .14); }
-.sd-faq details:last-child { border-bottom: 1px solid rgba(20, 22, 25, .14); }
+.sd-faq details { border-top: 1px solid var(--stein); }
+.sd-faq details:last-child { border-bottom: 1px solid var(--stein); }
 .sd-faq summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; padding: 14px 0; cursor: pointer; list-style: none; }
 .sd-faq summary::-webkit-details-marker { display: none; }
 .sd-faq summary::after { content: "+"; font: 600 24px/1 "Outfit", system-ui, sans-serif; color: var(--dyp); flex: none; }
@@ -146,6 +146,6 @@ form > .sd-hjelp { margin-top: 22px !important; }
 .sd-artikkel ol li + li { margin-top: 8px; }
 .sd-tabell { overflow-x: auto; margin: 20px 0; }
 .sd-tabell table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 16px; line-height: 1.45; }
-.sd-tabell th, .sd-tabell td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid rgba(20, 22, 25, .14); }
-.sd-tabell thead th { font-weight: 700; border-bottom: 2px solid rgba(20, 22, 25, .3); }
+.sd-tabell th, .sd-tabell td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--stein); }
+.sd-tabell thead th { font-weight: 700; border-bottom: 2px solid var(--dempet); }
 .sd-tabell tbody th { font-weight: 600; }

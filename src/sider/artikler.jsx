@@ -21,7 +21,8 @@ const metadata = {
     beskrivelse: "Bytter dere nettside? Slik beholder dere synligheten i Google: videresending, innhold som bør beholdes og en sjekkliste før og etter lansering." },
   "hvordan-fa-flere-henvendelser-fra-nettsiden": { tema: "Nettsider", oppdatert: "26. oktober 2026",
     beskrivelse: "Får nettsiden besøk, men få henvendelser? Slik gjør dere budskapet tydeligere, bygger tillit og gjør neste steg enkelt. Med sjekkliste." },
-  "hvorfor-vises-ikke-nettsiden-pa-google": { tema: "SEO" },
+  "hvorfor-vises-ikke-nettsiden-pa-google": { tema: "SEO",
+    beskrivelse: "Teknisk struktur, innhold, søkeintensjon, konkurranse og autoritet avgjør synligheten i Google. Slik finner dere ut hvorfor nettsiden ikke vises." },
 };
 
 export const artikler = Object.keys(metadata).map(slug => {
