@@ -68,7 +68,7 @@ function Bunn({ sti, seksjon }) {
     <footer className="cm-bunn">
       <div className="cm-wrap cm-bunn-rad">
         <a className="cm-ordmerke" href={FORSIDE} aria-label="Cidea Marketing – til forsiden" aria-current={naa(FORSIDE, sti)}>CIDEA MARKETING</a>
-        <nav aria-label="Bunnmeny"><ul>{[...meny, { tekst: "Kontakt", href: "/kontakt" }, { tekst: "Personvern", href: "/personvern" }].map(m => <li key={m.href}><a href={m.href} aria-current={naa(m.href, sti, seksjon)}>{m.tekst}</a></li>)}</ul></nav>
+        <nav aria-label="Bunnmeny"><ul>{[...meny, { tekst: "Personvern", href: "/personvern" }].map(m => <li key={m.href}><a href={m.href} aria-current={naa(m.href, sti, seksjon)}>{m.tekst}</a></li>)}</ul></nav>
         <p className="cm-copy">© 2026 Cidea Marketing · Drives av {selskap.navn}, org.nr. {selskap.orgnr} · <a href={`mailto:${selskap.epost}`}>{selskap.epost}</a></p>
       </div>
     </footer>
@@ -88,13 +88,14 @@ export function Ramme({ sti, seksjon = sti, fastMeny = false, children }) {
   );
 }
 
-/** Avsluttende CTA – godkjent tekst (ChatGPT-review utkast 2, DESIGN.md § 8). */
-export function SluttCta() {
+/** Avsluttende CTA. Standardteksten er godkjent i ChatGPT-review utkast 2 (DESIGN.md § 8); undersidene sender egen
+ *  tittel og tekst tilpasset siden (godkjent av eier i oktober 2026). */
+export function SluttCta({ tittel = "Klar for et overbevisende digitalt uttrykk?", tekst = "Fortell oss kort om bedriften og hva dere ønsker hjelp med. Vi tar kontakt på e-post." }) {
   return (
     <section className="cm-cta" aria-labelledby="cta-tittel">
       <div className="cm-wrap cm-cta-rad">
-        <h2 id="cta-tittel">Klar for et overbevisende digitalt uttrykk?</h2>
-        <p>Fortell oss kort om bedriften og hva dere ønsker hjelp med. Vi tar kontakt på e-post.</p>
+        <h2 id="cta-tittel">{tittel}</h2>
+        <p>{tekst}</p>
         <a className="cm-knapp cm-knapp-lys" href="/kontakt">Snakk med oss <span aria-hidden="true">→</span></a>
       </div>
     </section>

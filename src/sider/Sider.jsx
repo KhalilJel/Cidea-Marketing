@@ -3,10 +3,12 @@ import "../forside/forside.css";
 import "./sider.css";
 import { Ramme, SluttCta, useMeta } from "../forside/Ramme.jsx";
 import { tjenesteSider, selskap } from "./tjenester-innhold.js";
-import { artikler, ArtikkelTekst } from "./artikler.jsx";
+import { artikler, ArtikkelTekst, RikTekst, inline } from "./artikler.jsx";
+import { siderMeta } from "./sider-meta.js";
 import { gullkornetSeksjoner, gullkornetSistOppdatert } from "./personvern-gullkornet.js";
 
 // Undersider (fase 6): rolig, oversiktlig oppsett med godkjente fonter og farger. Ingen nye figurer eller bilder.
+// Tekstene er oppdatert med innholdet eier godkjente i oktober 2026.
 // Estetisk finpuss vurderes med eier senere; denne runden gjelder struktur, innhold og funksjon.
 
 function Sidehode({ sti, tittel, ingress, children }) {
@@ -22,7 +24,8 @@ function Sidehode({ sti, tittel, ingress, children }) {
   );
 }
 
-function Steg({ steg, tittel = "Slik foregår samarbeidet", id = "steg" }) {
+function Steg({ steg, tittel, id = "steg" }) {
+  tittel = tittel || "Slik foregår samarbeidet";
   const farger = ["marine", "dyp", "skog"];
   return (
     <section className="cm-seksjon cm-lys sd-seksjon" aria-labelledby={id}>
@@ -48,6 +51,7 @@ function ArtikkelListe({ slugs, overskrift, id }) {
                 <span className="sd-tema">{a.tema}</span>
                 <h3>{a.tittel}</h3>
                 <p>{a.utdrag}</p>
+                {a.oppdatert && <p className="sd-dato">Oppdatert {a.oppdatert}</p>}
                 <span className="sd-lenke">Les artikkelen <span aria-hidden="true">→</span></span>
               </a>
             </li>
@@ -60,19 +64,19 @@ function ArtikkelListe({ slugs, overskrift, id }) {
 
 /* ---------- Tjenester ---------- */
 export function Tjenester() {
-  useMeta({ tittel: "Tjenester | Cidea Marketing", beskrivelse: "Nettsider, merkevarebygging, SEO og digital markedsføring for bedrifter.", sti: "/tjenester" });
+  useMeta({ tittel: siderMeta["/tjenester"].tittel, beskrivelse: siderMeta["/tjenester"].beskrivelse, sti: "/tjenester" });
   return (
     <Ramme sti="/tjenester">
-      <Sidehode tittel="Dette kan vi hjelpe dere med" ingress="Vi hjelper bedrifter med nettsider, merkevare, SEO og digital markedsføring. Tjenestene kan brukes hver for seg eller sammen." />
+      <Sidehode tittel="Nettsider, merkevare, SEO og digital markedsføring" ingress="Nettsider er hovedtjenesten vår. De andre tjenestene kan dere kjøpe hver for seg, eller sammen med en ny nettside når det gir mening." />
       <section className="cm-seksjon sd-seksjon sd-tett" aria-label="Tjenester">
         <div className="cm-wrap">
           <ul className="sd-tjenester">
             {tjenesteSider.map(t => (
               <li key={t.sti} className={`sd-strek-${t.farge}`}>
                 <h2><a href={t.sti}>{t.navn}</a></h2>
-                <p className="sd-tjeneste-ingress">{t.ingress}</p>
-                <p>{t.behov}</p>
-                <a className="sd-lenke" href={t.sti} aria-hidden="true" tabIndex={-1}>Les om {t.navn === "SEO" ? t.navn : t.navn.toLowerCase()} <span>→</span></a>
+                <p className="sd-tjeneste-ingress">{t.oversikt}</p>
+                <p><strong>Passer når:</strong> {t.passer}</p>
+                <a className="sd-lenke" href={t.sti} aria-hidden="true" tabIndex={-1}>{t.lenketekst} <span>→</span></a>
               </li>
             ))}
           </ul>
@@ -80,8 +84,8 @@ export function Tjenester() {
       </section>
       <section className="cm-seksjon cm-lys sd-seksjon" aria-labelledby="usikker">
         <div className="cm-wrap sd-smal">
-          <h2 id="usikker">Riktige tiltak for bedriften deres</h2>
-          <p>Vi tar utgangspunkt i målene deres og prioriterer tiltakene som støtter dem. Noen ganger betyr det å forbedre det dere allerede har. Andre ganger trengs en ny løsning.</p>
+          <h2 id="usikker">Usikre på hvor dere bør starte?</h2>
+          <p>Mange starter med nettsiden, fordi det er der kundene sjekker dere før de tar kontakt. Noen ganger er det smartere å forbedre det dere har. Fortell kort om bedriften, så foreslår vi et fornuftig første steg.</p>
           <a className="cm-knapp" href="/kontakt">Snakk med oss <span aria-hidden="true">→</span></a>
         </div>
       </section>
@@ -90,94 +94,141 @@ export function Tjenester() {
 }
 
 export function TjenesteSide({ t }) {
-  useMeta({ tittel: `${t.navn} | Cidea Marketing`, beskrivelse: t.ingress, sti: t.sti });
+  useMeta({ tittel: t.metaTittel, beskrivelse: t.beskrivelse, sti: t.sti });
   return (
     <Ramme sti={t.sti} seksjon="/tjenester">
       <Sidehode sti={[["Tjenester", "/tjenester"], [t.navn]]} tittel={t.tittel} ingress={t.ingress}>
         <div className="sd-handling">
-          <a className="cm-knapp" href="/kontakt">Snakk med oss <span aria-hidden="true">→</span></a>
-          <a className="cm-lenke" href="#leveranse">Hva vi leverer <span aria-hidden="true">↓</span></a>
+          <a className="cm-knapp" href="/kontakt">{t.handling || "Snakk med oss"} <span aria-hidden="true">→</span></a>
+          <a className="cm-lenke" href="#leveranse">{t.ankerTekst || "Hva vi leverer"} <span aria-hidden="true">↓</span></a>
         </div>
       </Sidehode>
       <section className="cm-seksjon sd-seksjon sd-tett" aria-labelledby="behov">
         <div className="cm-wrap sd-to">
-          <h2 id="behov">Hva vi hjelper med</h2>
+          <h2 id="behov">{t.behovTittel || "Hva vi hjelper med"}</h2>
           <p className="sd-brod">{t.behov}</p>
         </div>
       </section>
       <section id="leveranse" className="cm-seksjon sd-seksjon" aria-labelledby="leveranse-tittel">
         <div className="cm-wrap sd-to">
-          <h2 id="leveranse-tittel">Hva leveransen kan inneholde</h2>
-          <dl className="sd-rader">{t.leveranse.map(([n, x]) => <div key={n}><dt>{n}</dt><dd>{x}</dd></div>)}</dl>
+          <h2 id="leveranse-tittel">{t.leveranseTittel || "Hva leveransen kan inneholde"}</h2>
+          <dl className="sd-rader">{t.leveranse.map(([n, x]) => <div key={n}><dt>{n}</dt><dd>{inline(x, n)}</dd></div>)}</dl>
         </div>
       </section>
-      <Steg steg={t.steg} />
+      <Steg steg={t.steg} tittel={t.stegTittel} />
+      {t.pris && (
+        <section className="cm-seksjon sd-seksjon" aria-labelledby="pris">
+          <div className="cm-wrap sd-to">
+            <h2 id="pris">{t.pris.tittel}</h2>
+            <div className="sd-brod">
+              <p>{t.pris.tekst}</p>
+              <ul className="sd-liste">{t.pris.punkter.map(p => <li key={p}>{p}</li>)}</ul>
+              <p>{t.pris.etter}</p>
+              <p><a className="cm-lenke" href={t.pris.lenke[1]}>{t.pris.lenke[0]} <span aria-hidden="true">→</span></a></p>
+            </div>
+          </div>
+        </section>
+      )}
+      {t.eksempel && (
+        <section className="cm-seksjon cm-lys sd-seksjon" aria-labelledby="eksempel">
+          <div className="cm-wrap sd-to">
+            <h2 id="eksempel">{t.eksempel.tittel}</h2>
+            <div className="sd-brod">
+              <p>{t.eksempel.tekst}</p>
+              <p><a className="cm-lenke" href={t.eksempel.lenke[1]}>{t.eksempel.lenke[0]} <span aria-hidden="true">→</span></a></p>
+            </div>
+          </div>
+        </section>
+      )}
       <section className="cm-seksjon sd-seksjon" aria-labelledby="videre">
         <div className="cm-wrap sd-to">
-          <h2 id="videre">Videre etter leveransen</h2>
-          <p className="sd-brod">{t.videre}</p>
+          <h2 id="videre">{t.videreTittel || "Videre etter leveransen"}</h2>
+          <div className="sd-brod"><RikTekst tekst={t.videre} /></div>
         </div>
       </section>
+      {t.faq && (
+        <section className="cm-seksjon cm-lys sd-seksjon" aria-labelledby="faq">
+          <div className="cm-wrap sd-to">
+            <h2 id="faq">{t.faqTittel}</h2>
+            <div className="sd-faq">
+              {t.faq.map(([s, svar]) => (
+                <details key={s}>
+                  <summary><h3>{s}</h3></summary>
+                  <p>{inline(svar, s)}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
       <ArtikkelListe slugs={t.artikler} overskrift="Les videre" id="les-videre" />
-      <SluttCta />
+      <SluttCta {...t.avslutning} />
     </Ramme>
   );
 }
 
 /* ---------- Om oss ---------- */
+const verdier = [
+  ["Klarhet", "En nettside skal gjøre det lett å forstå hva dere tilbyr. Det gjelder også hvordan vi forklarer vårt eget arbeid."],
+  ["Ærlighet", "Vi anbefaler det dere trenger, også når det er mindre enn dere spurte om."],
+  ["Forutsigbarhet", "Dere vet hva som inngår, hva det koster og når det blir ferdig, før vi starter."],
+  ["Langsiktighet", "En nettside er aldri helt ferdig. Vi blir gjerne med videre og forbedrer den over tid."],
+];
+const forventninger = [
+  ["Tydelig omfang før start.", "Dere vet hva som inngår og hva det koster før vi begynner."],
+  ["Fast pris på nettsideprosjekter.", "Prisen avtales etter at behovet er avklart."],
+  ["Råd basert på behov.", "Vi sier fra når noe ikke er nødvendig."],
+  ["Åpen dialog om prioriteringer.", "Vi forklarer valgene uten unødvendig fagspråk."],
+  ["Videre arbeid etter avtale.", "Drift, vedlikehold og forbedringer avtales når dere trenger det."],
+];
+
 export function OmOss() {
-  useMeta({ tittel: "Om oss | Cidea Marketing", beskrivelse: "Cidea Marketing hjelper bedrifter med nettsider, merkevarebygging, SEO og digital markedsføring.", sti: "/om-oss" });
+  useMeta({ tittel: siderMeta["/om-oss"].tittel, beskrivelse: siderMeta["/om-oss"].beskrivelse, sti: "/om-oss" });
   return (
     <Ramme sti="/om-oss">
-      <Sidehode tittel="Om Cidea Marketing" ingress="Cidea Marketing hjelper bedrifter med å bli enklere å forstå, finne og velge på nett. Vi lager nettsider, bygger merkevarer og jobber med SEO og digital markedsføring – og kan videreutvikle løsningene etter lansering." />
-      <section className="cm-seksjon sd-seksjon sd-tett" aria-labelledby="tilbyr">
+      <Sidehode tittel="Vi lager nettsider som gjør det lettere å forstå hva bedrifter tilbyr" ingress="Cidea Marketing er et norsk byrå som lager nettsider for bedrifter som selger tjenester. Vi hjelper også med merkevare, SEO og digital markedsføring, og blir gjerne med videre etter lansering." />
+      <section className="cm-seksjon sd-seksjon sd-tett" aria-labelledby="verdier">
         <div className="cm-wrap sd-to">
-          <h2 id="tilbyr">Hva vi tilbyr</h2>
-          <dl className="sd-rader">{tjenesteSider.map(t => <div key={t.sti}><dt><a href={t.sti}>{t.navn}</a></dt><dd>{t.ingress}</dd></div>)}</dl>
+          <h2 id="verdier">Det vi står for</h2>
+          <dl className="sd-rader">{verdier.map(([n, x]) => <div key={n}><dt>{n}</dt><dd>{x}</dd></div>)}</dl>
         </div>
       </section>
-      <section className="cm-seksjon cm-lys sd-seksjon" aria-labelledby="anbefalinger">
+      <section className="cm-seksjon cm-lys sd-seksjon" aria-labelledby="slik-jobber">
         <div className="cm-wrap sd-to">
-          <h2 id="anbefalinger">Anbefalinger ut fra målene deres</h2>
-          <p className="sd-brod">Vi anbefaler det som faktisk støtter målene deres, ikke mest mulig. Er nettsiden eller merkevaren dere har god nok, sier vi det og foreslår forbedringer i stedet for noe nytt.</p>
+          <h2 id="slik-jobber">Slik jobber vi</h2>
+          <div className="sd-brod">
+            <p>Vi anbefaler det som støtter målene deres, ikke mest mulig arbeid. Er nettsiden deres god nok, foreslår vi forbedringer i stedet for å bygge nytt. Vi skriver tekstene selv, fordi en nettside sjelden blir bedre enn det den forteller.</p>
+            <h3>Dette kan dere forvente</h3>
+            <ul className="sd-punkter">{forventninger.map(([n, x]) => <li key={n}><strong>{n}</strong> {x}</li>)}</ul>
+          </div>
         </div>
       </section>
-      <Steg tittel="Slik jobber vi" id="slik" steg={[
-        ["Avklare behov", "Vi går gjennom virksomheten, målgruppen og målene."],
-        ["Designe og utvikle", "Vi lager struktur, design og innhold og bygger løsningen."],
-        ["Videreutvikle", "Etter lansering kan vi forbedre og vedlikeholde løsningen over tid."],
+      <Steg tittel="Fra første samtale til ferdig nettside" id="slik" steg={[
+        ["Avklare behov", "Vi går gjennom bedriften, målgruppen og målene."],
+        ["Designe og utvikle", "Vi lager struktur, tekst, design og løsning."],
+        ["Videreutvikle", "Vi forbedrer og vedlikeholder etter lansering, når dere ønsker det."],
       ]} />
-      <section className="cm-seksjon sd-seksjon" aria-labelledby="forvente">
-        <div className="cm-wrap sd-to">
-          <h2 id="forvente">Hva dere kan forvente</h2>
-          <ul className="sd-punkter">
-            <li>Tydelige avklaringer før vi starter</li>
-            <li>Forslag basert på hva bedriften faktisk trenger</li>
-            <li>Løpende forbedringer når det er avtalt</li>
-            <li>Åpen dialog om prioriteringer</li>
-          </ul>
-        </div>
-      </section>
+      <div className="cm-wrap sd-avslutt"><a className="cm-lenke" href="/websites">Les mer om hvordan vi lager nettsider <span aria-hidden="true">→</span></a></div>
       <section className="cm-seksjon cm-lys sd-seksjon" aria-labelledby="selskapet">
         <div className="cm-wrap sd-to">
-          <h2 id="selskapet">Selskapet</h2>
+          <h2 id="selskapet">Om selskapet</h2>
           <div className="sd-brod">
-            <p>Cidea Marketing drives av {selskap.navn}, org.nr. {selskap.orgnr}, {selskap.adresse}.</p>
+            <p>Cidea Marketing drives av {selskap.navn}, org.nr. {selskap.orgnr}. Vi holder til i {selskap.adresse}, og jobber med bedrifter i hele Norge.</p>
             <p>Kontakt: <a href={`mailto:${selskap.epost}`}>{selskap.epost}</a></p>
           </div>
         </div>
       </section>
-      <SluttCta />
+      <SluttCta tittel="Vil dere bli kjent med oss?" tekst="Fortell kort om bedriften og hva dere trenger hjelp med. Vi svarer på e-post." />
     </Ramme>
   );
 }
 
 /* ---------- Innsikt ---------- */
 export function Innsikt() {
-  useMeta({ tittel: "Innsikt | Cidea Marketing", beskrivelse: "Artikler om nettsider, synlighet og merkevare.", sti: "/blog" });
+  useMeta({ tittel: siderMeta["/blog"].tittel, beskrivelse: siderMeta["/blog"].beskrivelse, sti: "/blog" });
   return (
     <Ramme sti="/blog">
-      <Sidehode tittel="Innsikt" ingress="Artikler om nettsider, synlighet og merkevare." />
+      <Sidehode tittel="Innsikt" ingress="Praktiske svar for dere som vurderer ny nettside: pris, innhold, prosess og synlighet i Google." />
       <section className="cm-seksjon sd-seksjon sd-tett" aria-label="Artikler">
         <div className="cm-wrap">
           <ul className="sd-artikler sd-artikler-stor">
@@ -187,6 +238,7 @@ export function Innsikt() {
                   <span className="sd-tema">{a.tema}</span>
                   <h2>{a.tittel}</h2>
                   <p>{a.utdrag}</p>
+                  {a.oppdatert && <p className="sd-dato">Oppdatert {a.oppdatert}</p>}
                   <span className="sd-lenke">Les artikkelen <span aria-hidden="true">→</span></span>
                 </a>
               </li>
@@ -194,25 +246,25 @@ export function Innsikt() {
           </ul>
         </div>
       </section>
-      <SluttCta />
+      <SluttCta tittel="Vurderer dere ny nettside?" tekst="Fortell kort om bedriften og hva nettsiden skal hjelpe dere med, så svarer vi på e-post." />
     </Ramme>
   );
 }
 
 export function Artikkel({ a }) {
-  useMeta({ tittel: `${a.tittel} | Cidea Marketing`, beskrivelse: a.utdrag, sti: `/blog/${a.slug}` });
+  useMeta({ tittel: a.metaTittel, beskrivelse: a.beskrivelse, sti: `/blog/${a.slug}` });
   return (
     <Ramme sti={`/blog/${a.slug}`} seksjon="/blog">
       <article>
         <Sidehode sti={[["Innsikt", "/blog"], [a.tittel]]} tittel={a.tittel}>
-          <p className="sd-tema">{a.tema}</p>
+          <p className="sd-tema">{a.tema}{a.oppdatert && <span className="sd-dato"> · Oppdatert {a.oppdatert} · Cidea Marketing</span>}</p>
         </Sidehode>
         <div className="cm-wrap">
           <div className="sd-artikkel"><ArtikkelTekst kilde={a.kilde} /></div>
           <p className="sd-tilbake"><a className="cm-lenke" href="/blog"><span aria-hidden="true">←</span> Alle artikler</a></p>
         </div>
       </article>
-      <SluttCta />
+      <SluttCta tittel={a.tema === "SEO" ? "Vil dere bli lettere å finne?" : "Vurderer dere ny nettside?"} tekst="Fortell kort om bedriften og hva dere ønsker hjelp med, så svarer vi på e-post." />
     </Ramme>
   );
 }
@@ -251,7 +303,7 @@ export function Takk() {
   useMeta({ tittel: "Henvendelsen er sendt | Cidea Marketing", beskrivelse: "Bekreftelse på henvendelse.", sti: "/kontakt/takk" });
   return (
     <Ramme sti="/kontakt/takk" seksjon="/kontakt">
-      <Sidehode tittel="Henvendelsen er sendt" ingress="Takk for henvendelsen. Skjemaløsningen har tatt imot meldingen, og vi svarer på e-post." />
+      <Sidehode tittel="Henvendelsen er sendt" ingress="Takk, vi har mottatt henvendelsen. Vi leser den og svarer på e-post. Har vi spørsmål, tar vi dem i svaret." />
       <div className="cm-wrap sd-avslutt"><a className="cm-lenke" href="/tjenester">Se tjenestene <span aria-hidden="true">→</span></a></div>
     </Ramme>
   );
