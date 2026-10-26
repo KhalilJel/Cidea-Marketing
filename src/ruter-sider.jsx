@@ -11,7 +11,7 @@ export const siderRuter = {
   "/om-oss": { komponent: OmOss, ...siderMeta["/om-oss"] },
   "/blog": { komponent: Innsikt, ...siderMeta["/blog"] },
   "/kontakt/takk": { komponent: Takk, tittel: "Henvendelsen er sendt | Cidea Marketing", beskrivelse: "Bekreftelse på henvendelse.", robots: "noindex, follow" },
-  "/personvern": { komponent: Personvern, tittel: "Personvern | Cidea Marketing", beskrivelse: "Slik behandler Cidea Marketing personopplysninger." },
+  "/personvern": { komponent: Personvern, ...siderMeta["/personvern"] },
 };
 for (const t of tjenesteSider) siderRuter[t.sti] = { komponent: () => <TjenesteSide t={t} />, tittel: t.metaTittel, beskrivelse: t.beskrivelse };
 for (const a of artikler) siderRuter[`/blog/${a.slug}`] = { komponent: () => <Artikkel a={a} />, tittel: a.metaTittel, beskrivelse: a.beskrivelse };

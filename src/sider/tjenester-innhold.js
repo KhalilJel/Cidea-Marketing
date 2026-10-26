@@ -156,4 +156,7 @@ export const selskap = {
   orgnr: "927 394 391",
   adresse: "Gunnar Schjelderups vei 13A, 0485 Oslo",
   epost: "jelassi@cideamarketing.com",
+  // Kontakt for personvern og varslingsmottaker for kontaktskjemaet (godkjent av eier 26.10.2026). hello@ er et
+  // alias hos Migadu som leveres til innboksen for jelassi@. Øvrige kontaktadresser på nettstedet er uendret.
+  personvernEpost: "hello@cideamarketing.com",
 };

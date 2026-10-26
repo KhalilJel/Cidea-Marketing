@@ -271,13 +271,13 @@ export function Artikkel({ a }) {
 
 /* ---------- Personvern ---------- */
 export function Personvern() {
-  useMeta({ tittel: "Personvern | Cidea Marketing", beskrivelse: "Slik behandler Cidea Marketing personopplysninger.", sti: "/personvern" });
+  useMeta({ tittel: "Personvern | Cidea Marketing", beskrivelse: siderMeta["/personvern"].beskrivelse, sti: "/personvern" });
   return (
     <Ramme sti="/personvern">
       <Sidehode tittel="Personvern" ingress="Slik behandler vi opplysninger på dette nettstedet, i kontaktskjemaet og ved bedriftshenvendelser gjennom Gullkornet." />
       <div className="cm-wrap">
         <div className="sd-artikkel">
-          <p>Behandlingsansvarlig er {selskap.navn}, org.nr. {selskap.orgnr}, {selskap.adresse}, som driver Cidea Marketing. Kontakt om personvern: <a href={`mailto:${selskap.epost}`}>{selskap.epost}</a>.</p>
+          <p>Behandlingsansvarlig er {selskap.navn}, org.nr. {selskap.orgnr}, {selskap.adresse}, som driver Cidea Marketing. Kontakt om personvern: <a href={`mailto:${selskap.personvernEpost}`}>{selskap.personvernEpost}</a>.</p>
 
           <h2>Nettstedet</h2>
           <p>Nettstedet bruker ikke informasjonskapsler, analyseverktøy, sporingspiksler eller annonsenettverk. Skriftene ligger på vår egen server, så nettleseren henter ikke filer fra Google eller andre tredjeparter for å vise sidene.</p>
@@ -285,8 +285,12 @@ export function Personvern() {
 
           <h2>Kontaktskjemaet</h2>
           <p>Skjemaet samler inn navn, e-postadresse, eventuelt bedriftsnavn, hva henvendelsen gjelder og meldingen. Vi bruker opplysningene bare til å svare på henvendelsen og eventuell videre dialog som dere ber om. Grunnlaget er vår berettigede interesse i å besvare henvendelser og, der det er aktuelt, tiltak før en eventuell avtale (personvernforordningen artikkel 6 nr. 1 bokstav f og b).</p>
-          <p>Skjemaet sendes gjennom Netlify sin skjemafunksjon, og innsendte henvendelser lagres hos Netlify.</p>
-          <p className="sd-hull" role="note"><strong>Må fastsettes før skjemaet tas i bruk:</strong> lagringstid for henvendelser, hvordan henvendelser varsles til e-post, og om Netlify sitt overføringsgrunnlag for lagring utenfor EØS skal beskrives her.</p>
+          <p>Skjemaet sendes gjennom skjemafunksjonen til Netlify, som drifter nettstedet. Netlify behandler opplysningene på våre vegne som databehandler, etter Netlifys databehandleravtale. Innsendte henvendelser lagres hos Netlify og sendes som varsel til <a href={`mailto:${selskap.personvernEpost}`}>{selskap.personvernEpost}</a>. E-posten vår leveres av Migadu (Migadu-Mail GmbH, Sveits), som også er databehandler.</p>
+          <p>Netlify kontrollerer innsendinger automatisk for søppelpost. Henvendelser som blir merket som søppelpost, går vi gjennom og sletter jevnlig.</p>
+          <p>Netlify er et amerikansk selskap, og opplysningene kan behandles i USA. Ifølge Netlifys databehandleravtale bygger overføringen på EU–US Data Privacy Framework, med EU-kommisjonens standard personvernbestemmelser som reserve. Migadu holder til i Sveits, som EU-kommisjonen har godkjent som et land med tilstrekkelig personvern.</p>
+          <p>Henvendelser som ikke fører til et kundeforhold, sletter vi senest 6 måneder etter at dialogen er avsluttet, både hos Netlify og i e-posten. Fører henvendelsen til et oppdrag, oppbevarer vi korrespondansen som trengs for avtalen og regnskapet, så lenge det er nødvendig eller lovpålagt.</p>
+          <p>Dere kan be om innsyn, retting eller sletting av opplysninger dere har sendt oss, ved å skrive til <a href={`mailto:${selskap.personvernEpost}`}>{selskap.personvernEpost}</a>. Dere kan også klage til Datatilsynet.</p>
+          <p>Avsnittet om kontaktskjemaet ble sist oppdatert 26. oktober 2026.</p>
 
           <h2>Bedriftshenvendelser gjennom Gullkornet</h2>
           <p>Sist oppdatert: {gullkornetSistOppdatert}.</p>
