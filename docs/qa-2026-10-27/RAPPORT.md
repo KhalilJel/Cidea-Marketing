@@ -117,8 +117,8 @@ alle sider forhåndsrendret (innholdet finnes i HTML uten JavaScript); interne l
    ikke diktes opp. Det eneste beviset er nettstedet selv («Eksempel: nettsiden dere er på nå»). Navn og ansikt på den man snakker
    med mangler – om eier vil vise seg, er en eierbeslutning.
 4. **Er tjenestene enkle å forstå?** Ja. /tjenester har «Passer når:» på hver tjeneste, og tjenestesidene har tydelig struktur.
-5. **Pris:** tydelig på /websites (fra 14 900 kr eks. mva., drift fra 490 kr/mnd) og i prisartikkelen. Ikke synlig på forsiden
-   eller /tjenester.
+5. **Pris:** etter ny innholdsregel (27.10.2026) vises ikke Cideas egne priser offentlig; se PR #21. Arbeidsmåten
+   («tilbud med fast pris etter avklaring») er det som forklares.
 6. **Enkelt å ta kontakt?** Ja. «Snakk med oss» finnes i toppmenyen på alle sider, skjemaet har fem felt (ett valgfritt), og
    e-post er alternativ.
 7. **Friksjon:** lav i skjemaet. Den største friksjonen er lasteskjermen på forsiden (funn 11).
@@ -132,7 +132,7 @@ alle sider forhåndsrendret (innholdet finnes i HTML uten JavaScript); interne l
 | Forslag | Effekt | Kostnad | Risiko | Krever |
 |---|---|---|---|---|
 | Oppgi svartid på kontaktsiden og i bekreftelsen (f.eks. «innen én virkedag», bare om det holdes) | Høy | Lav | Lav | Eiers løfte |
-| Vis «Fast pris før oppstart – nettsider fra 14 900 kr eks. mva.» på forsiden og /tjenester (dokumentert pris) | Høy | Lav | Lav | Tekstgodkjenning |
+| Vis «Tilbud med fast pris før oppstart» (arbeidsmåte, uten beløp – jf. innholdsregelen 27.10.2026) på forsiden og /tjenester | Høy | Lav | Lav | Tekstgodkjenning |
 | Kort eller fjern lasteskjermen; vis heltekst og knapp straks og la partiklene tones inn bak | Høy | Middels | Middels (berører animasjonen) | Designgodkjenning |
 | Mindre tomrom i statisk forside (redusert bevegelse / ingen WebGL) | Middels | Lav | Lav | Designgodkjenning |
 | «Hva skjer videre» i tre korte steg på forsiden (avklaring → fast pris → bygging) med tekst som allerede er godkjent på /websites | Middels | Lav | Lav | Tekstgodkjenning |
