@@ -27,3 +27,6 @@
 .cm .cm-steg h3{font-weight:400}
 .cm .cm-menyknapp{background:#071b2b;color:#f5f8fc!important;border:1px solid #526c80;border-radius:24px}
 @media(max-width:767px){.cm .sd-hode{padding:48px 0 36px}.cm .cm-topp-rad{height:76px}.cm .cm-meny{background:#030812}.cm .sd-ingress{font-size:18px}.cm .cm-menyknapp{color:#f5f8fc;border-color:#526c80}}
+/* QA 27.10.2026: lange norske ord i H1 (f.eks. «Merkevarebygging») ga horisontal rulling på 320 px. */
+@media(max-width:359px){.cm .sd-hode h1{font-size:38px}}
+.cm .sd-hode h1{overflow-wrap:break-word}

@@ -76,7 +76,8 @@ export function ArtikkelTekst({ kilde }) {
     if (linjer.length > 2 && linjer.every(l => l.trim().startsWith("|")) && /^\|?\s*-/.test(linjer[1].trim())) {
       const [hode, , ...rader] = linjer;
       return (
-        <div key={i} className="sd-tabell"><table>
+        // Rulles sideveis på smale skjermer, så området må kunne nås med tastatur (WCAG 2.1.1).
+        <div key={i} className="sd-tabell" role="region" aria-label="Tabell" tabIndex={0}><table>
           <thead><tr>{celler(hode).map((c, j) => <th key={j} scope="col">{inline(c, `${i}-h${j}`)}</th>)}</tr></thead>
           <tbody>{rader.map((r, k) => <tr key={k}>{celler(r).map((c, j) => j === 0
             ? <th key={j} scope="row">{inline(c, `${i}-${k}-${j}`)}</th>
