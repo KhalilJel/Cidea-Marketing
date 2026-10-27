@@ -69,6 +69,7 @@ Kjørt 27.10.2026 mot `npm run build` på denne grenen:
 | `npm run build` | OK, 20 sider forhåndsrendret |
 | `node tests/revisjon.test.mjs` (ny) | **225 OK, 2 FEIL** – de to gjenstående er funn 9, som PR #18 retter. Før rettingene: 206 OK, 18 FEIL. Se `tests/REVISJON-RESULTAT.md`. |
 | `node tests/reference-static.mjs --production` | 32 PASS, 0 FAIL |
+| Prøvesammenslåing av denne grenen + PR #18 (lokalt, ikke pushet) | Ingen konflikt. `revisjon`: **227 OK, 0 FEIL**. `reference-static --production`: 0 FAIL. |
 | Samme to tester på PR #18-grenen | `reference-static`: alle PASS. `revisjon`: rettet funn 9; de øvrige feilene er de som rettes i denne grenen. |
 | `tests/forside.test.mjs`, `nettsted.test.mjs`, `qa.mjs`, `konsept-scroll.test.mjs` | Krasjer eller feiler fordi de forventer den gamle forsiden (se funn 10). Ikke brukt som bevis. |
 | Firefox, Safari, ekte telefon | IKKE KJØRT |
