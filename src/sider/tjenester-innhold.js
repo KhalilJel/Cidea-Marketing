@@ -36,14 +36,14 @@ export const tjenesteSider = [
     ],
     pris: {
       tittel: "Hva påvirker prisen?",
-      tekst: "Vi lager ikke nettsider etter en fast pakke. Prisen settes etter hva nettsiden skal gjøre for bedriften, og dere får et tilbud med fast pris når vi har avklart behovet, før arbeidet starter. Prisen avhenger mest av:",
+      tekst: "Hver nettside utvikles med utgangspunkt i bedriftens behov, mål og ambisjoner. Når vi har avklart hva nettsiden skal gjøre, får dere et tilbud med fast pris før arbeidet starter. Prisen avhenger mest av:",
       punkter: [
         "hvor mange sider og hvor mye tekst nettsiden trenger",
         "om logo, farger og bilder finnes, eller må lages",
         "funksjoner og integrasjoner, for eksempel booking eller skjema koblet til andre systemer",
         "om innhold skal flyttes fra en eksisterende nettside",
       ],
-      etter: "Etter lansering kan dere velge en driftsavtale. Den dekker hosting, sikkerhetskopi, at nettsiden holdes oppe, og små tekstendringer inntil 30 minutter i måneden. Prisen for drift får dere sammen med tilbudet. Domenet registreres alltid på bedriften deres.",
+      etter: "Etter lansering tilbyr vi drift og vedlikehold tilpasset nettsidens behov. Omfang og betingelser avtales før oppstart. Domenet registreres alltid på bedriften deres.",
       lenke: ["Les mer om hva en nettside koster", "/blog/hvor-mye-koster-en-nettside"],
     },
     eksempel: {
@@ -61,7 +61,7 @@ export const tjenesteSider = [
       ["Hvor lang tid tar det?", "Det avhenger av omfanget og hvor raskt vi får innspill fra dere. Dere får en tidsplan sammen med prisen, før vi starter."],
       ["Hvordan bygger dere nettsiden?", "Vi bygger nettsiden i ren kode og bruker AI-verktøy i utviklingen. Det gjør arbeidet raskere og nettsiden rask å laste. Vi skriver tekstene og går gjennom alt før lansering."],
       ["Kan vi endre tekst på nettsiden selv?", "Nettsiden har ikke et eget redigeringsverktøy. Endringer gjør vi for dere, enten som del av driftsavtalen eller som egne oppdrag."],
-      ["Hva koster drift?", "Driftsavtalen dekker hosting, sikkerhetskopi, at nettsiden holdes oppe, og små tekstendringer inntil 30 minutter i måneden. Prisen avtales sammen med nettsideprosjektet. Uten avtale betaler dere hosting og domene direkte, og vi tar betalt per oppdrag når dere vil endre noe."],
+      ["Hva koster drift?", "Det avhenger av hva nettsiden trenger. Drift og vedlikehold tilpasses nettsiden, og omfang og betingelser avtales før oppstart. Uten avtale betaler dere hosting og domene direkte, og vi tar betalt per oppdrag når dere vil endre noe."],
       ["Hvem eier nettsiden og domenet?", "Domenet registreres alltid på bedriften deres, også når vi tar oss av driften. Ønsker dere koden til nettsiden, får dere den når dere ber om det."],
       ["Kan dere forbedre nettsiden vi har, i stedet for å lage en ny?", "Ja, hvis det er det beste for dere. Noen ganger er det nok å skrive om tekstene, forbedre strukturen eller rette tekniske feil. Vi sier fra hvis vi mener en ny nettside ikke er nødvendig."],
       ["Kommer vi høyt opp på Google?", "Nettsiden får grunnleggende SEO: vi undersøker hva kundene deres søker etter, og bruker relevante søkeord der det passer. Plassering avhenger også av konkurranse, innhold og arbeid over tid, og ingen kan garantere bestemte plasseringer. Ønsker dere å jobbe videre med synlighet, kan vi hjelpe med [SEO](/seo)."],

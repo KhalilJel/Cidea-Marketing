@@ -59,8 +59,8 @@ Vurderer dere flere typer løsninger? Les [webbyrå, abonnement eller gjøre det
 
 Vurder nettsiden ut fra jobben den skal gjøre. Skal den gi flere henvendelser, må budskap, struktur, synlighet og kontaktpunkter bygges rundt det målet. En billig nettside som ikke blir funnet eller forstått, kan ende opp med å koste mer enn en som er godt planlagt. Samtidig trenger ikke alle bedrifter et stort prosjekt. Noen ganger holder det å forbedre det dere har.
 
-## Slik priser vi nettsider
+## Slik utvikler vi nettsider for bedrifter
 
-Vi har ikke standardpriser, fordi to bedrifter sjelden trenger den samme nettsiden. Først avklarer vi hva nettsiden skal oppnå, hvor mye innhold som trengs og hva dere har fra før. Deretter får dere et tilbud med fast pris og tidsplan, før vi starter. Vi skriver tekstene, nettsiden får grunnleggende SEO, og domenet registreres alltid på bedriften deres. Etter lansering kan dere velge en driftsavtale.
+Vi har ikke standardpriser, fordi to bedrifter sjelden trenger den samme nettsiden. Først avklarer vi hva nettsiden skal oppnå, hvor mye innhold som trengs og hva dere har fra før. Deretter får dere et tilbud med fast pris og tidsplan, før vi starter. Vi skriver tekstene, nettsiden får grunnleggende SEO, og domenet registreres alltid på bedriften deres. Etter lansering tilbyr vi drift og vedlikehold tilpasset nettsidens behov. Omfang og betingelser avtales før oppstart.
 
 [Se hva en ny nettside fra oss inneholder](/websites).

@@ -1,34 +1,36 @@
-# Ingen egne priser på nettsiden – før/etter til godkjenning
+# Ingen egne priser på nettsiden – før/etter
 
-Innholdsregel godkjent 27.10.2026: **Cideas egne priser vises ikke offentlig på nettsiden.**
-Gren `claude/ingen-egne-priser`, basert på `main` @ `7e9875b`. Ikke publisert.
+Innholdsregel godkjent 27.10.2026: **Cideas egne priser vises ikke offentlig på nettsiden.** Pedagogiske artikler kan
+fortsatt forklare generelle markedspriser.
+Gren `claude/ingen-egne-priser` (Draft PR #21), basert på `main` @ `7e9875b`. Ikke publisert.
+
+Runde 2 (27.10.2026) følger ChatGPTs anbefalinger: «fast pris før oppstart» beholdes, ny driftstekst, ny overskrift i
+prisartikkelen, ny åpningssetning på /websites, og publiseringsdatoene på artiklene er ikke endret.
 
 ## Gjennomgang
-
-Søkt etter kronebeløp, «kr», «kroner», «eks. mva», «pris» og «koster» i alle sider og artikler.
 
 | Side | Cideas egne priser før | Endret |
 |---|---|---|
 | Forsiden (`/`) | Ingen | Nei |
 | `/tjenester` | Ingen | Nei |
-| `/websites` | 14 900 kr i prisseksjonen og i FAQ, 490 kr/mnd i prisseksjonen og i FAQ | **Ja** (4 tekster) |
+| `/websites` | 14 900 kr og 490 kr/mnd i prisseksjonen og i FAQ | **Ja** (4 tekster) |
 | `/branding`, `/seo`, `/digital-marketing` | Ingen | Nei |
 | `/om-oss`, `/kontakt`, `/personvern`, takk- og 404-siden | Ingen («fast pris» som arbeidsmåte, ikke beløp) | Nei |
-| `/blog/hvor-mye-koster-en-nettside` | 14 900 kr, 490 kr/mnd og regneeksempel 20 780 kr | **Ja** (1 avsnitt erstattet, regneeksempelet fjernet) |
-| `/blog/webbyra-abonnement-eller-gjore-det-selv` | 14 900 kr | **Ja** (1 setning) |
-| Øvrige artikler | Ingen (bare generelle råd om pris) | Nei |
+| `/blog/hvor-mye-koster-en-nettside` | 14 900 kr, 490 kr/mnd og regneeksempel 20 780 kr | **Ja** (ett avsnitt med ny overskrift; regneeksempelet er fjernet) |
+| `/blog/webbyra-abonnement-eller-gjore-det-selv` | 14 900 kr | **Ja** (én setning) |
+| Øvrige artikler | Ingen | Nei |
 
-Beholdt: de generelle delene av artiklene om markedspriser, prismodeller og hva som påvirker prisen. Formuleringer om
-**fast pris før oppstart** er beholdt, fordi de beskriver arbeidsmåten, ikke et beløp (se spørsmål 1 under).
+Kontroll etter endringen: ingen kronebeløp på noen side i bygget, heller ikke i artiklene. Den generelle
+markedsbeskrivelsen i prisartikkelen («fra noen hundre kroner i måneden for et abonnement til store prosjekter …») er beholdt.
 
-## Før og etter
+## Endelig tekst
 
 ### 1. `/websites` – «Hva påvirker prisen?», innledning
 **Før:** En liten bedriftsnettside på opptil omtrent fem sider, med tekst, starter fra 14 900 kr eks. mva. Større nettsider får
 fast pris når vi har avklart behovet, så dere vet hva prosjektet koster før vi starter. Prisen avhenger mest av:
 
-**Etter:** Vi lager ikke nettsider etter en fast pakke. Prisen settes etter hva nettsiden skal gjøre for bedriften, og dere får et
-tilbud med fast pris når vi har avklart behovet, før arbeidet starter. Prisen avhenger mest av:
+**Etter:** Hver nettside utvikles med utgangspunkt i bedriftens behov, mål og ambisjoner. Når vi har avklart hva nettsiden skal
+gjøre, får dere et tilbud med fast pris før arbeidet starter. Prisen avhenger mest av:
 
 (Punktlisten under er uendret.)
 
@@ -36,9 +38,8 @@ tilbud med fast pris når vi har avklart behovet, før arbeidet starter. Prisen 
 **Før:** Etter lansering kan dere velge en driftsavtale fra 490 kr i måneden eks. mva. Den dekker hosting, sikkerhetskopi, at
 nettsiden holdes oppe, og små tekstendringer inntil 30 minutter i måneden. Domenet registreres alltid på bedriften deres.
 
-**Etter:** Etter lansering kan dere velge en driftsavtale. Den dekker hosting, sikkerhetskopi, at nettsiden holdes oppe, og små
-tekstendringer inntil 30 minutter i måneden. Prisen for drift får dere sammen med tilbudet. Domenet registreres alltid på
-bedriften deres.
+**Etter:** Etter lansering tilbyr vi drift og vedlikehold tilpasset nettsidens behov. Omfang og betingelser avtales før oppstart.
+Domenet registreres alltid på bedriften deres.
 
 ### 3. `/websites` – FAQ «Hva koster en ny nettside?»
 **Før:** En liten bedriftsnettside på opptil omtrent fem sider, med tekst, starter fra 14 900 kr eks. mva. Prisen for større
@@ -53,9 +54,10 @@ og hvordan dere sammenligner tilbud, står i artikkelen [hva en nettside koster]
 tekstendringer inntil 30 minutter i måneden. Uten avtale betaler dere hosting og domene direkte, og vi tar betalt per oppdrag
 når dere vil endre noe.
 
-**Etter:** Driftsavtalen dekker hosting, sikkerhetskopi, at nettsiden holdes oppe, og små tekstendringer inntil 30 minutter i
-måneden. Prisen avtales sammen med nettsideprosjektet. Uten avtale betaler dere hosting og domene direkte, og vi tar betalt per
-oppdrag når dere vil endre noe.
+**Etter:** Det avhenger av hva nettsiden trenger. Drift og vedlikehold tilpasses nettsiden, og omfang og betingelser avtales før
+oppstart. Uten avtale betaler dere hosting og domene direkte, og vi tar betalt per oppdrag når dere vil endre noe.
+
+(Omskrevet fra den godkjente driftsteksten, slik at prisseksjonen og FAQ-en på samme side ikke sier det samme ordrett.)
 
 ### 5. Artikkel «Hvor mye koster en nettside?» – avsnittet om Cidea
 **Før** (overskrift «Hva koster en nettside hos oss?»):
@@ -67,11 +69,11 @@ på bedriften deres.
 Et regneeksempel for det første året: en liten nettside til 14 900 kr pluss driftsavtale til 490 kr i måneden blir 20 780 kr eks.
 mva. Bruk samme regnestykke når dere sammenligner med et abonnement.
 
-**Etter** (overskrift «Slik priser vi nettsider»):
+**Etter** (overskrift «Slik utvikler vi nettsider for bedrifter»):
 Vi har ikke standardpriser, fordi to bedrifter sjelden trenger den samme nettsiden. Først avklarer vi hva nettsiden skal oppnå,
 hvor mye innhold som trengs og hva dere har fra før. Deretter får dere et tilbud med fast pris og tidsplan, før vi starter. Vi
-skriver tekstene, nettsiden får grunnleggende SEO, og domenet registreres alltid på bedriften deres. Etter lansering kan dere
-velge en driftsavtale.
+skriver tekstene, nettsiden får grunnleggende SEO, og domenet registreres alltid på bedriften deres. Etter lansering tilbyr vi
+drift og vedlikehold tilpasset nettsidens behov. Omfang og betingelser avtales før oppstart.
 
 (Regneeksempelet er fjernet. Rådet om å regne ut totalkostnaden for det første året står allerede tidligere i artikkelen.
 Lenken «Se hva en ny nettside fra oss inneholder» er beholdt.)
@@ -84,23 +86,20 @@ bedriftsnettside starter fra 14 900 kr eks. mva. Drift og vedlikehold kan avtale
 tilpasses omfanget, og dere får et tilbud når behovet er avklart. Drift og vedlikehold kan avtales etter lansering.
 
 Skjermbilder etter endring (375 px): `bilder/websites-pris.png`, `bilder/websites-faq.png`, `bilder/artikkel-pris.png`,
-`bilder/artikkel-webbyra.png`.
+`bilder/artikkel-webbyra.png`. Punktlisten i `websites-pris.png` vises uten punkttegn på denne grenen; den feilen rettes i PR #20.
 
-## Spørsmål til godkjenning
+## Merknader
 
-1. **«Fast pris før oppstart»** står fortsatt i tittel, ingress, metatittel og -beskrivelse på /websites, på /om-oss
-   («Fast pris på nettsideprosjekter»), på kontaktsiden og i artiklene. Det er et løfte om arbeidsmåte, ikke et beløp, og
-   derfor beholdt. Skal det også bort?
-2. **Nye løfter i tekstene:** «Prisen for drift får dere sammen med tilbudet» og «Prisen avtales sammen med nettsideprosjektet».
-   Stemmer det med hvordan dere faktisk gir tilbud?
-3. **«Oppdatert 26. oktober 2026»** på de to artiklene er ikke endret. Skal datoen settes til godkjenningsdatoen?
-4. Overskriften i prisartikkelen er endret fra «Hva koster en nettside hos oss?» til «Slik priser vi nettsider». Godkjent?
+- Detaljene om hva driftsavtalen dekker (hosting, sikkerhetskopi, oppetid, 30 minutter tekstendringer i måneden) står ikke
+  lenger i prisseksjonen eller i FAQ-en, i tråd med den nye driftsteksten. Hosting og tekstendringer nevnes fortsatt andre steder
+  på /websites («Kan vi endre tekst på nettsiden selv?», «Etter lansering»).
+- «Oppdatert 26. oktober 2026» på de to artiklene er ikke endret (punkt 5 fra ChatGPT).
+- Avsnittet under «Slik utvikler vi nettsider for bedrifter» åpner fortsatt med «Vi har ikke standardpriser …». Det kan justeres
+  om overskriften og første setning skal henge tettere sammen.
 
 ## Teknisk
 
 - Endret kun tekst i `src/sider/tjenester-innhold.js`, `blog/hvor-mye-koster-en-nettside.md` og
   `blog/webbyra-abonnement-eller-gjore-det-selv.md`. Ingen endringer i design, komponenter eller funksjoner.
-- Ny test `tests/ingen-egne-priser.test.mjs` (leser bare `dist/`): ingen kronebeløp på sider utenfor /blog/, og ingen av de
-  tidligere beløpene noe sted. Mot `main`: FEIL på 3 sider (/websites og de to artiklene). Etter endringen: OK.
-- `npm run build` OK (20 sider). `node tests/reference-static.mjs --production` 0 FAIL (låst Gullkornet-tekst uendret).
-  De fire sidene ble åpnet i Chromium ved 375 px uten konsollfeil. Firefox/Safari: IKKE KJØRT.
+- `tests/ingen-egne-priser.test.mjs` (leser bare `dist/`): ingen kronebeløp på sider utenfor /blog/, og ingen av de
+  tidligere beløpene noe sted. Mot `main`: FEIL på 3 sider. Etter endringen: OK.
