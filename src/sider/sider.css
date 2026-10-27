@@ -130,7 +130,7 @@ form > .sd-hjelp { margin-top: 22px !important; }
 }
 
 /* Innhold oktober 2026: prisliste, FAQ, dato og tabeller i artikler */
-.sd-liste { list-style: disc; padding-left: 1.3em; margin: 12px 0 16px; }
+.cm .sd-liste { list-style: disc; padding-left: 1.3em; margin: 12px 0 16px; }
 .sd-liste li + li { margin-top: 6px; }
 .sd-faq details { border-top: 1px solid var(--stein); }
 .sd-faq details:last-child { border-bottom: 1px solid var(--stein); }
