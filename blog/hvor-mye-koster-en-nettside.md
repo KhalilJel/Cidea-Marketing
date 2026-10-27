@@ -59,10 +59,8 @@ Vurderer dere flere typer løsninger? Les [webbyrå, abonnement eller gjøre det
 
 Vurder nettsiden ut fra jobben den skal gjøre. Skal den gi flere henvendelser, må budskap, struktur, synlighet og kontaktpunkter bygges rundt det målet. En billig nettside som ikke blir funnet eller forstått, kan ende opp med å koste mer enn en som er godt planlagt. Samtidig trenger ikke alle bedrifter et stort prosjekt. Noen ganger holder det å forbedre det dere har.
 
-## Hva koster en nettside hos oss?
+## Slik priser vi nettsider
 
-En liten bedriftsnettside på opptil omtrent fem sider, med tekst, starter fra 14 900 kr eks. mva. Større nettsider får fast pris etter at vi har avklart hva de skal gjøre, så dere vet hva prosjektet koster før vi starter. Vi skriver tekstene, og nettsiden får grunnleggende SEO. Etter lansering kan dere velge en driftsavtale fra 490 kr i måneden eks. mva., og domenet registreres alltid på bedriften deres.
-
-Et regneeksempel for det første året: en liten nettside til 14 900 kr pluss driftsavtale til 490 kr i måneden blir 20 780 kr eks. mva. Bruk samme regnestykke når dere sammenligner med et abonnement.
+Vi har ikke standardpriser, fordi to bedrifter sjelden trenger den samme nettsiden. Først avklarer vi hva nettsiden skal oppnå, hvor mye innhold som trengs og hva dere har fra før. Deretter får dere et tilbud med fast pris og tidsplan, før vi starter. Vi skriver tekstene, nettsiden får grunnleggende SEO, og domenet registreres alltid på bedriften deres. Etter lansering kan dere velge en driftsavtale.
 
 [Se hva en ny nettside fra oss inneholder](/websites).

@@ -40,4 +40,4 @@ Et byrå er mest verdt når nettsiden har en viktig rolle i salget: når kunder 
 
 ## Hvordan vi jobber
 
-Vi skriver tekstene, bygger nettsiden i ren kode med hjelp av AI-verktøy, og gir fast pris før vi starter. En liten bedriftsnettside starter fra 14 900 kr eks. mva. Drift og vedlikehold kan avtales etter lansering. [Se hva en ny nettside fra oss inneholder](/websites), eller les mer om [hva en nettside koster](./hvor-mye-koster-en-nettside.md).
+Vi skriver tekstene, bygger nettsiden i ren kode med hjelp av AI-verktøy, og gir fast pris før vi starter. Prisen tilpasses omfanget, og dere får et tilbud når behovet er avklart. Drift og vedlikehold kan avtales etter lansering. [Se hva en ny nettside fra oss inneholder](/websites), eller les mer om [hva en nettside koster](./hvor-mye-koster-en-nettside.md).
