@@ -1,0 +1,63 @@
+dag,ukedag,kanal,pilar,format,arbeidstittel_en,mal,cta,lenke,status,krever_godkjenning
+1,Man,LinkedIn,Klarhet,Tekstinnlegg,Three questions every homepage must answer in five seconds,Engasjement,Read the article,/insights/what-a-business-website-should-include,utkast,ja
+1,Man,Instagram,Merkevarehåndverk,Karusell,Five signs your brand has outgrown its look,Gjenkjennelse,Link in bio,/services/branding,utkast,ja
+2,Tir,LinkedIn,Arbeid over landegrenser,Tekstinnlegg,What we agree in writing before any project starts – and why,Tillit,Discuss a project,/dubai,utkast,ja
+2,Tir,Instagram,Klarhet,Reel (skjermopptak),"Before/after: a headline rewritten for clarity (eget eksempel, ikke kunde)",Gjenkjennelse,Link in bio,/services/websites,utkast,ja
+2,Tir,Facebook,Klarhet,Reel (skjermopptak) (gjenbruk fra Instagram),"Before/after: a headline rewritten for clarity (eget eksempel, ikke kunde)",Rekkevidde,Learn more,/services/websites,utkast,ja
+2,Tir,Blogg (/insights),Arbeid over landegrenser,Artikkel 800–1200 ord,How to brief a marketing agency (with a one-page template),Organisk synlighet,Discuss a project,/insights,utkast,ja
+3,Ons,LinkedIn,Synlighet,Karusell,Adding Arabic to an English website: 5 decisions to make first,Ekspertise,Read about SEO,/services/seo,utkast,ja
+4,Tor,LinkedIn,Merkevarehåndverk,Bilde + tekst,Restraint as a strategy: what Nordic design can bring to a crowded market,Posisjonering,See branding,/services/branding,utkast,ja
+4,Tor,Instagram,Arbeid over landegrenser,Bilde + tekst,"Oslo morning, Dubai late morning: our overlapping working day",Gjenkjennelse,Link in bio,/dubai,utkast,ja
+4,Tor,Facebook,Arbeid over landegrenser,Bilde + tekst (gjenbruk fra Instagram),"Oslo morning, Dubai late morning: our overlapping working day",Rekkevidde,Learn more,/dubai,utkast,ja
+5,Fre,LinkedIn,Bak arbeidet,Tekstinnlegg,How we built our own bilingual website (English and Norwegian on one setup),Troverdighet,See the website,/,utkast,ja
+5,Fre,Blogg (/insights),Synlighet,Artikkel 800–1200 ord,"Building an English–Arabic website: structure, typography and SEO",Organisk synlighet,Discuss a project,/insights,utkast,ja
+6,Lør,Instagram,Synlighet,Karusell,English and Arabic on one website: layout basics,Gjenkjennelse,Link in bio,/services/seo,utkast,ja
+6,Lør,Facebook,Synlighet,Karusell (gjenbruk fra Instagram),English and Arabic on one website: layout basics,Rekkevidde,Learn more,/services/seo,utkast,ja
+8,Man,LinkedIn,Klarhet,Karusell,Service pages: the five sections we never leave out,Ekspertise,See websites,/services/websites,utkast,ja
+8,Man,Instagram,Bak arbeidet,Reel,"Our own homepage scene, in motion",Gjenkjennelse,Link in bio,/,utkast,ja
+9,Tir,LinkedIn,Arbeid over landegrenser,Tekstinnlegg,"Oslo to Dubai: two to three hours apart, and why that works",Tillit,Book a call,/dubai,utkast,ja
+9,Tir,Instagram,Merkevarehåndverk,Karusell,Colour systems that work on screen and in print,Gjenkjennelse,Link in bio,/services/branding,utkast,ja
+9,Tir,Facebook,Merkevarehåndverk,Karusell (gjenbruk fra Instagram),Colour systems that work on screen and in print,Rekkevidde,Learn more,/services/branding,utkast,ja
+9,Tir,Blogg (/insights),Klarhet,Artikkel 800–1200 ord,How to write service pages that answer buyers' questions,Organisk synlighet,Discuss a project,/insights,utkast,ja
+10,Ons,LinkedIn,Synlighet,Tekstinnlegg,Rebuilding your website? Make an inventory of every URL first,Ekspertise,Read the article,/insights/rebuilding-your-website-without-losing-search-visibility,utkast,ja
+11,Tor,LinkedIn,Merkevarehåndverk,Karusell,"Your brand on five surfaces: website, LinkedIn, Instagram, deck, invoice",Engasjement,See branding,/services/branding,utkast,ja
+11,Tor,Instagram,Klarhet,Karusell,The 5-second homepage test,Gjenkjennelse,Link in bio,/insights/what-a-business-website-should-include,utkast,ja
+11,Tor,Facebook,Klarhet,Karusell (gjenbruk fra Instagram),The 5-second homepage test,Rekkevidde,Learn more,/insights/what-a-business-website-should-include,utkast,ja
+12,Fre,LinkedIn,Tilbud,Tekstinnlegg,"What a first conversation with us looks like (30 minutes, video, no slides)",Henvendelser,Book a call,/contact#call,utkast,ja
+12,Fre,Blogg (/insights),Merkevarehåndverk,Artikkel 800–1200 ord,Brand guidelines your team will actually use,Organisk synlighet,Discuss a project,/insights,utkast,ja
+13,Lør,Instagram,Tilbud,Bilde + tekst,Book a 30-minute introduction call,Gjenkjennelse,Link in bio,/contact#call,utkast,ja
+13,Lør,Facebook,Tilbud,Bilde + tekst (gjenbruk fra Instagram),Book a 30-minute introduction call,Rekkevidde,Learn more,/contact#call,utkast,ja
+15,Man,LinkedIn,Klarhet,Tekstinnlegg,Write the answers your sales team repeats every day onto your website,Engasjement,See websites,/services/websites,utkast,ja
+15,Man,Instagram,Merkevarehåndverk,Karusell,"Tone of voice: one message, three ways",Gjenkjennelse,Link in bio,/services/branding,utkast,ja
+16,Tir,LinkedIn,Arbeid over landegrenser,Karusell,Hiring an agency abroad: the ownership questions to ask,Tillit,Read the article,/insights/working-with-a-marketing-agency-in-another-country,utkast,ja
+16,Tir,Instagram,Synlighet,Karusell,Launch-day SEO checklist,Gjenkjennelse,Link in bio,/insights/rebuilding-your-website-without-losing-search-visibility,utkast,ja
+16,Tir,Facebook,Synlighet,Karusell (gjenbruk fra Instagram),Launch-day SEO checklist,Rekkevidde,Learn more,/insights/rebuilding-your-website-without-losing-search-visibility,utkast,ja
+16,Tir,Blogg (/insights),Synlighet,Artikkel 800–1200 ord,International SEO basics for companies entering the UAE,Organisk synlighet,Discuss a project,/insights,utkast,ja
+17,Ons,LinkedIn,Synlighet,Tekstinnlegg,hreflang in plain language: telling Google which language is which,Ekspertise,Read about SEO,/services/seo,utkast,ja
+18,Tor,LinkedIn,Merkevarehåndverk,Bilde + tekst,Typography is tone of voice you can see,Posisjonering,See branding,/services/branding,utkast,ja
+18,Tor,Instagram,Arbeid over landegrenser,Karusell,What you own when the project is done,Gjenkjennelse,Link in bio,/dubai,utkast,ja
+18,Tor,Facebook,Arbeid over landegrenser,Karusell (gjenbruk fra Instagram),What you own when the project is done,Rekkevidde,Learn more,/dubai,utkast,ja
+19,Fre,LinkedIn,Bak arbeidet,Tekstinnlegg,"Why we show work in context, not as isolated files",Troverdighet,Discuss a project,/contact,utkast,ja
+19,Fre,Blogg (/insights),Klarhet,Artikkel 800–1200 ord,Website project timeline: what happens from first call to launch,Organisk synlighet,Discuss a project,/insights,utkast,ja
+20,Lør,Instagram,Bak arbeidet,Bilde + tekst,Work in progress: how we present design in context,Gjenkjennelse,Link in bio,/contact,utkast,ja
+20,Lør,Facebook,Bak arbeidet,Bilde + tekst (gjenbruk fra Instagram),Work in progress: how we present design in context,Rekkevidde,Learn more,/contact,utkast,ja
+22,Man,LinkedIn,Klarhet,Karusell,Contact forms that respect people's time: ask only what you need,Ekspertise,See websites,/services/websites,utkast,ja
+22,Man,Instagram,Klarhet,Reel (skjermopptak),"A mobile-first page, scrolled at real speed",Gjenkjennelse,Link in bio,/services/websites,utkast,ja
+23,Tir,LinkedIn,Arbeid over landegrenser,Tekstinnlegg,One consolidated round of feedback beats five opinions,Engasjement,Read the article,/insights/working-with-a-marketing-agency-in-another-country,utkast,ja
+23,Tir,Instagram,Tilbud,Karusell,"Four services, one direction",Gjenkjennelse,Link in bio,/services,utkast,ja
+23,Tir,Facebook,Tilbud,Karusell (gjenbruk fra Instagram),"Four services, one direction",Rekkevidde,Learn more,/services,utkast,ja
+23,Tir,Blogg (/insights),Merkevarehåndverk,Artikkel 800–1200 ord,Rebrand or refresh? How to decide,Organisk synlighet,Discuss a project,/insights,utkast,ja
+24,Ons,LinkedIn,Synlighet,Tekstinnlegg,"Directories, listicles and search: how UAE buyers find agencies (and what that means for you)",Ekspertise,Read about SEO,/services/seo,utkast,ja
+25,Tor,LinkedIn,Merkevarehåndverk,Karusell,When to refine a logo and when to replace it,Engasjement,See branding,/services/branding,utkast,ja
+25,Tor,Instagram,Merkevarehåndverk,Bilde + tekst,Restraint is a choice,Gjenkjennelse,Link in bio,/services/branding,utkast,ja
+25,Tor,Facebook,Merkevarehåndverk,Bilde + tekst (gjenbruk fra Instagram),Restraint is a choice,Rekkevidde,Learn more,/services/branding,utkast,ja
+26,Fre,LinkedIn,Tilbud,Tekstinnlegg,Planning a launch in the UAE this quarter? Here is how we would start,Henvendelser,Discuss a project,/dubai,utkast,ja
+26,Fre,Blogg (/insights),Synlighet,Artikkel 800–1200 ord,"Hreflang, canonical and sitemaps explained for marketing managers",Organisk synlighet,Discuss a project,/insights,utkast,ja
+27,Lør,Instagram,Synlighet,Karusell,Why your website doesn't show up on Google (5 common reasons),Gjenkjennelse,Link in bio,/services/seo,utkast,ja
+27,Lør,Facebook,Synlighet,Karusell (gjenbruk fra Instagram),Why your website doesn't show up on Google (5 common reasons),Rekkevidde,Learn more,/services/seo,utkast,ja
+29,Man,LinkedIn,Klarhet,Tekstinnlegg,Speed is a design decision,Ekspertise,See websites,/services/websites,utkast,ja
+29,Man,Instagram,Tilbud,Bilde + tekst,Planning something new? Tell us about it,Gjenkjennelse,Link in bio,/contact,utkast,ja
+30,Tir,LinkedIn,Tilbud,Tekstinnlegg,"Brand, website and social media in one direction: what that means in practice",Henvendelser,See services,/services,utkast,ja
+30,Tir,Instagram,Arbeid over landegrenser,Karusell,Three things we ask in every first call,Gjenkjennelse,Link in bio,/services/branding,utkast,ja
+30,Tir,Facebook,Merkevarehåndverk,Karusell (gjenbruk fra Instagram),Five signs your brand has outgrown its look,Rekkevidde,Learn more,/services/branding,utkast,ja
+30,Tir,Blogg (/insights),Klarhet,Artikkel 800–1200 ord,What makes a contact page convert international visitors,Organisk synlighet,Discuss a project,/insights,utkast,ja
