@@ -321,6 +321,7 @@ export function IkkeFunnet() {
           <li><a href="/blog">Innsikt</a></li>
           <li><a href="/kontakt">Kontakt</a></li>
         </ul>
+        <p lang="en" className="sd-hjelp">Page not found. <a href="/" hrefLang="en">Go to the English homepage</a>.</p>
       </div>
     </Ramme>
   );

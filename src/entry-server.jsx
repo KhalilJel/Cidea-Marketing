@@ -9,5 +9,5 @@ export const sider = { ...ruter, "/404": ikkeFunnet };
 export function render(sti) {
   const s = sider[sti];
   const K = s.komponent;
-  return { html: renderToString(<K />), tittel: s.tittel, beskrivelse: s.beskrivelse, robots: s.robots };
+  return { html: renderToString(<K />), tittel: s.tittel, beskrivelse: s.beskrivelse, robots: s.robots, tjeneste: s.tjeneste, artikkel: s.artikkel };
 }
