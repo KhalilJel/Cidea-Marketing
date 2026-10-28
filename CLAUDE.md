@@ -17,7 +17,8 @@ Prosjektskill: `.claude/skills/cidea-website/SKILL.md`. Status og historikk: `do
 - Ingen merge til `main`, ingen produksjonslansering, ingen DNS/MX-endringer, ikke rør PR #11.
 - Ingen bildegenerering, Higgsfield-kreditter eller nye betalte tjenester uten eksplisitt godkjenning.
 - Ingen oppdiktede kunder, resultater, personer, priser eller omtaler. Bare dokumenterte opplysninger.
-- Synlig tekst på norsk, «dere» (ikke «du»), ingen engelske etiketter, ingen 01/02/03-nummerering.
+- Norske sider: synlig tekst på norsk, «dere» (ikke «du»), ingen engelske etiketter, ingen 01/02/03-nummerering.
+- Internasjonal del (vedtatt 28.10.2026): engelske sider på `/`, `/services`, `/dubai`, `/about`, `/insights`, `/contact`, `/privacy` (kilde `src/en/`, `src/reference-home/en.html`, språkpar i `src/i18n.js`). Norsk forside er `/no`; norske undersider beholder adressene. Se `docs/internasjonal/`. Ingen priser, caser eller påstand om kontor i UAE.
 - Låst tekst: Gullkornet-personvern (`src/sider/personvern-gullkornet.js`) endres ikke.
 - Kontaktskjemaet: `MOTTAK_BEKREFTET = false` til eier har bekreftet mottak i Netlify og innboks.
 - Ingen hemmeligheter i repoet. Ikke påstå at noe er testet, kontrollert eller fungerer uten faktisk bevis.

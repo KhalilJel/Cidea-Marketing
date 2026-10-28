@@ -1,0 +1,5 @@
+/* Små tillegg for de engelske sidene (oktober 2026). Bruker bare eksisterende tokens; ingen ny visuell retning. */
+.cm .en-tjenester { margin-top: 32px; }
+/* Feltfeil har norsk prefiks («Feil: ») i sider.css; på engelsk brukes engelsk prefiks. */
+.cm .en-feltfeil::before { content: "Error: "; }
+.cm .sd-hode .en-etikett { margin: 0 0 16px !important; }

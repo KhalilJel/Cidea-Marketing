@@ -48,7 +48,7 @@ export const tjenesteSider = [
     eksempel: {
       tittel: "Eksempel: nettsiden dere er på nå",
       tekst: "Denne nettsiden er laget av oss. Den er bygget i ren kode, hver side er ferdig generert på forhånd slik at den laster raskt, og den fungerer på mobil, nettbrett og PC. Struktur, tekst og design er laget på samme måte som for kundene våre.",
-      lenke: ["Se forsiden", "/"],
+      lenke: ["Se forsiden", "/no"],
     },
     videreTittel: "Etter lansering",
     videre: "Når nettsiden er lansert, velger dere hvordan dere vil jobbe videre. Dere kan avtale drift og vedlikehold med oss, og få hjelp med nye sider, forbedringer og løpende [SEO](/seo). Endringer på nettsiden gjør vi for dere, enten som del av driftsavtalen eller som egne oppdrag.",

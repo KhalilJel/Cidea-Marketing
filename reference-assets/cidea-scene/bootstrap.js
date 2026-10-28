@@ -7,6 +7,10 @@
   const motion = document.querySelector('.cidea-motion');
   const canvas = document.querySelector('#canvas');
   const params = new URLSearchParams(location.search);
+  // Knappetekster på sidens språk (norsk forside /no, engelsk forside /).
+  const en = root.lang === 'en';
+  const t = en ? { close: 'Close menu', open: 'Open menu', play: 'Play animation', pause: 'Pause animation' }
+    : { close: 'Lukk meny', open: 'Åpne meny', play: 'Spill animasjon', pause: 'Pause animasjon' };
   let paused = false;
   let initialized = false;
   let watchdog;
@@ -25,7 +29,7 @@
   function menu(open) {
     root.classList.toggle('cidea-menu-open', open);
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Lukk meny' : 'Åpne meny');
+    toggle.setAttribute('aria-label', open ? t.close : t.open);
     if (open) nav.querySelector('a')?.focus();
   }
   // The reference navigation is replaced with native links and our own menu.
@@ -58,7 +62,7 @@
     store.RAFCollection.remove(store.WebGL.onRaf);
     if (!paused && !document.hidden) store.RAFCollection.add(store.WebGL.onRaf, 99);
     motion.setAttribute('aria-pressed', String(paused));
-    motion.textContent = paused ? 'Spill animasjon' : 'Pause animasjon';
+    motion.textContent = paused ? t.play : t.pause;
   }
   motion.addEventListener('click', () => { paused = !paused; syncPause(); });
   document.addEventListener('visibilitychange', syncPause);

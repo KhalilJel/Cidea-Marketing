@@ -36,9 +36,9 @@ export const artikler = Object.keys(metadata).map(slug => {
     metaTittel: m.metaTittel || `${tittel} | Cidea Marketing`, beskrivelse: m.beskrivelse || utdrag, kilde };
 });
 
-// Interne lenker i artiklene: ./slug.md blir /blog/slug, gamle stier rettes til gjeldende sider.
+// Interne lenker i artiklene: ./slug.md blir /blog/slug. (/contact er nå den engelske kontaktsiden og rettes ikke
+// lenger til /kontakt; ingen norske artikler lenker dit, kontrollert ved internasjonaliseringen i oktober 2026.)
 function lenkemål(href) {
-  if (href === "/contact") return "/kontakt";
   const md = href.match(/^\.\/([a-z0-9-]+)\.md$/);
   return md ? `/blog/${md[1]}` : href;
 }

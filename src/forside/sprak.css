@@ -1,0 +1,4 @@
+/* Språkvelger i toppmeny og bunnmeny (internasjonalisering, oktober 2026). Arver menyens lenkestil; en tynn ramme
+   skiller den fra menypunktene uten nye farger. Treffflate minst 44 px. */
+.cm .cm-sprak { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border: 1px solid var(--stein, #284259); border-radius: 22px; text-decoration: none; }
+.cm .cm-bunn .cm-sprak { min-height: 36px; }
